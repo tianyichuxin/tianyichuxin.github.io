@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>天弈初心</title>
+  
+  <subtitle>天弈初心</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://tianyichuxin.github.io/"/>
+  <updated>2021-06-30T13:59:01.810Z</updated>
+  <id>https://tianyichuxin.github.io/</id>
+  
+  <author>
+    <name>弈心</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BS架构和CS架构应用</title>
+    <link href="https://tianyichuxin.github.io/2021/06/17866.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/17866.html</id>
+    <published>2021-06-30T13:59:01.810Z</published>
+    <updated>2021-06-30T13:59:01.810Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;​       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="https://tianyichuxin.github.io/categories/web/"/>
+    
+    
+      <category term="BS架构" scheme="https://tianyichuxin.github.io/tags/BS%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="CS架构" scheme="https://tianyichuxin.github.io/tags/CS%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx 相关介绍(Nginx是什么？能干嘛？)</title>
+    <link href="https://tianyichuxin.github.io/2021/06/39418.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/39418.html</id>
+    <published>2021-06-28T04:00:00.000Z</published>
+    <updated>2021-06-30T14:00:25.643Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;本文转载于失恋的蔷薇，链接如下：&lt;a href=&quot;https://www.cnblogs.com/wcwnina/p/8728391.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/categories/nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插槽slot的使用</title>
+    <link href="https://tianyichuxin.github.io/2021/06/1276.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/1276.html</id>
+    <published>2021-06-24T10:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.768Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;vue官方文档：&lt;a href=&quot;https://cn.vuejs.org/v2/guide/components-slots.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue样式问题汇总</title>
+    <link href="https://tianyichuxin.github.io/2021/06/10894.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/10894.html</id>
+    <published>2021-06-24T07:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.439Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-vue循环span标签产生了间隙&quot;&gt;&lt;a href=&quot;#1-vue循环span标签产生了间隙&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFTP是什么？与FTP之间有什么区别</title>
+    <link href="https://tianyichuxin.github.io/2021/06/12808.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/12808.html</id>
+    <published>2021-06-24T02:30:00.000Z</published>
+    <updated>2021-06-30T13:59:01.764Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;什么是SFTP？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SFTP是一种安全的文件传输协议，一种通过网络传输文件的安全方法；它确保使用私有和安全的数据流来安全地传输数据。&lt;/p&gt;
+&lt;p&gt;SFTP要求客户端用户必须由服务器进行身份验证，并且数据传输必须通过安全通道（S
+        
+      
+    
+    </summary>
+    
+    
+      <category term="filezilla" scheme="https://tianyichuxin.github.io/categories/filezilla/"/>
+    
+    
+      <category term="filezilla" scheme="https://tianyichuxin.github.io/tags/filezilla/"/>
+    
+      <category term="linux" scheme="https://tianyichuxin.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 取整、取余</title>
+    <link href="https://tianyichuxin.github.io/2021/06/28027.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/28027.html</id>
+    <published>2021-06-24T02:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.686Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、取整&quot;&gt;&lt;a href=&quot;#一、取整&quot; class=&quot;headerlink&quot; title=&quot;一、取整&quot;&gt;&lt;/a&gt;一、取整&lt;/h2&gt;&lt;h3 id=&quot;1-取整&quot;&gt;&lt;a href=&quot;#1-取整&quot; class=&quot;headerlink&quot; title=&quot;1.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中的provide和inject</title>
+    <link href="https://tianyichuxin.github.io/2021/06/56513.html"/>
+    <id>https://tianyichuxin.github.io/2021/06/56513.html</id>
+    <published>2021-06-23T01:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.742Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;一、名词解析：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot; language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;provide：Object &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>module.exports与exports,export与export default之间的关系和区别</title>
+    <link href="https://tianyichuxin.github.io/2021/05/10663.html"/>
+    <id>https://tianyichuxin.github.io/2021/05/10663.html</id>
+    <published>2021-05-29T05:12:30.000Z</published>
+    <updated>2021-06-30T13:59:01.690Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先我们要明白一个前提，CommonJS模块规范和ES6模块规范完全是两种不同的概念。&lt;/p&gt;
+&lt;h2 id=&quot;CommonJS模块规范&quot;&gt;&lt;a href=&quot;#CommonJS模块规范&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://tianyichuxin.github.io/categories/js/"/>
+    
+    
+      <category term="module.exports" scheme="https://tianyichuxin.github.io/tags/module-exports/"/>
+    
+      <category term="exports" scheme="https://tianyichuxin.github.io/tags/exports/"/>
+    
+      <category term="export" scheme="https://tianyichuxin.github.io/tags/export/"/>
+    
+      <category term="export default" scheme="https://tianyichuxin.github.io/tags/export-default/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Vue 中管理 Mixins</title>
+    <link href="https://tianyichuxin.github.io/2021/05/36667.html"/>
+    <id>https://tianyichuxin.github.io/2021/05/36667.html</id>
+    <published>2021-05-29T05:02:30.000Z</published>
+    <updated>2021-06-30T13:59:01.474Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;当我们的Vue项目功能越来越多时，如果有类似的组件，可能会发现自己一次又一次地复制和粘贴相同的数据、方法和 watch。当然，我们可以将所有这些单独的文件编写为一个单独的组件，并使用 prop 来尝试自定义它们，但是使用这么多 props
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+      <category term="Mixins" scheme="https://tianyichuxin.github.io/tags/Mixins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解JS中&amp;&amp;和||的区别</title>
+    <link href="https://tianyichuxin.github.io/2021/05/57059.html"/>
+    <id>https://tianyichuxin.github.io/2021/05/57059.html</id>
+    <published>2021-05-29T04:00:30.000Z</published>
+    <updated>2021-06-30T13:59:01.712Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;写了这么多JS，才发现JS的语法既是属于C语系的，又与一般C语系的编程语言某些地方有很大区别，其中&amp;amp;&amp;amp;和||就是其中一例。&lt;/p&gt;
+&lt;h3 id=&quot;C语系中的-amp-amp-和&quot;&gt;&lt;a href=&quot;#C语系中的-amp-amp-和&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://tianyichuxin.github.io/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://tianyichuxin.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>map()的使用</title>
+    <link href="https://tianyichuxin.github.io/2021/03/39902.html"/>
+    <id>https://tianyichuxin.github.io/2021/03/39902.html</id>
+    <published>2021-03-23T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.751Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;pre class=&quot; language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; list1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/tags/javascript/"/>
+    
+      <category term="js" scheme="https://tianyichuxin.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用FileZilla连接Linux</title>
+    <link href="https://tianyichuxin.github.io/2021/03/14192.html"/>
+    <id>https://tianyichuxin.github.io/2021/03/14192.html</id>
+    <published>2021-03-19T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.721Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;选择使用SFTP协议登录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/14192/0.png&quot; alt=&quot;FTP&quot;&gt;&lt;/p&gt;
+&lt;script&gt;
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="filezilla" scheme="https://tianyichuxin.github.io/categories/filezilla/"/>
+    
+    
+      <category term="filezilla" scheme="https://tianyichuxin.github.io/tags/filezilla/"/>
+    
+      <category term="linux" scheme="https://tianyichuxin.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue父子组件的那些事</title>
+    <link href="https://tianyichuxin.github.io/2021/02/304.html"/>
+    <id>https://tianyichuxin.github.io/2021/02/304.html</id>
+    <published>2021-02-26T03:12:30.000Z</published>
+    <updated>2021-06-30T13:59:01.802Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Vue组件：父传子&quot;&gt;&lt;a href=&quot;#Vue组件：父传子&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+      <category term="父子组件" scheme="https://tianyichuxin.github.io/tags/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>this.$store.dispatch() 与 this.$store.commit()方法的区别</title>
+    <link href="https://tianyichuxin.github.io/2020/11/11517.html"/>
+    <id>https://tianyichuxin.github.io/2020/11/11517.html</id>
+    <published>2020-11-11T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;commit: 同步操作&lt;/p&gt;
+&lt;p&gt;this.$store.commit(‘方法名’,值)【存储】&lt;/p&gt;
+&lt;p&gt;this.$store.state.方法名【取值】&lt;/p&gt;
+&lt;p&gt;dispatch:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+      <category term="vuecli" scheme="https://tianyichuxin.github.io/tags/vuecli/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue使用bus总线，实现非父子组件间的通信</title>
+    <link href="https://tianyichuxin.github.io/2020/11/54167.html"/>
+    <id>https://tianyichuxin.github.io/2020/11/54167.html</id>
+    <published>2020-11-11T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.729Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;vue组件通信方式有好多，可以使用props传值，但是props只能父子组件使用。也可以使用vuex，但是vuex比较重，而且非全局的通信最好不要使用vuex。&lt;/p&gt;
+&lt;p&gt;在简单的场景下，可以使用一个空的Vue实例作为中央事件总线。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这里有
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://tianyichuxin.github.io/tags/vue/"/>
+    
+      <category term="vuecli" scheme="https://tianyichuxin.github.io/tags/vuecli/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈javascript设计模式之发布订阅者模式</title>
+    <link href="https://tianyichuxin.github.io/2020/08/34390.html"/>
+    <id>https://tianyichuxin.github.io/2020/08/34390.html</id>
+    <published>2020-08-30T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.629Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://tianyichuxin.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx中server_name 简单介绍</title>
+    <link href="https://tianyichuxin.github.io/2020/08/22933.html"/>
+    <id>https://tianyichuxin.github.io/2020/08/22933.html</id>
+    <published>2020-08-27T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.759Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Nginx中的server_name指令在接到请求后的匹配顺序分别为：&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1、准确的server_name匹配，例如：&lt;/p&gt;
+&lt;pre class=&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/categories/nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache和Nginx的区别</title>
+    <link href="https://tianyichuxin.github.io/2020/08/24020.html"/>
+    <id>https://tianyichuxin.github.io/2020/08/24020.html</id>
+    <published>2020-08-26T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.485Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;​        前言：无论是 Nginx 还是 Apache 都是 Web 服务器应用，通俗点说我们的网站都是需要 Web 服务器应用来展现给客户的，而服务器是供 Web 服务器应用正常稳定的运行的基础。所以说选择好 Web
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="https://tianyichuxin.github.io/categories/web/"/>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/tags/nginx/"/>
+    
+      <category term="apache" scheme="https://tianyichuxin.github.io/tags/apache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx配置多站点</title>
+    <link href="https://tianyichuxin.github.io/2020/08/18457.html"/>
+    <id>https://tianyichuxin.github.io/2020/08/18457.html</id>
+    <published>2020-08-16T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.781Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;假设网站根目录设定在/var/www/&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1、在-var-www-下新建两个目录&quot;&gt;&lt;a href=&quot;#1、在-var-www-下新建两个目录&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/categories/nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx配置404自定义页面</title>
+    <link href="https://tianyichuxin.github.io/2020/08/14654.html"/>
+    <id>https://tianyichuxin.github.io/2020/08/14654.html</id>
+    <published>2020-08-05T16:00:00.000Z</published>
+    <updated>2021-06-30T13:59:01.668Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-修改nginx-conf-http&quot;&gt;&lt;a href=&quot;#1-修改nginx-conf-http&quot; class=&quot;headerlink&quot; title=&quot;1. 修改nginx.conf http&quot;&gt;&lt;/a&gt;1. 修改nginx.conf
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/categories/nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://tianyichuxin.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+</feed>
