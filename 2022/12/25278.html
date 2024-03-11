@@ -1,0 +1,2308 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!-- 自动将http的不安全请求升级为https -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="vue">
+    <meta name="description" content="专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>前端面试准备(持续更新中) | 天弈初心</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/advertisement-space.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">天弈初心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+    <div id="mobile-nav" class="side-nav sidenav">
+
+        <div class="mobile-head bg-color">
+            
+                <img src="/medias/logo.png" class="logo-img circle responsive-img">
+                
+                    <div class="logo-name">
+                        天弈初心
+                    </div>
+                    <div class="logo-desc">
+                        
+                            专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写
+                                
+                    </div>
+        </div>
+
+        
+
+            <ul class="menu-list mobile-menu-list">
+                
+                    <li class="m-nav-item">
+                        
+                            <a href="/" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-home"></i>
+                                    
+                                            首页
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/tags" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-tags"></i>
+                                    
+                                            标签
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/categories" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-bookmark"></i>
+                                    
+                                            分类
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/archives" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-archive"></i>
+                                    
+                                            归档
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/about" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-user-circle"></i>
+                                    
+                                            关于
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/contact" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-comments"></i>
+                                    
+                                            留言板
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/friends" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-address-book"></i>
+                                    
+                                            友链
+                            </a>
+                            
+                    </li>
+                    
+                        
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                            <li>
+                                <a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="waves-effect waves-light" target="_blank">
+                                    <i class="fab fa-github-square fa-fw"></i>
+                                    Fork Me
+                                </a>
+                            </li>
+                            
+            </ul>
+    </div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">前端面试准备(持续更新中)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <!-- 内页 -->
+<link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/vue/">
+                                <span class="chip bg-color">vue</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/vue/" class="post-category">
+                                vue
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-12-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-10-28
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    14.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    51 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><a href="https://www.php.cn/js-tutorial-457006.html" target="_blank" rel="noopener">https://www.php.cn/js-tutorial-457006.html</a></p>
+<h2 id="一、html5新特性、语义化"><a href="#一、html5新特性、语义化" class="headerlink" title="一、html5新特性、语义化"></a>一、html5新特性、语义化</h2><ul>
+<li>语义化标签 ： header nav main article section aside footer</li>
+</ul>
+<pre class=" language-js"><code class="language-js">语义化意味着顾名思义，HTML5的语义化指的是合理正确的使用语义化的标签来创建页面结构，如 
+header<span class="token punctuation">,</span>footer<span class="token punctuation">,</span>nav，从标签上即可以直观的知道这个标签的作用，而不是滥用div。
+语义化的优点有<span class="token punctuation">:</span>
+代码结构清晰，易于阅读，利于开发和维护
+方便其他设备解析（如屏幕阅读器）根据语义渲染网页。
+有利于搜索引擎优化（SEO），搜索引擎爬虫会根据不同的标签来赋予不同的权重
+复制代码</code></pre>
+<h3 id="浏览器渲染机制、重绘、重排"><a href="#浏览器渲染机制、重绘、重排" class="headerlink" title="浏览器渲染机制、重绘、重排"></a>浏览器渲染机制、重绘、重排</h3><p>网页生成过程：</p>
+<ul>
+<li><code>HTML</code>被HTML解析器解析成<code>DOM</code> 树</li>
+<li><code>css</code>则被css解析器解析成<code>CSSOM</code>树</li>
+<li>结合<code>DOM</code>树和<code>CSSOM</code>树，生成一棵渲染树(<code>Render Tree</code>)</li>
+<li>生成布局（<code>flow</code>），即将所有渲染树的所有节点进行平面合成</li>
+<li>将布局绘制（<code>paint</code>）在屏幕上</li>
+</ul>
+<p><strong>重排(也称回流):</strong> 当<code>DOM</code>的变化影响了元素的几何信息(<code>DOM</code>对象的位置和尺寸大小)，浏览器需要重新计算元素的几何属性，将其安放在界面中的正确位置，这个过程叫做重排。 触发：</p>
+<ol>
+<li>添加或者删除可见的DOM元素</li>
+<li>元素尺寸改变——边距、填充、边框、宽度和高度</li>
+</ol>
+<p><strong>重绘：</strong> 当一个元素的外观发生改变，但没有改变布局,重新把元素外观绘制出来的过程，叫做重绘。 触发：</p>
+<ul>
+<li>改变元素的<code>color、background、box-shadow</code>等属性</li>
+</ul>
+<p>重排优化建议：</p>
+<ol>
+<li>分离读写操作</li>
+<li>样式集中修改</li>
+<li>缓存需要修改的<code>DOM</code>元素</li>
+<li>尽量只修改<code>position：absolute</code>或<code>fixed</code>元素，对其他元素影响不大</li>
+<li>动画开始<code>GPU</code>加速，<code>translate</code>使用<code>3D</code>变化</li>
+</ol>
+<p><code>transform</code> 不重绘，不回流 是因为<code>transform</code>属于合成属性，对合成属性进行<code>transition/animate</code>动画时，将会创建一个合成层。这使得动画元素在一个独立的层中进行渲染。当元素的内容没有发生改变，就没有必要进行重绘。浏览器会通过重新复合来创建动画帧。</p>
+<h3 id="css盒子模型"><a href="#css盒子模型" class="headerlink" title="css盒子模型"></a>css盒子模型</h3><p>所有<code>HTML</code>元素可以看作盒子，在CSS中，<code>"box model"</code>这一术语是用来设计和布局时使用。 <code>CSS</code>盒模型本质上是一个盒子，封装周围的<code>HTML</code>元素，它包括：边距，边框，填充，和实际内容。 盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。</p>
+<h3 id="css样式优先级"><a href="#css样式优先级" class="headerlink" title="css样式优先级"></a>css样式优先级</h3><pre><code>!important&gt;style&gt;id&gt;class</code></pre><h3 id="什么是BFC？BFC的布局规则是什么？如何创建BFC？BFC应用？"><a href="#什么是BFC？BFC的布局规则是什么？如何创建BFC？BFC应用？" class="headerlink" title="什么是BFC？BFC的布局规则是什么？如何创建BFC？BFC应用？"></a>什么是BFC？BFC的布局规则是什么？如何创建BFC？BFC应用？</h3><p><code>BFC</code> 是 <code>Block Formatting Context</code>的缩写，即块格式化上下文。<code>BFC</code>是CSS布局的一个概念，是一个环境，里面的元素不会影响外面的元素。 布局规则：Box是CSS布局的对象和基本单位，页面是由若干个Box组成的。元素的类型和display属性，决定了这个Box的类型。不同类型的Box会参与不同的<code>Formatting Context</code>。 创建：浮动元素 <code>display：inline-block position:absolute</code> 应用: 1.分属于不同的<code>BFC</code>时,可以防止<code>margin</code>重叠 2.清除内部浮动 3.自适应多栏布局</p>
+<h2 id="二、DOM、BOM对象"><a href="#二、DOM、BOM对象" class="headerlink" title="二、DOM、BOM对象"></a>二、DOM、BOM对象</h2><p><code>BOM（Browser Object Model）</code>是指浏览器对象模型，可以对浏览器窗口进行访问和操作。使用 BOM，开发者可以移动窗口、改变状态栏中的文本以及执行其他与页面内容不直接相关的动作。 使 <code>JavaScript</code> 有能力与浏览器”对话”。 <code>DOM （Document Object Model）</code>是指文档对象模型，通过它，可以访问<code>HTML</code>文档的所有元素。 <code>DOM</code>是 <code>W3C</code>（万维网联盟）的标准。<code>DOM</code> 定义了访问 <code>HTML</code> 和<code>XML</code> 文档的标准： “W3C 文档对象模型（DOM）是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。” <code>W3C DOM</code> 标准被分为 3 个不同的部分：</p>
+<ul>
+<li>核心 <code>DOM</code> - 针对任何结构化文档的标准模型</li>
+<li><code>XML DOM</code> - 针对 XML 文档的标准模型</li>
+<li><code>HTML DOM</code> - 针对 HTML 文档的标准模型</li>
+</ul>
+<p>什么是<code>XML DOM</code>？ <code>XML DOM</code> 定义了所有 XML 元素的对象和属性，以及访问它们的方法。 什么是 HTML DOM？ HTML DOM 定义了所有 HTML 元素的对象和属性，以及访问它们的方法。</p>
+<h2 id="三、JS相关"><a href="#三、JS相关" class="headerlink" title="三、JS相关"></a>三、JS相关</h2><h3 id="js数据类型、typeof、instanceof、类型转换"><a href="#js数据类型、typeof、instanceof、类型转换" class="headerlink" title="js数据类型、typeof、instanceof、类型转换"></a>js数据类型、typeof、instanceof、类型转换</h3><ol>
+<li><code>string、number、boolean、null、undefined、object(function、array)、symbol(ES10 BigInt)</code></li>
+<li><code>typeof</code> 主要用来判断数据类型 返回值有<code>string、boolean、number、function、object、undefined。</code></li>
+<li><code>instanceof</code> 判断该对象是谁的实例。</li>
+<li><code>null</code>表示空对象 <code>undefined</code>表示已在作用域中声明但未赋值的变量</li>
+</ol>
+<h3 id="闭包-高频"><a href="#闭包-高频" class="headerlink" title="闭包(高频)"></a>闭包(高频)</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数 ——《JavaScript高级程序设计》</p>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，</p>
+<p>即使函数是在当前词法作用域之外执行 ——《你不知道的JavaScript》</p>
+<ul>
+<li>闭包用途：<ol>
+<li>能够访问函数定义时所在的词法作用域(阻止其被回收)</li>
+<li>私有化变量</li>
+<li>模拟块级作用域</li>
+<li>创建模块</li>
+</ol>
+</li>
+<li>闭包缺点：会导致函数的变量一直保存在内存中，过多的闭包可能会导致内存泄漏</li>
+</ul>
+<h3 id="原型、原型链-高频"><a href="#原型、原型链-高频" class="headerlink" title="原型、原型链(高频)"></a>原型、原型链(高频)</h3><p><strong>原型:</strong> 对象中固有的<code>__proto__</code>属性，该属性指向对象的<code>prototype</code>原型属性。</p>
+<p><strong>原型链:</strong> 当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一般来说都是<code>Object.prototype</code>所以这就是我们新建的对象为什么能够使用<code>toString()</code>等方法的原因。</p>
+<p><strong>特点:</strong> <code>JavaScript</code>对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。</p>
+<h3 id="this指向、new关键字"><a href="#this指向、new关键字" class="headerlink" title="this指向、new关键字"></a>this指向、new关键字</h3><p><code>this</code>对象是是执行上下文中的一个属性，它指向最后一次调用这个方法的对象，在全局函数中，<code>this</code>等于<code>window</code>，而当函数被作为某个对象调用时，this等于那个对象。 在实际开发中，<code>this</code>的指向可以通过四种调用模式来判断。</p>
+<ol>
+<li>函数调用，当一个函数不是一个对象的属性时，直接作为函数来调用时，<code>this</code>指向全局对象。</li>
+<li>方法调用，如果一个函数作为一个对象的方法来调用时，<code>this</code>指向这个对象。</li>
+<li>构造函数调用，<code>this</code>指向这个用<code>new</code>新创建的对象。</li>
+<li>第四种是 <code>apply 、 call 和 bind</code>调用模式，这三个方法都可以显示的指定调用函数的 this 指向。<code>apply</code>接收参数的是数组，<code>call</code>接受参数列表，`` bind<code>方法通过传入一个对象，返回一个</code> this <code>绑定了传入对象的新函数。这个函数的</code>this<code>指向除了使用</code>new `时会被改变，其他情况下都不会改变。</li>
+</ol>
+<p><strong>new</strong></p>
+<ol>
+<li>首先创建了一个新的空对象</li>
+<li>设置原型，将对象的原型设置为函数的<code>prototype</code>对象。</li>
+<li>让函数的<code>this</code>指向这个对象，执行构造函数的代码（为这个新对象添加属性）</li>
+<li>判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。</li>
+</ol>
+<h3 id="作用域、作用域链、变量提升"><a href="#作用域、作用域链、变量提升" class="headerlink" title="作用域、作用域链、变量提升"></a>作用域、作用域链、变量提升</h3><p><code>作用域</code>负责收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。(全局作用域、函数作用域、块级作用域)。 作用域链就是从当前作用域开始一层一层向上寻找某个变量，直到找到全局作用域还是没找到，就宣布放弃。这种一层一层的关系，就是<code>作用域链</code>。</p>
+<h3 id="继承-含es6-、多种继承方式"><a href="#继承-含es6-、多种继承方式" class="headerlink" title="继承(含es6)、多种继承方式"></a>继承(含es6)、多种继承方式</h3><p>（1）第一种是以<code>原型链的方式来实现继承</code>，但是这种实现方式存在的缺点是，在包含有引用类型的数据时，会被所有的实例对象所共享，容易造成修改的混乱。还有就是在创建子类型的时候不能向超类型传递参数。</p>
+<p>（2）第二种方式是使用<code>借用构造函数</code>的方式，这种方式是通过在子类型的函数中调用超类型的构造函数来实现的，这一种方法解决了不能向超类型传递参数的缺点，但是它存在的一个问题就是无法实现函数方法的复用，并且超类型原型定义的方法子类型也没有办法访问到。</p>
+<p>（3）第三种方式是<code>组合继承</code>，组合继承是将原型链和借用构造函数组合起来使用的一种方式。通过借用构造函数的方式来实现类型的属性的继承，通过将子类型的原型设置为超类型的实例来实现方法的继承。这种方式解决了上面的两种模式单独使用时的问题，但是由于我们是以超类型的实例来作为子类型的原型，所以调用了两次超类的构造函数，造成了子类型的原型中多了很多不必要的属性。</p>
+<p>（4）第四种方式是<code>原型式继承</code>，原型式继承的主要思路就是基于已有的对象来创建新的对象，实现的原理是，向函数中传入一个对象，然后返回一个以这个对象为原型的对象。这种继承的思路主要不是为了实现创造一种新的类型，只是对某个对象实现一种简单继承，ES5 中定义的 Object.create() 方法就是原型式继承的实现。缺点与原型链方式相同。</p>
+<p>（5）第五种方式是<code>寄生式继承</code>，寄生式继承的思路是创建一个用于封装继承过程的函数，通过传入一个对象，然后复制一个对象的副本，然后对象进行扩展，最后返回这个对象。这个扩展的过程就可以理解是一种继承。这种继承的优点就是对一个简单对象实现继承，如果这个对象不是我们的自定义类型时。缺点是没有办法实现函数的复用。</p>
+<p>（6）第六种方式是<code>寄生式组合继承</code>，组合继承的缺点就是使用超类型的实例做为子类型的原型，导致添加了不必要的原型属性。寄生式组合继承的方式是使用超类型的原型的副本来作为子类型的原型，这样就避免了创建不必要的属性。</p>
+<h3 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h3><pre><code>JS`是单线程的，为了防止一个函数执行时间过长阻塞后面的代码，所以会先将同步代码压入执行栈中，依次执行，将异步代码推入异步队列，异步队列又分为宏任务队列和微任务队列，因为宏任务队列的执行时间较长，所以微任务队列要优先于宏任务队列。微任务队列的代表就是，`Promise.then`，`MutationObserver`，宏任务的话就是`setImmediate setTimeout setInterval</code></pre><h3 id="原生ajax"><a href="#原生ajax" class="headerlink" title="原生ajax"></a>原生ajax</h3><p><strong>ajax</strong>是一种异步通信的方法,从服务端获取数据,达到局部刷新页面的效果。 过程：</p>
+<ol>
+<li>创建<code>XMLHttpRequest</code>对象;</li>
+<li>调用<code>open</code>方法传入三个参数 请求方式<code>(GET/POST)、url、同步异步(true/false)</code>;</li>
+<li>监听<code>onreadystatechange</code>事件，当<code>readystate</code>等于4时返回<code>responseText</code>;</li>
+<li>调用send方法传递参数。</li>
+</ol>
+<h3 id="事件冒泡、捕获-委托"><a href="#事件冒泡、捕获-委托" class="headerlink" title="事件冒泡、捕获(委托)"></a>事件冒泡、捕获(委托)</h3><ul>
+<li><strong>事件冒泡</strong>指在在一个对象上触发某类事件，如果此对象绑定了事件，就会触发事件，如果没有，就会向这个对象的父级对象传播，最终父级对象触发了事件。</li>
+<li><strong>事件委托</strong>本质上是利用了浏览器事件冒泡的机制。因为事件在冒泡过程中会上传到父节点，并且父节点可以通过事件对象获取到目标节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件，这种方式称为<strong>事件代理</strong>。</li>
+</ul>
+<p><code>event.stopPropagation()</code> 或者 ie下的方法 <code>event.cancelBubble = true;</code> //阻止事件冒泡</p>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><ol>
+<li>新增symbol类型 表示独一无二的值，用来定义独一无二的对象属性名;</li>
+<li>const/let  都是用来声明变量,不可重复声明，具有块级作用域。存在暂时性死区，也就是不存在变量提升。(const一般用于声明常量);</li>
+<li>变量的解构赋值(包含数组、对象、字符串、数字及布尔值,函数参数),剩余运算符(…rest);</li>
+<li>模板字符串(<code>${data}</code>);</li>
+<li>扩展运算符(数组、对象);;</li>
+<li>箭头函数;</li>
+<li>Set和Map数据结构;</li>
+<li>Proxy/Reflect;</li>
+<li>Promise;</li>
+<li>async函数;</li>
+<li>Class;</li>
+<li>Module语法(import/export)。</li>
+</ol>
+<h2 id="四、Vue"><a href="#四、Vue" class="headerlink" title="四、Vue"></a>四、Vue</h2><h3 id="简述MVVM"><a href="#简述MVVM" class="headerlink" title="简述MVVM"></a>简述MVVM</h3><p><strong>MVVM</strong>是<code>Model-View-ViewModel</code>缩写，也就是把<code>MVC</code>中的<code>Controller</code>演变成<code>ViewModel。Model</code>层代表数据模型，<code>View</code>代表UI组件，<code>ViewModel</code>是<code>View</code>和<code>Model</code>层的桥梁，数据会绑定到<code>viewModel</code>层并自动将数据渲染到页面中，视图变化的时候会通知<code>viewModel</code>层更新数据。</p>
+<h3 id="谈谈对vue生命周期的理解？"><a href="#谈谈对vue生命周期的理解？" class="headerlink" title="谈谈对vue生命周期的理解？"></a>谈谈对vue生命周期的理解？</h3><p>每个<code>Vue</code>实例在创建时都会经过一系列的初始化过程，<code>vue</code>的生命周期钩子，就是说在达到某一阶段或条件时去触发的函数，目的就是为了完成一些动作或者事件</p>
+<ul>
+<li><code>create阶段</code>：vue实例被创建 <code>beforeCreate</code>: 创建前，此时data和methods中的数据都还没有初始化 <code>created</code>： 创建完毕，data中有值，未挂载</li>
+<li><code>mount阶段</code>： vue实例被挂载到真实DOM节点 <code>beforeMount</code>：可以发起服务端请求，去数据 <code>mounted</code>: 此时可以操作Dom</li>
+<li><code>update阶段</code>：当vue实例里面的data数据变化时，触发组件的重新渲染 <code>beforeUpdate</code> <code>updated</code></li>
+<li><code>destroy阶段</code>：vue实例被销毁 <code>beforeDestroy</code>：实例被销毁前，此时可以手动销毁一些方法 <code>destroyed</code></li>
+</ul>
+<h3 id="computed与watch"><a href="#computed与watch" class="headerlink" title="computed与watch"></a><code>computed与watch</code></h3><p><strong>watch 属性监听</strong> 是一个对象，键是需要观察的属性，值是对应回调函数，主要用来监听某些特定数据的变化，从而进行某些具体的业务逻辑操作,监听属性的变化，需要在数据变化时执行异步或开销较大的操作时使用</p>
+<p><strong>computed 计算属性</strong> 属性的结果会被缓存，当<code>computed</code>中的函数所依赖的属性没有发生改变的时候，那么调用当前函数的时候结果会从缓存中读取。除非依赖的响应式属性变化时才会重新计算，主要当做属性来使用 <code>computed</code>中的函数必须用<code>return</code>返回最终的结果 <code>computed</code>更高效，优先使用</p>
+<p><strong>使用场景</strong> <code>computed</code>：当一个属性受多个属性影响的时候使用，例：购物车商品结算功能 <code>watch</code>：当一条数据影响多条数据的时候使用，例：搜索数据</p>
+<h3 id="v-for中key的作用"><a href="#v-for中key的作用" class="headerlink" title="v-for中key的作用"></a>v-for中key的作用</h3><ol>
+<li><code>key</code>的作用主要是为了更高效的对比虚拟DOM中每个节点是否是相同节点;</li>
+<li><code>Vue在patch</code>过程中判断两个节点是否是相同节点,key是一个必要条件，渲染一组列表时，key往往是唯一标识，所以如果不定义key的话，<code>Vue</code>只能认为比较的两个节点是同一个，哪怕它们实际上不是，这导致了频繁更新元素，使得整个<code>patch</code>过程比较低效，影响性能;</li>
+<li>从源码中可以知道，Vue判断两个节点是否相同时主要判断两者的key和元素类型等，因此如果不设置key,它的值就是<code>undefined</code>，则可能永    远认为这是两个相同的节点，只能去做更新操作，这造成了大量的dom更新操作，明显是不可取的。</li>
+</ol>
+<h3 id="vue组件的通信方式"><a href="#vue组件的通信方式" class="headerlink" title="vue组件的通信方式"></a>vue组件的通信方式</h3><h4 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h4><p>父-&gt;子<code>props</code>，子-&gt;父 <code>$on、$emit</code> 获取父子组件实例 <code>parent、parent、parent、children</code> <code>Ref</code>获取实例的方式调用组件的属性或者方法 <code>Provide、inject</code> 官方不推荐使用，但是写组件库时很常用</p>
+<h4 id="兄弟组件通信"><a href="#兄弟组件通信" class="headerlink" title="兄弟组件通信"></a>兄弟组件通信</h4><pre><code>Event Bus` 实现跨组件通信 `Vue.prototype.$bus = new Vue() Vuex</code></pre><h4 id="跨级组件通信"><a href="#跨级组件通信" class="headerlink" title="跨级组件通信"></a>跨级组件通信</h4><pre><code>$attrs、$listeners` `Provide、inject</code></pre><h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><ul>
+<li>v-if：判断是否隐藏；</li>
+<li>v-for：数据循环出来；</li>
+<li>v-bind:class：绑定一个属性；</li>
+<li>v-model：实现双向绑定</li>
+</ul>
+<h3 id="双向绑定实现原理"><a href="#双向绑定实现原理" class="headerlink" title="双向绑定实现原理"></a>双向绑定实现原理</h3><p>当一个<strong>Vue</strong>实例创建时，Vue会遍历data选项的属性，用 <strong>Object.defineProperty</strong> 将它们转为 getter/setter并且在内部追踪相关依赖，在属性被访问和修改时通知变化。每个组件实例都有相应的 watcher 程序实例，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher重新计算，从而致使它关联的组件得以更新。</p>
+<h3 id="v-model的实现以及它的实现原理吗？"><a href="#v-model的实现以及它的实现原理吗？" class="headerlink" title="v-model的实现以及它的实现原理吗？"></a>v-model的实现以及它的实现原理吗？</h3><ol>
+<li><code>vue</code>中双向绑定是一个指令<code>v-model</code>，可以绑定一个动态值到视图，同时视图中变化能改变该值。<code>v-model</code>是语法糖，默认情况下相于:<code>value和@input</code>。</li>
+<li>使用<code>v-model</code>可以减少大量繁琐的事件处理代码，提高开发效率，代码可读性也更好</li>
+<li>通常在表单项上使用<code>v-model</code></li>
+<li>原生的表单项可以直接使用<code>v-model</code>，自定义组件上如果要使用它需要在组件内绑定value并处理输入事件</li>
+<li>我做过测试，输出包含<code>v-model</code>模板的组件渲染函数，发现它会被转换为value属性的绑定以及一个事件监听，事件回调函数中会做相应变量更新操作，这说明神奇魔法实际上是vue的编译器完成的。</li>
+</ol>
+<h3 id="nextTick的实现"><a href="#nextTick的实现" class="headerlink" title="nextTick的实现"></a>nextTick的实现</h3><ol>
+<li><code>nextTick</code>是<code>Vue</code>提供的一个全局<code>API</code>,是在下次<code>DOM</code>更新循环结束之后执行延迟回调，在修改数据之后使用<code>$nextTick</code>，则可以在回调中获取更新后的<code>DOM</code>；</li>
+<li>Vue在更新DOM时是异步执行的。只要侦听到数据变化，<code>Vue</code>将开启1个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个<code>watcher</code>被多次触发，只会被推入到队列中-次。这种在缓冲时去除重复数据对于避免不必要的计算和<code>DOM</code>操作是非常重要的。<code>nextTick</code>方法会在队列中加入一个回调函数，确保该函数在前面的dom操作完成后才调用；</li>
+<li>比如，我在干什么的时候就会使用nextTick，传一个回调函数进去，在里面执行dom操作即可；</li>
+<li>我也有简单了解<code>nextTick</code>实现，它会在<code>callbacks</code>里面加入我们传入的函数，然后用<code>timerFunc</code>异步方式调用它们，首选的异步方式会是<code>Promise</code>。这让我明白了为什么可以在<code>nextTick</code>中看到<code>dom</code>操作结果。</li>
+</ol>
+<h3 id="vnode的理解，compiler和patch的过程"><a href="#vnode的理解，compiler和patch的过程" class="headerlink" title="vnode的理解，compiler和patch的过程"></a>vnode的理解，compiler和patch的过程</h3><pre class=" language-javascript"><code class="language-javascript">vnode 虚拟DOM节点 创建：
+<span class="token keyword">export</span> <span class="token keyword">function</span> Vnode <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        tag<span class="token punctuation">:</span><span class="token string">'div'</span><span class="token punctuation">,</span>
+        children<span class="token punctuation">:</span> <span class="token string">'span'</span><span class="token punctuation">,</span>
+        attr<span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+        text<span class="token punctuation">:</span><span class="token string">'你好!'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+复制代码</code></pre>
+<h3 id="new-Vue后整个的流程"><a href="#new-Vue后整个的流程" class="headerlink" title="new Vue后整个的流程"></a>new Vue后整个的流程</h3><ul>
+<li><code>initProxy</code>：作用域代理，拦截组件内访问其它组件的数据。</li>
+<li><code>initLifecycle</code>：建立父子组件关系，在当前组件实例上添加一些属性和生命周期标识。如<code>[Math Processing Error]parent,parent,refs,$children,_isMounted</code>等。</li>
+<li><code>initEvents</code>：对父组件传入的事件添加监听，事件是谁创建谁监听，子组件创建事件子组件监听</li>
+<li><code>initRender</code>：声明[Math Processing Error]slots和slots和createElement()等。</li>
+<li><code>initInjections</code>：注入数据，初始化inject，一般用于组件更深层次之间的通信。</li>
+<li><code>initState</code>：重要）数据响应式：初始化状态。很多选项初始化的汇总：data,methods,props,computed和watch。</li>
+<li><code>initProvide</code>：提供数据注入。</li>
+</ul>
+<p><strong>思考：为什么先注入再提供呢？？</strong></p>
+<p>答：1、首先来自祖辈的数据要和当前实例的data,等判重，相结合，所以注入数据的initInjections一定要在<code>InitState</code>的上面。2. 从上面注入进来的东西在当前组件中转了一下又提供给后代了，所以注入数据也一定要在上面。</p>
+<p><code>vm.[Math Processing Error]mount(vm.mount(vm.options.el)</code>：挂载实例。</p>
+<h3 id="keep-alive的实现"><a href="#keep-alive的实现" class="headerlink" title="keep-alive的实现"></a>keep-alive的实现</h3><p>作用：实现组件缓存</p>
+<h4 id="钩子函数："><a href="#钩子函数：" class="headerlink" title="钩子函数："></a>钩子函数：</h4><pre><code>`activated `组件渲染后调用
+`deactivated `组件销毁后调用
+复制代码</code></pre><p>原理：<code>Vue.js</code>内部将<code>DOM</code>节点抽象成了一个个的<code>VNode</code>节点，<code>keep-alive</code>组件的缓存也是基于<code>VNode</code>节点的而不是直接存储<code>DOM</code>结构。它将满足条件<code>（pruneCache与pruneCache）</code>的组件在<code>cache</code>对象中缓存起来，在需要重新渲染的时候再将<code>vnode</code>节点从<code>cache</code>对象中取出并渲染。</p>
+<h4 id="配置属性："><a href="#配置属性：" class="headerlink" title="配置属性："></a>配置属性：</h4><p><code>include</code> 字符串或正则表达式。只有名称匹配的组件会被缓存</p>
+<p><code>exclude</code> 字符串或正则表达式。任何名称匹配的组件都不会被缓存</p>
+<p><code>max</code> 数字、最多可以缓存多少组件实例</p>
+<h3 id="vuex、vue-router实现原理"><a href="#vuex、vue-router实现原理" class="headerlink" title="vuex、vue-router实现原理"></a>vuex、vue-router实现原理</h3><p><code>vuex</code>是一个专门为vue.js应用程序开发的状态管理库。 核心概念：</p>
+<ul>
+<li><code>state</code>(单一状态树) <code>getter/Mutation</code>显示提交更改<code>state</code></li>
+<li><code>Action类似Mutation</code>，提交<code>Mutation</code>，可以包含任意异步操作。</li>
+<li><code>module</code>(当应用变得庞大复杂，拆分<code>store</code>为具体的<code>module</code>模块)</li>
+</ul>
+<h3 id="你怎么理解Vue中的diff算法"><a href="#你怎么理解Vue中的diff算法" class="headerlink" title="你怎么理解Vue中的diff算法?"></a>你怎么理解Vue中的diff算法?</h3><p>在js中,渲染真实<code>DOM</code>的开销是非常大的, 比如我们修改了某个数据,如果直接渲染到真实<code>DOM</code>, 会引起整个<code>dom</code>树的重绘和重排。那么有没有可能实现只更新我们修改的那一小块dom而不要更新整个<code>dom</code>呢？此时我们就需要先根据真实<code>dom</code>生成虚拟<code>dom</code>， 当虚拟<code>dom</code>某个节点的数据改变后会生成有一个新的<code>Vnode</code>, 然后新的<code>Vnode</code>和旧的<code>Vnode</code>作比较，发现有不一样的地方就直接修改在真实DOM上，然后使旧的<code>Vnode</code>的值为新的<code>Vnode</code>。</p>
+<p><strong>diff</strong>的过程就是调用<code>patch</code>函数，比较新旧节点，一边比较一边给真实的<code>DOM</code>打补丁。在采取<code>diff</code>算法比较新旧节点的时候，比较只会在同层级进行。 在<code>patch</code>方法中，首先进行树级别的比较 <code>new Vnode</code>不存在就删除 <code>old Vnode</code> <code>old Vnode</code> 不存在就增加新的<code>Vnode</code> 都存在就执行diff更新 当确定需要执行diff算法时，比较两个<code>Vnode</code>，包括三种类型操作：属性更新，文本更新，子节点更新 新老节点均有子节点，则对子节点进行<code>diff</code>操作，调用<code>updatechidren</code> 如果老节点没有子节点而新节点有子节点，先清空老节点的文本内容，然后为其新增子节点 如果新节点没有子节点，而老节点有子节点的时候，则移除该节点的所有子节点 老新老节点都没有子节点的时候，进行文本的替换</p>
+<p><strong>updateChildren</strong> 将<code>Vnode</code>的子节点Vch和oldVnode的子节点oldCh提取出来。 <code>oldCh和vCh</code>各有两个头尾的变量<code>StartIdx和EndIdx</code>，它们的2个变量相互比较，一共有4种比较方式。如果4种比较都没匹配，如果设置了<code>key</code>，就会用<code>key</code>进行比较，在比较的过程中，变量会往中间靠，一旦<code>StartIdx&gt;EndIdx</code>表明<code>oldCh和vCh</code>至少有一个已经遍历完了，就会结束比较。</p>
+<h3 id="你都做过哪些Vue的性能优化？"><a href="#你都做过哪些Vue的性能优化？" class="headerlink" title="你都做过哪些Vue的性能优化？"></a>你都做过哪些Vue的性能优化？</h3><pre class=" language-javascript"><code class="language-javascript">编码阶段
+尽量减少data中的数据，data中的数据都会增加getter和setter，会收集对应的watcher
+v<span class="token operator">-</span><span class="token keyword">if</span>和v<span class="token operator">-</span><span class="token keyword">for</span>不能连用
+如果需要使用v<span class="token operator">-</span><span class="token keyword">for</span>给每项元素绑定事件时使用事件代理
+SPA 页面采用keep<span class="token operator">-</span>alive缓存组件
+在更多的情况下，使用v<span class="token operator">-</span><span class="token keyword">if</span>替代v<span class="token operator">-</span>show
+key保证唯一
+使用路由懒加载、异步组件
+防抖、节流
+第三方模块按需导入
+长列表滚动到可视区域动态加载
+图片懒加载
+SEO优化
+预渲染
+服务端渲染SSR
+打包优化
+压缩代码
+Tree Shaking<span class="token operator">/</span>Scope Hoisting
+使用cdn加载第三方模块
+多线程打包happypack
+splitChunks抽离公共文件
+sourceMap优化
+用户体验
+骨架屏
+PWA
+<span class="token function">还可以使用缓存</span><span class="token punctuation">(</span>客户端缓存、服务端缓存<span class="token punctuation">)</span>优化、服务端开启gzip压缩等。
+复制代码</code></pre>
+<h3 id="你知道Vue3有哪些新特性吗？它们会带来什么影响？"><a href="#你知道Vue3有哪些新特性吗？它们会带来什么影响？" class="headerlink" title="你知道Vue3有哪些新特性吗？它们会带来什么影响？"></a>你知道Vue3有哪些新特性吗？它们会带来什么影响？</h3><ul>
+<li><strong>性能提升</strong></li>
+</ul>
+<p>更小巧、更快速 支持自定义渲染器 支持摇树优化：一种在打包时去除无用代码的优化手段 支持Fragments和跨组件渲染</p>
+<ul>
+<li><strong>API变动</strong></li>
+</ul>
+<p>模板语法99%保持不变 原生支持基于class的组件，并且无需借助任何编译及各种stage阶段的特性 在设计时也考虑TypeScript的类型推断特性 <code>重写虚拟DOM</code>可以期待更多的编译时提示来减少运行时的开销 <code>优化插槽生成</code>可以单独渲染父组件和子组件 <code>静态树提升</code>降低渲染成本 <code>基于Proxy的观察者机制</code>节省内存开销</p>
+<ul>
+<li><strong>不兼容IE11</strong></li>
+</ul>
+<p><code>检测机制</code>更加全面、精准、高效,更具可调试式的响应跟踪</p>
+<h3 id="实现双向绑定-Proxy-与-Object-defineProperty-相比优劣如何"><a href="#实现双向绑定-Proxy-与-Object-defineProperty-相比优劣如何" class="headerlink" title="实现双向绑定 Proxy 与 Object.defineProperty 相比优劣如何?"></a>实现双向绑定 Proxy 与 Object.defineProperty 相比优劣如何?</h3><ol>
+<li><strong>Object.definedProperty</strong>的作用是劫持一个对象的属性，劫持属性的getter和setter方法，在对象的属性发生变化时进行特定的操作。而   Proxy劫持的是整个对象。</li>
+<li><strong>Proxy</strong>会返回一个代理对象，我们只需要操作新对象即可，而Object.defineProperty只能遍历对象属性直接修改。</li>
+<li><strong>Object.definedProperty</strong>不支持数组，更准确的说是不支持数组的各种API，因为如果仅仅考虑arry[i] = value 这种情况，是可以劫持   的，但是这种劫持意义不大。而Proxy可以支持数组的各种API。</li>
+<li>尽管Object.defineProperty有诸多缺陷，但是其兼容性要好于Proxy。</li>
+</ol>
+<h2 id="五、React"><a href="#五、React" class="headerlink" title="五、React"></a>五、React</h2><h3 id="1、react中key的作用，有key没key有什么区别，比较同一层级节点什么意思？"><a href="#1、react中key的作用，有key没key有什么区别，比较同一层级节点什么意思？" class="headerlink" title="1、react中key的作用，有key没key有什么区别，比较同一层级节点什么意思？"></a>1、react中key的作用，有key没key有什么区别，比较同一层级节点什么意思？</h3><pre class=" language-javascript"><code class="language-javascript">Keys是React用于追踪哪些列表中元素被修改、被添加或者被移除的辅助标识。
+复制代码</code></pre>
+<h3 id="2、你对虚拟dom和diff算法的理解，实现render函数"><a href="#2、你对虚拟dom和diff算法的理解，实现render函数" class="headerlink" title="2、你对虚拟dom和diff算法的理解，实现render函数"></a>2、你对虚拟dom和diff算法的理解，实现render函数</h3><p><code>虚拟DOM</code>本质上是<code>JavaScript</code>对象,是对<code>真实DOM</code>的抽象表现。 状态变更时，记录新树和旧树的差异 最后把差异更新到真正的<code>dom</code>中 <strong>render函数:</strong></p>
+<ol>
+<li>根据<code>tagName</code>生成父标签,读取<code>props</code>，设置属性，<code>如果有content</code>，设置<code>innerHtml或innerText</code>,</li>
+<li>如果存在子元素，遍历子元素递归调用<code>render</code>方法，将生成的子元素依次添加到父元素中，并返回根元素。</li>
+</ol>
+<h3 id="3、React组件之间通信方式？"><a href="#3、React组件之间通信方式？" class="headerlink" title="3、React组件之间通信方式？"></a>3、React组件之间通信方式？</h3><ol>
+<li>父子组件,父-&gt;子直接用<code>Props</code>,子-&gt;父用<code>callback</code>回调</li>
+<li>非父子组件,用发布订阅模式的<code>Event</code>模块</li>
+<li>项目复杂的话用<code>Redux、Mobx</code>等全局状态管理管库</li>
+<li><code>Context Api context</code> 会使组件复用性变差</li>
+</ol>
+<p><code>Context</code> 提供了一个无需为每层组件手动添加 <code>props</code>，就能在组件树间进行数据传递的方法.如果你只是想避免层层传递一些属性，组件组合（<code>component composition</code>）有时候是一个比 context 更好的解决方案。 5. 组件组合缺点：会使高层组件变得复杂</p>
+<h3 id="4、如何解析jsx"><a href="#4、如何解析jsx" class="headerlink" title="4、如何解析jsx"></a>4、如何解析jsx</h3><pre class=" language-javascript"><code class="language-javascript">调用React<span class="token punctuation">.</span>createElement函数创建对象
+复制代码</code></pre>
+<h3 id="5、生命周期都有哪几种，分别是在什么阶段做哪些事情？为什么要废弃一些生命周期？"><a href="#5、生命周期都有哪几种，分别是在什么阶段做哪些事情？为什么要废弃一些生命周期？" class="headerlink" title="5、生命周期都有哪几种，分别是在什么阶段做哪些事情？为什么要废弃一些生命周期？"></a>5、生命周期都有哪几种，分别是在什么阶段做哪些事情？为什么要废弃一些生命周期？</h3><p>componentWillMount、componentWillReceiveProps、componentWillUpdate在16版本被废弃，在17版本将被删除，需要使用UNSAVE_前缀使用，目的是向下兼容。</p>
+<h3 id="6、关于react的优化方法"><a href="#6、关于react的优化方法" class="headerlink" title="6、关于react的优化方法"></a>6、关于react的优化方法</h3><ul>
+<li>代码层面：</li>
+</ul>
+<p>使用return null而不是CSS的display:none来控制节点的显示隐藏。保证同一时间页面的DOM节点尽可能的少。</p>
+<ul>
+<li>props和state的数据尽可能简单明了，扁平化。</li>
+</ul>
+<p>不要使用数组下标作为key 利用 <code>shouldComponentUpdate</code> 和 <code>PureComponent</code> 避免过多 <code>render function</code>; <code>render</code>里面尽量减少新建变量和bind函数，传递参数是尽量减少传递参数的数量。 尽量将 <code>props</code> 和 <code>state</code> 扁平化，只传递 <code>component</code>需要的 <code>props</code>（传得太多，或者层次传得太深，都会加重<code>shouldComponentUpdate</code>里面的数据比较负担），慎将 <code>component</code> 当作 <code>props</code> 传入</p>
+<ul>
+<li>代码体积：</li>
+</ul>
+<p>使用 <code>babel-plugin-import</code> 优化业务组件的引入，实现按需加载 使用 <code>SplitChunksPlugin</code>拆分公共代码 使用动态 <code>import</code>，懒加载 <code>React</code> 组件</p>
+<h3 id="7、绑定this的几种方式"><a href="#7、绑定this的几种方式" class="headerlink" title="7、绑定this的几种方式"></a>7、绑定this的几种方式</h3><pre class=" language-javascript"><code class="language-javascript">bind<span class="token operator">/</span>箭头函数
+复制代码</code></pre>
+<h3 id="8、对fiber的理解"><a href="#8、对fiber的理解" class="headerlink" title="8、对fiber的理解"></a>8、对fiber的理解</h3><pre class=" language-javascript"><code class="language-javascript">React Fiber 是一种基于浏览器的单线程调度算法<span class="token punctuation">.</span>
+复制代码</code></pre>
+<h3 id="9、setState是同步还是异步的"><a href="#9、setState是同步还是异步的" class="headerlink" title="9、setState是同步还是异步的"></a>9、setState是同步还是异步的</h3><ol>
+<li><code>setState</code>只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。</li>
+<li><code>setState</code>的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。</li>
+<li><code>setState</code> 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次 setState ， setState 的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时 setState 多个不同的值，在更新时会对其进行合并批量更新。</li>
+</ol>
+<h3 id="10、Redux、React-Redux"><a href="#10、Redux、React-Redux" class="headerlink" title="10、Redux、React-Redux"></a>10、Redux、React-Redux</h3><p><strong>Redux的实现流程</strong></p>
+<p>用户页面行为触发一个<code>Action</code>，然后<code>Store</code>调用<code>Reducer</code>，并且传入两个参数：当前<code>State</code>和收到的<code>Action</code>。<code>Reducer</code>会返回新的<code>State</code>。每当<code>state</code>更新之后，<code>view</code>会根据<code>state</code>触发重新渲染。</p>
+<p><strong>React-Redux:</strong></p>
+<p><code>Provider</code>：从最外部封装了整个应用，并向<code>connect</code>模块传递<code>store</code>。 <code>Connect</code>：</p>
+<ol>
+<li>包装原组件，将<code>state</code>和<code>action</code>通过<code>props</code>的方式传入到原组件内部。</li>
+<li>监听<code>store tree</code>变化，使其包装的原组件可以响应<code>state</code>变化</li>
+</ol>
+<h3 id="11、对高阶组件的理解"><a href="#11、对高阶组件的理解" class="headerlink" title="11、对高阶组件的理解"></a>11、对高阶组件的理解</h3><p>高阶组件是参数为组件，返回值为新组件的函数。<code>HOC</code>是纯函数，没有副作用。<code>HOC</code>在<code>React</code>的第三方库中很常见，例如<code>Redux</code>的<code>connect</code>组件。</p>
+<p>高阶组件的作用：</p>
+<ul>
+<li>代码复用，逻辑抽象，抽离底层准备（<code>bootstrap</code>）代码</li>
+<li>渲染劫持</li>
+<li><code>State</code> 抽象和更改</li>
+<li><code>Props</code> 更改</li>
+</ul>
+<h3 id="12、可以用哪些方式创建React组件？"><a href="#12、可以用哪些方式创建React组件？" class="headerlink" title="12、可以用哪些方式创建React组件？"></a>12、可以用哪些方式创建<code>React</code>组件？</h3><p><code>React.createClass()、ES6 class</code>和无状态函数</p>
+<h3 id="13、React元素与组件的区别？"><a href="#13、React元素与组件的区别？" class="headerlink" title="13、React元素与组件的区别？"></a>13、<code>React</code>元素与组件的区别？</h3><p>组件是由元素构成的。元素数据结构是普通对象，而组件数据结构是类或纯函数。</p>
+<h2 id="Vue与React对比？"><a href="#Vue与React对比？" class="headerlink" title="Vue与React对比？"></a>Vue与React对比？</h2><p><strong>数据流：</strong></p>
+<p><strong>react</strong>主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，</p>
+<p><strong>vue</strong>的思想是响应式的，也就是基于是数据可变的，通过对每一个属性建立Watcher来监听，当属性变化的时候，响应式的更新对应的虚拟dom。</p>
+<p><strong>监听数据变化实现原理</strong>：</p>
+<ul>
+<li><code>Vue</code> 通过 <code>getter/setter</code> 以及一些函数的劫持，能精确知道数据变化，不需要特别的优化就能达到很好的性能</li>
+<li><code>React</code> 默认是通过比较引用的方式进行的，如果不优化(<code>PureComponent/shouldComponentUpdate</code>)可能导致大量不必要的VDOM的重新渲染。</li>
+</ul>
+<p>组件通信的区别：jsx和.vue模板。</p>
+<ul>
+<li><code>HoC和Mixins</code>(在Vue中我们组合不同功能的方式是通过<code>Mixin</code>，而在<code>React</code>中我们通过<code>HoC</code>(高阶组件))。</li>
+</ul>
+<p><strong>性能优化</strong></p>
+<ul>
+<li><code>React: shouldComponentUpdate</code></li>
+<li><code>Vue</code>:内部实现<code>shouldComponentUpdate</code>的优化，由于依赖追踪系统存在，通过<code>watcher</code>判断是否需要重新渲染(当一个页面数据量较大时，<code>Vue</code>的性能较差，造成页面卡顿，所以一般数据比较大的项目倾向使用<code>React</code>)。</li>
+</ul>
+<h2 id="vuex-和-redux-之间的区别？"><a href="#vuex-和-redux-之间的区别？" class="headerlink" title="vuex 和 redux 之间的区别？"></a>vuex 和 redux 之间的区别？</h2><p>从实现原理上来说，最大的区别是两点：</p>
+<p><strong>Redux</strong>使用的是不可变数据，而<code>Vuex</code>的数据是可变的。<code>Redux</code>每次都是用新的<code>state</code>替换旧的<code>state</code>，而<code>Vuex</code>是直接修改</p>
+<p><strong>Redux</strong>在检测数据变化的时候，是通过<code>diff</code>的方式比较差异的，而<code>Vuex</code>其实和Vue的原理一样，是通过 <code>getter/setter</code>来比较的(如果看<code>Vuex</code>源码会知道，其实他内部直接创建一个<code>Vue</code>实例用来跟踪数据变化)</p>
+<h2 id="浏览器从输入url到渲染页面，发生了什么？"><a href="#浏览器从输入url到渲染页面，发生了什么？" class="headerlink" title="浏览器从输入url到渲染页面，发生了什么？"></a>浏览器从输入url到渲染页面，发生了什么？</h2><pre class=" language-javascript"><code class="language-javascript">三个方面：
+网络篇<span class="token punctuation">:</span>
+         构建请求
+             查找强缓存
+             DNS解析
+             <span class="token function">建立TCP连接</span><span class="token punctuation">(</span>三次握手<span class="token punctuation">)</span>
+            <span class="token function">发送HTTP请求</span><span class="token punctuation">(</span>网络请求后网络响应<span class="token punctuation">)</span>
+浏览器解析篇<span class="token punctuation">:</span>
+        解析html构建DOM树
+            解析css构建CSS树、样式计算
+            <span class="token function">生成布局树</span><span class="token punctuation">(</span>Layout Tree<span class="token punctuation">)</span>
+浏览器渲染篇<span class="token punctuation">:</span>
+            <span class="token function">建立图层树</span><span class="token punctuation">(</span>Layer Tree<span class="token punctuation">)</span>
+            生成绘制列表
+            生成图块并栅格化
+            显示器显示内容
+            最后断开连接：TCP 四次挥手
+            <span class="token punctuation">(</span>浏览器会将各层的信息发送给GPU<span class="token punctuation">,</span>GPU会将各层合成<span class="token punctuation">,</span>显示在屏幕上<span class="token punctuation">)</span>
+复制代码</code></pre>
+<h2 id="六、网络安全、HTTP协议"><a href="#六、网络安全、HTTP协议" class="headerlink" title="六、网络安全、HTTP协议"></a>六、网络安全、HTTP协议</h2><h3 id="TCP-UDP-区别"><a href="#TCP-UDP-区别" class="headerlink" title="TCP UDP 区别"></a>TCP UDP 区别</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`TCP`</span></span>向上层提供面向连接的可靠服务 ，<span class="token template-string"><span class="token string">`UDP`</span></span>向上层提供无连接不可靠服务。
+<span class="token number">2</span><span class="token punctuation">.</span>虽然 <span class="token template-string"><span class="token string">`UDP`</span></span> 并没有 <span class="token template-string"><span class="token string">`TCP`</span></span> 传输来的准确，但是也能在很多实时性要求高的地方有所作为
+<span class="token number">3</span><span class="token punctuation">.</span>对数据准确性要求高，速度可以相对较慢的，可以选用<span class="token template-string"><span class="token string">`TCP`</span></span>
+复制代码</code></pre>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否连接</td>
+<td>无连接</td>
+<td>面向连接</td>
+</tr>
+<tr>
+<td>是否可靠</td>
+<td>不可靠传输，不使用流量控制和拥塞控制</td>
+<td>可靠传输，使用流量控制和拥塞控制</td>
+</tr>
+<tr>
+<td>连接对象个数</td>
+<td>支持一对一，一对多，多对一和多对多交互通信</td>
+<td>只能是一对一通信</td>
+</tr>
+<tr>
+<td>传输方式</td>
+<td>面向报文</td>
+<td>面向字节流</td>
+</tr>
+<tr>
+<td>首部开销</td>
+<td>首部开销小，仅8字节</td>
+<td>首部最小20字节，最大60字节</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>适用于实时应用（IP电话、视频会议、直播等）</td>
+<td>适用于要求可靠传输的应用，例如文件传输</td>
+</tr>
+</tbody></table>
+<h3 id="Http和Https区别（高频）"><a href="#Http和Https区别（高频）" class="headerlink" title="Http和Https区别（高频）"></a>Http和Https区别（高频）</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`HTTP`</span></span> 的URL 以http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span> 开头，而HTTPS 的URL 以https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span> 开头
+<span class="token number">2</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`HTTP`</span></span> 是不安全的，而 HTTPS 是安全的
+<span class="token number">3</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`HTTP`</span></span> 标准端口是<span class="token number">80</span> ，而 HTTPS 的标准端口是<span class="token number">443</span>
+<span class="token number">4</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`在OSI`</span></span> 网络模型中，HTTP工作于应用层，而HTTPS 的安全传输机制工作在传输层
+<span class="token number">5</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`HTTP`</span></span> 无法加密，而HTTPS 对传输的数据进行加密
+<span class="token number">6</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`HTTP`</span></span>无需证书，而HTTPS 需要CA机构wosign的颁发的SSL证书
+复制代码</code></pre>
+<h3 id="GET和POST区别（高频）"><a href="#GET和POST区别（高频）" class="headerlink" title="GET和POST区别（高频）"></a>GET和POST区别（高频）</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span>GET在浏览器回退不会再次请求，POST会再次提交请求
+<span class="token number">2</span><span class="token punctuation">.</span>GET请求会被浏览器主动缓存，POST不会，要手动设置
+<span class="token number">3</span><span class="token punctuation">.</span>GET请求参数会被完整保留在浏览器历史记录里，POST中的参数不会
+<span class="token number">4</span><span class="token punctuation">.</span>GET请求在URL中传送的参数是有长度限制的，而POST没有限制
+<span class="token number">5</span><span class="token punctuation">.</span>GET参数通过URL传递，POST放在Request body中
+<span class="token number">6</span><span class="token punctuation">.</span>GET参数暴露在地址栏不安全，POST放在报文内部更安全
+<span class="token number">7</span><span class="token punctuation">.</span>GET一般用于查询信息，POST一般用于提交某种信息进行某些修改操作
+<span class="token number">8</span><span class="token punctuation">.</span>GET产生一个TCP数据包；POST产生两个TCP数据包
+复制代码</code></pre>
+<h3 id="理解xss，csrf，ddos攻击原理以及避免方式"><a href="#理解xss，csrf，ddos攻击原理以及避免方式" class="headerlink" title="理解xss，csrf，ddos攻击原理以及避免方式"></a>理解xss，csrf，ddos攻击原理以及避免方式</h3><p><code>XSS</code>(<code>Cross-Site Scripting</code>，<strong>跨站脚本攻击</strong>)是一种代码注入攻击。攻击者在目标网站上注入恶意代码，当被攻击者登陆网站时就会执行这些恶意代码，这些脚本可以读取 <code>cookie，session tokens</code>，或者其它敏感的网站信息，对用户进行钓鱼欺诈，甚至发起蠕虫攻击等。</p>
+<p><code>CSRF</code>（<code>Cross-site request forgery</code>）<strong>跨站请求伪造</strong>：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+<p><strong>XSS避免方式：</strong></p>
+<ol>
+<li><code>url</code>参数使用<code>encodeURIComponent</code>方法转义</li>
+<li>尽量不是有<code>InnerHtml</code>插入<code>HTML</code>内容</li>
+<li>使用特殊符号、标签转义符。</li>
+</ol>
+<p><code>CSRF</code>避免方式：</p>
+<ol>
+<li>添加验证码</li>
+<li>使用token<ul>
+<li>服务端给用户生成一个token，加密后传递给用户</li>
+<li>用户在提交请求时，需要携带这个token</li>
+<li>服务端验证token是否正确</li>
+</ul>
+</li>
+</ol>
+<p><code>DDoS</code>又叫分布式拒绝服务，全称 <code>Distributed Denial of Service</code>，其原理就是利用大量的请求造成资源过载，导致服务不可用。</p>
+<p><strong><code>DDos</code>避免方式：</strong></p>
+<ol>
+<li>限制单IP请求频率。</li>
+<li>防火墙等防护设置禁止<code>ICMP</code>包等</li>
+<li>检查特权端口的开放</li>
+</ol>
+<h3 id="http特性以及状态码"><a href="#http特性以及状态码" class="headerlink" title="http特性以及状态码"></a>http特性以及状态码</h3><pre class=" language-javascript"><code class="language-javascript">比如：
+    <span class="token number">200</span>响应成功
+    <span class="token number">301</span>永久重定向
+    <span class="token number">302</span>临时重定向
+    <span class="token number">304</span>资源缓存
+    <span class="token number">403</span>服务器禁止访问
+    <span class="token number">404</span>服务器资源未找到
+    <span class="token number">500</span> <span class="token number">502</span>服务器内部错误
+    <span class="token number">504</span> 服务器繁忙
+    1xx    Informational（信息状态码）      接受请求正在处理
+    2xx    Success（成功状态码）            请求正常处理完毕
+    3xx    Redirection（重定向状态码）         需要附加操作已完成请求
+    4xx    Client Error（客户端错误状态码）    服务器无法处理请求
+    5xx    Server Error（服务器错误状态码）    服务器处理请求出错
+复制代码</code></pre>
+<h3 id="http三次握手"><a href="#http三次握手" class="headerlink" title="http三次握手"></a>http三次握手</h3><ul>
+<li>第一步：客户端发送SYN报文到服务端发起握手，发送完之后客户端处于SYN_Send状态</li>
+<li>第二步：服务端收到SYN报文之后回复SYN和ACK报文给客户端</li>
+<li>第三步：客户端收到SYN和ACK，向服务端发送一个ACK报文,客户端转为established状态，此时服务端收到ACK报文后也处于established状态，此时双方已建立了连接</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7675cb2d10834de9a07f9428ce9a427a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h3 id="http四次挥手"><a href="#http四次挥手" class="headerlink" title="http四次挥手"></a>http四次挥手</h3><p>刚开始双方都处于<code>establised</code> 状态，假如是客户端先发起关闭请求，则：</p>
+<ol>
+<li>第一次挥手：客户端发送一个 FIN 报文，报文中会指定一个序列号。此时客户端处于FIN_WAIT1状态。</li>
+<li>第二次挥手：服务端收到 FIN 之后，会发送 ACK 报文，且把客户端的序列号值 + 1 作为 ACK 报文的序列号值，表明已经收到客户端的报文了，此时服务端处于 CLOSE_WAIT状态。</li>
+<li>第三次挥手：如果服务端也想断开连接了，和客户端的第一次挥手一样，发给 FIN 报文，且指定一个序列号。此时服务端处于 LAST_ACK 的状态。</li>
+<li>第四次挥手：客户端收到 FIN 之后，一样发送一个 ACK 报文作为应答，且把服务端的序列号值 + 1 作为自己 ACK 报文的序列号值，此时客户端处于 TIME_WAIT 状态。需要过一阵子以确保服务端收到自己的 ACK 报文之后才会进入 CLOSED 状态</li>
+<li>服务端收到 ACK 报文之后，就处于关闭连接了，处于 CLOSED 状态。</li>
+</ol>
+<h3 id="http1-0、http1-1、http2-0的区别"><a href="#http1-0、http1-1、http2-0的区别" class="headerlink" title="http1.0、http1.1、http2.0的区别"></a>http1.0、http1.1、http2.0的区别</h3><ol>
+<li>1和1.0相比，1.1可以一次传输多个文件</li>
+<li>http1.x解析基于文本，http2.0采用二进制格式，新增特性 多路复用、header压缩、服务端推送(静态html资源)</li>
+</ol>
+<h3 id="http如何实现缓存"><a href="#http如何实现缓存" class="headerlink" title="http如何实现缓存"></a>http如何实现缓存</h3><ol>
+<li><strong>强缓存</strong>==&gt;Expires(过期时间)/Cache-Control(no-cache)(优先级高) 协商缓存 ==&gt;Last-Modified/Etag(优先级高)Etag适用于经常改变的小文件  Last-Modefied适用于不怎么经常改变的大文件</li>
+<li><strong>强缓存策略和协商缓存策略</strong>在缓存命中时都会直接使用本地的缓存副本，区别只在于协商缓存会向服务器发送一次请求。它们缓存不命中时，都会向服务器发送请求来获取资源。在实际的缓存机制中，强缓存策略和协商缓存策略是一起合作使用的。浏览器首先会根据请求的信息判断，强缓存是否命中，如果命中则直接使用资源。如果不命中则根据头信息向服务器发起请求，使用协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器直接使用本地资源的副本，如果协商缓存不命中，则浏览器返回最新的资源给浏览器。</li>
+</ol>
+<h3 id="输入url后http请求的完整过程"><a href="#输入url后http请求的完整过程" class="headerlink" title="输入url后http请求的完整过程"></a>输入url后http请求的完整过程</h3><p><strong>建立TCP连接-&gt;发送请求行-&gt;发送请求头-&gt;（到达服务器）发送状态行-&gt;发送响应头-&gt;发送响应数据-&gt;断TCP连接</strong></p>
+<h2 id="七、前端性能优化"><a href="#七、前端性能优化" class="headerlink" title="七、前端性能优化"></a>七、前端性能优化</h2><h3 id="前端性能优化的几种方式"><a href="#前端性能优化的几种方式" class="headerlink" title="前端性能优化的几种方式"></a>前端性能优化的几种方式</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span> 浏览器缓存
+<span class="token number">2</span><span class="token punctuation">.</span> 防抖、节流
+<span class="token number">3</span><span class="token punctuation">.</span> 资源懒加载、预加载
+<span class="token number">4</span><span class="token punctuation">.</span>开启Nginx gzip压缩
+三个方面来说明前端性能优化
+一： webapck优化与开启gzip压缩
+    <span class="token number">1</span><span class="token punctuation">.</span>babel<span class="token operator">-</span>loader用 include 或 exclude 来帮我们避免不必要的转译，不转译node_moudules中的js文件
+    其次在缓存当前转译的js文件，设置loader<span class="token punctuation">:</span> <span class="token string">'babel-loader?cacheDirectory=true'</span>
+    <span class="token number">2</span><span class="token punctuation">.</span>文件采用按需加载等等
+    <span class="token number">3</span><span class="token punctuation">.</span>具体的做法非常简单，只需要你在你的 request headers 中加上这么一句：
+    accept<span class="token operator">-</span>encoding<span class="token punctuation">:</span>gzip
+    <span class="token number">4</span><span class="token punctuation">.</span>图片优化，采用svg图片或者字体图标
+    <span class="token number">5</span><span class="token punctuation">.</span>浏览器缓存机制，它又分为强缓存和协商缓存
+二：本地存储——从 Cookie 到 Web Storage、IndexedDB
+    说明一下SessionStorage和localStorage还有cookie的区别和优缺点
+三：代码优化
+    <span class="token number">1</span><span class="token punctuation">.</span>事件代理
+    <span class="token number">2</span><span class="token punctuation">.</span>事件的节流和防抖
+    <span class="token number">3</span><span class="token punctuation">.</span>页面的回流和重绘
+    <span class="token number">4</span><span class="token punctuation">.</span>EventLoop事件循环机制
+    <span class="token number">5</span><span class="token punctuation">.</span>代码优化等等
+复制代码</code></pre>
+<h3 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h3><p><strong>一个域下的js脚本未经允许的情况下，不能访问另一个域下的内容。通常判断跨域的依据是协议、域名、端口号是否相同，不同则跨域。同源策略是对js脚本的一种限制，并不是对浏览器的限制，像img,script脚本请求不会有跨域限制。</strong></p>
+<h3 id="前后端如何通信"><a href="#前后端如何通信" class="headerlink" title="前后端如何通信"></a>前后端如何通信</h3><pre class=" language-css"><code class="language-css"><span class="token property">Ajax</span> <span class="token punctuation">:</span> 短连接
+<span class="token property">Websocket</span> <span class="token punctuation">:</span> 长连接，双向的。
+Form表单（最原始的）
+复制代码</code></pre>
+<h3 id="跨域通信的几种方式"><a href="#跨域通信的几种方式" class="headerlink" title="跨域通信的几种方式"></a>跨域通信的几种方式</h3><p>解决方案：</p>
+<ol>
+<li><code>jsonp</code>(利用<code>script</code>标签没有跨域限制的漏洞实现。缺点：只支持<code>GET</code>请求)</li>
+<li><code>CORS</code>(设置<code>Access-Control-Allow-Origin</code>：指定可访问资源的域名)</li>
+<li><code>postMessage</code>(<code>message, targetOrigin, [transfer]</code>)(<code>HTML5</code>新增API 用于多窗口消息、页面内嵌iframe消息传递),通过<code>onmessage</code>监听   传递过来的数据</li>
+<li><code>Websocket</code>是HTML5的一个持久化的协议，它实现了浏览器与服务器的全双工通信，同时也是跨域的一种解决方案。</li>
+<li><code>Node</code>中间件代理</li>
+<li><code>Nginx</code>反向代理</li>
+<li>各种嵌套<code>iframe</code>的方式，不常用。</li>
+<li>日常工作中用的最对的跨域方案是CORS和Nginx反向代理</li>
+</ol>
+<h3 id="能不能说一说浏览器的本地存储？各自优劣如何？"><a href="#能不能说一说浏览器的本地存储？各自优劣如何？" class="headerlink" title="能不能说一说浏览器的本地存储？各自优劣如何？"></a>能不能说一说浏览器的本地存储？各自优劣如何？</h3><p>浏览器的本地存储主要分为<code>Cookie、WebStorage和IndexDB</code>, 其中<code>WebStorage</code>又可以分为<code>localStorage和sessionStorage</code>。</p>
+<p><strong>共同点:</strong> 都是保存在浏览器端、且同源的</p>
+<p><strong>不同点：</strong></p>
+<ol>
+<li><code>cookie</code>数据始终在同源的<code>http</code>请求中携带（即使不需要），即<code>cookie</code>在浏览器和服务器间来回传递。<code>cookie</code>数据还有路径（<code>path</code>）的概念，可以限制<code>cookie</code>只属于某个路径下<code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发送给服务器，仅在本地保存。</li>
+<li>存储大小限制也不同，</li>
+</ol>
+<ul>
+<li><code>cookie</code>数据不能超过4K，<code>sessionStorage和localStorage</code>可以达到5M</li>
+<li><code>sessionStorage</code>：仅在当前浏览器窗口关闭之前有效；</li>
+<li><code>localStorage</code>：始终有效，窗口或浏览器关闭也一直保存，本地存储，因此用作持久数据；</li>
+<li><code>cookie</code>：只在设置的<code>cookie</code>过期时间之前有效，即使窗口关闭或浏览器关闭</li>
+</ul>
+<ol>
+<li>作用域不同</li>
+</ol>
+<ul>
+<li><code>sessionStorage</code>：不在不同的浏览器窗口中共享，即使是同一个页面；</li>
+<li><code>localstorage</code>：在所有同源窗口中都是共享的；也就是说只要浏览器不关闭，数据仍然存在</li>
+<li><code>cookie</code>: 也是在所有同源窗口中都是共享的.也就是说只要浏览器不关闭，数据仍然存在</li>
+</ul>
+<h2 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h2><h3 id="webpack配置，webpack4-0有哪些优化点"><a href="#webpack配置，webpack4-0有哪些优化点" class="headerlink" title="webpack配置，webpack4.0有哪些优化点"></a>webpack配置，webpack4.0有哪些优化点</h3><pre class=" language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">[</span>rules<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+复制代码</code></pre>
+<h3 id="webpack如何实现代码分离"><a href="#webpack如何实现代码分离" class="headerlink" title="webpack如何实现代码分离"></a>webpack如何实现代码分离</h3><ul>
+<li><code>入口起点</code>：使用 <code>entry</code> 配置手动地分离代码。</li>
+<li><code>防止重复</code>：使用 <code>CommonsChunkPlugin</code> 去重和分离 <code>chunk</code>。</li>
+<li><code>动态导入</code>：通过模块的内联函数调用来分离代码。</li>
+</ul>
+<h3 id="常见的Webpack-Loader-如何实现一个Webpack-Loader-NO"><a href="#常见的Webpack-Loader-如何实现一个Webpack-Loader-NO" class="headerlink" title="常见的Webpack Loader? 如何实现一个Webpack Loader(NO)"></a>常见的Webpack Loader? 如何实现一个Webpack Loader(NO)</h3><p><code>loader</code>: 是一个导出为函数的<code>javascript</code>模块，根据<code>rule</code>匹配文件扩展名，处理文件的转换器。</p>
+<p><code>file-loader</code>：把文件输出到一个文件夹中，在代码中通过相对 <code>URL</code> 去引用输出的文件 (处理图片和字体)</p>
+<p><code>url-loader</code>： 与<code>file-loader</code>类似，区别是用户可以设置一个阈值，大于阈值会交给<code>file-loader</code>处理，小于阈值时返回文件<code>base64</code> 形式编码 (处理图片和字体)</p>
+<p><code>image-loader</code>：加载并且压缩图片文件</p>
+<pre><code>babel-loader`：把 `ES6 `转换成` ES5
+sass-loader`：将`SCSS/SASS`代码转换成`CSS</code></pre><p><code>css-loader</code>：加载 <code>CSS</code>，支持模块化、压缩、文件导入等特性</p>
+<pre><code>style-loader`：把 `CSS` 代码注入到 `JavaScript `中，通过` DOM` 操作去加载 `CSS</code></pre><p><code>postcss-loader</code>：扩展 <code>CSS</code> 语法，使用下一代<code>CSS</code>，可以配合 <code>autoprefixer</code> 插件自动补齐 <strong>CSS3 前缀</strong> <code>eslint-loader</code>：通过 <code>ESLint</code> 检查 <code>JavaScript</code> 代码</p>
+<h3 id="常见的Webpack-Plugin-如何实现一个Webpack-Plugin-NO"><a href="#常见的Webpack-Plugin-如何实现一个Webpack-Plugin-NO" class="headerlink" title="常见的Webpack Plugin? 如何实现一个Webpack Plugin(NO)"></a>常见的Webpack Plugin? 如何实现一个Webpack Plugin(NO)</h3><p><strong>plugin:本质是插件</strong>，基于事件流框架<code>Tapable</code>，插件可以扩展 <code>Webpack</code> 的功能，在<code>Webpack</code> 运行的生命周期中会广播出许多事件，<code>Plugin</code> 可以监听这些事件，在合适的时机通过<code>Webpack</code> 提供的 <code>API</code>改变输出结果。</p>
+<p><code>html-webpack-plugin</code>：简化 <code>HTML</code> 文件创建 (依赖于<code>html-loader</code>)</p>
+<p><code>uglifyjs-webpack-plugin</code>：压缩js文件</p>
+<p><code>clean-webpack-plugin</code>：目录清除</p>
+<p><code>mini-css-extract-plugin</code>：分离样式文件，CSS 提取为独立文件，支持按需加载 (替代<code>extract-text-webpack-plugin</code>)</p>
+<h3 id="loader和plugin对比？"><a href="#loader和plugin对比？" class="headerlink" title="loader和plugin对比？"></a>loader和plugin对比？</h3><ul>
+<li><code>Loader</code> 在 <code>module.rules</code>中配置，作为模块的解析规则，类型为数组。每一项都是一个 O<code>bject</code>，内部包含了 <code>test(类型文件)、loader、options</code> (参数)等属性。</li>
+<li><code>Plugin</code> 在<code>plugins</code> 中单独配置，类型为数组，每一项是一个<code>Plugin</code>的实例，参数都通过构造函数传入。</li>
+</ul>
+<h3 id="前端模块化，CMD、AMD、CommonJS"><a href="#前端模块化，CMD、AMD、CommonJS" class="headerlink" title="前端模块化，CMD、AMD、CommonJS"></a>前端模块化，CMD、AMD、CommonJS</h3><h4 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h4><p><code>CommonJS</code>是服务器端模块的规范，由Node推广使用，webpack也采用这种规范编写</p>
+<h4 id="commonJs规范："><a href="#commonJs规范：" class="headerlink" title="commonJs规范："></a>commonJs规范：</h4><p><code>CommonJS</code>模块规范主要分为三部分：<code>模块定义、模块标识、模块引用</code>。</p>
+<ul>
+<li>模块定义：<code>module</code>对象：在每一个模块中，<code>module</code>对象代表该模块自身。 <code>export</code>属性：<code>module</code>对象的一个属性，它向外提供接口。输出模块变量的最好方法是使用<code>module.exports</code>对象。一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为<code>global</code>对象的属性。</li>
+<li>模块标识：传递给<code>require</code>方法的参数，必须是符合小驼峰命名的字符串，或者以 . 、.. 、开头的相对路径，或者绝对路径。</li>
+<li>模块引用：加载模块使用<code>require</code>(同步加载)，该方法读取一个文件并执行，返回文件内部的<code>module.exports</code>对象。</li>
+</ul>
+<h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><p>在后端，<code>JavaScript</code>的规范远远落后并且有很多缺陷，这使得难以使用<code>JavaScript</code>开发大型应用。比如：没有模块系统、标准库较少、没有标准接口、缺乏包管理系统、列表内容</p>
+<ol>
+<li>CommonJS模块规范很好地解决变量污染问题，每个模块具有独立空间，互不干扰，命名空间相比之下就不太好。</li>
+<li>CommonJS规范定义模块十分简单，接口十分简洁。</li>
+<li>CommonJS模块规范支持引入和导出功能，这样可以顺畅地连接各个模块，实现彼此间的依赖关系</li>
+<li>CommonJS规范的提出，主要是为了弥补JavaScript没有标准的缺陷，已达到像Python、Ruby和Java那样具备开发大型应用的基础能力，而不是停留在开发浏览器端小脚本程序的阶段</li>
+</ol>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>没有并行加载机制</p>
+<p>由于<code>CommonJS</code>是同步加载模块，这对于服务器端是很不好的，因为所有的模块都放在本地硬盘。等待模块时间就是硬盘读取文件时间，很小。但是，对于浏览器而言，它需要从服务器加载模块，涉及到网速，代理等原因，一旦等待时间过长，浏览器处于”假死”状态。</p>
+<p>所以浏览器端不是很适合<code>Common.Js</code>，出现另一种规范<code>AMD</code></p>
+<h4 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h4><p><code>AMD</code> 是运行在浏览器环境的一个异步模块定义规范 ，是<code>RequireJS</code> 在推广过程中对模块定义的规范化产出。</p>
+<h4 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h4><p><code>AMD</code>推崇依赖前置，在定义模块的时候就要声明其依赖的模块</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>用户体验好，因为没有延迟，依赖模块提前执行了。</p>
+<h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><p><code>CMD</code>是一个通用模块定义规范；是SeaJs推广过程中对模块定义的规范化产出</p>
+<h4 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h4><pre><code>CMD`推崇依赖就近，只有在用到某个模块的时候才会去`require</code></pre><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><p>性能好，因为只有用户需要的时候才执行。</p>
+<h2 id="面试手写代码系列"><a href="#面试手写代码系列" class="headerlink" title="面试手写代码系列"></a>面试手写代码系列</h2><pre><code>防抖节流</code></pre><p><em>函数防抖关注一定时间连续触发，只在最后执行一次，而函数节流侧重于一段时间内只执行一次。</em></p>
+<h3 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//定义：触发事件后在n秒内函数只能执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间。</span>
+<span class="token comment" spellcheck="true">//搜索框搜索输入。只需用户最后一次输入完，再发送请求</span>
+<span class="token comment" spellcheck="true">//手机号、邮箱验证输入检测 onchange oninput事件</span>
+<span class="token comment" spellcheck="true">//窗口大小Resize。只需窗口调整完成后，计算窗口大小。防止重复渲染。</span>
+<span class="token keyword">const</span> debounce <span class="token operator">=</span> <span class="token punctuation">(</span>fn<span class="token punctuation">,</span> wait<span class="token punctuation">,</span> immediate<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>immediate <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>timer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> wait<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> betterFn <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fn 防抖执行了"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"scroll"</span><span class="token punctuation">,</span> betterFn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+复制代码</code></pre>
+<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//定义：当持续触发事件时，保证隔间时间触发一次事件。</span>
+<span class="token comment" spellcheck="true">//1. 懒加载、滚动加载、加载更多或监听滚动条位置；</span>
+<span class="token comment" spellcheck="true">//2. 百度搜索框，搜索联想功能；</span>
+<span class="token comment" spellcheck="true">//3. 防止高频点击提交，防止表单重复提交；</span>
+<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span>wait<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> pre <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">let</span> now <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> now <span class="token operator">-</span> pre <span class="token operator">>=</span> wait<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            pre <span class="token operator">=</span> now<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousemove"</span><span class="token punctuation">,</span><span class="token function">throttle</span><span class="token punctuation">(</span>handle<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+复制代码</code></pre>
+<h3 id="对象深浅拷贝"><a href="#对象深浅拷贝" class="headerlink" title="对象深浅拷贝"></a>对象深浅拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//浅拷贝 </span>
+<span class="token number">1</span><span class="token punctuation">.</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span>source<span class="token punctuation">)</span>
+<span class="token number">2</span><span class="token punctuation">.</span> es6对象扩展运算符。
+<span class="token comment" spellcheck="true">//深拷贝    </span>
+<span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>obj <span class="token operator">||</span> <span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> newObj <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          newObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">?</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> newObj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+复制代码</code></pre>
+<h3 id="数组去重-数组对象去重"><a href="#数组去重-数组对象去重" class="headerlink" title="数组去重,数组对象去重"></a>数组去重,数组对象去重</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//数组</span>
+<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [2,7,5,8,9];</span>
+<span class="token comment" spellcheck="true">//对象</span>
+<span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>age<span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">,</span>name<span class="token punctuation">:</span><span class="token string">'张三'</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>age<span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">,</span>name<span class="token punctuation">:</span><span class="token string">'李四'</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>age<span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">,</span>name<span class="token punctuation">:</span><span class="token string">'王五'</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> hash <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> newArr <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    hash<span class="token punctuation">[</span>next<span class="token punctuation">.</span>age<span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token punctuation">:</span> hash<span class="token punctuation">[</span>next<span class="token punctuation">.</span>age<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+复制代码</code></pre>
+<h3 id="数组扁平化"><a href="#数组扁平化" class="headerlink" title="数组扁平化"></a>数组扁平化</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">flatten</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">flatten</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">:</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+复制代码</code></pre>
+<h2 id="职业技能规划、人事面试"><a href="#职业技能规划、人事面试" class="headerlink" title="职业技能规划、人事面试"></a>职业技能规划、人事面试</h2><ul>
+<li>未来准备往哪方面发展？精通/全干</li>
+<li>对于职业规划的个人见解</li>
+<li>自身价值的体现</li>
+</ul>
+<h2 id="离职原因"><a href="#离职原因" class="headerlink" title="离职原因"></a>离职原因</h2><ul>
+<li>个人职业规划原因</li>
+<li>公司原因</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>你未来一到三年的一个职业规划是什么？</li>
+<li>你都是怎么去学习和关注新技术的？</li>
+<li>你近几年工作中有哪些心得或总结？</li>
+<li>你觉得你在工作中的优缺点是什么？</li>
+<li>你过来我们公司，你的优势是什么？</li>
+<li>有些过开源项目吗？</li>
+<li>写过 npm 包吗，写过 webpack 插件吗？</li>
+<li>看过哪些框架或者类库的源码，有什么收获？</li>
+</ol>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="ES6里的symble"><a href="#ES6里的symble" class="headerlink" title="ES6里的symble"></a>ES6里的symble</h3><p>它的功能类似于一种标识唯一性的ID，每个<code>Symbol</code>实例都是唯一的。 <code>Symbol</code>类型的key是不能通过<code>Object.keys()</code>或者<code>for...in</code>来枚举的， 它未被包含在对象自身的属性名集合(<code>property names</code>)之中。 所以，利用该特性，我们可以把一些不需要对外操作和访问的属性使用Symbol来定义。 // 使用<code>Object的API</code> <code>Object.getOwnPropertySymbols(obj)</code> // [Symbol(name)]</p>
+<p>// 使用新增的反射API <code>Reflect.ownKeys(obj)</code>// [Symbol(name), ‘age’, ‘title’]</p>
+<h3 id="ES6里的set和map"><a href="#ES6里的set和map" class="headerlink" title="ES6里的set和map"></a>ES6里的set和map</h3><ul>
+<li><code>Map</code>对象保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。构造函数Map可以接受一个数组作为参数。</li>
+<li><code>Set</code>对象允许你存储任何类型的值，无论是原始值或者是对象引用。它类似于数组，但是成员的值都是唯一的，没有重复的值。</li>
+</ul>
+<h3 id="vue的key"><a href="#vue的key" class="headerlink" title="vue的key"></a>vue的key</h3><ol>
+<li><code>key</code>的作用主要是为了高效的更新虚拟<code>DOM</code>,其原理是<code>vue</code>在<code>patch</code>过程中通过<code>key</code>可以精准判断两个节点是否是同一个，</li>
+</ol>
+<p>从而避免频繁更新不同元素，使得整个<code>patch</code>过程更加高效，减少<code>DOM</code>操作量,提高性能。 2. 另外,若不设置<code>key</code>还可能在列表更新时引发一些隐蔽的bug 3. <code>vue</code>中在使用相同标签名元素的过渡切换时,也会使用到key属性,其目的也是为了让vue可以区分它们， 否则<code>vue</code>只会替换其内部属性而不会触发过渡效果。</p>
+<h3 id="普通函数和箭头函数的区别"><a href="#普通函数和箭头函数的区别" class="headerlink" title="普通函数和箭头函数的区别"></a>普通函数和箭头函数的区别</h3><ol>
+<li>箭头函数是匿名函数，不能作为构造函数，不能使用new</li>
+<li>箭头函数不绑定<code>arguments</code>，取而代之用<code>rest</code>参数…解决</li>
+<li>箭头函数不绑定<code>this</code>，会捕获其所在的上下文的this值，作为自己的this值</li>
+<li>箭头函数通过 <code>call()  或   apply()</code> 方法调用一个函数时，只传入了一个参数，对 this 并没有影响。</li>
+<li>箭头函数没有原型属性</li>
+<li>箭头函数不能当做<code>Generator</code>函数,不能使用<code>yield</code>关键字</li>
+</ol>
+<p><strong>总结：</strong></p>
+<ul>
+<li>箭头函数的 <code>this</code>永远指向其上下文的 <code>this</code> ，任何方法都改变不了其指向，如<code>call() ,  bind() ,  apply()</code></li>
+<li>普通函数的this指向调用它的那个对象</li>
+</ul>
+<h2 id="JS函数柯里化"><a href="#JS函数柯里化" class="headerlink" title="JS函数柯里化"></a>JS函数柯里化</h2><ol>
+<li>参数复用</li>
+<li>提前确认</li>
+<li>延迟运行</li>
+</ol>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 普通的add函数</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Currying后</span>
+<span class="token keyword">function</span> <span class="token function">curryingAdd</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x <span class="token operator">+</span> y
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>           <span class="token comment" spellcheck="true">// 3</span>
+<span class="token function">curryingAdd</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 3</span>
+复制代码</code></pre>
+<h3 id="实现继承口述"><a href="#实现继承口述" class="headerlink" title="实现继承口述"></a>实现继承口述</h3><p><strong>原型链继承</strong> 写个父类、子类 子类的原型为父类的实例 子类.prootype = new 父类 修正子类原型为子类本身 子类.prototype.constructor=子类 new 子类即可调用父类方法 构造函数继承 写个父类、子类 在子类中父类.call(this) 即可实现</p>
+<h3 id="mapState-mapGetters-mapActions-mapMutations"><a href="#mapState-mapGetters-mapActions-mapMutations" class="headerlink" title="mapState, mapGetters, mapActions, mapMutations"></a>mapState, mapGetters, mapActions, mapMutations</h3><p>当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余。为了解决这个问题，我们可以使用 mapState 辅助函数帮助我们生成计算属性 mapMutations 其实跟mapState 的作用是类似的，将组件中的 methods 映射为 store.commit 调用</p>
+<p><a href="https://juejin.cn/post/6989422484722286600" target="_blank" rel="noopener">https://juejin.cn/post/6989422484722286600</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">弈心</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.tianyichuxin.com/2022/12/25278.html">https://blog.tianyichuxin.com/2022/12/25278.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">弈心</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/vue/">
+                                    <span class="chip bg-color">vue</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'Pz2erXCl206N7RaqUeABaxY5-gzGzoHsz',
+        appKey: 'jK6ogq40WtwTaW0p3l097QhN',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '说点什么再走吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/12/39935.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Vue状态管理模式之Vuex和Pinia">
+                        
+                        <span class="card-title">Vue状态管理模式之Vuex和Pinia</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Vue状态管理模式之Vuex和Pinia
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
+                    </a>
+                    
+                    <a href="/tags/vuex/">
+                        <span class="chip bg-color">vuex</span>
+                    </a>
+                    
+                    <a href="/tags/pinia/">
+                        <span class="chip bg-color">pinia</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/18437.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="用正则表达式校验身份证号码及验证详解">
+                        
+                        <span class="card-title">用正则表达式校验身份证号码及验证详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            用正则表达式校验身份证号码及验证详解
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/js/" class="post-category">
+                                    js
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 天弈初心<br />'
+            + '文章作者: 弈心<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+<div class="_fogwnirvpfw" id="_fogwnirvpfw"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938726",
+        container: "_fogwnirvpfw",
+        async: true
+    });
+</script>
+<div class="_s210mav3xgf" id="_s210mav3xgf"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938735",
+        container: "_s210mav3xgf",
+        async: true
+    });
+</script>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<!-- <script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> -->
+<script src="https://static.tianyichuxin.com/assets/npm/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">弈心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">300.6k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006491" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-right: 10px;">鄂公网安备 42018502006491号</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">鄂ICP备19020385号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/tianyichuxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:535399046@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=535399046" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 535399046" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: tianyichuxin_2023" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/waifu.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/flat-ui.min.css" />
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	<div class="waifu">
+		<!-- 提示框 -->
+		<!-- <div class="waifu-tips"></div> -->
+
+		<!-- 看板娘画布 -->
+		<!-- <canvas id="live2d" class="live2d" width="280" height="250"></canvas> -->
+
+		<!-- 工具栏 -->
+		<!-- <div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div> -->
+	</div>
+</body>
+</html>
+<!-- 右下角人物和鼠标点击 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/waifu--tips.js"></script> -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/live2d.js"></script> -->
+<!-- 小姐姐 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/L2Dwidget.min.js"></script> -->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+<!-- 鼠标点击 -->
+<script src="http://static.tianyichuxin.com/assets/live2D/js/mouse.js"></script>
+<script type="text/javascript">
+    // /* 可直接修改部分参数 */
+    // live2d_settings['modelId'] = 5; // 默认模型 ID
+    // live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    // /* 在 initModel 前添加 */
+    // initModel("http://static.tianyichuxin.com/assets/live2D/js/waifu-tips.json")
+</script>
