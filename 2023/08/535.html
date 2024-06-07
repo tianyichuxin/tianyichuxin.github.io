@@ -1,0 +1,1949 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!-- 自动将http的不安全请求升级为https -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="vuex">
+    <meta name="description" content="专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Vuex 与 Pinia 的设计实现对比 | 天弈初心</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/advertisement-space.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">天弈初心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+    <div id="mobile-nav" class="side-nav sidenav">
+
+        <div class="mobile-head bg-color">
+            
+                <img src="/medias/logo.png" class="logo-img circle responsive-img">
+                
+                    <div class="logo-name">
+                        天弈初心
+                    </div>
+                    <div class="logo-desc">
+                        
+                            专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写
+                                
+                    </div>
+        </div>
+
+        
+
+            <ul class="menu-list mobile-menu-list">
+                
+                    <li class="m-nav-item">
+                        
+                            <a href="/" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-home"></i>
+                                    
+                                            首页
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/tags" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-tags"></i>
+                                    
+                                            标签
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/categories" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-bookmark"></i>
+                                    
+                                            分类
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/archives" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-archive"></i>
+                                    
+                                            归档
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/about" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-user-circle"></i>
+                                    
+                                            关于
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/contact" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-comments"></i>
+                                    
+                                            留言板
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/friends" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-address-book"></i>
+                                    
+                                            友链
+                            </a>
+                            
+                    </li>
+                    
+                        
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                            <li>
+                                <a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="waves-effect waves-light" target="_blank">
+                                    <i class="fab fa-github-square fa-fw"></i>
+                                    Fork Me
+                                </a>
+                            </li>
+                            
+            </ul>
+    </div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Vuex 与 Pinia 的设计实现对比</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <!-- 内页 -->
+<link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/vue/">
+                                <span class="chip bg-color">vue</span>
+                            </a>
+                        
+                            <a href="/tags/vuex/">
+                                <span class="chip bg-color">vuex</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/vue/" class="post-category">
+                                vue
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-08-17
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-08-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>在进行前端项目开发时，状态管理始终是一个绕不开的话题，Vue 与 React 框架本身提供了一部分能力去解决这个问题。但是在开发大型应用时往往有其他考虑，比如需要更规范更完善的操作日志、集成在开发者工具中的时间旅行能力、服务端渲染等。本文以 Vue 框架为例，介绍 Vuex 与 Pinia 这两种状态管理工具在设计与实现上的区别。</p>
+</blockquote>
+<h2 id="本文主要内容"><a href="#本文主要内容" class="headerlink" title="本文主要内容"></a>本文主要内容</h2><ul>
+<li>Vue 的状态管理</li>
+<li>Vuex 与 Pinia 的核心思想与用法</li>
+<li>Vuex 与 Pinia 的一些实现细节</li>
+<li>状态管理工具的优势</li>
+</ul>
+<h2 id="Vue-状态管理"><a href="#Vue-状态管理" class="headerlink" title="Vue 状态管理"></a>Vue 状态管理</h2><p>首先，先介绍一下 Vue 框架自身提供的状态管理的方式。</p>
+<p>Vue 组件内主要涉及到状态、动作和视图三个组成部分。</p>
+<p>在选项式 API 中通过 <code>data</code> 方法返回一个状态对象，通过 <code>methods</code> 方法设置修改状态的动作。</p>
+<p>如果使用组合式 <strong>API + setup</strong> 语法糖，则是通过 <code>reactive</code> 方法生成状态，而动作只需要当做普通函数或者箭头函数进行定义即可。</p>
+<p>选项式 API：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 状态 state</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            count<span class="token punctuation">:</span> <span class="token number">0</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">methods</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 动作 action</span>
+        <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">++</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 视图 view --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span> {{ count }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></code></pre>
+<p>组合式 API + setup 语法糖：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'Vue'</span>
+<span class="token comment" spellcheck="true">// 状态 state</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    count<span class="token punctuation">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 动作 action</span>
+<span class="token keyword">const</span> increment <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>count<span class="token operator">++</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 视图 view --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span> {{ state.count }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></code></pre>
+<p><img src="https://img14.360buyimg.com/imagetools/jfs/t1/113386/9/29699/25103/6347b091E64e82966/0467db476d4bd861.png" alt="img"></p>
+<p>视图由状态生成，操作可以修改状态。</p>
+<p>如果可以将页面的某一部分单独抽离成与外界解耦的状态、视图、动作组成的独立个体，那么 Vue 提供的组件内的状态管理方式已经足够了。</p>
+<p>但是开发中经常会遇到这两种情况：</p>
+<ul>
+<li>多个页面组件依赖于相同的状态。</li>
+<li>在多个页面组件内的不同交互行为需要修改同一个状态。</li>
+</ul>
+<p>比如我们要做一个主题定制功能，需要在项目入口处获取接口中的颜色参数，然后在整个项目的很多页面都要使用到这个数据。</p>
+<p>一种方法是使用 CSS 变量，在页面的最顶层的 root 元素上定义一些 CSS 变量，在 Sass 中使用 <code>var()</code> 初始化一个 Sass 变量，所有页面都引用这个变量即可。在项目入口处获取接口数据，需要手动去修改 root 元素上的 css 变量。</p>
+<p>在 Vue 中，框架提供了一种 v-bind 的方式去编写 css，我们可以考虑将所有颜色配置存放在一个统一的 store 里面。</p>
+<p>遇到这两种情况，通常我们会通过组件间通信的方式解决，比如：</p>
+<ul>
+<li>对于相邻的父子组件：<code>props/emit</code><ul>
+<li><code>defineProps({})</code></li>
+<li><code>defineEmits(['change', '...'])</code></li>
+</ul>
+</li>
+<li>对于多层级嵌套：<code>provide/inject</code><ul>
+<li><code>provide(name: string | symbol, value: any)</code></li>
+<li><code>inject(name: string | symbol, defaultValue: any)</code></li>
+</ul>
+</li>
+</ul>
+<p>1、如果是相邻的父子组件之间通信，可以通过 props+emit 的方式，父组件通过子组件的 props 传入数据，在子组件内部通过 emit 方法触发父组件的一些方法。</p>
+<p><img src="https://img13.360buyimg.com/imagetools/jfs/t1/32243/15/17734/18492/6347b091E32601ec8/79984a96c58d6042.png" alt="img"></p>
+<p>2、如果不是直接相邻，而是中间相隔很多层的嵌套关系，那么可以使用 provide+inject 的方式，高层级的组件抛出状态和动作，低层级的组件接收使用数据和触发动作。</p>
+<p><img src="https://img10.360buyimg.com/imagetools/jfs/t1/154141/21/30995/21121/6347b091E11531a1e/ca7142c7536fbe22.png" alt="img"></p>
+<p>如果目标的两个组件并不在同一条组件链上，一种可能的解决方法是「状态提升」。</p>
+<p>可以把共同的状态存储在二者的最小公共祖先组件上，然后再通过上述两种方式进行通信。</p>
+<ul>
+<li>前者：公共祖先组件存储状态，通过 props 逐级传递响应式状态以及其关联的操作到子组件。</li>
+<li>后者：公共祖先作为提供方，多个后代组件作为注入方获取数据以及操作数据。</li>
+</ul>
+<p>后者编写代码更简洁，更不容易出错。</p>
+<p>这样已经能够解决大多数场景的问题了，那么在框架之外的状态管理工具，到底能提供哪些与众不同的能力？</p>
+<h2 id="Vuex-与-Pinia-核心思想与用法"><a href="#Vuex-与-Pinia-核心思想与用法" class="headerlink" title="Vuex 与 Pinia 核心思想与用法"></a>Vuex 与 Pinia 核心思想与用法</h2><h3 id="Flux-架构"><a href="#Flux-架构" class="headerlink" title="Flux 架构"></a>Flux 架构</h3><p>Flux 是 Facebook 在构建大型 Web 应用程序时为了解决<strong>数据一致性</strong>问题而设计出的一种架构，它是一种描述状态管理的设计模式。绝大多数前端领域的状态管理工具都遵循这种架构，或者以它为参考原型。</p>
+<p>Flux 架构主要有四个组成部分：</p>
+<ul>
+<li>📦 <strong>store</strong>：状态数据的存储管理中心，可以有多个，可以接受 action 做出响应。</li>
+<li>🖼 <strong>view</strong>：视图，根据 store 中的数据渲染生成页面，与 store 之间存在发布订阅关系。</li>
+<li>🛠 <strong>action</strong>：一种描述动作行为的数据对象，通常会包含动作类型 type 和需要传递的参数 payload 等属性。</li>
+<li>📮 <strong>dispatcher</strong>：调度器，接收 action 并分发至 store。</li>
+</ul>
+<p><img src="https://img14.360buyimg.com/imagetools/jfs/t1/137018/24/30463/141989/6347b091Ef605d241/b55512a3f1be47b2.png" alt="img"></p>
+<p>整个数据流动关系为：</p>
+<p>1、view 视图中的交互行为会创建 action，交由 dispatcher 调度器。</p>
+<p>2、dispatcher 接收到 action 后会分发至对应的 store 。</p>
+<p>3、store 接收到 action 后做出响应动作，并触发 change 事件，通知与其关联的 view 重新渲染内容。</p>
+<p>这就是 Flux 架构最核心的特点：<strong>单向数据流</strong>。</p>
+<p>与传统的 MVC 架构相比，单向数据流也带来了一个好处：<strong>可预测性</strong>。</p>
+<p>所有对于状态的修改都需要经过 dispatcher 派发的 action 来触发的，每一个 action 都是一个单独的数据对象实体，<strong>可序列化</strong>，操作记录可追踪，更易于调试。</p>
+<p>Vuex 与 Pinia 大体上沿用 Flux 的思想，并针对 Vue 框架单独进行了一些设计上的优化。</p>
+<h3 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h3><p><img src="https://img10.360buyimg.com/imagetools/jfs/t1/165614/36/28886/34011/6347b092E8175cd81/f9ae36a64955b220.png" alt="img"></p>
+<ul>
+<li>📦 <strong>state</strong>：整个应用的状态管理单例，等效于 Vue 组件中的 data，对应了 Flux 架构中的 store。</li>
+<li>🧮 <strong>getter</strong>：可以由 state 中的数据派生而成，等效于 Vue 组件中的计算属性。它会自动收集依赖，以实现计算属性的缓存。</li>
+<li>🛠 <strong>mutation</strong>：类似于事件，包含一个类型名和对应的回调函数，在回调函数中可以对 state 中的数据进行同步修改。<ul>
+<li>Vuex 不允许直接调用该函数，而是需要通过 <code>store.commit</code> 方法提交一个操作，并将参数传入回调函数。</li>
+<li>commit 的参数也可以是一个数据对象，正如 Flux 架构中的 action 对象一样，它包含了类型名 <code>type</code> 和负载 <code>payload</code>。</li>
+<li>这里要求 mutation 中回调函数的操作一定是同步的，这是因为同步的、可序列化的操作步骤能保证生成唯一的日志记录，才能使得 devtools 能够实现对状态的追踪，实现 time-travel。</li>
+</ul>
+</li>
+<li>🔨 <strong>action</strong>：action 内部的操作不受限制，可以进行任意的异步操作。我们需要通过 <code>dispatch</code> 方法来触发 action 操作，同样的，参数包含了类型名 <code>type</code> 和负载 <code>payload</code>。<ul>
+<li>action 的操作本质上已经脱离了 Vuex 本身，假如将它剥离出来，仅仅在用户（开发者）代码中调用 <code>commit</code> 来提交 mutation 也能达到一样的效果。</li>
+</ul>
+</li>
+<li>📁 <strong>module</strong>：store 的分割，每个 module 都具有独立的 state、getter、mutation 和 action。<ul>
+<li>可以使用 <code>module.registerModule</code> 动态注册模块。</li>
+<li>支持模块相互嵌套，可以通过设置命名空间来进行数据和操作隔离。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Vuex-中创建-store"><a href="#Vuex-中创建-store" class="headerlink" title="Vuex 中创建 store"></a>Vuex 中创建 store</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'Vuex'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> count<span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    mutations<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">increment</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            state<span class="token punctuation">.</span>count <span class="token operator">+</span><span class="token operator">=</span> num<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    getters<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">double</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">.</span>count <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">plus</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'increment'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">plusAsync</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'increment'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>与 Vue 选项式 API 的写法类似，我们可以直接定义 store 中的 state、mutations、getters、actions。</p>
+<p>其中 mutations、getters 中定义的方法的第一个参数是 state，在 mutation 中可以直接对 state 同步地进行修改，也可以在调用时传入额外的参数。</p>
+<p>actions 中定义的方法第一个参数是 context，它与 store 具有相同的方法，比如 commit、dispatch 等等。</p>
+<h4 id="Vuex-在组件内使用"><a href="#Vuex-在组件内使用" class="headerlink" title="Vuex 在组件内使用"></a>Vuex 在组件内使用</h4><p>通过 state、getters 获取数据，通过 commit、dispatch 方法触发操作。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useStore <span class="token keyword">as</span> useVuexStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'Vuex'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> vuex <span class="token operator">=</span> <span class="token function">useVuexStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span> count: {{ vuex.state.count }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>() <span class="token punctuation">=</span><span class="token punctuation">></span> {vuex.dispatch(<span class="token punctuation">'</span>plus<span class="token punctuation">'</span>)}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击这里加1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>() <span class="token punctuation">=</span><span class="token punctuation">></span> {vuex.dispatch(<span class="token punctuation">'</span>plusAsync<span class="token punctuation">'</span>)}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>异步2s后增加2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span> double: {{ vuex.getters.double }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="Pinia"><a href="#Pinia" class="headerlink" title="Pinia"></a>Pinia</h3><p>保留：</p>
+<ul>
+<li>📦 <strong>state</strong>：store 的核心，与 Vue 中的 data 一致，可以直接对其中的数据进行读写。</li>
+<li>🧮 <strong>getters</strong>：与 Vue 中的计算属性相同，支持缓存。</li>
+<li>🔨 <strong>actions</strong>：操作不受限制，可以创建异步任务，可以直接被调用，不再需要 <code>commit</code>、<code>dispatch</code> 等方法。</li>
+</ul>
+<p>舍弃：</p>
+<ul>
+<li>🛠 <strong>mutation</strong>：Pinia 并非完全抛弃了 mutation，而是将对 state 中单个数据进行修改的操作封装为一个 mutation，但不对外开放接口。可以在 <em>devtools</em> 中观察到 mutation。</li>
+<li>📁 <strong>module</strong>：Pinia 通过在创建 store 时指定 name 来区分不同的 store，不再需要 module。</li>
+</ul>
+<h4 id="Pinia-创建-store"><a href="#Pinia-创建-store" class="headerlink" title="Pinia 创建 store"></a>Pinia 创建 store</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'Pinia'</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> useStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            count<span class="token punctuation">:</span> <span class="token number">0</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    getters<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        double<span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">.</span>count <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">asyncIncrement</span><span class="token punctuation">(</span>num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">+</span><span class="token operator">=</span> num<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h4 id="Pinia-组件内使用"><a href="#Pinia-组件内使用" class="headerlink" title="Pinia 组件内使用"></a>Pinia 组件内使用</h4><p>可直接读写 state，直接调用 action 方法。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useStore <span class="token keyword">as</span> usePiniaStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../setup/Pinia'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> Pinia <span class="token operator">=</span> <span class="token function">usePiniaStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span> count: {{ Pinia.count }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>() <span class="token punctuation">=</span><span class="token punctuation">></span> {Pinia.count++;}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>直接修改 count<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>() <span class="token punctuation">=</span><span class="token punctuation">></span> {Pinia.increment();}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>调用 action<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>() <span class="token punctuation">=</span><span class="token punctuation">></span> {Pinia.asyncIncrement();}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>调用异步 action<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span> double: {{ Pinia.double }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></code></pre>
+<p>1、对 state 中每一个数据进行修改，都会触发对应的 mutation。</p>
+<p>2、使用 action 对 state 进行修改与在 Pinia 外部直接修改 state 的效果相同的，但是会缺少对 action 行为的记录，如果在多个不同页面大量进行这样的操作，那么项目的可维护性就会很差，调试起来也很麻烦。</p>
+<p>Pinia 更加灵活，它把这种选择权交给开发者，如果你重视可维护性与调试更方便，那就老老实实编写 action 进行调用。</p>
+<p>如果只是想简单的实现响应式的统一入口，那么也可以直接修改状态，这种情况下只会生成 mutation 的记录。</p>
+<h4 id="Pinia-action"><a href="#Pinia-action" class="headerlink" title="Pinia action"></a>Pinia action</h4><p>Pinia 中的 action 提供了订阅功能，可以通过 <code>store.$onAction()</code> 方法来设置某一个 action 方法的调用前、调用后、出错时的钩子函数。</p>
+<pre class=" language-js"><code class="language-js">Pinia<span class="token punctuation">.</span><span class="token function">$onAction</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// action 名称</span>
+    store<span class="token punctuation">,</span>
+    args<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// action 参数</span>
+    after<span class="token punctuation">,</span>
+    onError
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// action 调用前钩子</span>
+
+    <span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// action 调用后钩子</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">onError</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 出错时钩子，捕获到 action 内部抛出的 error</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2 id="一些实现细节"><a href="#一些实现细节" class="headerlink" title="一些实现细节"></a>一些实现细节</h2><h3 id="Vuex-中的-commit-方法"><a href="#Vuex-中的-commit-方法" class="headerlink" title="Vuex 中的 commit 方法"></a>Vuex 中的 commit 方法</h3><pre class=" language-js"><code class="language-js">commit <span class="token punctuation">(</span>_type<span class="token punctuation">,</span> _payload<span class="token punctuation">,</span> _options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 格式化输入参数</span>
+<span class="token comment" spellcheck="true">// commit 支持 (type, paload)，也支持对象风格 ({ type: '', ...})</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">,</span>
+        payload<span class="token punctuation">,</span>
+        options
+    <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">unifyObjectStyle</span><span class="token punctuation">(</span>_type<span class="token punctuation">,</span> _payload<span class="token punctuation">,</span> _options<span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> mutation <span class="token operator">=</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> payload <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> entry <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_mutations<span class="token punctuation">[</span>type<span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_withCommit</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        entry<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> commitIterator <span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">handler</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_subscribers
+        <span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>sub <span class="token operator">=</span><span class="token operator">></span> <span class="token function">sub</span><span class="token punctuation">(</span>mutation<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在使用 commit 时，可以直接传入参数 type 和 payload，也可以直接传入一个包含 type 以及其他属性的 option 对象。</p>
+<p>Vuex 在 commit 方法内会先对这两种参数进行格式化。</p>
+<h3 id="Vuex-中的-dispatch-方法"><a href="#Vuex-中的-dispatch-方法" class="headerlink" title="Vuex 中的 dispatch 方法"></a>Vuex 中的 dispatch 方法</h3><pre class=" language-js"><code class="language-js">dispatch <span class="token punctuation">(</span>_type<span class="token punctuation">,</span> _payload<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">,</span>
+        payload
+    <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">unifyObjectStyle</span><span class="token punctuation">(</span>_type<span class="token punctuation">,</span> _payload<span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> payload <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> entry <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_actions<span class="token punctuation">[</span>type<span class="token punctuation">]</span>
+    <span class="token comment" spellcheck="true">// try sub.before 调用前钩子</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_actionSubscribers
+        <span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>sub <span class="token operator">=</span><span class="token operator">></span> sub<span class="token punctuation">.</span>before<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>sub <span class="token operator">=</span><span class="token operator">></span> sub<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span>action<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ……</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 调用 action，对于可能存在的异步请求使用 promiseAll 方式调用</span>
+    <span class="token keyword">const</span> result <span class="token operator">=</span> entry<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">1</span>
+        <span class="token operator">?</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>handler <span class="token operator">=</span><span class="token operator">></span> <span class="token function">handler</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">:</span> entry<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// …… try sub.after 调用后钩子</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> error <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// …… try sub.error 调用出错钩子</span>
+            <span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>从这两个方法的实现中也可以看出 mutations、actions 的内部实现方式。</p>
+<p>所有的 mutations 放在同一个对象内部，以名称作为 key，每次 commit 都会获取到对应的值并执行操作。</p>
+<p>actions 操作与 mutations 类似，但是增加了一个辅助的数据 <code>actionSubscribers</code>，用于触发 action 调用前、调用后、出错时的钩子函数。</p>
+<h3 id="辅助函数-mapXXX"><a href="#辅助函数-mapXXX" class="headerlink" title="辅助函数 mapXXX"></a>辅助函数 mapXXX</h3><p>在 Vuex 中，每次操作都要通过 <code>this.$store.dispatch()/commit()</code>。</p>
+<p>如果想要批量将 store 中的 state、getters、mutations、actions 等映射到组件内部，可以使用对应的 mapXXX 辅助函数。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'increment'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 将 this.increment 映射到 this.$store.commit('increment')</span>
+        <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            add<span class="token punctuation">:</span> <span class="token string">'incremnet'</span>  <span class="token comment" spellcheck="true">// 传入对象类型，实现重命名的映射关系</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在 Pinia + 组合式 API 下，通过 <code>useStore</code> 获取到 store 后，可以直接读写数据和调用方法，不再需要辅助函数。</p>
+<h2 id="状态管理工具的优势"><a href="#状态管理工具的优势" class="headerlink" title="状态管理工具的优势"></a>状态管理工具的优势</h2><ul>
+<li>devtools 支持<ul>
+<li>记录每一次的修改操作，以时间线形式展示。</li>
+<li>支持 time-travel，可以回退操作。</li>
+<li>可以在不刷新页面的情况下实现对 store 内部数据的修改。</li>
+</ul>
+</li>
+<li>Pinia 与 Vuex 相比<ul>
+<li>接口更简单，代码更简洁：<ul>
+<li>舍弃了 mutation，减少了很多不必要的代码。</li>
+<li>可以直接对数据进行读写，直接调用 action 方法，不再需要 commit、dispatch。</li>
+</ul>
+</li>
+<li>更好的 TypeScript 支持：<ul>
+<li>Vuex 中的很多属性缺少类型支持，需要开发者自行进行模块类型的声明。</li>
+<li>Pinia 中的所有内容都是类型化的，尽可能地利用了 TS 的类型推断。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>当项目涉及的公共数据较少时，我们可以直接利用 Vue 的响应式 API 来实现一个简单的全局状态管理单例：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">const</span> createStore <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        count<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> increment <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        state<span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        increment<span class="token punctuation">,</span>
+        state<span class="token punctuation">:</span> <span class="token function">readonly</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>为了使代码更容易维护，结构更清晰，通常会将对于状态的修改操作与状态本身放在同一个组件内部。提供方可以抛出一个响应式的 ref 数据以及对其进行操作的方法，接收方通过调用函数对状态进行修改，而非直接操作状态本身。同时，提供方也可以通过 readonly 包裹状态以禁止接收方的直接修改操作。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">弈心</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.tianyichuxin.com/2023/08/535.html">https://blog.tianyichuxin.com/2023/08/535.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">弈心</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/vue/">
+                                    <span class="chip bg-color">vue</span>
+                                </a>
+                            
+                                <a href="/tags/vuex/">
+                                    <span class="chip bg-color">vuex</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'Pz2erXCl206N7RaqUeABaxY5-gzGzoHsz',
+        appKey: 'jK6ogq40WtwTaW0p3l097QhN',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '说点什么再走吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/09/19915.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="js中Object.create()用法">
+                        
+                        <span class="card-title">js中Object.create()用法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            js中Object.create()用法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/08/5578.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="electron知识整理和问题汇总（持续更新中）">
+                        
+                        <span class="card-title">electron知识整理和问题汇总（持续更新中）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            electron知识整理和问题汇总（持续更新中）
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/electron/" class="post-category">
+                                    electron
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/electron/">
+                        <span class="chip bg-color">electron</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 天弈初心<br />'
+            + '文章作者: 弈心<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+<div class="_fogwnirvpfw" id="_fogwnirvpfw"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938726",
+        container: "_fogwnirvpfw",
+        async: true
+    });
+</script>
+<div class="_s210mav3xgf" id="_s210mav3xgf"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938735",
+        container: "_s210mav3xgf",
+        async: true
+    });
+</script>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<!-- <script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> -->
+<script src="https://static.tianyichuxin.com/assets/npm/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">弈心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">302.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006491" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-right: 10px;">鄂公网安备 42018502006491号</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">鄂ICP备19020385号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/tianyichuxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:535399046@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=535399046" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 535399046" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: tianyichuxin_2023" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/waifu.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/flat-ui.min.css" />
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	<div class="waifu">
+		<!-- 提示框 -->
+		<!-- <div class="waifu-tips"></div> -->
+
+		<!-- 看板娘画布 -->
+		<!-- <canvas id="live2d" class="live2d" width="280" height="250"></canvas> -->
+
+		<!-- 工具栏 -->
+		<!-- <div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div> -->
+	</div>
+</body>
+</html>
+<!-- 右下角人物和鼠标点击 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/waifu--tips.js"></script> -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/live2d.js"></script> -->
+<!-- 小姐姐 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/L2Dwidget.min.js"></script> -->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+<!-- 鼠标点击 -->
+<script src="http://static.tianyichuxin.com/assets/live2D/js/mouse.js"></script>
+<script type="text/javascript">
+    // /* 可直接修改部分参数 */
+    // live2d_settings['modelId'] = 5; // 默认模型 ID
+    // live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    // /* 在 initModel 前添加 */
+    // initModel("http://static.tianyichuxin.com/assets/live2D/js/waifu-tips.json")
+</script>
