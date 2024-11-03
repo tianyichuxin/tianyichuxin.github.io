@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>天弈初心</title>
+  
+  <subtitle>与天对弈，不忘初心</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.tianyichuxin.com/"/>
+  <updated>2024-11-03T12:44:16.188Z</updated>
+  <id>https://blog.tianyichuxin.com/</id>
+  
+  <author>
+    <name>弈心</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用node path获取路径模块</title>
+    <link href="https://blog.tianyichuxin.com/2024/10/42621.html"/>
+    <id>https://blog.tianyichuxin.com/2024/10/42621.html</id>
+    <published>2024-10-19T13:22:00.000Z</published>
+    <updated>2024-11-03T12:44:16.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-path-join-路径拼接&quot;&gt;&lt;a href=&quot;#1-path-join-路径拼接&quot; class=&quot;headerlink&quot; title=&quot;1.path.join() 路径拼接&quot;&gt;&lt;/a&gt;1.path.join()
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>forever的安装与简单使用</title>
+    <link href="https://blog.tianyichuxin.com/2024/08/19114.html"/>
+    <id>https://blog.tianyichuxin.com/2024/08/19114.html</id>
+    <published>2024-08-27T02:56:00.000Z</published>
+    <updated>2024-09-10T13:29:38.241Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;简单的使用&lt;code&gt;node xxx.js&lt;/code&gt;启动 nodejs 服务。nodejs
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="foreve" scheme="https://blog.tianyichuxin.com/tags/foreve/"/>
+    
+      <category term="nodejs" scheme="https://blog.tianyichuxin.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nestjs知识汇总</title>
+    <link href="https://blog.tianyichuxin.com/2024/08/29344.html"/>
+    <id>https://blog.tianyichuxin.com/2024/08/29344.html</id>
+    <published>2024-08-13T10:17:00.000Z</published>
+    <updated>2024-09-01T14:07:20.299Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;Nest (NestJS) 是一个用于构建高效、可扩展的 Node.js 服务器端应用程序的开发框架。它利用 JavaScript 的渐进增强的能力，使用并完全支持 TypeScript （仍然允许开发者使用纯 JavaScript
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="nest.js" scheme="https://blog.tianyichuxin.com/tags/nest-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用View Transitions实现Element Plus的炫酷主题切换</title>
+    <link href="https://blog.tianyichuxin.com/2024/07/49497.html"/>
+    <id>https://blog.tianyichuxin.com/2024/07/49497.html</id>
+    <published>2024-07-19T06:55:00.000Z</published>
+    <updated>2024-08-14T12:39:41.507Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;实验性:这是一项&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="https://blog.tianyichuxin.com/categories/web/"/>
+    
+    
+      <category term="CSS" scheme="https://blog.tianyichuxin.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用node fs读写文件</title>
+    <link href="https://blog.tianyichuxin.com/2024/02/35226.html"/>
+    <id>https://blog.tianyichuxin.com/2024/02/35226.html</id>
+    <published>2024-02-19T11:22:00.000Z</published>
+    <updated>2024-05-25T10:18:36.601Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-fs-open-读取-写入文件&quot;&gt;&lt;a href=&quot;#1-fs-open-读取-写入文件&quot; class=&quot;headerlink&quot; title=&quot;1.fs.open() 读取/写入文件&quot;&gt;&lt;/a&gt;1.fs.open()
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端中部分数据流之间的相互转化</title>
+    <link href="https://blog.tianyichuxin.com/2023/12/28577.html"/>
+    <id>https://blog.tianyichuxin.com/2023/12/28577.html</id>
+    <published>2023-12-11T02:22:00.000Z</published>
+    <updated>2024-05-25T10:18:36.601Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、基本介绍&quot;&gt;&lt;a href=&quot;#一、基本介绍&quot; class=&quot;headerlink&quot; title=&quot;一、基本介绍&quot;&gt;&lt;/a&gt;一、基本介绍&lt;/h1&gt;&lt;h2 id=&quot;1-ArrayBuffer&quot;&gt;&lt;a href=&quot;#1-ArrayBuffer&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://blog.tianyichuxin.com/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://blog.tianyichuxin.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vuex 与 Pinia 的设计实现对比</title>
+    <link href="https://blog.tianyichuxin.com/2023/08/535.html"/>
+    <id>https://blog.tianyichuxin.com/2023/08/535.html</id>
+    <published>2023-08-17T04:20:39.000Z</published>
+    <updated>2023-08-27T11:01:25.960Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;在进行前端项目开发时，状态管理始终是一个绕不开的话题，Vue 与 React 框架本身提供了一部分能力去解决这个问题。但是在开发大型应用时往往有其他考虑，比如需要更规范更完善的操作日志、集成在开发者工具中的时间旅行能力、服务端渲染等。本文以
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="https://blog.tianyichuxin.com/tags/vuex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron知识整理和问题汇总（持续更新中）</title>
+    <link href="https://blog.tianyichuxin.com/2023/08/5578.html"/>
+    <id>https://blog.tianyichuxin.com/2023/08/5578.html</id>
+    <published>2023-08-05T13:22:00.000Z</published>
+    <updated>2024-11-02T15:20:55.435Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;electron-npm-地址&quot;&gt;&lt;a href=&quot;#electron-npm-地址&quot; class=&quot;headerlink&quot; title=&quot;electron npm 地址&quot;&gt;&lt;/a&gt;electron npm 地址&lt;/h2&gt;&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron进程间通讯</title>
+    <link href="https://blog.tianyichuxin.com/2023/07/7318.html"/>
+    <id>https://blog.tianyichuxin.com/2023/07/7318.html</id>
+    <published>2023-07-21T06:22:00.000Z</published>
+    <updated>2024-08-14T12:36:52.211Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;你得了解：&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;进程-process-：&quot;&gt;&lt;a href=&quot;#进程-process-：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>音视频基础概念</title>
+    <link href="https://blog.tianyichuxin.com/2023/06/61255.html"/>
+    <id>https://blog.tianyichuxin.com/2023/06/61255.html</id>
+    <published>2023-06-11T02:22:00.000Z</published>
+    <updated>2023-08-14T12:42:17.315Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="https://blog.tianyichuxin.com/categories/web/"/>
+    
+    
+      <category term="web" scheme="https://blog.tianyichuxin.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue项目中录音</title>
+    <link href="https://blog.tianyichuxin.com/2023/04/38381.html"/>
+    <id>https://blog.tianyichuxin.com/2023/04/38381.html</id>
+    <published>2023-04-22T12:20:39.000Z</published>
+    <updated>2023-10-28T15:29:30.872Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;由于本人的项目主要是 Vue3 + electron 进行开发，本文也以Vue3进行讲解：&lt;/p&gt;
+&lt;h2 id=&quot;1-使用-electron-navigator-mediaDevices-getUserMedia-录制音视频&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue3新特性及和Vue2的部分差异性（持续更新汇中）</title>
+    <link href="https://blog.tianyichuxin.com/2023/04/12043.html"/>
+    <id>https://blog.tianyichuxin.com/2023/04/12043.html</id>
+    <published>2023-04-08T11:02:30.000Z</published>
+    <updated>2024-08-14T12:36:52.211Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、Vue3的改动（和Vue2的差异性，非兼容性改变）&quot;&gt;&lt;a href=&quot;#一、Vue3的改动（和Vue2的差异性，非兼容性改变）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="vue3" scheme="https://blog.tianyichuxin.com/tags/vue3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>公安备案接入服务商如何填写？(网站接入信息)</title>
+    <link href="https://blog.tianyichuxin.com/2023/02/32915.html"/>
+    <id>https://blog.tianyichuxin.com/2023/02/32915.html</id>
+    <published>2023-02-13T04:00:00.000Z</published>
+    <updated>2023-02-13T14:12:40.435Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-网络接入服务商&quot;&gt;&lt;a href=&quot;#一-网络接入服务商&quot; class=&quot;headerlink&quot; title=&quot;一. 网络接入服务商&quot;&gt;&lt;/a&gt;一.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="备案" scheme="https://blog.tianyichuxin.com/categories/%E5%A4%87%E6%A1%88/"/>
+    
+    
+      <category term="备案" scheme="https://blog.tianyichuxin.com/tags/%E5%A4%87%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue项目使用scss切换主题</title>
+    <link href="https://blog.tianyichuxin.com/2023/02/36393.html"/>
+    <id>https://blog.tianyichuxin.com/2023/02/36393.html</id>
+    <published>2023-02-11T16:00:00.000Z</published>
+    <updated>2023-02-13T14:12:40.432Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;使用-CSS3中var-方式定义&quot;&gt;&lt;a href=&quot;#使用-CSS3中var-方式定义&quot; class=&quot;headerlink&quot; title=&quot;使用 CSS3中var()方式定义&quot;&gt;&lt;/a&gt;使用
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="scss" scheme="https://blog.tianyichuxin.com/tags/scss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue状态管理模式之Vuex和Pinia</title>
+    <link href="https://blog.tianyichuxin.com/2022/12/39935.html"/>
+    <id>https://blog.tianyichuxin.com/2022/12/39935.html</id>
+    <published>2022-12-22T02:20:39.000Z</published>
+    <updated>2023-11-21T14:47:06.399Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Store-是什么？&quot;&gt;&lt;a href=&quot;#Store-是什么？&quot; class=&quot;headerlink&quot; title=&quot;Store 是什么？&quot;&gt;&lt;/a&gt;Store 是什么？&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Store&lt;/code&gt; (如
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="https://blog.tianyichuxin.com/tags/vuex/"/>
+    
+      <category term="pinia" scheme="https://blog.tianyichuxin.com/tags/pinia/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用正则表达式校验身份证号码及验证详解</title>
+    <link href="https://blog.tianyichuxin.com/2022/12/18437.html"/>
+    <id>https://blog.tianyichuxin.com/2022/12/18437.html</id>
+    <published>2022-12-06T07:12:30.000Z</published>
+    <updated>2024-01-01T13:39:10.009Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;本文转自 毛三十，并修正了文中部分错误。获取更新内容可查看原文： &lt;a href=&quot;http://www.kaotop.com/it/246372.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS循环中正确使用async、await</title>
+    <link href="https://blog.tianyichuxin.com/2022/12/18438.html"/>
+    <id>https://blog.tianyichuxin.com/2022/12/18438.html</id>
+    <published>2022-12-06T03:12:30.000Z</published>
+    <updated>2023-01-17T15:52:23.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;1-for中使用&quot;&gt;&lt;a href=&quot;#1-for中使用&quot; class=&quot;headerlink&quot; title=&quot;1.for中使用&quot;&gt;&lt;/a&gt;1.for中使用&lt;/h3&gt;&lt;pre class=&quot; language-js&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FFmpeg视频、音频的提取与合成命令</title>
+    <link href="https://blog.tianyichuxin.com/2022/10/13524.html"/>
+    <id>https://blog.tianyichuxin.com/2022/10/13524.html</id>
+    <published>2022-10-27T04:22:30.000Z</published>
+    <updated>2022-11-02T02:19:01.117Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、音视频合成&quot;&gt;&lt;a href=&quot;#一、音视频合成&quot; class=&quot;headerlink&quot; title=&quot;一、音视频合成&quot;&gt;&lt;/a&gt;一、音视频合成&lt;/h2&gt;&lt;pre class=&quot; language-bash&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/categories/FFmpeg/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ffmpeg录制视频和音频</title>
+    <link href="https://blog.tianyichuxin.com/2022/10/50974.html"/>
+    <id>https://blog.tianyichuxin.com/2022/10/50974.html</id>
+    <published>2022-10-27T04:22:30.000Z</published>
+    <updated>2022-11-02T02:18:03.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;ffmpeg-exe的使用&quot;&gt;&lt;a href=&quot;#ffmpeg-exe的使用&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/categories/FFmpeg/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron如何解决白屏问题</title>
+    <link href="https://blog.tianyichuxin.com/2022/10/42365.html"/>
+    <id>https://blog.tianyichuxin.com/2022/10/42365.html</id>
+    <published>2022-10-26T16:00:00.000Z</published>
+    <updated>2023-12-02T15:25:00.687Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;electron
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+</feed>
