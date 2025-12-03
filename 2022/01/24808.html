@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    856
+                    906
                 </div>
                 
 
@@ -529,7 +529,7 @@
 <span class="token keyword">new</span> <span class="token class-name">Profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#mount-point'</span><span class="token punctuation">)</span></code></pre>
 <p>结果如下：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Walter White aka Heisenberg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<p>可以看到，<code>extend</code> 创建的是一个组件构造器，而不是一个具体的组件实例，所以不可以通过 <code>new Vue({ components: testExtend })</code> 来直接使用，需要通过 <code>new Profile().$mount(&#39;#mount-point&#39;)</code> 来挂载到指定的元素上。 最终还是要通过<code>Vue.components</code>注册才可以使用的。</p>
+<p>可以看到，<code>extend</code> 创建的是一个组件构造器，而不是一个具体的组件实例，所以不可以通过 <code>new Vue({ components: testExtend })</code> 来直接使用，需要通过 <code>new Profile().$mount('#mount-point')</code> 来挂载到指定的元素上。 最终还是要通过<code>Vue.components</code>注册才可以使用的。</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{{msg}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Profile</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Profile</span><span class="token punctuation">></span></span>
@@ -605,7 +605,25 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
 <li>所有内容都是在 <code>#app</code> 下渲染，注册组件都是在当前位置渲染。如果我要实现一个类似于 <code>window.alert()</code> 提示组件要求像调用 JS 函数一样调用它，该怎么办？</li>
 </ol>
 <p>这时候，<code>Vue.extend + vm.$mount</code> 组合就派上用场了。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1444,7 +1462,7 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

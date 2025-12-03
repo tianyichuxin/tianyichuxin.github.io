@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.tianyichuxin.com/"/>
-  <updated>2025-11-24T02:04:38.078Z</updated>
+  <updated>2025-12-03T07:03:48.044Z</updated>
   <id>https://blog.tianyichuxin.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git命令大全（基础+最新进阶版）</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/1119.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/1119.html</id>
+    <published>2025-11-30T04:11:32.000Z</published>
+    <updated>2025-12-03T07:03:48.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/42341/20200608000757762.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Git-命令大全（基础-最新进阶版）&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>js数组过滤的常用方法</title>
@@ -559,33 +587,6 @@
     
     
       <category term="CSS" scheme="https://blog.tianyichuxin.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用node fs读写文件</title>
-    <link href="https://blog.tianyichuxin.com/2024/02/35226.html"/>
-    <id>https://blog.tianyichuxin.com/2024/02/35226.html</id>
-    <published>2024-02-19T11:22:00.000Z</published>
-    <updated>2024-11-22T01:17:50.865Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;1-fs-open-读取-写入文件&quot;&gt;&lt;a href=&quot;#1-fs-open-读取-写入文件&quot; class=&quot;headerlink&quot; title=&quot;1.fs.open() 读取/写入文件&quot;&gt;&lt;/a&gt;1.fs.open()
-        
-      
-    
-    </summary>
-    
-    
-      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
-    
-    
-      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
     
   </entry>
   

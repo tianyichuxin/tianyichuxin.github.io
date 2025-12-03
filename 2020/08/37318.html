@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -520,7 +520,7 @@
 <p>在ES6之前，JavaScript一直没有模块系统，这对开发大型复杂的前端工程造成了巨大的阻碍。</p>
 <p>用++Webpack + Babel++将所有模块打包成一个文件同步加载，也可以搭乘多个chunk异步加载；</p>
 <p>用++System+Babel++主要是分模块异步加载；</p>
-<p>用浏览器的<code>&lt;script type=&quot;module&quot;&gt;</code>加载。</p>
+<p>用浏览器的<code>&lt;script type="module"&gt;</code>加载。</p>
 <p><strong>CSS 模块化：</strong>Sass、Less、Stylus、BEM、CSS Modules 等。</p>
 <p>虽然SASS、LESS、Stylus等预处理器实现了CSS的文件拆分，但没有解决CSS模块化的一个重要问题：选择器的全局污染问题。按道理，一个模块化的文件应该要隐藏内部作用域，只暴露少量接口给使用者。而按照目前预处理器的方式，导入一个CSS模块后，已存在的样式有被覆盖的风险。虽然重写样式是CSS的一个优势，但这并不利于多人协作。</p>
 <p>为了避免全局选择器的冲突，需要制定CSS命名风格：BEM风格、Bootstrap风格等。从工具层面，社区又创造出Shadow DOM、CSS in JS和CSS Modules三种解决方案。</p>
@@ -551,7 +551,25 @@ git flow 工作流：其中包含分支命名规范、代码合并规范、Commi
 定期codeReview
 视觉图标规范</code></pre>
 <h4 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h4><p>也就是简单重复的工作交给机器来做，从最早先的 grunt、gulp 等，再到目前的 webpack、parcel。这些自动化工具在自动化合并、构建、打包代替我们来完成，都能为我们节省很多工作。例如持续集成、自动化构建、自动化部署、自动化测试等等。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1390,7 +1408,7 @@ git flow 工作流：其中包含分支命名规范、代码合并规范、Commi
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

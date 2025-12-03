@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -527,7 +527,7 @@
 <li><p><strong>可维护性与可读性降低</strong>：一个页面，若弹框过多，导致逻辑混杂，代码界限模糊，维护困难和可读性低。</p>
 </li>
 </ol>
-<h3 id="方式-2：父组件控制-lt-el-dialog-gt-，子组件作为内容（插槽模式）"><a href="#方式-2：父组件控制-lt-el-dialog-gt-，子组件作为内容（插槽模式）" class="headerlink" title="方式 2：父组件控制 &lt;el-dialog&gt;，子组件作为内容（插槽模式）"></a>方式 2：父组件控制 <code>&lt;el-dialog&gt;</code>，子组件作为内容（插槽模式）</h3><p><strong>实现方式</strong>：在父组件中直接使用<code>&lt;el-dialog&gt;</code>，仅将弹框内容封装为子组件，通过<code>v-if</code>控制弹窗显隐。</p>
+<h3 id="方式-2：父组件控制-lt-el-dialog-gt-，子组件作为内容（插槽模式）"><a href="#方式-2：父组件控制-lt-el-dialog-gt-，子组件作为内容（插槽模式）" class="headerlink" title="方式 2：父组件控制 <el-dialog>，子组件作为内容（插槽模式）"></a>方式 2：父组件控制 <code>&lt;el-dialog&gt;</code>，子组件作为内容（插槽模式）</h3><p><strong>实现方式</strong>：在父组件中直接使用<code>&lt;el-dialog&gt;</code>，仅将弹框内容封装为子组件，通过<code>v-if</code>控制弹窗显隐。</p>
 <pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 父组件 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-dialog</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dialogVisible<span class="token punctuation">"</span></span> <span class="token attr-name">@close</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dialogVisible <span class="token punctuation">=</span> false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -625,7 +625,25 @@
 <li><p><strong>状态管理</strong>：对于跨组件弹框控制，可结合 <code>Pinia</code> 统一管理弹框状态。</p>
 </li>
 </ol>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1468,7 +1486,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

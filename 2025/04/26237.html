@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -508,7 +508,7 @@
 <h3 id="2-Nuxt3-Vue3-Element-plus-打包后报错-popperjs-core"><a href="#2-Nuxt3-Vue3-Element-plus-打包后报错-popperjs-core" class="headerlink" title="2.Nuxt3+Vue3 + Element-plus 打包后报错 @popperjs/core"></a>2.Nuxt3+Vue3 + Element-plus 打包后报错 <code>@popperjs/core</code></h3><p><strong>问题：</strong></p>
 <p>更新 <strong>Element-plus</strong> 后，运行时需要安装 <code>@popperjs/core</code> 依赖。<br>如果正常执行 <code>npm install @popperjs/core</code> ，那么，打包时，就会出现下面报错。</p>
 <p><strong>解决：</strong></p>
-<p>把 <code>node_modules</code> 删除，在 <code>package.json</code> 把 <code>@popperjs/core</code> 版本号改为 <code>&quot;@popperjs/core&quot;: &quot;npm:@sxzz/popperjs-es@^2.11.7&quot;</code>（esm 的包）重新 <code>npm install</code>，即可。</p>
+<p>把 <code>node_modules</code> 删除，在 <code>package.json</code> 把 <code>@popperjs/core</code> 版本号改为 <code>"@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7"</code>（esm 的包）重新 <code>npm install</code>，即可。</p>
 <p>参考 <a href="https://github.com/element-plus/element-plus/blob/dev/package.json" target="_blank" rel="noopener">element-plus/package.json</a></p>
 <h3 id="3-npm-i-报错"><a href="#3-npm-i-报错" class="headerlink" title="3.npm i 报错"></a>3.npm i 报错</h3><pre class=" language-bash"><code class="language-bash">PS C:\Users\Administrator\Desktop\nuxt3-blog<span class="token operator">></span> <span class="token function">npm</span> i @nuxtjs/composition-api@0.34.0
 <span class="token function">npm</span> error code ERESOLVE
@@ -1012,7 +1012,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ul>
 <li><a href="https://www.jianshu.com/p/6883891dcd99" target="_blank" rel="noopener">Nuxt3 踩坑记录</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1867,7 +1885,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

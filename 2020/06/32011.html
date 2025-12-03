@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    3.8k
                 </div>
                 
 
@@ -612,7 +612,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>私有变量和特权函数只能在构造函数中创建。通常来讲，构造函数的功能只负责创建新对象，方法应该共享于 <code>prototype</code> 上。特权函数本质上是存在于每个实例中的，而不是 <code>prototype</code> 上，增加了资源占用。</li>
 </ul>
 <p>JavaScript 被认为是世界上最受误解的编程语言，但随着近些年来 Web 应用的普及和 JS 语言自身的长足发展，特别是后台 JS 引擎的出现 ( 如基于 V8 的 NodeJS 等 )，可以预见，原来只是作为玩具编写页面效果的 JS 将获得更广阔发展天地。这样的发展趋势，也对 JS 程序员提出了更高要求。只有彻底领悟了这门语言，才有可能在大型的 JS 项目中发挥它的威力。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1163,12 +1181,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/19451.html">
+                <a href="/2020/06/31124.html">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="关于layui的一些故事（一）：数据表格和其他记录">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="关于layui的一些故事（三）：导出Excel文件">
                         
-                        <span class="card-title">关于layui的一些故事（一）：数据表格和其他记录</span>
+                        <span class="card-title">关于layui的一些故事（三）：导出Excel文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1459,7 +1477,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

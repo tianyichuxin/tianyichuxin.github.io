@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    367
+                    419
                 </div>
                 
 
@@ -508,7 +508,25 @@
 <p>​         <strong><em>C/S 结构，即大家熟知的客户机和服务器结构。</em></strong>它是软件系统体系结构，通过它可以充分利用两端硬件环境的优势，将任务合理分配到Client端和Server端来实现，降低了系统的通讯开销。</p>
 <p>​        <strong><em>说白了，BS架构就是浏览器应用，CS架构就是客户端应用，当然应用需要服务器配合</em></strong>，像腾讯就是以C/S结构起家的，其旗下的QQ这一软件就是典型的C/S结构应用，像Facebook就是以B/S为结构的。B/S结构的好处就是方便，跨平台性好，真正的实现了一次开发，处处运行。C/S结构以其稳定安全著称，降低了通讯代价，但是实现起来麻烦，需要开发服务器和客户端两套系统并且在不同的平台移植起来非常麻烦。所以现在大多是以B/S模式来开发。</p>
 <p>C/S系统结构<br><img src="//static.tianyichuxin.com/images/17866/2.jpg" alt="B/S"><br>B/S系统结构<br><img src="//static.tianyichuxin.com/images/17866/1.jpg" alt="C/S"></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1351,7 +1369,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.4k
                 </div>
                 
 
@@ -806,7 +806,7 @@ desktopCapturer
             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p>在 方法<strong>1</strong> 中，最后导出音频的时候，在 <code>mediaRecorder.value.addEventListener(&quot;stop&quot;, function () {})</code>里 添加 <code>blobData.value=new Blob(recordedChunks,{ type: &quot;audio/wav&quot; })</code>，并调用 <code>exportAudio</code>方法，导致的音频并不是 <code>wav</code> 格式</p>
+<p>在 方法<strong>1</strong> 中，最后导出音频的时候，在 <code>mediaRecorder.value.addEventListener("stop", function () {})</code>里 添加 <code>blobData.value=new Blob(recordedChunks,{ type: "audio/wav" })</code>，并调用 <code>exportAudio</code>方法，导致的音频并不是 <code>wav</code> 格式</p>
 <p>原因是<code>recordedChunks</code>流里的格式是 <code>audio/webm; codecs=pcm</code>，在 <code>new Blob</code>里时候，并没有改变 <code>recordedChunks</code>里 <code>mimeType</code>的格式，仅仅是给<code>Blob</code>定义了一个<code>type</code>。</p>
 <p>并且<code>mimeType</code>里并没有 <code>audio/wav</code>这个格式配置 ，所以不仅在 <code>options</code> 里配置无效，还会报错。</p>
 <blockquote>
@@ -990,32 +990,32 @@ mediaRecorder<span class="token punctuation">.</span><span class="token function
 <tbody><tr>
 <td>FileReader.onabort</td>
 <td>处理 <code>abort</code> 事件。该事件在读取操作被中断时触发。</td>
-<td>addEventListener(“abort”, (event) =&gt; {});<br/>onabort = (event) =&gt; {};</td>
+<td>addEventListener(“abort”, (event) =&gt; {});<br>onabort = (event) =&gt; {};</td>
 </tr>
 <tr>
 <td>FileReader.onerror</td>
 <td>处理 <code>error</code> 事件。该事件在读取操作发生错误时触发。</td>
-<td>addEventListener(“error”, (event) =&gt; {});<br/>onerror = (event) =&gt; {};</td>
+<td>addEventListener(“error”, (event) =&gt; {});<br>onerror = (event) =&gt; {};</td>
 </tr>
 <tr>
 <td>FileReader.onload</td>
 <td>处理 <code>load</code> 事件。该事件在读取操作完成时触发。</td>
-<td>addEventListener(“load”, (event) =&gt; {});<br/>onload = (event) =&gt; {};</td>
+<td>addEventListener(“load”, (event) =&gt; {});<br>onload = (event) =&gt; {};</td>
 </tr>
 <tr>
 <td>FileReader.onloadstart</td>
 <td>处理 <code>loadstart</code> 事件。该事件在读取操作开始时触发。</td>
-<td>addEventListener(“loadstart”, (event) =&gt; {});<br/>onloadstart = (event) =&gt; {};</td>
+<td>addEventListener(“loadstart”, (event) =&gt; {});<br>onloadstart = (event) =&gt; {};</td>
 </tr>
 <tr>
 <td>FileReader.onloadend</td>
 <td>处理 <code>loadend</code> 事件。该事件在读取操作结束时（要么成功，要么失败）触发。</td>
-<td>addEventListener(“loadend”, (event) =&gt; {});<br/>onloadend = (event) =&gt; {};</td>
+<td>addEventListener(“loadend”, (event) =&gt; {});<br>onloadend = (event) =&gt; {};</td>
 </tr>
 <tr>
 <td>FileReader.onprogress</td>
 <td>处理 <code>progress</code> 事件。该事件在读取 <code>Blob</code> 时触发。</td>
-<td>addEventListener(“progress”, (event) =&gt; {});<br/>onprogress = (event) =&gt; {};</td>
+<td>addEventListener(“progress”, (event) =&gt; {});<br>onprogress = (event) =&gt; {};</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -1032,7 +1032,7 @@ mediaRecorder<span class="token punctuation">.</span><span class="token function
 <h3 id="9-URL-revokeObjectURL-对象简介"><a href="#9-URL-revokeObjectURL-对象简介" class="headerlink" title="9.URL.revokeObjectURL() 对象简介"></a>9.URL.revokeObjectURL() 对象简介</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL</a></p>
 <p>JS纯前端实现audio音频剪裁剪切复制播放与上传<br><a href="https://www.zhangxinxu.com/wordpress/2020/07/js-audio-clip-copy-upload/#comments" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/2020/07/js-audio-clip-copy-upload/#comments</a></p>
 <h3 id="10-问题汇总"><a href="#10-问题汇总" class="headerlink" title="10.问题汇总"></a>10.问题汇总</h3><ol>
-<li>控制台报错 <code>TypeError: Cannot read properties of undefined (reading &#39;getUserMedia&#39;) at Connection.connectMedia</code></li>
+<li>控制台报错 <code>TypeError: Cannot read properties of undefined (reading 'getUserMedia') at Connection.connectMedia</code></li>
 </ol>
 <p><strong>原因：</strong></p>
 <p>chrome下获取浏览器录音功能，因为安全性问题，需要在localhost或127.0.0.1或https下才能获取权限</p>
@@ -1052,7 +1052,25 @@ mediaRecorder<span class="token punctuation">.</span><span class="token function
 </ul>
 <p><a href="https://www.kancloud.cn/chandler/nodejs/2625641" target="_blank" rel="noopener">https://www.kancloud.cn/chandler/nodejs/2625641</a></p>
 <p><a href="http://chart.zhenglinglu.cn/pages/2e7a6b/#node-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%A4%8D%E5%88%B6" target="_blank" rel="noopener">http://chart.zhenglinglu.cn/pages/2e7a6b/#node-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%A4%8D%E5%88%B6</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1895,7 +1913,7 @@ mediaRecorder<span class="token punctuation">.</span><span class="token function
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

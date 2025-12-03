@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -708,7 +708,7 @@ Vue<span class="token punctuation">.</span><span class="token function">createAp
 <p><strong>组件继承</strong><br>在 Vue 3 中，我们强烈建议使用 <strong>组合式 API</strong> 来替代继承与 mixin。如果因为某种原因仍然需要使用组件继承，你可以使用 <a href="https://cn.vuejs.org/api/options-composition.html#extends" target="_blank" rel="noopener">extends 选项</a> 来代替 <code>Vue.extend</code>。</p>
 <h4 id="2-4-全局-API-Treeshaking"><a href="#2-4-全局-API-Treeshaking" class="headerlink" title="2.4 全局 API Treeshaking"></a>2.4 全局 API Treeshaking</h4><p>Vue 2.x 中的这些全局 API 受此更改的影响：</p>
 <ul>
-<li>Vue.nextTick (通过导入 <code>import { nextTick } from &#39;vue&#39;</code> 直接调用)</li>
+<li>Vue.nextTick (通过导入 <code>import { nextTick } from 'vue'</code> 直接调用)</li>
 <li>Vue.observable (用 Vue.reactive 替换)</li>
 <li>Vue.version</li>
 <li>Vue.compile (仅完整构建版本)</li>
@@ -819,13 +819,13 @@ Vue<span class="token punctuation">.</span><span class="token function">createAp
 <blockquote>
 <p>Vue <code>.sync</code>的历史：<br>Vue <code>.sync</code> 修饰符最初存在于 Vue <strong>1.0</strong> 版本里，但是在 <strong>2.0</strong> 中被移除了。但是在 <strong>2.0</strong> 发布之后的实际应用中，Vue官方发现 <code>.sync</code> 还是有其适用之处，比如在开发可<strong>复用的组件库</strong>时。开发者需要做的只是让子组件改变父组件状态的代码更容易被区分。从 <strong>2.3.0</strong> 起官方重新引入了 <code>.sync</code> 修饰符，但是<strong>这次</strong>它只是作为一个编译时的<strong>语法糖</strong>存在。它会被扩展为一个自动更新父组件属性的<code>v-on</code> 监听器。</p>
 </blockquote>
-<h3 id="4、v-bind合并"><a href="#4、v-bind合并" class="headerlink" title="4、v-bind合并"></a>4、v-bind合并</h3><p>在 Vue2.x 中，如果一个元素同时定义了<code>v-bind=&quot;object&quot;</code>和一个<strong>相同的单独的属性</strong>，那么这个<strong>单独的属性会覆盖</strong><code>object</code>中的绑定：</p>
+<h3 id="4、v-bind合并"><a href="#4、v-bind合并" class="headerlink" title="4、v-bind合并"></a>4、v-bind合并</h3><p>在 Vue2.x 中，如果一个元素同时定义了<code>v-bind="object"</code>和一个<strong>相同的单独的属性</strong>，那么这个<strong>单独的属性会覆盖</strong><code>object</code>中的绑定：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ id: <span class="token punctuation">'</span>blue<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ id: <span class="token punctuation">'</span>blue<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
 <span class="token comment" spellcheck="true">&lt;!-- 最后结果都相同 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<p>然而在 Vue3 中，如果一个元素同时定义了<code>v-bind=&quot;object&quot;</code>和一个<strong>相同的单独的属性</strong>，那么声明绑定的顺序决定了最后的结果（<strong>后者覆盖前者</strong>）：</p>
+<p>然而在 Vue3 中，如果一个元素同时定义了<code>v-bind="object"</code>和一个<strong>相同的单独的属性</strong>，那么声明绑定的顺序决定了最后的结果（<strong>后者覆盖前者</strong>）：</p>
 <pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- template --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ id: <span class="token punctuation">'</span>blue<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
@@ -869,11 +869,11 @@ Vue<span class="token punctuation">.</span><span class="token function">createAp
 <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// ...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h4 id="6-2-新的-history-配置取代-mode"><a href="#6-2-新的-history-配置取代-mode" class="headerlink" title="6.2 新的 history 配置取代 mode"></a>6.2 新的 <code>history</code> 配置取代 <code>mode</code></h4><p><code>mode: &#39;history&#39;</code> 配置已经被一个更灵活的 <code>history</code> 配置所取代。根据你使用的模式，你必须用适当的函数替换它：</p>
+<h4 id="6-2-新的-history-配置取代-mode"><a href="#6-2-新的-history-配置取代-mode" class="headerlink" title="6.2 新的 history 配置取代 mode"></a>6.2 新的 <code>history</code> 配置取代 <code>mode</code></h4><p><code>mode: 'history'</code> 配置已经被一个更灵活的 <code>history</code> 配置所取代。根据你使用的模式，你必须用适当的函数替换它：</p>
 <ul>
-<li><code>&quot;history&quot;</code>: <code>createWebHistory()</code></li>
-<li><code>&quot;hash&quot;</code>: <code>createWebHashHistory()</code></li>
-<li><code>&quot;abstract&quot;</code>: <code>createMemoryHistory()</code></li>
+<li><code>"history"</code>: <code>createWebHistory()</code></li>
+<li><code>"hash"</code>: <code>createWebHashHistory()</code></li>
+<li><code>"abstract"</code>: <code>createMemoryHistory()</code></li>
 </ul>
 <p>下面是一个完整的代码段：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createRouter<span class="token punctuation">,</span> createWebHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
@@ -1320,7 +1320,7 @@ const vFocus = {
 <tr>
 <td><strong>value</strong></td>
 <td>指令所绑定的值（计算后）。</td>
-<td><code>v-my-directive=&quot;1 + 1&quot;</code> 中，绑定值为 `2</td>
+<td><code>v-my-directive="1 + 1"</code> 中，绑定值为 `2</td>
 </tr>
 <tr>
 <td><strong>oldValue</strong></td>
@@ -1330,7 +1330,7 @@ const vFocus = {
 <tr>
 <td><strong>arg</strong></td>
 <td>传给指令的参数，可选。</td>
-<td><code>v-my-directive:foo</code> 中，参数为 <code>&quot;foo&quot;</code>。</td>
+<td><code>v-my-directive:foo</code> 中，参数为 <code>"foo"</code>。</td>
 </tr>
 <tr>
 <td><strong>modifiers</strong></td>
@@ -1473,7 +1473,7 @@ Hello<span class="token punctuation">.</span>props <span class="token operator">
 </li>
 <li><p>另一次来自应用在根元素上的原生事件监听器。<br>现在你有两个选项：</p>
 </li>
-<li><p>正确地声明 <code>click</code> 事件。当你真的在 <my-button> 的事件处理器上加入了一些逻辑时，这会很有用。</p>
+<li><p>正确地声明 <code>click</code> 事件。当你真的在 <my-button> 的事件处理器上加入了一些逻辑时，这会很有用。</my-button></p>
 </li>
 <li><p>移除透传的事件，因为现在父组件可以很容易地监听原生事件，而不需要添加 <code>.native</code>。适用于你只想透传这个事件。</p>
 </li>
@@ -1617,7 +1617,7 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
 <li>将所有 <code>this.$slots.mySlot</code> 替换为 <code>this.$slots.mySlot()</code>。</li>
 </ol>
 <h3 id="21、按键修饰符"><a href="#21、按键修饰符" class="headerlink" title="21、按键修饰符"></a>21、按键修饰符</h3><ol>
-<li>不再支持使用数字 (即键码) 作为 v-on 修饰符（现在建议对任何要用作修饰符的键使用 kebab-cased (短横线) 名称-<br><code>&lt;input v-on:keyup.page-down=&quot;nextPage&quot;&gt;</code>）</li>
+<li>不再支持使用数字 (即键码) 作为 v-on 修饰符（现在建议对任何要用作修饰符的键使用 kebab-cased (短横线) 名称-<br><code>&lt;input v-on:keyup.page-down="nextPage"&gt;</code>）</li>
 <li>不再支持 <code>config.keyCodes</code>自定义别名</li>
 </ol>
 <p>在 Vue 2 中，keyCodes 可以作为修改 v-on 方法的一种方式。</p>
@@ -1644,7 +1644,7 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name"><span class="token namespace">v-on:</span>keypress.q</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>quit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>对于某些标点符号键，可以直接把它们包含进去，以<code>,</code>键为例：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name"><span class="token namespace">v-on:</span>keypress.,</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>commaPress<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<p>语法的限制导致某些特定字符无法被匹配，比如 <code>&quot;</code>、<code>&#39;</code>、<code>/</code>、<code>=</code>、<code>&gt;</code> 和 <code>.</code>。对于这些字符，你应该在监听器内使用 <code>event.key</code> 代替。</p>
+<p>语法的限制导致某些特定字符无法被匹配，比如 <code>"</code>、<code>'</code>、<code>/</code>、<code>=</code>、<code>&gt;</code> 和 <code>.</code>。对于这些字符，你应该在监听器内使用 <code>event.key</code> 代替。</p>
 <h3 id="22、-children-移除"><a href="#22、-children-移除" class="headerlink" title="22、$children 移除"></a>22、$children 移除</h3><p><code>$children</code> 实例 property 已从 Vue 3.0 中移除，不再支持。如果你需要访问子组件实例，使用模板引用($ref)。</p>
 <h3 id="23、propsData-移除"><a href="#23、propsData-移除" class="headerlink" title="23、propsData 移除"></a>23、propsData 移除</h3><p><code>propsData</code> 选项之前用于在创建 Vue 实例的过程中传入 <code>prop</code>，现在它被移除了。如果想为 Vue 3 应用的根组件传入 <code>prop</code>，请使用 <code>createApp</code> 的第二个参数。</p>
 <p>在 2.x 中，我们可以在创建 Vue 实例的时候传入 prop：</p>
@@ -1693,7 +1693,7 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre>
-<p>我们把应用挂载到拥有匹配被传入选择器 (在这个例子中是 <code>id=&quot;app&quot;</code>) 的 div 的页面时：</p>
+<p>我们把应用挂载到拥有匹配被传入选择器 (在这个例子中是 <code>id="app"</code>) 的 div 的页面时：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         Some app content
@@ -1717,7 +1717,7 @@ app<span class="token punctuation">.</span><span class="token function">$mount</
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre>
-<p>当这个应用挂载到拥有匹配 <code>id=&quot;app&quot;</code> 的 <code>div</code> 的页面时，结果会是：</p>
+<p>当这个应用挂载到拥有匹配 <code>id="app"</code> 的 <code>div</code> 的页面时，结果会是：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span> <span class="token attr-name">data-v-app</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>rendered<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Hello Vue!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
@@ -1805,13 +1805,13 @@ app<span class="token punctuation">.</span><span class="token function">mount</s
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition-group</span><span class="token punctuation">></span></span></code></pre>
 <p>在 Vue 3 中，我们有了片段的支持，因此组件不再需要根节点。所以，<code>&lt;transition-group&gt;</code> 不再默认渲染根节点。</p>
-<p>如果像上面的示例一样，已经在 Vue 2 代码中定义了 <code>tag</code> attribute，那么一切都会和之前一样<br>如果没有定义 <code>tag</code> attribute，而且样式或其它行为依赖于 <code>&lt;span&gt;</code> 根元素的存在才能正常工作，那么只需将 <code>tag=&quot;span&quot;</code> 添加到 <code>&lt;transition-group&gt;</code>：</p>
+<p>如果像上面的示例一样，已经在 Vue 2 代码中定义了 <code>tag</code> attribute，那么一切都会和之前一样<br>如果没有定义 <code>tag</code> attribute，而且样式或其它行为依赖于 <code>&lt;span&gt;</code> 根元素的存在才能正常工作，那么只需将 <code>tag="span"</code> 添加到 <code>&lt;transition-group&gt;</code>：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition-group</span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>span<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token comment" spellcheck="true">&lt;!-- --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition-group</span><span class="token punctuation">></span></span></code></pre>
 <h3 id="27、VNode-生命周期事件"><a href="#27、VNode-生命周期事件" class="headerlink" title="27、VNode 生命周期事件"></a>27、VNode 生命周期事件</h3><p>在 Vue 2 中，我们可以通过事件来监听组件生命周期中的关键阶段。这些事件名都是以 <code>hook:</code> <strong>前缀</strong>开头，并跟随相应的生命周期钩子的名字。</p>
 <p>在 Vue 3 中，这个<strong>前缀</strong>已被更改为 <code>vue:</code>。额外地，这些事件现在也可用于 <code>HTML</code> 元素，和在组件上的用法一样。</p>
-<p><code>@hook:updated=&quot;onUpdated&quot;</code> =&gt; <code>@vue:updated=&quot;onUpdated&quot;</code></p>
+<p><code>@hook:updated="onUpdated"</code> =&gt; <code>@vue:updated="onUpdated"</code></p>
 <p><code>destroyed</code> 生命周期选项被重命名为 <code>unmounted</code><br><code>beforeDestroy</code> 生命周期选项被重命名为 <code>beforeUnmount</code></p>
 <h3 id="28、Watch-侦听数组"><a href="#28、Watch-侦听数组" class="headerlink" title="28、Watch 侦听数组"></a>28、Watch 侦听数组</h3><p>当侦听一个数组时，只有当<strong>数组被替换</strong>时才会触发回调。如果你需要在<strong>数组被改变</strong>时触发回调，<strong>必须</strong>指定 <code>deep</code> 选项。</p>
 <h3 id="29、-destroy-实例方法"><a href="#29、-destroy-实例方法" class="headerlink" title="29、$destroy 实例方法"></a>29、<code>$destroy</code> 实例方法</h3><p>用户不应该再手动管理单个 Vue 组件的生命周期。</p>
@@ -1831,7 +1831,7 @@ app<span class="token punctuation">.</span><span class="token function">mount</s
 <span class="token punctuation">}</span></code></pre>
 <p>有关<a href="https://blog.tianyichuxin.com/2021/06/10894.html#toc-heading-12">Vue 3 ::v-deep usage as a combinator has been deprecated. Use ::v-deep() instead</a>的内容，推荐使用<code>:deep()</code></p>
 <h2 id="二、Vue3-新增内容"><a href="#二、Vue3-新增内容" class="headerlink" title="二、Vue3 新增内容"></a>二、Vue3 新增内容</h2><h3 id="1、组合式-API"><a href="#1、组合式-API" class="headerlink" title="1、组合式 API"></a>1、组合式 API</h3><p>详情参考：<a href="https://cn.vuejs.org/guide/extras/composition-api-faq.html" target="_blank" rel="noopener">组合式 API</a></p>
-<h3 id="2、单文件组件中的组合式-API-语法糖-lt-script-setup-gt"><a href="#2、单文件组件中的组合式-API-语法糖-lt-script-setup-gt" class="headerlink" title="2、单文件组件中的组合式 API 语法糖 (&lt;script setup&gt;)"></a>2、单文件组件中的组合式 API 语法糖 (<code>&lt;script setup&gt;</code>)</h3><p><code>&lt;script setup&gt;</code> 是在单文件组件 (<code>SFC</code>) 中使用<strong>组合式 API</strong> 的编译时<strong>语法糖</strong>。当同时使用 <code>SFC</code> 与<strong>组合式 API</strong> 时该语法是<strong>默认推荐</strong>。相比于普通的 <code>&lt;script&gt;</code> 语法，它具有更多优势：</p>
+<h3 id="2、单文件组件中的组合式-API-语法糖-lt-script-setup-gt"><a href="#2、单文件组件中的组合式-API-语法糖-lt-script-setup-gt" class="headerlink" title="2、单文件组件中的组合式 API 语法糖 (<script setup>)"></a>2、单文件组件中的组合式 API 语法糖 (<code>&lt;script setup&gt;</code>)</h3><p><code>&lt;script setup&gt;</code> 是在单文件组件 (<code>SFC</code>) 中使用<strong>组合式 API</strong> 的编译时<strong>语法糖</strong>。当同时使用 <code>SFC</code> 与<strong>组合式 API</strong> 时该语法是<strong>默认推荐</strong>。相比于普通的 <code>&lt;script&gt;</code> 语法，它具有更多优势：</p>
 <ul>
 <li>更少的样板内容，更简洁的代码。</li>
 <li>能够使用纯 <code>TypeScript</code> 声明 <code>props</code> 和自定义事件。</li>
@@ -1961,7 +1961,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">const</span> attrs <span class="token operator">=</span> <span class="token function">useAttrs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <p><code>useSlots</code> 和 <code>useAttrs</code> 是真实的运行时函数，它的返回与 <code>setupContext.slots</code> 和 <code>setupContext.attrs</code> 等价。它们同样也能在普通的组合式 API 中使用。</p>
-<h4 id="2-9-与普通的-lt-script-gt-一起使用"><a href="#2-9-与普通的-lt-script-gt-一起使用" class="headerlink" title="2.9 与普通的 &lt;script&gt; 一起使用"></a>2.9 与普通的 <code>&lt;script&gt;</code> 一起使用</h4><p><code>&lt;script setup&gt;</code> 可以和普通的 <code>&lt;script&gt;</code> 一起使用。普通的 <code>&lt;script&gt;</code> 在有这些需要的情况下或许会被使用到：</p>
+<h4 id="2-9-与普通的-lt-script-gt-一起使用"><a href="#2-9-与普通的-lt-script-gt-一起使用" class="headerlink" title="2.9 与普通的 <script> 一起使用"></a>2.9 与普通的 <code>&lt;script&gt;</code> 一起使用</h4><p><code>&lt;script setup&gt;</code> 可以和普通的 <code>&lt;script&gt;</code> 一起使用。普通的 <code>&lt;script&gt;</code> 在有这些需要的情况下或许会被使用到：</p>
 <ul>
 <li>声明无法在 `` 中声明的选项，例如 <code>inheritAttrs</code> 或插件的自定义选项。</li>
 <li>声明模块的具名导出 (named exports)。</li>
@@ -1994,7 +1994,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3 id="3、常用API"><a href="#3、常用API" class="headerlink" title="3、常用API"></a>3、常用API</h3><h4 id="ref、reactive"><a href="#ref、reactive" class="headerlink" title="ref、reactive"></a>ref、reactive</h4><ul>
 <li><p>ref：将<strong>单个值</strong>转成响应式对象，如：数字0、1，字符串”你好”等</p>
 </li>
-<li><p>reactive：将<strong>对象</strong>转成响应式对象，如：<code>{name:&#39;张三&#39;,age:18}</code></p>
+<li><p>reactive：将<strong>对象</strong>转成响应式对象，如：<code>{name:'张三',age:18}</code></p>
 </li>
 </ul>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">170</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2240,7 +2240,25 @@ vm<span class="token punctuation">.</span>items<span class="token punctuation">.
 <li><a href="https://cn.vuejs.org/guide/scaling-up/testing.html#testing-composables" target="_blank" rel="noopener">测试组合式函数</a>：组合式函数的单元测试技巧。</li>
 <li><a href="https://vueuse.org/" target="_blank" rel="noopener">VueUse</a>：一个日益增长的 Vue 组合式函数集合。源代码本身就是一份不错的学习资料。</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -3083,7 +3101,7 @@ vm<span class="token punctuation">.</span>items<span class="token punctuation">.
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -633,7 +633,7 @@ actions<span class="token punctuation">:</span> <span class="token punctuation">
 <p>小结：</p>
 <blockquote>
 <p>组件中读取<code>Vuex</code>中的数据：<code>$store.state.sum</code></p>
-<p>组件中修改<code>Vuex</code>中的数据：<code>$store.dispatch(&#39;action中的方法名&#39;,数据)</code> 或 <code>$store.commit(&#39;mutations中的方法名&#39;,数据)</code></p>
+<p>组件中修改<code>Vuex</code>中的数据：<code>$store.dispatch('action中的方法名',数据)</code> 或 <code>$store.commit('mutations中的方法名',数据)</code></p>
 </blockquote>
 <h3 id="2-模块化-modules-的使用"><a href="#2-模块化-modules-的使用" class="headerlink" title="2.模块化(modules)的使用"></a>2.模块化(modules)的使用</h3><h4 id="2-1-单页面使用模块化"><a href="#2-1-单页面使用模块化" class="headerlink" title="2-1.单页面使用模块化"></a>2-1.单页面使用模块化</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
 <span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
@@ -1370,7 +1370,25 @@ router<span class="token punctuation">.</span><span class="token function">befor
 <li><a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">Vuex官方文档</a></li>
 <li><a href="https://pinia.vuejs.org/zh/" target="_blank" rel="noopener">Pinia官方文档</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2221,7 +2239,7 @@ router<span class="token punctuation">.</span><span class="token function">befor
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

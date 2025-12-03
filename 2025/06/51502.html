@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
@@ -500,7 +500,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在 Electron 开发中，获取本地文件路径是一个高频需求 —— 无论是处理用户上传的文件、读取本地资源，还是与主进程交互操作文件系统，都离不开对文件真实路径的获取。一直以来，开发者习惯通过 <code>file.path</code> 直接获取 <code>&lt;input type=&quot;file&quot;&gt;</code> 选中的 <code>File</code> 对象的本地路径，但这一方式在 <strong>Electron 29.0.0</strong> 版本迎来了官方推荐方案的变更：<strong><code>webUtils.getPathForFile</code> 正式替代 <code>file.path</code>，成为更符合 Web 标准的新选择</strong>。</p>
+                <p>在 Electron 开发中，获取本地文件路径是一个高频需求 —— 无论是处理用户上传的文件、读取本地资源，还是与主进程交互操作文件系统，都离不开对文件真实路径的获取。一直以来，开发者习惯通过 <code>file.path</code> 直接获取 <code>&lt;input type="file"&gt;</code> 选中的 <code>File</code> 对象的本地路径，但这一方式在 <strong>Electron 29.0.0</strong> 版本迎来了官方推荐方案的变更：<strong><code>webUtils.getPathForFile</code> 正式替代 <code>file.path</code>，成为更符合 Web 标准的新选择</strong>。</p>
 <h2 id="一、为什么要从-file-path-迁移？"><a href="#一、为什么要从-file-path-迁移？" class="headerlink" title="一、为什么要从 file.path 迁移？"></a>一、为什么要从 file.path 迁移？</h2><p><code>file.path</code> 是 Electron 早期为了方便开发者而在原生 <code>File</code> 对象上扩展的非标准属性。当用户通过文件选择器选中文件后，开发者可以直接通过 <code>file.path</code> 拿到类似 <code>C:\Users\name\file.txt</code> 或 <code>/Users/name/file.txt</code> 的本地完整路径，这在很长一段时间里成为了 Electron 开发的 “约定俗成”。</p>
 <p>但这一方案存在一个核心问题：<strong>偏离 Web 标准</strong>。</p>
 <p>根据 W3C 规范，浏览器环境中的 <code>File</code> 对象是用于抽象文件信息的接口，其原生属性仅包含 <code>name</code>、<code>size</code>、<code>type</code> 等元数据，并不包含本地路径（出于隐私安全限制）。Electron 对 <code>File</code> 对象的扩展虽然提升了开发便利性，却打破了这一标准，可能导致与其他 Web 生态工具（如前端框架、文件处理库）的兼容性问题，也增加了未来标准化适配的成本。</p>
@@ -606,7 +606,25 @@ ipcMain<span class="token punctuation">.</span><span class="token function">on</
 <h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>从 <code>file.path</code> 到 <code>webUtils.getPathForFile</code> 的迁移，本质上是 Electron 向 Web 标准对齐的重要一步。这一变化虽然需要开发者调整代码，但带来了更规范的接口设计和更稳定的长期支持。</p>
 <p>对于新项目，直接采用 <code>webUtils.getPathForFile</code> 是最佳实践；</p>
 <p>对于老项目，建议在升级到 Electron 29.0.0 后逐步完成迁移，以避免未来 <code>file.path</code> 被废弃带来的兼容性风险。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1445,7 +1463,7 @@ ipcMain<span class="token punctuation">.</span><span class="token function">on</
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

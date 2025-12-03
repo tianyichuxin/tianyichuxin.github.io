@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.7k
+                    6.8k
                 </div>
                 
 
@@ -500,7 +500,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-fs-open-读取-写入文件"><a href="#1-fs-open-读取-写入文件" class="headerlink" title="1.fs.open() 读取/写入文件"></a>1.fs.open() 读取/写入文件</h2><p><strong>介绍：</strong> 要创建文件，写入文件或读取文件，使用<code>fs.open()</code>方法。 <code>fs.readFile()</code>仅用于<strong>读取文件</strong>，类似地，<code>fs.writeFile()</code>仅用于<strong>写入文件</strong>，而<code>fs.open()</code>方法对文件进行多项操作。<br>首先，我们需要加载<strong>fs 类</strong>，该类是用于访问物理文件系统的模块。为此，使用了<code>require</code>方法。例如：<br><code>var fs = require(&#39;fs&#39;);</code></p>
+                <h2 id="1-fs-open-读取-写入文件"><a href="#1-fs-open-读取-写入文件" class="headerlink" title="1.fs.open() 读取/写入文件"></a>1.fs.open() 读取/写入文件</h2><p><strong>介绍：</strong> 要创建文件，写入文件或读取文件，使用<code>fs.open()</code>方法。 <code>fs.readFile()</code>仅用于<strong>读取文件</strong>，类似地，<code>fs.writeFile()</code>仅用于<strong>写入文件</strong>，而<code>fs.open()</code>方法对文件进行多项操作。<br>首先，我们需要加载<strong>fs 类</strong>，该类是用于访问物理文件系统的模块。为此，使用了<code>require</code>方法。例如：<br><code>var fs = require('fs');</code></p>
 <p><strong>用法：</strong></p>
 <pre class=" language-js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> flags<span class="token punctuation">,</span> mode<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><strong>参数：</strong>此方法接受上述和以下所述的四个参数：</p>
@@ -1376,10 +1376,28 @@ This file has now been edited<span class="token punctuation">.</span></code></pr
 <li><a href="https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback" target="_blank" rel="noopener">node.js</a></li>
 <li><a href="https://blog.csdn.net/sqlstar/article/details/108641808" target="_blank" rel="noopener">node.js：fs.open 和 fs.write 读取文件和改写文件</a></li>
 <li><a href="https://vimsky.com/examples/usage/node-js-fs-open-method.html" target="_blank" rel="noopener">Node.js fs.open()用法及代码示例</a></li>
-<li><a href="https://zhannei.baidu.com/cse/site?q=fs.open&click=1&cc=vimsky.com&s=&nsid=" target="_blank" rel="noopener">fs.open</a></li>
+<li><a href="https://zhannei.baidu.com/cse/site?q=fs.open&amp;click=1&amp;cc=vimsky.com&amp;s=&amp;nsid=" target="_blank" rel="noopener">fs.open</a></li>
 <li><a href="https://www.codercto.com/a/5994.html" target="_blank" rel="noopener">node.js 中 fs.stat 里的 atime,mtime,ctime,birthtime 在 debian 下的更新规则与区别</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2218,7 +2236,7 @@ This file has now been edited<span class="token punctuation">.</span></code></pr
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

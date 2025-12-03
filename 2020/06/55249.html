@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -489,7 +489,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    33 分
+                    34 分
                 </div>
                 
 
@@ -651,7 +651,7 @@ Dep<span class="token punctuation">.</span>target <span class="token operator">=
 <p>订阅者<code>Watcher</code> 是一个 类，在它的构造函数中，定义了一些属性：</p>
 <ul>
 <li><strong>vm:</strong>一个Vue的实例对象；</li>
-<li><strong>exp:</strong>是<code>node</code>节点的<code>v-model</code>或<code>v-on：click</code>等指令的属性值。如<code>v-model=&quot;name&quot;</code>，<code>exp</code>就是<code>name</code>;</li>
+<li><strong>exp:</strong>是<code>node</code>节点的<code>v-model</code>或<code>v-on：click</code>等指令的属性值。如<code>v-model="name"</code>，<code>exp</code>就是<code>name</code>;</li>
 <li><strong>cb:</strong>是<code>Watcher</code>绑定的更新函数;</li>
 </ul>
 <p>当我们去实例化一个渲染 <code>watcher</code> 的时候，首先进入 <code>watcher</code> 的构造函数逻辑，就会执行它的 <code>this.get()</code> 方法，进入 <code>get</code> 函数，首先会执行：</p>
@@ -1210,31 +1210,31 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </thead>
 <tbody><tr>
 <td align="left">Undefined</td>
-<td align="left"><code>&quot;undefined&quot;</code></td>
+<td align="left"><code>"undefined"</code></td>
 </tr>
 <tr>
 <td align="left">Null</td>
-<td align="left"><code>&quot;object&quot;</code></td>
+<td align="left"><code>"object"</code></td>
 </tr>
 <tr>
 <td align="left">Boolean</td>
-<td align="left"><code>&quot;boolean&quot;</code></td>
+<td align="left"><code>"boolean"</code></td>
 </tr>
 <tr>
 <td align="left">Number</td>
-<td align="left"><code>&quot;number&quot;</code></td>
+<td align="left"><code>"number"</code></td>
 </tr>
 <tr>
 <td align="left">BigInt</td>
-<td align="left"><code>&quot;bigint&quot;</code></td>
+<td align="left"><code>"bigint"</code></td>
 </tr>
 <tr>
 <td align="left">String</td>
-<td align="left"><code>&quot;string&quot;</code></td>
+<td align="left"><code>"string"</code></td>
 </tr>
 <tr>
 <td align="left">Symbol(ECMAScript 2015 新增)</td>
-<td align="left"><code>&quot;symbol&quot;</code></td>
+<td align="left"><code>"symbol"</code></td>
 </tr>
 <tr>
 <td align="left">宿主对象（由 JS 环境提供）</td>
@@ -1242,11 +1242,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </tr>
 <tr>
 <td align="left">Function 对象 (按照 ECMA-262 规范实现 [[Call]])</td>
-<td align="left"><code>&quot;function&quot;</code></td>
+<td align="left"><code>"function"</code></td>
 </tr>
 <tr>
 <td align="left">其他任何对象</td>
-<td align="left"><code>&quot;object&quot;</code></td>
+<td align="left"><code>"object"</code></td>
 </tr>
 </tbody></table>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 数值</span>
@@ -1314,8 +1314,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </blockquote>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// JavaScript 诞生以来便如此</span>
 <span class="token keyword">typeof</span> <span class="token keyword">null</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span></code></pre>
-<p>在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 <code>null</code> 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签是 0，<code>typeof null</code> 也因此返回 <code>&quot;object&quot;</code>。</p>
-<p>曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但被拒绝了。该提案会导致 <code>typeof null === &#39;null&#39;</code>。</p>
+<p>在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 <code>null</code> 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签是 0，<code>typeof null</code> 也因此返回 <code>"object"</code>。</p>
+<p>曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但被拒绝了。该提案会导致 <code>typeof null === 'null'</code>。</p>
 <p>使用 <code>new</code> 操作符：</p>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 除 Function 外的所有构造函数的类型都是 'object'</span>
 <span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">'String'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1338,7 +1338,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class=" language-js"><code class="language-js"><span class="token keyword">typeof</span> <span class="token operator">/</span>s<span class="token operator">/</span> <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Chrome 1-12 , 不符合 ECMAScript 5.1</span>
 <span class="token keyword">typeof</span> <span class="token operator">/</span>s<span class="token operator">/</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Firefox 5+ , 符合 ECMAScript 5.1</span></code></pre>
 <p>错误：</p>
-<p>在 ECMAScript 2015 之前，<code>typeof</code> 总能保证对任何所给的操作数返回一个字符串。即便是没有声明的标识符，<code>typeof</code> 也能返回 <code>&#39;undefined&#39;</code>。使用 <code>typeof</code> 永远不会抛出错误。</p>
+<p>在 ECMAScript 2015 之前，<code>typeof</code> 总能保证对任何所给的操作数返回一个字符串。即便是没有声明的标识符，<code>typeof</code> 也能返回 <code>'undefined'</code>。使用 <code>typeof</code> 永远不会抛出错误。</p>
 <p>但在加入了块级作用域的<code>let</code>和 <code>const</code>之后，在其被声明之前对块中的 <code>let</code> 和 <code>const</code> 变量使用 <code>typeof</code> 会抛出一个 <code>ReferenceError</code>。块作用域变量在块的头部处于<code>“暂存死区”</code>，直至其被初始化，在这期间，访问变量将会引发错误。</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">typeof</span> undeclaredVariable <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
 
@@ -1352,7 +1352,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>例外：</p>
 <p>当前所有的浏览器都暴露了一个类型为 <code>undefined</code> 的非标准宿主对象 <code>document.all</code>。</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">typeof</span> document<span class="token punctuation">.</span>all <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span></code></pre>
-<p>尽管规范允许为非标准的外来对象自定义类型标签，但它要求这些类型标签与已有的不同。<code>document.all</code> 的类型标签为 <code>&#39;undefined&#39;</code> 的例子在 Web 领域中被归类为对原 ECMA JavaScript 标准的“故意侵犯”。</p>
+<p>尽管规范允许为非标准的外来对象自定义类型标签，但它要求这些类型标签与已有的不同。<code>document.all</code> 的类型标签为 <code>'undefined'</code> 的例子在 Web 领域中被归类为对原 ECMA JavaScript 标准的“故意侵犯”。</p>
 <p><strong>总结：</strong>typeof运算符用于判断对象的类型，但是对于一些创建的对象，它们都会返回’object’，有时我们需要判断该实例是否为某个对象的实例，那么这个时候需要用到instanceof运算符，后续记录instanceof运算符的相关用法。</p>
 <h3 id="3-Object-keys"><a href="#3-Object-keys" class="headerlink" title="3.Object.keys()"></a>3.Object.keys()</h3><p>Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。</p>
 <blockquote>
@@ -1524,7 +1524,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// ['length', '0', '1', '2']  (ES2015 code)</span></code></pre>
 <p>本文完。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2375,7 +2393,7 @@ Object<span class="token punctuation">.</span><span class="token function">getOw
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

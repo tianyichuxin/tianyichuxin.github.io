@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -697,8 +697,8 @@ dataView<span class="token punctuation">.</span><span class="token function">set
 <ul>
 <li><code>array</code>： 是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> 等对象构成的 Array ，或者其他类似对象的混合体，它将会被放进 <code>Blob</code>。<strong>DOMStrings 会被编码为 UTF-8</strong>。</li>
 <li><code>options</code>： 是一个对象，它拥有如下属性：<ul>
-<li><code>type</code>：默认值为 <code>&quot;&quot;</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。</li>
-<li><code>endings</code>：默认值为<code>&quot;transparent&quot;</code>，用于指定包含行结束符<code>\n</code> 的字符串如何被写入。 它是以下两个值中的一个： <code>&quot;native&quot;</code>，代表行结束符会被更改为适合宿主操作系统文件系统的换行符，或者 <code>&quot;transparent&quot;</code>，代表会保持 blob 中保存的结束符不变</li>
+<li><code>type</code>：默认值为 <code>""</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。</li>
+<li><code>endings</code>：默认值为<code>"transparent"</code>，用于指定包含行结束符<code>\n</code> 的字符串如何被写入。 它是以下两个值中的一个： <code>"native"</code>，代表行结束符会被更改为适合宿主操作系统文件系统的换行符，或者 <code>"transparent"</code>，代表会保持 blob 中保存的结束符不变</li>
 </ul>
 </li>
 </ul>
@@ -844,7 +844,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <blockquote>
 <p>简单来说，File 就是基于 Blob 而来。它拥有 Blob 的所有功能的同时扩展了一系列关于文件的属性。</p>
 </blockquote>
-<h2 id="3-File"><a href="#3-File" class="headerlink" title="3.File"></a>3.File</h2><p><code>File</code> 就是文件，继承自 <code>Blob</code>，也是二进制对象，也有自己特有的属性和方法，通常用在<br><code>&lt;input type=&quot;file&quot;&gt;</code>选择的 <code>FileList</code> 对象，或者是使用拖拽操作产生的的 <code>DataTransfer</code> 对象。</p>
+<h2 id="3-File"><a href="#3-File" class="headerlink" title="3.File"></a>3.File</h2><p><code>File</code> 就是文件，继承自 <code>Blob</code>，也是二进制对象，也有自己特有的属性和方法，通常用在<br><code>&lt;input type="file"&gt;</code>选择的 <code>FileList</code> 对象，或者是使用拖拽操作产生的的 <code>DataTransfer</code> 对象。</p>
 <p><code>File</code> 对象是特殊类型的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="noopener"><code>Blob</code></a>，且可以用在任意的 Blob 类型的 context 中。比如说， <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="noopener"><code>FileReader</code></a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL_static" target="_blank" rel="noopener"><code>URL.createObjectURL()</code></a>, <code>createImageBitmap()</code>, 及 <code>XMLHttpRequest.send()</code> 都能处理 <code>Blob</code> 和 <code>File</code>。</p>
 <p>创建如下：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> name<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
@@ -852,7 +852,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code>array</code>：是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> <code>等对象构成，DOMStrings</code> 会被编码为 UTF-8。</li>
 <li><code>name</code>：表示文件名称，或者文件路径。</li>
 <li><code>options</code>：是一个可选，它可能会指定如下两个属性：<ul>
-<li><code>type</code>：默认值为 <code>&quot;&quot;</code>，内容的 MIME 类型。</li>
+<li><code>type</code>：默认值为 <code>""</code>，内容的 MIME 类型。</li>
 <li><code>lastModified</code>：数值，表示文件最后修改时间的 Unix 时间戳（毫秒）。默认值为<code>Date.now()</code>。</li>
 </ul>
 </li>
@@ -1177,7 +1177,7 @@ blob<span class="token punctuation">.</span><span class="token function">arrayBu
 <h3 id="4-3-ArrayBuffer-转-blob"><a href="#4-3-ArrayBuffer-转-blob" class="headerlink" title="4.3.ArrayBuffer 转 blob"></a>4.3.ArrayBuffer 转 blob</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">bufToBlob</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> mimeType <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>buf<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> mimeType <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p><code>Blob</code> 函数的第二个参数与 <code>File</code> 函数的第二个参数略有不同，<code>Blob</code> 是一个对象，对象中有一个 type 属性，默认值为 <code>&quot;&quot;</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。<code>Blob</code> 的第一个参数也是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> 等对象构成的数组。</p>
+<p><code>Blob</code> 函数的第二个参数与 <code>File</code> 函数的第二个参数略有不同，<code>Blob</code> 是一个对象，对象中有一个 type 属性，默认值为 <code>""</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。<code>Blob</code> 的第一个参数也是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> 等对象构成的数组。</p>
 <blockquote>
 <p><code>DOMString</code> 是 DOM 字符串，比如：<code>hey!</code>。它的 type 则是：<code>text/html</code>。</p>
 </blockquote>
@@ -1376,7 +1376,25 @@ audioCtx<span class="token punctuation">.</span><span class="token function">dec
 <li><a href="https://juejin.cn/post/7093908575935807502?searchId=202403061350374F488B88B67BABFE3784" target="_blank" rel="noopener">Blob、File、ArrayBuffer、TypedArray、DataView 究竟应该如何应用</a></li>
 <li><a href="https://www.cnblogs.com/yinpengfei/p/17280585.html" target="_blank" rel="noopener">JS 二进制文件转换：File、Blob、Base64、ArrayBuffer</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2219,7 +2237,7 @@ audioCtx<span class="token punctuation">.</span><span class="token function">dec
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

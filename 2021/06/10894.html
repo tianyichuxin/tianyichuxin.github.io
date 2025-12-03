@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -471,21 +471,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-07
+                    2025-11-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.5k
+                    9.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    39 分
+                    40 分
                 </div>
                 
 
@@ -533,7 +533,7 @@
 <h3 id="2-ElementUI-的表单resetFields-方法无法清空"><a href="#2-ElementUI-的表单resetFields-方法无法清空" class="headerlink" title="2.ElementUI 的表单resetFields()方法无法清空"></a>2.ElementUI 的表单<code>resetFields()</code>方法无法清空</h3><p>为每个 <strong><code>form-item</code></strong> 加上 <strong><code>prop</code></strong> 属性（<strong>大部分的问题就是出在这</strong>）</p>
 <p><strong>弹框时：</strong></p>
 <p>记得使用<code>this.$nextTick(()=&gt;{})</code></p>
-<h3 id="3-Vue3-报错：-lt-router-view-gt-can-no-longer-be-used-directly-inside-lt-transition-gt-or-lt-keep-alive-gt"><a href="#3-Vue3-报错：-lt-router-view-gt-can-no-longer-be-used-directly-inside-lt-transition-gt-or-lt-keep-alive-gt" class="headerlink" title="3.Vue3 报错： &lt;router-view&gt; can no longer be used directly inside &lt;transition&gt; or &lt;keep-alive&gt;"></a>3.Vue3 报错： <code>&lt;router-view&gt;</code> can no longer be used directly inside <code>&lt;transition&gt;</code> or <code>&lt;keep-alive&gt;</code></h3><p>最近在学习 vue3，在搭建项目的时候，使用 keep-alive 的包裹 router-view 会有警告信息</p>
+<h3 id="3-Vue3-报错：-lt-router-view-gt-can-no-longer-be-used-directly-inside-lt-transition-gt-or-lt-keep-alive-gt"><a href="#3-Vue3-报错：-lt-router-view-gt-can-no-longer-be-used-directly-inside-lt-transition-gt-or-lt-keep-alive-gt" class="headerlink" title="3.Vue3 报错： <router-view> can no longer be used directly inside <transition> or <keep-alive>"></a>3.Vue3 报错： <code>&lt;router-view&gt;</code> can no longer be used directly inside <code>&lt;transition&gt;</code> or <code>&lt;keep-alive&gt;</code></h3><p>最近在学习 vue3，在搭建项目的时候，使用 keep-alive 的包裹 router-view 会有警告信息</p>
 <pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>router<span class="token operator">-</span>view<span class="token operator">></span> can no longer be used directly inside <span class="token operator">&lt;</span>transition<span class="token operator">></span> or <span class="token operator">&lt;</span>keep<span class="token operator">-</span>alive<span class="token operator">></span></code></pre>
 <p>代码如下：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">:name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!noTransition ? <span class="token punctuation">'</span>fade-transform<span class="token punctuation">'</span> : <span class="token punctuation">'</span><span class="token punctuation">'</span><span class="token punctuation">"</span></span> <span class="token attr-name">:mode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!noTransition ? <span class="token punctuation">'</span>out-in<span class="token punctuation">'</span> : <span class="token punctuation">'</span><span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -697,7 +697,7 @@ methods<span class="token punctuation">:</span><span class="token punctuation">{
 <p><strong>解决方法：</strong></p>
 <p>将其宽度调大点。</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-table-column</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>selection<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>55<span class="token punctuation">"</span></span> <span class="token attr-name">align</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
-<h3 id="10-Vue-3-v-deep-usage-as-a-combinator-has-been-deprecated-Use-v-deep-instead"><a href="#10-Vue-3-v-deep-usage-as-a-combinator-has-been-deprecated-Use-v-deep-instead" class="headerlink" title="10.Vue 3 ::v-deep usage as a combinator has been deprecated. Use ::v-deep() instead"></a>10.Vue 3 ::v-deep usage as a combinator has been deprecated. Use ::v-deep(<inner-selector>) instead</h3><p>原因新的 vue3.0 单文件规范<code>::v-deep</code>写法已经被废弃了，使用 <code>:deep()</code>替换<code>::v-deep</code><br><a href="https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md" target="_blank" rel="noopener">https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md</a><br><a href="https://vuejs.org/api/sfc-css-features.html#scoped-css" target="_blank" rel="noopener">https://vuejs.org/api/sfc-css-features.html#scoped-css</a></p>
+<h3 id="10-Vue-3-v-deep-usage-as-a-combinator-has-been-deprecated-Use-v-deep-instead"><a href="#10-Vue-3-v-deep-usage-as-a-combinator-has-been-deprecated-Use-v-deep-instead" class="headerlink" title="10.Vue 3 ::v-deep usage as a combinator has been deprecated. Use ::v-deep() instead"></a>10.Vue 3 ::v-deep usage as a combinator has been deprecated. Use ::v-deep(<inner-selector>) instead</inner-selector></h3><p>原因新的 vue3.0 单文件规范<code>::v-deep</code>写法已经被废弃了，使用 <code>:deep()</code>替换<code>::v-deep</code><br><a href="https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md" target="_blank" rel="noopener">https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md</a><br><a href="https://vuejs.org/api/sfc-css-features.html#scoped-css" target="_blank" rel="noopener">https://vuejs.org/api/sfc-css-features.html#scoped-css</a></p>
 <pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* Vue 2.0 写法 */</span>
 <span class="token selector"><span class="token pseudo-element">::v-deep</span> <span class="token class">.carousel-btn.prev</span> </span><span class="token punctuation">{</span>
     <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">270</span>px<span class="token punctuation">;</span>
@@ -775,7 +775,7 @@ methods<span class="token punctuation">:</span><span class="token punctuation">{
 <p>使用<code>@import</code>引入外部样式表作用域是全局的</p>
 <p><code>@import</code>并不是引入代码到<code>&lt;style&gt;&lt;/style&gt;</code>里面，而是<strong>发起新的请求获得样式资源</strong>，并且没有加<code>scoped</code></p>
 <p><strong>解决方法：</strong></p>
-<p>我们只需把<code>@import</code>改成<code>&lt;style src=&quot;&quot;&gt;&lt;/style&gt;</code>引入外部样式，就可以解决样式是全局的问题</p>
+<p>我们只需把<code>@import</code>改成<code>&lt;style src=""&gt;&lt;/style&gt;</code>引入外部样式，就可以解决样式是全局的问题</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../css/reset.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 <span class="token comment" spellcheck="true">&lt;!-- 这种方法使用会出现一个玄学问题，路由首页使用，reset.css的样式会被本页面的样式覆盖，但是在 非路由首页使用（注：首页没有引入）时，reset.css会在样式最上方，相当于会覆盖本页面样式--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style language-css">
@@ -863,7 +863,7 @@ newArr <span class="token operator">=</span> <span class="token function">getArr
 <h3 id="17-axios-的-post-请求为什么要使用-qs"><a href="#17-axios-的-post-请求为什么要使用-qs" class="headerlink" title="17.axios 的 post 请求为什么要使用 qs"></a>17.axios 的 post 请求为什么要使用 qs</h3><p>结论：用不用取决于后端怎么接收参数</p>
 <p>axios 默认的 content-type 是 application/json,即 json 格式，后台可以使用字符串进行接收，然后再解析即可</p>
 <h3 id="18-关于-js-的-style-width-取不到元素的宽度值的问题"><a href="#18-关于-js-的-style-width-取不到元素的宽度值的问题" class="headerlink" title="18.关于 js 的 style.width 取不到元素的宽度值的问题"></a>18.关于 js 的 style.width 取不到元素的宽度值的问题</h3><p>以前一直用<code>jquery</code>的<code>.width()</code>方法来获取一个元素的当前的宽度。不管该元素是否设置了宽度，CSS 样式是内联、外联 or 内嵌，都可用此方式获得元素当前的宽度。</p>
-<p>用原生 JS 想获取一个元素宽度时，写<code>document.getElementById(&quot;id&quot;).style.width</code>或者<code>document.getElementById(&quot;id&quot;).width</code>都取不到值。</p>
+<p>用原生 JS 想获取一个元素宽度时，写<code>document.getElementById("id").style.width</code>或者<code>document.getElementById("id").width</code>都取不到值。</p>
 <p>原来，在以下情况下，js 无法取到<code>.style.width</code>或者<code>.width</code>的值。</p>
 <ul>
 <li>1.元素未设置宽度值。</li>
@@ -881,8 +881,8 @@ newArr <span class="token operator">=</span> <span class="token function">getArr
 <p>虽然这种方式取不到宽度值。但却可以设置元素的宽度值。比如：设置 p 元素宽度为 200px:</p>
 </blockquote>
 <pre class=" language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"p1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token string">"200px"</span><span class="token punctuation">;</span></code></pre>
-<p>所以，只有将元素的样式设置成内嵌式的，才可以通过 <code>document.getElementById(&quot;id&quot;).style.width</code> 来获取宽度值；<br>比如：</p>
-<pre><code>&lt;p id=&quot;p1&quot; style=&quot;144px;&quot;&gt;一段很长的文字&lt;/p&gt;</code></pre><p>执行 js 代码</p>
+<p>所以，只有将元素的样式设置成内嵌式的，才可以通过 <code>document.getElementById("id").style.width</code> 来获取宽度值；<br>比如：</p>
+<pre><code>&lt;p id="p1" style="144px;"&gt;一段很长的文字&lt;/p&gt;</code></pre><p>执行 js 代码</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> w <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"p1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
 <span class="token function">alert</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>执行后输出结果为 144px。</p>
@@ -925,7 +925,7 @@ css<span class="token punctuation">:</span> <span class="token punctuation">{</s
 <pre class=" language-js"><code class="language-js">window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="21-Vue-中的-render-h-gt-h-App-什么意思？"><a href="#21-Vue-中的-render-h-gt-h-App-什么意思？" class="headerlink" title="21.Vue 中的 render: h =&gt; h(App)什么意思？"></a>21.Vue 中的 render: h =&gt; h(App)什么意思？</h3><p>这是文档里的内容：<br><img src="//static.tianyichuxin.com/images/10894/1.png" alt=""></p>
+<h3 id="21-Vue-中的-render-h-gt-h-App-什么意思？"><a href="#21-Vue-中的-render-h-gt-h-App-什么意思？" class="headerlink" title="21.Vue 中的 render: h => h(App)什么意思？"></a>21.Vue 中的 render: h =&gt; h(App)什么意思？</h3><p>这是文档里的内容：<br><img src="//static.tianyichuxin.com/images/10894/1.png" alt=""></p>
 <p>在哪里见过呢，就是这里：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     el<span class="token punctuation">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
@@ -1326,7 +1326,7 @@ flex-grow：<span class="token number">1</span><span class="token punctuation">;
 <h3 id="40-ElMessage-offset-修改"><a href="#40-ElMessage-offset-修改" class="headerlink" title="40.ElMessage offset 修改"></a>40.ElMessage offset 修改</h3><blockquote>
 <p><code>element-plus</code> 下生成 <code>es</code> 与 <code>lib</code> 两个文件夹，分别为 ESM 与 CJS 两种格式。</p>
 </blockquote>
-<h4 id="import-ElMessage-from-quot-element-plus-quot-方式引入"><a href="#import-ElMessage-from-quot-element-plus-quot-方式引入" class="headerlink" title="import { ElMessage } from &quot;element-plus&quot;; 方式引入"></a><code>import { ElMessage } from &quot;element-plus&quot;;</code> 方式引入</h4><p>1.修改 node_modules\element-plus\es\components\message\src\message.mjs 里的 offset 为 60</p>
+<h4 id="import-ElMessage-from-quot-element-plus-quot-方式引入"><a href="#import-ElMessage-from-quot-element-plus-quot-方式引入" class="headerlink" title="import { ElMessage } from &quot;element-plus&quot;; 方式引入"></a><code>import { ElMessage } from "element-plus";</code> 方式引入</h4><p>1.修改 node_modules\element-plus\es\components\message\src\message.mjs 里的 offset 为 60</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> messageDefaults <span class="token operator">=</span> <span class="token function">mutable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     customClass<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     center<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
@@ -1362,7 +1362,7 @@ flex-grow：<span class="token number">1</span><span class="token punctuation">;
     readonly repeatNum<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
     readonly appendTo<span class="token punctuation">:</span> HTMLElement<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">;</span></code></pre>
-<h4 id="const-ElMessage-require-quot-element-plus-quot-方式引入"><a href="#const-ElMessage-require-quot-element-plus-quot-方式引入" class="headerlink" title="const { ElMessage } = require(&quot;element-plus&quot;); 方式引入"></a><code>const { ElMessage } = require(&quot;element-plus&quot;);</code> 方式引入</h4><p>1.修改 node_modules\element-plus\lib\components\message\src\message.js 里的 offset 为 60</p>
+<h4 id="const-ElMessage-require-quot-element-plus-quot-方式引入"><a href="#const-ElMessage-require-quot-element-plus-quot-方式引入" class="headerlink" title="const { ElMessage } = require(&quot;element-plus&quot;); 方式引入"></a><code>const { ElMessage } = require("element-plus");</code> 方式引入</h4><p>1.修改 node_modules\element-plus\lib\components\message\src\message.js 里的 offset 为 60</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> messageDefaults <span class="token operator">=</span> typescript<span class="token punctuation">.</span><span class="token function">mutable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     customClass<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     center<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
@@ -1515,16 +1515,49 @@ parentEl2<span class="token punctuation">.</span><span class="token function">ap
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>parentEl1<span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出: &lt;div>这是一个拖动条&lt;/div></span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>parentEl2<span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出: &lt;div>这是一个拖动条&lt;/div></span></code></pre>
 <p>这样每个父元素都有自己的 <code>dragBar</code> 实例。</p>
-<h3 id="44-使用-scssPre-transform-error-sass-There-39-s-already-a-module-with-namespace-quot-custom-quot"><a href="#44-使用-scssPre-transform-error-sass-There-39-s-already-a-module-with-namespace-quot-custom-quot" class="headerlink" title="44.使用 scssPre-transform error: [sass] There&#39;s already a module with namespace &quot;custom&quot;."></a>44.使用 scss<code>Pre-transform error: [sass] There&#39;s already a module with namespace &quot;custom&quot;.</code></h3><p>使用</p>
+<h3 id="44-使用-scssPre-transform-error-sass-There-39-s-already-a-module-with-namespace-quot-custom-quot"><a href="#44-使用-scssPre-transform-error-sass-There-39-s-already-a-module-with-namespace-quot-custom-quot" class="headerlink" title="44.使用 scssPre-transform error: [sass] There's already a module with namespace &quot;custom&quot;."></a>44.使用 scss<code>Pre-transform error: [sass] There's already a module with namespace "custom".</code></h3><p>使用</p>
 <pre class=" language-scss"><code class="language-scss">@use <span class="token string">"@/assets/css/darkBlue/custom.scss"</span><span class="token punctuation">;</span>
 @use <span class="token string">"@/assets/css/darkGray/custom.scss"</span><span class="token punctuation">;</span></code></pre>
-<p>提示：<code>Pre-transform error: [sass] There&#39;s already a module with namespace &quot;custom&quot;.</code></p>
+<p>提示：<code>Pre-transform error: [sass] There's already a module with namespace "custom".</code></p>
 <p>这个错误信息表明在你的 SCSS 文件中，已经存在一个名为 “custom” 的模块。在 SCSS 中，<code>@use</code> 指令用于导入其他 SCSS 模块，但每个模块只可以有一个默认的命名空间。如果你尝试导入两个模块，它们都使用相同的命名空间，就会出现这个错误。</p>
 <p>为了解决这个问题，你可以使用 <code>@use</code> 指令的 <code>as</code> 关.键字来为每个模块指定不同的命名空间。例如：</p>
 <pre class=" language-scss"><code class="language-scss">@use <span class="token string">"@/assets/css/darkBlue/custom.scss"</span> as darkBlueCustom<span class="token punctuation">;</span>
 @use <span class="token string">"@/assets/css/darkGray/custom.scss"</span> as darkGrayCustom<span class="token punctuation">;</span></code></pre>
 <p>这样，你就可以通过 darkBlueCustom 和 darkGrayCustom 来访问这两个模块中的变量和混合宏，避免了命名冲突。</p>
+<h3 id="45-Vue3-hooks-里使用-defineEmits-，提示-Uncaught-in-promise-ReferenceError-defineEmits-is-not-defined"><a href="#45-Vue3-hooks-里使用-defineEmits-，提示-Uncaught-in-promise-ReferenceError-defineEmits-is-not-defined" class="headerlink" title="45.Vue3 hooks 里使用 defineEmits ，提示 Uncaught (in promise) ReferenceError: defineEmits is not defined"></a>45.Vue3 hooks 里使用 defineEmits ，提示 Uncaught (in promise) ReferenceError: defineEmits is not defined</h3><p>在 Vue3 Hooks 中使用 <code>defineEmits</code> 提示 “未定义”，原因是 <strong><code>defineEmits</code> 是 Vue 单文件组件 (SFC) 的编译宏，只能在 <code>&lt;script setup&gt;</code> 语法中直接使用，不能在普通 JS/TS 函数（自定义 Hooks）中直接定义或调用</strong>，只能通过组件传递 <code>emit</code> 函数给 Hooks 使用。</p>
+<h4 id="1-核心原因"><a href="#1-核心原因" class="headerlink" title="1.核心原因"></a>1.核心原因</h4><p>Vue3 的编译宏（<code>defineEmits</code>、<code>defineProps</code>、<code>useSlots</code> 等）是 Vue 编译器在处理 <code>.vue</code> 文件的 <code>&lt;script setup&gt;</code> 时注入的全局 API，<strong>仅在组件的 <code>&lt;script setup&gt;</code> 作用域内有效</strong>。</p>
+<p>而自定义 Hooks 是普通的 JS/TS 函数（通常抽离为单独文件），不属于组件的 <code>&lt;script setup&gt;</code> 上下文，Vue 编译器不会为其注入编译宏，因此直接使用会报 “ReferenceError”。</p>
+<h4 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h4><p>在组件中定义 emits，传递给 Hooks</p>
+<p>核心思路：<code>defineEmits</code> 仍在组件的 <code>&lt;script setup&gt;</code> 中定义，然后将<code>emit</code>函数作为参数传递给自定义 Hooks，Hooks 中通过参数调用<code>emit</code>。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>script setup<span class="token operator">></span>
+<span class="token comment" spellcheck="true">// 父组件/当前组件：Comp.vue</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useHook <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./useHook"</span><span class="token punctuation">;</span>
 
+<span class="token comment" spellcheck="true">// 1. 在组件的 &lt;script setup> 中定义 emits</span>
+<span class="token keyword">const</span> emit <span class="token operator">=</span> <span class="token function">defineEmits</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token string">"submit"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2. 将 emit 作为参数传递给 Hooks</span>
+<span class="token function">useHook</span><span class="token punctuation">(</span>emit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2367,7 +2400,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

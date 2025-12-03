@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    497
+                    537
                 </div>
                 
 
@@ -513,18 +513,36 @@
 <p>通过IE浏览器打开，弹出内容为”hello world”和”hello world”</p>
 <p>通过Firefox浏览器打开，弹出内容为”hello world”和”undefined”</p>
 <p>通过chrome浏览器打开，弹出的内容为”hello world”和”hello world”</p>
-<p>alert(content.outerHTML)则弹出：”<code>&lt;p id=&quot;p1&quot;&gt;hello world&lt;/p&gt;</code>“</p>
+<p>alert(content.outerHTML)则弹出：”<code>&lt;p id="p1"&gt;hello world&lt;/p&gt;</code>“</p>
 <p><strong>示例2</strong></p>
 <p><img src="//static.tianyichuxin.com/images/42361/3.png" alt=""></p>
-<p>通过IE浏览器打开，弹出内容为”<code>&lt;p id=&quot;p1&quot;&gt;hello world&lt;/p&gt;</code>“和”hello world”</p>
-<p>通过Firefox浏览器打开，弹出内容为”<code>&lt;p id=&quot;p1&quot;&gt;hello world&lt;/p&gt;</code>“和”undefined”</p>
-<p>通过chrome浏览器打开，弹出的内容为”<code>&lt;p id=&quot;p1&quot;&gt;hello world&lt;/p&gt;</code>“和”hello world”</p>
-<p>alert(content.outerHTML)则弹出：”<code>&lt;div id=&quot;d1&quot;&gt;&lt;p id=&quot;p1&quot;&gt;hello world&lt;/p&gt;&lt;/div&gt;</code>“</p>
+<p>通过IE浏览器打开，弹出内容为”<code>&lt;p id="p1"&gt;hello world&lt;/p&gt;</code>“和”hello world”</p>
+<p>通过Firefox浏览器打开，弹出内容为”<code>&lt;p id="p1"&gt;hello world&lt;/p&gt;</code>“和”undefined”</p>
+<p>通过chrome浏览器打开，弹出的内容为”<code>&lt;p id="p1"&gt;hello world&lt;/p&gt;</code>“和”hello world”</p>
+<p>alert(content.outerHTML)则弹出：”<code>&lt;div id="d1"&gt;&lt;p id="p1"&gt;hello world&lt;/p&gt;&lt;/div&gt;</code>“</p>
 <p><strong>综上</strong>：innerHTML所有浏览器都支持，innerText是IE浏览器支持的，Firefox浏览器不支持。</p>
 <p><strong>不同之处：</strong></p>
 <p>1） innerHTML、outerHTML在设置标签之间的内容时，包含的HTML会被解析；而innerText、outerText则不会；</p>
 <p>2） innerHTML、innerText仅设置标签之间的文本，而outerHTML、outerText设置包含自身标签在内文本</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1367,7 +1385,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

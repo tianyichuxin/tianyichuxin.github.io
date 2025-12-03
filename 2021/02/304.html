@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -722,7 +722,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <p>三种都可以实现子组件调用父组件的方法，但是效率有所不同，根据实际需求选择合适的方法。</p>
-<h2 id="二、Vue组件：子传父"><a href="#二、Vue组件：子传父" class="headerlink" title="二、Vue组件：子传父"></a>二、Vue组件：子传父</h2><h3 id="1-父组件获取子组件的数据"><a href="#1-父组件获取子组件的数据" class="headerlink" title="1.父组件获取子组件的数据"></a>1.父组件获取子组件的数据</h3><h4 id="方法1：给相应的子组件标签上加-ref-quot-child-quot-，使用this-refs-child-msg获取msg的内容"><a href="#方法1：给相应的子组件标签上加-ref-quot-child-quot-，使用this-refs-child-msg获取msg的内容" class="headerlink" title="方法1：给相应的子组件标签上加 ref =&quot;child&quot;，使用this.$refs.child.msg获取msg的内容"></a>方法1：给相应的子组件标签上加 <code>ref =&quot;child&quot;</code>，使用<code>this.$refs.child.msg</code>获取msg的内容</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+<h2 id="二、Vue组件：子传父"><a href="#二、Vue组件：子传父" class="headerlink" title="二、Vue组件：子传父"></a>二、Vue组件：子传父</h2><h3 id="1-父组件获取子组件的数据"><a href="#1-父组件获取子组件的数据" class="headerlink" title="1.父组件获取子组件的数据"></a>1.父组件获取子组件的数据</h3><h4 id="方法1：给相应的子组件标签上加-ref-quot-child-quot-，使用this-refs-child-msg获取msg的内容"><a href="#方法1：给相应的子组件标签上加-ref-quot-child-quot-，使用this-refs-child-msg获取msg的内容" class="headerlink" title="方法1：给相应的子组件标签上加 ref =&quot;child&quot;，使用this.$refs.child.msg获取msg的内容"></a>方法1：给相应的子组件标签上加 <code>ref ="child"</code>，使用<code>this.$refs.child.msg</code>获取msg的内容</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>父组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>getmsg<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>点击<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
@@ -889,7 +889,7 @@
 <blockquote>
 <p>从上面可以看出，当<code>this.$emit()</code>携带参数时，可以传参到父组件，同时可以调用父组件的方法；</p>
 </blockquote>
-<h3 id="2-父组件调用子组件的方法"><a href="#2-父组件调用子组件的方法" class="headerlink" title="2.父组件调用子组件的方法"></a>2.父组件调用子组件的方法</h3><p>给相应的子组件标签上加 <code>ref =&quot;child&quot;</code>，然后通过<code>this.$refs.child.func()</code>获取func()的方法。</p>
+<h3 id="2-父组件调用子组件的方法"><a href="#2-父组件调用子组件的方法" class="headerlink" title="2.父组件调用子组件的方法"></a>2.父组件调用子组件的方法</h3><p>给相应的子组件标签上加 <code>ref ="child"</code>，然后通过<code>this.$refs.child.func()</code>获取func()的方法。</p>
 <h2 id="三、Vue的-on-emit的使用"><a href="#三、Vue的-on-emit的使用" class="headerlink" title="三、Vue的$on,$emit的使用"></a>三、Vue的$on,$emit的使用</h2><p>vue中使用 <code>$emit(eventName)</code> 触发事件，使用 <code>$on(eventName)</code> 监听事件，为<strong>同级事件</strong>。</p>
 <p><code>$emit(eventName)</code>触发当前实例上的事件，附加参数都会传给监听器回调。</p>
 <p><code>$on(eventName)</code>监听当前实例上的自定义事件。事件可以由 <code>vm.$emit</code> 触发。回调函数会接收所有传入事件触发函数的额外参数。</p>
@@ -1024,7 +1024,25 @@
 <p>4：子组件可以通过 <code>this.$parent.</code> 去访问父组件的值或方法；</p>
 <p>5：父组件可以通过 <code>this.$store.dispatch</code> 去监听子组件的值;</p>
 <p>下次我们说说<code>$attrs和$listeners</code>。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1871,7 +1889,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

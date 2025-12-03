@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    684
+                    736
                 </div>
                 
 
@@ -514,8 +514,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>HTML+JavaScript<br/>HTML渲染引擎<br/> (浏览器)</td>
-<td>HTML+JavaScript+GLSL ES<br/>HTML渲染引擎+WebGL+OpenGL/OpenGL ES<br/> (浏览器)</td>
+<td>HTML+JavaScript<br>HTML渲染引擎<br> (浏览器)</td>
+<td>HTML+JavaScript+GLSL ES<br>HTML渲染引擎+WebGL+OpenGL/OpenGL ES<br> (浏览器)</td>
 </tr>
 </tbody></table>
 <p><strong>特点：</strong><code>WebGL</code>完美地解决了现有的<code>Web</code>交互式三维动画的两个问题：</p>
@@ -526,7 +526,25 @@
 <ul>
 <li><a href="https://www.cnblogs.com/ihardcoder/p/14892276.html" target="_blank" rel="noopener">WebGIS vs WebGL图形编程</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1369,7 +1387,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

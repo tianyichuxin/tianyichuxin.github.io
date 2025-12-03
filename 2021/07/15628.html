@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -706,7 +706,25 @@ target <span class="token comment" spellcheck="true">// {a:1, b:2, c:3}</span></
 <p><strong><code>Object.assign()</code></strong>方法既不属于深拷贝，也不属于浅拷贝。对于一级的时候，是深拷贝，如果是二级以后对象就是浅拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。</p>
 <h3 id="5-总结一下："><a href="#5-总结一下：" class="headerlink" title="5.总结一下："></a>5.总结一下：</h3><p><code>Array</code> 的 <code>slice</code> 和 <code>concat</code> 方法 和 <code>jQuery</code> 中的 <code>extend</code> 复制方法，他们都会复制第一层的值，对于 <strong>第一层</strong> 的值都是 <strong>深拷贝</strong>，而到 <strong>第二层</strong> 的时候 <code>Array</code> 的 <code>slice</code> 和 <code>concat</code> 方法就是 <strong>复制引用</strong> ，<code>jQuery</code> 中的 <code>extend</code> 复制方法 则 <strong>取决于 你的 第一个参数</strong>， 也就是是否进行递归复制。所谓第一层 就是 key 所对应的 value 值是基本数据类型，也就像上面栗子中的name、age，而对于 value 值是引用类型 则为第二层，也就像上面栗子中的 company 。</p>
 <p><img src="//static.tianyichuxin.com/images/15628/0-2.png" alt=""></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1545,7 +1563,7 @@ target <span class="token comment" spellcheck="true">// {a:1, b:2, c:3}</span></
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

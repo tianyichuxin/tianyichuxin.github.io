@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -1073,7 +1073,7 @@ a11bef0 - Scott Chacon, 6 years ago : first commit</code></pre>
 <h3 id="1-限制输出长度"><a href="#1-限制输出长度" class="headerlink" title="1.限制输出长度"></a>1.限制输出长度</h3><p>除了定制输出格式的选项之外，<code>git log</code> 还有许多非常实用的限制输出长度的选项，也就是只输出一部分的提交。 之前你已经看到过 <code>-2</code> 选项了，它只会显示最近的两条提交， 实际上，你可以使用类似 <code>-&lt;n&gt;</code> 的选项，其中的 <code>n</code> 可以是任何整数，表示仅显示最近的 <code>n</code> 条提交。 不过实践中这个选项不是很常用，因为 Git 默认会将所有的输出传送到分页程序中，所以你一次只会看到一页的内容。</p>
 <p>但是，类似 <code>--since</code> 和 <code>--until</code> 这种按照时间作限制的选项很有用。 例如，下面的命令会列出最近两周的所有提交：</p>
 <pre class=" language-console"><code class="language-console">$ git log --since=2.weeks</code></pre>
-<p>该命令可用的格式十分丰富——可以是类似 <code>&quot;2008-01-15&quot;</code> 的具体的某一天，也可以是类似 <code>&quot;2 years 1 day 3 minutes ago&quot;</code> 的相对日期。</p>
+<p>该命令可用的格式十分丰富——可以是类似 <code>"2008-01-15"</code> 的具体的某一天，也可以是类似 <code>"2 years 1 day 3 minutes ago"</code> 的相对日期。</p>
 <p>还可以过滤出匹配指定条件的提交。 用 <code>--author</code> 选项显示指定作者的提交，用 <code>--grep</code> 选项搜索提交说明中的关键字。</p>
 <table>
 <thead>
@@ -1549,7 +1549,25 @@ Date:   Tue Aug 26 19:48:51 2008 +0800
 <p>可以看出，Git 只是简单地将别名替换为对应的命令。 然而，你可能想要执行外部命令，而不是一个 Git 子命令。 如果是那样的话，可以在命令前面加入 <code>!</code> 符号。 如果你自己要写一些与 Git 仓库协作的工具的话，那会很有用。 我们现在演示将 <code>git visual</code> 定义为 <code>gitk</code> 的别名：</p>
 <pre class=" language-console"><code class="language-console">$ git config --global alias.visual '!gitk'</code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现在，你应该能完成所有 Git 基本的本地操作了－创建或克隆一个仓库、进行更改、暂存并提交这些更改、浏览仓库从创建到现在的所有更改历史。 接下来，本书将介绍 Git 的杀手级特性：分支模型。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2392,7 +2410,7 @@ Date:   Tue Aug 26 19:48:51 2008 +0800
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

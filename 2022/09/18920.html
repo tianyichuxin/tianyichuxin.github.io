@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -568,7 +568,7 @@ a<span class="token punctuation">.</span><span class="token function">add</span>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">var</span> i<span class="token operator">=</span>a <span class="token keyword">instanceof</span> <span class="token class-name">Set</span></code></pre>
 <p>i的值为 <code>true</code> 就代表其为Set对象，否则就不是。</p>
-<h3 id="Set中的特殊值"><a href="#Set中的特殊值" class="headerlink" title="Set中的特殊值"></a>Set中的特殊值</h3><p><code>Set</code> 对象存储的值总是唯一的，所以需要判断两个值是否恒等。向 <code>Set</code> 加入值的时候，不会发生类型转换，所以<code>5</code>和<code>&quot;5&quot;</code>是两个不同的值。但有几个特殊值需要特殊对待：</p>
+<h3 id="Set中的特殊值"><a href="#Set中的特殊值" class="headerlink" title="Set中的特殊值"></a>Set中的特殊值</h3><p><code>Set</code> 对象存储的值总是唯一的，所以需要判断两个值是否恒等。向 <code>Set</code> 加入值的时候，不会发生类型转换，所以<code>5</code>和<code>"5"</code>是两个不同的值。但有几个特殊值需要特殊对待：</p>
 <ul>
 <li>+0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复</li>
 <li>undefined 与 undefined 是恒等的，所以不重复</li>
@@ -792,7 +792,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的。</li>
 <li>不能遍历，方法有get、set、has、delete。</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1635,7 +1653,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

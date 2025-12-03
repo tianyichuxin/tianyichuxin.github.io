@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.4k
                 </div>
                 
 
@@ -734,7 +734,7 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
 <tr>
 <td>data</td>
 <td>一个包含应与表单一起提交的额外数据的对象。</td>
-<td><code>data: { key1: &#39;value1&#39;, key2: &#39;value2&#39; }</code></td>
+<td><code>data: { key1: 'value1', key2: 'value2' }</code></td>
 <td></td>
 </tr>
 <tr>
@@ -752,19 +752,19 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
 <tr>
 <td>beforeSubmit</td>
 <td>表单提交前被调用的回调函数。如果回调函数返回false表单将不被提交。回调函数带三个调用参数：数组形式的表单数据，jQuery表单对象，以及传入ajaxForm/ajaxSubmit中的Options对象。</td>
-<td><code>beforeSubmit: function(arr, $form, options) {     // The array of form data takes the following form:     // [ { name: &#39;username&#39;, value: &#39;jresig&#39; }, { name: &#39;password&#39;, value: &#39;secret&#39; } ]          // return false to cancel submit                  }</code></td>
+<td><code>beforeSubmit: function(arr, $form, options) {     // The array of form data takes the following form:     // [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]          // return false to cancel submit                  }</code></td>
 <td>默认值：null</td>
 </tr>
 <tr>
 <td>success</td>
 <td>表单成功提交后调用的回调函数。然后dataType选项值决定传回responseText还是responseXML的值。</td>
-<td>1.）responseText或responseXML值（取决于dataType选项的值）。<br /> 2.）statusText <br />3.）xhr（如果使用jQuery &lt;1.4，则为jQuery包裹的表单元素）<br /> 4.）jQuery包装的表单元素（如果使用jQuery &lt;1.4，则为未定义）</td>
+<td>1.）responseText或responseXML值（取决于dataType选项的值）。<br> 2.）statusText <br>3.）xhr（如果使用jQuery &lt;1.4，则为jQuery包裹的表单元素）<br> 4.）jQuery包装的表单元素（如果使用jQuery &lt;1.4，则为未定义）</td>
 <td>默认值：null</td>
 </tr>
 <tr>
 <td>dataType</td>
 <td>响应的预期数据类型。下列之一：null，“ xml”，“ script”或“ json”。该<code>dataType</code>选项提供一种用于指定应如何处理服务器响应的方法。这直接映射到该<code>jQuery.httpData</code>方法。</td>
-<td><strong>‘xml’</strong>：如果dataType ==’xml’，则将服务器响应视为XML，如果指定了’success’回调方法，则将传递responseXML值<br /><strong>‘json’</strong>：如果dataType ==’json’，则服务器响应将被评估并传递给’success’回调（如果指定）<br /><strong>‘script’</strong>：如果dataType ==’script’，则在全局上下文中评估服务器响应</td>
+<td><strong>‘xml’</strong>：如果dataType ==’xml’，则将服务器响应视为XML，如果指定了’success’回调方法，则将传递responseXML值<br><strong>‘json’</strong>：如果dataType ==’json’，则服务器响应将被评估并传递给’success’回调（如果指定）<br><strong>‘script’</strong>：如果dataType ==’script’，则在全局上下文中评估服务器响应</td>
 <td>默认值：null</td>
 </tr>
 <tr>
@@ -786,50 +786,50 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
 <th>ajaxForm</th>
 <th>增加一个所需要的事件监听器，为ajax提交表单做准备。ajaxForm并不能提交表单。在document的ready函数中，使用ajaxForm来为ajax提交表单进行准备。</th>
 <th>接受0个或1个参数。参数可以是一个回调函数，也可以是一个Options对象。</th>
-<th><code>$(&#39;#myFormId&#39;).ajaxForm();</code></th>
+<th><code>$('#myFormId').ajaxForm();</code></th>
 </tr>
 </thead>
 <tbody><tr>
 <td>ajaxSubmit</td>
 <td>使用ajax提交表单。在最常见的用例中，这是响应用户单击表单上的“提交”按钮而调用的。</td>
 <td>接受0个或1个参数。参数可以是一个回调函数，也可以是一个Options对象。</td>
-<td><code>$(&quot;#myFormId&quot;).ajaxSubmit()</code>; 或  <code>$(&quot;#myFormId&quot;).submit(function(){  $(this).ajaxSubmit();  return false;})</code>;</td>
+<td><code>$("#myFormId").ajaxSubmit()</code>; 或  <code>$("#myFormId").submit(function(){  $(this).ajaxSubmit();  return false;})</code>;</td>
 </tr>
 <tr>
 <td>formSerialize</td>
 <td>将表单串行化（或序列化）为一个查询字符串。这个方法将返回以下格式的字符串：<code>name1=value1&amp;name2=value2</code>。</td>
 <td>无</td>
-<td><code>var queryString = $(&#39;#myFormId&#39;).formSerialize(); $.post(&#39;myscript.php&#39;, queryString);</code></td>
+<td><code>var queryString = $('#myFormId').formSerialize(); $.post('myscript.php', queryString);</code></td>
 </tr>
 <tr>
 <td>fieldSerialize</td>
 <td>将表单的字段元素串行化（或序列化）为一个查询字符串。当只有部分表单字段需要进行串行化（或序列化）时，使用这个就很方便了。返回以下格式的字符串：<code>name=value1&amp;name2=value2</code>。</td>
 <td>无</td>
-<td><code>var queryString = $(&#39;#myFormId .specialFields&#39;).fieldSerialize();</code></td>
+<td><code>var queryString = $('#myFormId .specialFields').fieldSerialize();</code></td>
 </tr>
 <tr>
 <td>fieldValue</td>
 <td>返回匹配插入数组中的表单元素值。从.91版本开始，此方法<strong>始终</strong>返回一个数组。如果无法确定有效值，则数组将为空，否则它将包含一个或多个值。</td>
 <td>无</td>
-<td><code>var value = $(&#39;#myFormId :password&#39;).fieldValue();</code></td>
+<td><code>var value = $('#myFormId :password').fieldValue();</code></td>
 </tr>
 <tr>
 <td>resetForm</td>
 <td>将表单恢复到初始状态。</td>
 <td>无</td>
-<td><code>$(&quot;#myFormId&quot;).resetForm();</code></td>
+<td><code>$("#myFormId").resetForm();</code></td>
 </tr>
 <tr>
 <td>clearForm</td>
 <td>清除表单元素。该方法将所有的text、password、textarea置空，清除select元素中的选定，以及所有radio按钮和checkbox按钮重置为非选定状态。</td>
 <td>无</td>
-<td><code>$(&quot;#myFormId&quot;).clearForm();</code></td>
+<td><code>$("#myFormId").clearForm();</code></td>
 </tr>
 <tr>
 <td>clearFields</td>
 <td>清除字段元素。只有部分表单元素需要清除时方便使用。</td>
 <td>无</td>
-<td><code>$(&quot;#myFormId .specialFields&quot;).clearFields();</code></td>
+<td><code>$("#myFormId .specialFields").clearFields();</code></td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -838,7 +838,7 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
 <h2 id="5-扩展：onsubmit-和submit"><a href="#5-扩展：onsubmit-和submit" class="headerlink" title="5.扩展：onsubmit()和submit()"></a>5.扩展：onsubmit()和submit()</h2><h3 id="1-onsubmit"><a href="#1-onsubmit" class="headerlink" title="1.onsubmit()"></a>1.onsubmit()</h3><blockquote>
 <p>定义：当表单提交时执行 JavaScript。</p>
 <p><code>onsubmit()</code>是Form对象的事件句柄，而<code>submit()</code>是form对象的事件方法。</p>
-<p>还有一个Submit 对象，代表 HTML 表单中的一个提交按钮 (submit button)。在 HTML 表单中 <code>&lt;input type=&quot;submit&quot;&gt;</code> 标签每出现一次，一个 Submit 对象就会被创建。</p>
+<p>还有一个Submit 对象，代表 HTML 表单中的一个提交按钮 (submit button)。在 HTML 表单中 <code>&lt;input type="submit"&gt;</code> 标签每出现一次，一个 Submit 对象就会被创建。</p>
 </blockquote>
 <p>当用户单击了表单中的 <code>Submit</code> 按钮而提交一个表单时，就会调用这个事件句柄函数。注意，当调用方法<code>Form.submit()</code>时，该处理函数不会被调用。</p>
 <p>如果 <code>onsubmit</code>句柄返回 fasle，表单的元素就不会提交。如果该函数返回其他值或什么都没有返回，则表单会被提交。</p>
@@ -874,7 +874,7 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <blockquote>
-<p>注：<code>&lt;form action=&quot;&quot; methods=&quot;post&quot; onsubmit=&quot;return check()&quot;&gt;</code>中的return不能少</p>
+<p>注：<code>&lt;form action="" methods="post" onsubmit="return check()"&gt;</code>中的return不能少</p>
 </blockquote>
 <blockquote>
 <p>也可以通过js去定义onsubmit。</p>
@@ -921,7 +921,25 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
         form<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1768,7 +1786,7 @@ uploadBtn<span class="token punctuation">.</span><span class="token function">ad
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

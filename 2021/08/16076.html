@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -515,7 +515,7 @@
 <p><em>blobParts</em>： 数组类型， 数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是<code>ArrayBuffer(二进制数据缓冲区), ArrayBufferView,Blob,DOMString</code>。或其他类似对象的混合体。</p>
 <p><em>options</em>： 可选项，字典格式类型，可以指定如下两个属性：</p>
 <ul>
-<li>type，默认值为<code>&quot;&quot;</code>，它代表了将会被放入到blob中的数组内容的MIME类型。</li>
+<li>type，默认值为<code>""</code>，它代表了将会被放入到blob中的数组内容的MIME类型。</li>
 <li>endings， 默认值为”transparent”，用于指定包含行结束符<code>\n</code>的字符串如何被写入。 它是以下两个值中的一个： “native”，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； “transparent”，表示会保持blob中保存的结束符不变。</li>
 </ul>
 <p>举个栗子：</p>
@@ -537,7 +537,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blob4<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出：Blob {size: 14, type: ""}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blob5<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出：Blob {size: 15, type: ""}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blob6<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//输出：Blob {size: 59, type: ""}</span></code></pre>
-<p>size代表<code>Blob</code> 对象中所包含数据的字节数。这里要注意，使用字符串和普通对象创建Blob时的不同，blob4使用通过<code>JSON.stringify</code>把data4对象转换成json字符串，blob5则直接使用data4创建，两个对象的size分别为14和15。blob4的size等于14很容易理解，因为JSON.stringify(data4)的结果为：<code>&quot;{&quot;name&quot;:&quot;abc&quot;}&quot;</code>，正好14个字节(不包含最外层的引号)。blob5的size等于15是如何计算而来的呢？实际上，当使用普通对象创建Blob对象时，相当于调用了普通对象的toString()方法得到字符串数据，然后再创建Blob对象。所以，blob5保存的数据是<code>&quot;[object Object]&quot;</code>，是15个字节(不包含最外层的引号)。</p>
+<p>size代表<code>Blob</code> 对象中所包含数据的字节数。这里要注意，使用字符串和普通对象创建Blob时的不同，blob4使用通过<code>JSON.stringify</code>把data4对象转换成json字符串，blob5则直接使用data4创建，两个对象的size分别为14和15。blob4的size等于14很容易理解，因为JSON.stringify(data4)的结果为：<code>"{"name":"abc"}"</code>，正好14个字节(不包含最外层的引号)。blob5的size等于15是如何计算而来的呢？实际上，当使用普通对象创建Blob对象时，相当于调用了普通对象的toString()方法得到字符串数据，然后再创建Blob对象。所以，blob5保存的数据是<code>"[object Object]"</code>，是15个字节(不包含最外层的引号)。</p>
 <h3 id="slice方法"><a href="#slice方法" class="headerlink" title="slice方法"></a>slice方法</h3><p>Blob对象有一个slice方法，返回一个新的<code>Blob</code>对象，包含了源Blob对象中制定范围内的数据。</p>
 <p><strong>参数说明：</strong></p>
 <p>start： 可选，代表 <a href="https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FBlob"><code>Blob</code></a> 里的下标，表示第一个会被会被拷贝进新的 <a href="https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FBlob"><code>Blob</code></a> 的字节的起始位置。如果传入的是一个负数，那么这个偏移量将会从数据的末尾从后到前开始计算。</p>
@@ -703,7 +703,25 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1542,7 +1560,7 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

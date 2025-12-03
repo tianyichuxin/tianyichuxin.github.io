@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -572,7 +572,7 @@ mysql<span class="token operator">></span> flush privileges<span class="token pu
 <li>再开一个DOS窗口（因为刚才那个DOS窗口已经不能动了），转到mysql\bin目录。  </li>
 <li>输入mysql回车，如果成功，将出现MySQL提示符 &gt;。  </li>
 <li>连接权限数据库：<code>use mysql;</code> 。  </li>
-<li>改密码：<code>update user set password=password(&quot;123&quot;) where user=&quot;root&quot;;</code>（别忘了最后加分号） 。  </li>
+<li>改密码：<code>update user set password=password("123") where user="root";</code>（别忘了最后加分号） 。  </li>
 <li>刷新权限（必须步骤）：<code>flush privileges;</code>。  </li>
 <li>退出<code>quit;</code>。  </li>
 <li>注销系统，再进入，使用用户名root和刚才设置的新密码123登录。</li>
@@ -592,7 +592,7 @@ flush privileges<span class="token punctuation">;</span></code></pre>
 <h4 id="3-mysql-8-0以上的修改方法"><a href="#3-mysql-8-0以上的修改方法" class="headerlink" title="3.mysql 8.0以上的修改方法"></a>3.mysql 8.0以上的修改方法</h4><p>（1）如果当前root用户authentication_string字段下有内容，先将其设置为空，若没有可以直接进行二步骤。</p>
 <pre class=" language-js"><code class="language-js">use mysql<span class="token punctuation">;</span> 
 update user <span class="token keyword">set</span> authentication_string<span class="token operator">=</span><span class="token string">''</span> where user<span class="token operator">=</span><span class="token string">'root'</span></code></pre>
-<p>（2）使用ALTER修改root用户密码,方法为<code>ALTER user &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;新密码&#39;</code>。如下：</p>
+<p>（2）使用ALTER修改root用户密码,方法为<code>ALTER user 'root'@'localhost' IDENTIFIED BY '新密码'</code>。如下：</p>
 <pre class=" language-js"><code class="language-js">ALTER user <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED BY <span class="token string">'MySQL123#'</span></code></pre>
 <blockquote>
 <p>此处有两点需要注意：</p>
@@ -606,7 +606,25 @@ update user <span class="token keyword">set</span> authentication_string<span cl
 <p>这样会给user表中root用户的authentication_string字段下设置了newpassword值；</p>
 <p>当再使用ALTER USER ‘root’@’localhost’ IDENTIFITED BY ‘newpassword’时会报错的；</p>
 <p>因为authentication_string字段下只能是mysql加密后的41位字符串密码；其他的会报格式错误；</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1461,7 +1479,7 @@ update user <span class="token keyword">set</span> authentication_string<span cl
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

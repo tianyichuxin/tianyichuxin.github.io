@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    801
+                    851
                 </div>
                 
 
@@ -512,7 +512,7 @@
 <p><strong>安装amfe-flexible：</strong>　　</p>
 <pre class=" language-js"><code class="language-js">npm i amfe<span class="token operator">-</span>flexible <span class="token operator">--</span>save</code></pre>
 <p>在项目的入口main.js文件中引入amfe-flexible: </p>
-<p><code>import &#39;amfe-flexible&#39;</code></p>
+<p><code>import 'amfe-flexible'</code></p>
 <h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p><strong>使用postcss-pxtorem自动将css中的px转换成rem</strong></p>
 <p><strong>安装postcss-pxtorem ：</strong>　</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> postcss-pxtorem --save-dev</code></pre>
@@ -713,7 +713,25 @@ axios<span class="token punctuation">.</span>interceptors<span class="token punc
   <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre>
 <p><strong>关注微信公众号，了解更多前端知识。更有小程序和UI设计、后台node等方面的内容哦</strong><br><img src="//static.tianyichuxin.com/images/ewm.jpg" alt=""></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1560,7 +1578,7 @@ axios<span class="token punctuation">.</span>interceptors<span class="token punc
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

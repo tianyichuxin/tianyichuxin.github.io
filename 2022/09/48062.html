@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    756
+                    808
                 </div>
                 
 
@@ -520,7 +520,25 @@
 <p><strong>数据绑定是<code>View</code>与<code>Model</code>之间的映射关系，数据流指的是组件之间的数据流动</strong>。<code>v-model</code>不是真正的双向数据流，是因为它不能直接修改父组件的值，比如你在<code>v-model</code>中绑定<code>props</code>中的值是会报错的，它只能绑定组件的值。</p>
 <p>而真正的双向数据流，比如<code>AngularJs</code>，是允许在子组件中直接更新父组件的值的，这也是为什么说<code>v-model</code>只是语法糖的原因。</p>
 <p>总得来说，<strong>单双向数据绑定</strong>与<strong>数据流</strong>是两个<strong>不同维度</strong>的概念，<strong>数据绑定</strong>是<code>View</code>与<code>Model</code>之间的映射关系，<strong>数据流</strong>指的是<strong>组件之间</strong>的数据流动。因此，单向数据流也可有双向绑定，双向数据流也可以有双向绑定，两者不应该混为一谈。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1363,7 +1381,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

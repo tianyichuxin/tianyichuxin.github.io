@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -540,7 +540,7 @@ app<span class="token punctuation">.</span><span class="token function">on</span
     mainWin<span class="token punctuation">.</span>webContents<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span>customEventName<span class="token punctuation">,</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> params<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="主进程与渲染进程"><a href="#主进程与渲染进程" class="headerlink" title="主进程与渲染进程"></a>主进程与渲染进程</h2><p>假设 <code>mainWin</code> 是 <code>BrowserWindow</code> 的一个实例，<code>mainWin.send == mainWin.webContents.send</code></p>
-<h3 id="主进程-gt-渲染进程"><a href="#主进程-gt-渲染进程" class="headerlink" title="主进程 -&gt; 渲染进程"></a>主进程 -&gt; 渲染进程</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> ipcMain<span class="token punctuation">,</span> BrowserWindow <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h3 id="主进程-gt-渲染进程"><a href="#主进程-gt-渲染进程" class="headerlink" title="主进程 -> 渲染进程"></a>主进程 -&gt; 渲染进程</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> ipcMain<span class="token punctuation">,</span> BrowserWindow <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"ready"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> mainWin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -553,7 +553,7 @@ app<span class="token punctuation">.</span><span class="token function">on</span
 <span class="token comment" spellcheck="true">// 渲染进程，如render.js</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> ipcRenderer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 ipcRenderer<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="渲染进程-gt-主进程"><a href="#渲染进程-gt-主进程" class="headerlink" title="渲染进程 -&gt; 主进程"></a>渲染进程 -&gt; 主进程</h3><p>渲染进程依赖 ipcRenderer 模块给主进程发送消息，官方提供了三个方法：</p>
+<h3 id="渲染进程-gt-主进程"><a href="#渲染进程-gt-主进程" class="headerlink" title="渲染进程 -> 主进程"></a>渲染进程 -&gt; 主进程</h3><p>渲染进程依赖 ipcRenderer 模块给主进程发送消息，官方提供了三个方法：</p>
 <ul>
 <li><code>ipcRenderer.send(channel, …args)</code></li>
 <li><code>ipcRenderer.invoke(channel, …args)</code></li>
@@ -609,7 +609,25 @@ ipcMain<span class="token punctuation">.</span><span class="token function">on</
 <li>渲染进程1 -&gt; 主进程（中转代理） -&gt; 渲染进程2</li>
 <li>从主进程将一个 MessagePort 传递到两个渲染器。 这将允许在初始设置后渲染器之间直接进行通信。</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1448,7 +1466,7 @@ ipcMain<span class="token punctuation">.</span><span class="token function">on</
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

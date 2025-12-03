@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -677,7 +677,25 @@ Watcher<span class="token punctuation">.</span>prototype<span class="token punct
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>当 options.lazy 设置为 true 之后（仅计算属性 watcher 的 options.lazy 设置为 true ），每次依赖更新，都不会主动触发 run函数 ，而是把 watcher.dirty 设置为 true 。这样，当对计算属性进行取值时，就会运行 computedGetter函数 。 computedGetter函数 中有一个关于 watcher.dirty 的判断，当 watcher.dirty 为 true 时会运行 watcher.evaluate 进行值的更新，并把 watcher.dirty 设置为 false ，这样就完成了惰性求值的过程。后面只要依赖不更新，就不会运行 update ，就不会把 watcher.dirty 为 true ，那么再次取值的时候就不会运行 watcher.evaluate 进行值的更新，从而达到了缓存的效果。</p>
 <p>综上，我们了解到 cache 不为 false 的时候，计算属性都是惰性求值且具有缓存性的，而 cache 默认是 true ，我们也大多使用这个默认值，所以我们说  <strong>computed 本质是一个惰性求值的观察者，具有缓存性，只有当依赖变化后，第一次访问 computed 属性，才会计算新的值</strong> 。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1520,7 +1538,7 @@ Watcher<span class="token punctuation">.</span>prototype<span class="token punct
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

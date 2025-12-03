@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -767,8 +767,8 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
 <p><img src="//static.tianyichuxin.com/images/43243/8.png" alt=""></p>
 <p>完美！！！</p>
 <h4 id="3-Proxy支持13种拦截操作，这是defineProperty所不具有的"><a href="#3-Proxy支持13种拦截操作，这是defineProperty所不具有的" class="headerlink" title="3. Proxy支持13种拦截操作，这是defineProperty所不具有的"></a>3. Proxy支持13种拦截操作，这是defineProperty所不具有的</h4><ul>
-<li>get(target, propKey, receiver)：拦截对象属性的读取，比如 <code>proxy.foo</code> 和 <code>proxy[&#39;foo&#39;]</code> 。</li>
-<li>set(target, propKey, value, receiver)：拦截对象属性的设置，比如 <code>proxy.foo = v</code> 或 <code>proxy[&#39;foo&#39;] = v</code> ，返回一个布尔值。</li>
+<li>get(target, propKey, receiver)：拦截对象属性的读取，比如 <code>proxy.foo</code> 和 <code>proxy['foo']</code> 。</li>
+<li>set(target, propKey, value, receiver)：拦截对象属性的设置，比如 <code>proxy.foo = v</code> 或 <code>proxy['foo'] = v</code> ，返回一个布尔值。</li>
 <li>has(target, propKey)：拦截 <code>propKey in proxy</code> 的操作，返回一个布尔值。</li>
 <li>deleteProperty(target, propKey)：拦截 <code>delete proxy[propKey]</code> 的操作，返回一个布尔值。</li>
 <li>ownKeys(target)：拦截 <code>Object.getOwnPropertyNames(proxy)</code> 、 <code>Object.getOwnPropertySymbols(proxy)</code> 、 <code>Object.keys(proxy)</code> 、 <code>for...in</code> 循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而 <code>Object.keys()</code> 的返回结果仅包括目标对象自身的可遍历属性。</li>
@@ -802,7 +802,25 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
 <li><a href="https://www.jb51.net/article/258173.htm" target="_blank" rel="noopener">defineProperty和Proxy基础功能及性能对比</a></li>
 <li><a href="https://www.jb51.net/article/261827.htm" target="_blank" rel="noopener">Vue源码学习defineProperty响应式数据原理实现</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1649,7 +1667,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

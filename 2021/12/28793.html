@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
 
@@ -574,8 +574,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </tr>
 <tr>
 <td>具体事件</td>
-<td>1. script (可以理解为外层同步代码)<br />2. setTimeout/setInterval <br />3. UI rendering/UI事件<br />4. postMessage，MessageChannel<br />5. setImmediate，I/O（Node.js）</td>
-<td>1. Promise<br />2. MutaionObserver（html5新特性）<br />3. Object.observe（已废弃；Proxy 对象替代）<br />4. process.nextTick（Node.js）<br />5.Async/Await(实际就是promise)</td>
+<td>1. script (可以理解为外层同步代码)<br>2. setTimeout/setInterval <br>3. UI rendering/UI事件<br>4. postMessage，MessageChannel<br>5. setImmediate，I/O（Node.js）</td>
+<td>1. Promise<br>2. MutaionObserver（html5新特性）<br>3. Object.observe（已废弃；Proxy 对象替代）<br>4. process.nextTick（Node.js）<br>5.Async/Await(实际就是promise)</td>
 </tr>
 <tr>
 <td>谁先运行</td>
@@ -655,12 +655,12 @@ promise2
 setTimeOut</code></pre>
 <p>其输出过程：</p>
 <ol>
-<li>整个代码片段（script）作为一个<strong>宏任务</strong>执行<code>console.log(&#39;script start&#39;)</code>，输出<code>script start</code>；</li>
+<li>整个代码片段（script）作为一个<strong>宏任务</strong>执行<code>console.log('script start')</code>，输出<code>script start</code>；</li>
 <li>执行<code>setTimeout</code>，是一个<strong>异步任务</strong>，放入<strong>宏任务异步队列</strong>中；</li>
 <li>执行<code>async1()</code>，输出<code>async1 start</code>，继续向下执行；</li>
 <li>执行<code>async2()</code>，输出<code>async2</code>，并返回了一个<code>promise</code>对象，<code>await</code>让出了线程，因为在<code>await</code>下面的代码需要等待<code>await</code>右边的代码执行完，所以把<code>await</code>下面的代码加入了<strong>微任务异步队列</strong>;</li>
 <li>执行 <code>new Promise()</code>，输出<code>promise1</code>，然后将<code>resolve()</code>放入<strong>微任务异步队列</strong>；</li>
-<li>执行<code>console.log(&#39;script end&#39;)</code>，输出<code>script end</code>；</li>
+<li>执行<code>console.log('script end')</code>，输出<code>script end</code>；</li>
 <li>到此同步的代码就都执行完成了，然后去<strong>微任务异步队列</strong>里去获取任务</li>
 <li>接下来执行<code>await async2()</code>下面的代码，输出了<code>async1 end</code>；</li>
 <li>然后执行<code>resolve（new Promise的）</code>，输出了<code>promise2</code>；</li>
@@ -676,7 +676,7 @@ setTimeOut</code></pre>
 <li>idle, prepare： 仅在内部使用。</li>
 <li>poll： 最重要的阶段，执行<code>pending callback</code>，在适当的情况下回阻塞在这个阶段。</li>
 <li>check： 执行<code>setImmediate</code>(<code>setImmediate()</code>是将事件插入到事件队列尾部，主线程和事件队列的函数执行完成之后立即执行<code>setImmediate</code>指定的回调函数)的callback。</li>
-<li>close callbacks： 执行close事件的<code>callback</code>，例如<code>socket.on(&#39;close&#39;[,fn])</code>或者<code>http.server.on(&#39;close, fn)</code>。</li>
+<li>close callbacks： 执行close事件的<code>callback</code>，例如<code>socket.on('close'[,fn])</code>或者<code>http.server.on('close, fn)</code>。</li>
 </ul>
 <h3 id="1-和浏览器环境有何不同"><a href="#1-和浏览器环境有何不同" class="headerlink" title="1.和浏览器环境有何不同"></a>1.和浏览器环境有何不同</h3><p>浏览器环境下，<code>microtask</code> 的任务队列是每个 <code>macrotask</code> 执行完之后执行。而在 Node.js 中，<code>microtask</code> 会在事件循环的各个阶段之间执行，也就是一个阶段执行完毕，就会去执行 <code>microtask</code> 队列的任务。</p>
 <h4 id="2-总结："><a href="#2-总结：" class="headerlink" title="2.总结："></a>2.总结：</h4><ol>
@@ -687,7 +687,25 @@ setTimeOut</code></pre>
 <blockquote>
 <p>参考：<a href="https://javascript.info/event-loop" target="_blank" rel="noopener">Event loop: microtasks and macrotasks</a></p>
 </blockquote>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1526,7 +1544,7 @@ setTimeOut</code></pre>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

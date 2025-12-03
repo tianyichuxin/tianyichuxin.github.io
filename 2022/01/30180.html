@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    689
+                    729
                 </div>
                 
 
@@ -527,11 +527,11 @@
   <span class="token operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#transition-demo'</span><span class="token punctuation">)</span></code></pre>
 <h3 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h3><ul>
-<li><code>name</code> - string，用于自动生成 CSS 过渡类名。例如：<code>name: &#39;fade&#39;</code> 将自动拓展为 <code>.fade-enter</code>，<code>.fade-enter-active</code> 等。默认类名为 <code>&quot;v&quot;</code></li>
+<li><code>name</code> - string，用于自动生成 CSS 过渡类名。例如：<code>name: 'fade'</code> 将自动拓展为 <code>.fade-enter</code>，<code>.fade-enter-active</code> 等。默认类名为 <code>"v"</code></li>
 <li><code>appear</code> - boolean，是否在初始渲染时使用过渡。默认为 <code>false</code>。</li>
 <li><code>css</code> - boolean，是否使用 CSS 过渡类。默认为 <code>true</code>。如果设置为 <code>false</code>，将只通过组件事件触发注册的 JavaScript 钩子。</li>
-<li><code>type</code> - string，指定过渡事件类型，侦听过渡何时结束。有效值为 <code>&quot;transition&quot;</code> 和 <code>&quot;animation&quot;</code>。默认 Vue.js 将自动检测出持续时间长的为过渡事件类型。</li>
-<li><code>mode</code> - string，控制离开/进入过渡的时间序列。有效的模式有 <code>&quot;out-in&quot;</code> 和 <code>&quot;in-out&quot;</code>；默认同时进行。</li>
+<li><code>type</code> - string，指定过渡事件类型，侦听过渡何时结束。有效值为 <code>"transition"</code> 和 <code>"animation"</code>。默认 Vue.js 将自动检测出持续时间长的为过渡事件类型。</li>
+<li><code>mode</code> - string，控制离开/进入过渡的时间序列。有效的模式有 <code>"out-in"</code> 和 <code>"in-out"</code>；默认同时进行。</li>
 <li><code>duration</code> - number | { <code>enter</code>: number, <code>leave</code>: number } 指定过渡的持续时间。默认情况下，Vue 会等待过渡所在根元素的第一个 <code>transitionend</code> 或 <code>animationend</code> 事件。</li>
 <li><code>enter-class</code> - string</li>
 <li><code>leave-class</code> - string</li>
@@ -573,7 +573,25 @@
 <h3 id="事件-1"><a href="#事件-1" class="headerlink" title="事件"></a>事件</h3><ul>
 <li>事件和 <code>&lt;transition&gt;</code> 相同。</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1412,7 +1430,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

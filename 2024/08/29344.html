@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    28.4k
+                    28.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    130 分
+                    131 分
                 </div>
                 
 
@@ -825,8 +825,8 @@ nest g module posts</code></pre>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 <body>
    <h3>模板引擎</h3>
     <%=message%>
@@ -3966,7 +3966,7 @@ const config <span class="token operator">=</span> <span class="token punctuatio
 <span class="token punctuation">}</span></code></pre>
 <p><strong>装饰器说明</strong></p>
 <ul>
-<li><code>Entity</code> 实体声明，程序运行时，自动创建的数据库表，<code>@Entity({ name: &#39;users&#39; })</code>， <code>name</code>则是给该表命名，否则自动命名</li>
+<li><code>Entity</code> 实体声明，程序运行时，自动创建的数据库表，<code>@Entity({ name: 'users' })</code>， <code>name</code>则是给该表命名，否则自动命名</li>
 <li><code>PrimaryColumn</code> 设置主键，没有自增</li>
 <li><code>PrimaryGeneratedColumn</code> 设置主键和自增，一般是<code>id</code></li>
 <li><code>Column</code> 设置数据库列字段，在下面说明</li>
@@ -5705,8 +5705,8 @@ WHERE user<span class="token punctuation">.</span>name <span class="token operat
 <p>Redis hash 是一个string类型的field和value的映射表，hash特别适合用于存储对象。</p>
 </blockquote>
 <ul>
-<li>设置值hmset ：<code>hmset zhangsan name &quot;张三&quot; age 20 sex “男”</code></li>
-<li>设置值hset ： <code>hset zhangsan name &quot;张三&quot;</code></li>
+<li>设置值hmset ：<code>hmset zhangsan name "张三" age 20 sex “男”</code></li>
+<li>设置值hset ： <code>hset zhangsan name "张三"</code></li>
 <li>获取数据：<code>hgetall key</code></li>
 <li>删除指定数据：<code>del key</code></li>
 <li>删除全部数据: <code>flushall</code></li>
@@ -6006,7 +6006,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>这样，你就不用在 <code>AModule</code>的声明里引入 <code>BModule</code>了。</p>
 <p>关于『你的理解』部分，貌似你把<code>@Inject</code> 和 <code>@Injectable</code> 搞混了，建议再读一读这个部分的文档，多做些练习/尝试，自己感受下每个api的特点。</p>
 <p>最后，官网文档里其实有介绍 ，看<code>依赖注入</code>:<a href="https://docs.nestjs.com/modules#dependency-injection" target="_blank" rel="noopener">https://docs.nestjs.com/modules#dependency-injection</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -6853,7 +6871,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -607,8 +607,8 @@ server <span class="token punctuation">{</span>
 <pre class=" language-bash"><code class="language-bash"> ./nginx -s reload</code></pre>
 <p>如果重启Nginx服务时收到报错，您可以使用以下方法进行排查：</p>
 <ul>
-<li>收到<code>the &quot;ssl&quot; parameter requires ngx_http_ssl_module</code>报错：您需要重新编译Nginx并在编译安装的时候加上<code>--with-http_ssl_module</code>配置。</li>
-<li>收到<code>&quot;/cert/3970497_pic.certificatestests.com.pem&quot;:BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen(&#39;/cert/3970497_pic.certificatestests.com.pem&#39;,&#39;r&#39;) error:2006D080:BIO routines:BIO_new_file:no such file)</code>报错：您需要去掉证书相对路径最前面的<code>/</code>。例如，您需要去掉<code>/cert/cert-file-name.pem</code>最前面的<code>/</code>，使用正确的相对路径<code>cert/cert-file-name.pem</code>。</li>
+<li>收到<code>the "ssl" parameter requires ngx_http_ssl_module</code>报错：您需要重新编译Nginx并在编译安装的时候加上<code>--with-http_ssl_module</code>配置。</li>
+<li>收到<code>"/cert/3970497_pic.certificatestests.com.pem":BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/cert/3970497_pic.certificatestests.com.pem','r') error:2006D080:BIO routines:BIO_new_file:no such file)</code>报错：您需要去掉证书相对路径最前面的<code>/</code>。例如，您需要去掉<code>/cert/cert-file-name.pem</code>最前面的<code>/</code>，使用正确的相对路径<code>cert/cert-file-name.pem</code>。</li>
 </ul>
 <h3 id="2、CDN部署SSL"><a href="#2、CDN部署SSL" class="headerlink" title="2、CDN部署SSL"></a>2、CDN部署SSL</h3><p>点击创建SSL右侧部署按钮进行部署</p>
 <p><img src="//static.tianyichuxin.com/images/52328/14.png" alt=""></p>
@@ -619,7 +619,25 @@ server <span class="token punctuation">{</span>
 <blockquote>
 <p>官方文档：<a href="https://www.ssldaquan.com/url/cas/" target="_blank" rel="noopener">阿里云SSL证书官方页面</a></p>
 </blockquote>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1458,7 +1476,7 @@ server <span class="token punctuation">{</span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

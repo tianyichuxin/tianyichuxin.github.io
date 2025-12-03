@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -624,7 +624,7 @@ delete from artical where id=4;</code></pre>
     select * from emp where salary between 15000 and 18000;
 
 2.AND  同时多个条件都满足 (类似于与运算符)
-    select * from emp where salary &gt; 12000 and department=&#39;开发部&#39;;
+    select * from emp where salary &gt; 12000 and department='开发部';
 
 3.or   多个条件满足其中一个 (类似于或运算符 )
     select * from emp where salary&gt;14000 or level = 3;
@@ -636,12 +636,12 @@ select * from emp  order by salary;
 select * from emp order by id desc;
 
 5.like 模糊查询
-select * from emp where name like &#39;王%&#39; and department=&#39;开发部&#39;;
+select * from emp where name like '王%' and department='开发部';
 </code></pre><h3 id="10-mysql的高级应用"><a href="#10-mysql的高级应用" class="headerlink" title="10.mysql的高级应用"></a>10.mysql的高级应用</h3><pre><code>常见mysql函数:
     sum(列名)    求和    
-         select sum(salary) as &#39;薪资总和&#39; from emp;
+         select sum(salary) as '薪资总和' from emp;
     max(列名)    最大值   
-        select name, max(salary) as &#39;最高薪资&#39; from emp;
+        select name, max(salary) as '最高薪资' from emp;
     min(列名)    最小值   
         select name, min(salary) from emp;
     avg(列名)    平均值 
@@ -657,7 +657,25 @@ select * from emp limit 2,2;
 select * from table limit (start-1)*pageSize,pageSize; 其中start是页码，pageSize是每页显示的条数</code></pre><h3 id="11-mysql数据库中常见的问题"><a href="#11-mysql数据库中常见的问题" class="headerlink" title="11.mysql数据库中常见的问题"></a>11.mysql数据库中常见的问题</h3><p><img src="//static.tianyichuxin.com/images/25419/error1.png" alt=""></p>
 <p><img src="//static.tianyichuxin.com/images/25419/error2.png" alt=""></p>
 <p><img src="//static.tianyichuxin.com/images/25419/error3.png" alt=""></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1500,7 +1518,7 @@ select * from table limit (start-1)*pageSize,pageSize; 其中start是页码，pa
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

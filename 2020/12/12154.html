@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    105
+                    157
                 </div>
                 
 
@@ -507,8 +507,26 @@
 <li>getElement动态获取dom，获取页面实时最新dom元素</li>
 </ul>
 <p>querySelector 属于 W3C 中的 Selectors API 规范 。而 getElementsBy 系列则属于 W3C 的 DOM 规范”</p>
-<p>关于Selectors <a href="https://so.csdn.net/so/search?q=API&spm=1001.2101.3001.7020" target="_blank" rel="noopener">API</a>规范 <a href="https://www.w3.org/TR/selectors-api/" target="_blank" rel="noopener">请点击这里</a><br>关于 W3C 的 DOM 规范 <a href="http://w3c-html-ig-zh.github.io/webcomponents/spec-zh/custom/" target="_blank" rel="noopener">请点击这里</a>  </p>
-
+<p>关于Selectors <a href="https://so.csdn.net/so/search?q=API&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">API</a>规范 <a href="https://www.w3.org/TR/selectors-api/" target="_blank" rel="noopener">请点击这里</a><br>关于 W3C 的 DOM 规范 <a href="http://w3c-html-ig-zh.github.io/webcomponents/spec-zh/custom/" target="_blank" rel="noopener">请点击这里</a>  </p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1351,7 +1369,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

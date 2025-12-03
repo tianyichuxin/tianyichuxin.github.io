@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -587,7 +587,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>第一段代码中 setTimeout 定时器属于异步操作，它是在 for 循环执行完之后，才执行的，因为 i 是var 声明的，作用域贯穿于整个函数作用域，所以当执行setTimeout时，i 已经通过for循环变成了 3 ，所以输出结果为：3 3 3。</p>
 <p>第二段代码中使用了立即执行函数，使每次for循环都创建了一个独立作用域，并把每次循环 i 的值，传递进独立作用域，不受外界影响，所以输出结果为 ：0 1 2。</p>
 <p>第三段代码中使用了 ES6 的 let ，使每次for循环都创建了一个块级作用域，不同作用域之间不影响，所以输出结果为： 0 1 2。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1430,7 +1448,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

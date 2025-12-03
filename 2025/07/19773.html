@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -503,13 +503,13 @@
                 <blockquote>
 <p>JavaScript 模块导入方式：默认导入 vs 命名空间导入</p>
 </blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 JavaScript/TypeScript 模块系统中，<code>import api from &#39;模块&#39;</code>（默认导入）和 <code>import * as api from &#39;模块&#39;</code>（命名空间导入）是两种常用的导入方式，它们在导入内容、访问方式和适用场景上存在显著差异。本文档将详细对比这两种方式，帮助开发者正确选择和使用。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在 JavaScript/TypeScript 模块系统中，<code>import api from '模块'</code>（默认导入）和 <code>import * as api from '模块'</code>（命名空间导入）是两种常用的导入方式，它们在导入内容、访问方式和适用场景上存在显著差异。本文档将详细对比这两种方式，帮助开发者正确选择和使用。</p>
 <h2 id="核心区别总览"><a href="#核心区别总览" class="headerlink" title="核心区别总览"></a>核心区别总览</h2><table>
 <thead>
 <tr>
 <th>维度</th>
-<th>默认导入 <code>import api from &#39;模块&#39;</code></th>
-<th>命名空间导入 <code>import * as api from &#39;模块&#39;</code></th>
+<th>默认导入 <code>import api from '模块'</code></th>
+<th>命名空间导入 <code>import * as api from '模块'</code></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -519,7 +519,7 @@
 </tr>
 <tr>
 <td>语法本质</td>
-<td>语法糖，等价于 <code>import { default as api } from &#39;模块&#39;</code></td>
+<td>语法糖，等价于 <code>import { default as api } from '模块'</code></td>
 <td>收集所有导出成员到一个命名空间对象中</td>
 </tr>
 <tr>
@@ -533,13 +533,13 @@
 <td>需要同时使用模块的多个命名导出和默认导出</td>
 </tr>
 </tbody></table>
-<h2 id="详细对比"><a href="#详细对比" class="headerlink" title="详细对比"></a>详细对比</h2><h3 id="1-导入内容范围"><a href="#1-导入内容范围" class="headerlink" title="1. 导入内容范围"></a>1. 导入内容范围</h3><h4 id="默认导入（import-api-from-39-模块-39-）"><a href="#默认导入（import-api-from-39-模块-39-）" class="headerlink" title="默认导入（import api from &#39;模块&#39;）"></a>默认导入（<code>import api from &#39;模块&#39;</code>）</h4><ul>
+<h2 id="详细对比"><a href="#详细对比" class="headerlink" title="详细对比"></a>详细对比</h2><h3 id="1-导入内容范围"><a href="#1-导入内容范围" class="headerlink" title="1. 导入内容范围"></a>1. 导入内容范围</h3><h4 id="默认导入（import-api-from-39-模块-39-）"><a href="#默认导入（import-api-from-39-模块-39-）" class="headerlink" title="默认导入（import api from '模块'）"></a>默认导入（<code>import api from '模块'</code>）</h4><ul>
 <li><p>仅关注模块中通过 <code>export default</code> 导出的内容（一个对象、函数或类）。</p>
 </li>
 <li><p>忽略模块中的其他命名导出（如果存在）。</p>
 </li>
 </ul>
-<h4 id="命名空间导入（import-as-api-from-39-模块-39-）"><a href="#命名空间导入（import-as-api-from-39-模块-39-）" class="headerlink" title="命名空间导入（import * as api from &#39;模块&#39;）"></a>命名空间导入（<code>import * as api from &#39;模块&#39;</code>）</h4><ul>
+<h4 id="命名空间导入（import-as-api-from-39-模块-39-）"><a href="#命名空间导入（import-as-api-from-39-模块-39-）" class="headerlink" title="命名空间导入（import * as api from '模块'）"></a>命名空间导入（<code>import * as api from '模块'</code>）</h4><ul>
 <li><p>导入模块中所有的导出成员，包括：</p>
 <ul>
 <li><p>所有命名导出（<code>export const a = 1</code>、<code>export function b() {}</code> 等）。</p>
@@ -625,7 +625,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ol>
 <li><strong>Tree-Shaking 优化</strong></li>
 </ol>
-<p>命名空间导入（<code>import * as api</code>）可能会导致打包工具无法进行 Tree-Shaking（删除未使用的代码），而默认导入或按需命名导入（<code>import { a } from &#39;模块&#39;</code>）更利于优化。</p>
+<p>命名空间导入（<code>import * as api</code>）可能会导致打包工具无法进行 Tree-Shaking（删除未使用的代码），而默认导入或按需命名导入（<code>import { a } from '模块'</code>）更利于优化。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li><p><strong>默认导入</strong>：简洁高效，直接获取模块的核心默认导出，适合单一功能模块。</p>
 </li>
@@ -633,7 +633,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </li>
 </ul>
 <p>根据模块的导出设计和实际使用需求选择合适的导入方式，可提高代码可读性和效率。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1476,7 +1494,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

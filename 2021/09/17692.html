@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    654
+                    702
                 </div>
                 
 
@@ -620,7 +620,7 @@ axios<span class="token punctuation">.</span><span class="token function">post</
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
 <p>使用node中的fs下载</p>
-<p>首先，axios 需要配置<code>config[&quot;responseType&quot;] = &quot;arraybuffer&quot;;</code></p>
+<p>首先，axios 需要配置<code>config["responseType"] = "arraybuffer";</code></p>
 <pre class=" language-js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//res为后端返回的二进制流，通过 responseType:"arraybuffer" 转为buffer</span></code></pre>
 <p><strong>您可能感兴趣的文章：</strong></p>
 <ul>
@@ -628,7 +628,25 @@ axios<span class="token punctuation">.</span><span class="token function">post</
 <li><a href="https://blog.tianyichuxin.com/2020/07/64529.html">JS实现浏览器下载图片</a></li>
 <li><a href="https://blog.tianyichuxin.com/2020/06/31124.html">关于layui的一些故事（三）：导出Excle文件</a></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1471,7 +1489,7 @@ axios<span class="token punctuation">.</span><span class="token function">post</
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

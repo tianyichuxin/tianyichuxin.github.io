@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
@@ -595,7 +595,7 @@ document<span class="token punctuation">.</span><span class="token function">que
 <h2 id="四、常见迁移误区与解决方案"><a href="#四、常见迁移误区与解决方案" class="headerlink" title="四、常见迁移误区与解决方案"></a>四、常见迁移误区与解决方案</h2><h3 id="1-误区：“composedPath-返回值与-path-不同”"><a href="#1-误区：“composedPath-返回值与-path-不同”" class="headerlink" title="1. 误区：“composedPath() 返回值与 path 不同”"></a>1. 误区：“composedPath() 返回值与 path 不同”</h3><p>实际上，在相同的事件传播场景中，<code>composedPath()</code> 返回的节点数组与旧版 <code>Event.path</code> 完全一致，无需修改业务逻辑（如数组遍历、节点判断等）。</p>
 <h3 id="2-误区：“Shadow-DOM-中路径获取失败”"><a href="#2-误区：“Shadow-DOM-中路径获取失败”" class="headerlink" title="2. 误区：“Shadow DOM 中路径获取失败”"></a>2. 误区：“Shadow DOM 中路径获取失败”</h3><p>若在 Shadow DOM 中 <code>composedPath()</code> 未返回内部节点，需检查两点：</p>
 <ul>
-<li>Shadow DOM 的模式是否为 <code>open</code>（<code>mode: &#39;closed&#39;</code> 会隐藏内部节点）；</li>
+<li>Shadow DOM 的模式是否为 <code>open</code>（<code>mode: 'closed'</code> 会隐藏内部节点）；</li>
 <li>事件的 <code>composed</code> 属性是否为 <code>true</code>（大部分原生事件默认 <code>true</code>，自定义事件需显式设置 <code>{ composed: true }</code>）。</li>
 </ul>
 <h3 id="3-误区：“Electron-中必须保留-Event-path”"><a href="#3-误区：“Electron-中必须保留-Event-path”" class="headerlink" title="3. 误区：“Electron 中必须保留 Event.path”"></a>3. 误区：“Electron 中必须保留 Event.path”</h3><p>Electron 的行为完全依赖底层 Chromium 版本：</p>
@@ -610,7 +610,25 @@ document<span class="token punctuation">.</span><span class="token function">que
 <li><strong>功能扩展性</strong>：原生支持 Shadow DOM 等现代前端特性，为未来组件化开发铺路。</li>
 </ul>
 <p>迁移成本极低（仅需替换属性为方法调用），但能显著提升代码的稳定性和兼容性。如果你仍在使用 <code>Event.path</code>，现在就是迁移的最佳时机。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1457,7 +1475,7 @@ document<span class="token punctuation">.</span><span class="token function">que
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

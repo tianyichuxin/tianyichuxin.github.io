@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.3k
                 </div>
                 
 
@@ -570,12 +570,12 @@
 </tr>
 <tr>
 <td>48000 Hz</td>
-<td>miniDV、数字电视、标准DVD、DAT、<br />电影和专业音频所用的数字声音所用采样率</td>
+<td>miniDV、数字电视、标准DVD、DAT、<br>电影和专业音频所用的数字声音所用采样率</td>
 <td>0 - 24000 Hz</td>
 </tr>
 <tr>
 <td>96000 Hz</td>
-<td>DVD-Audio、一些LPCMDVD音轨、BD-ROM（蓝光盘）音轨、<br />和HD-DVD（高清晰度DVD）音轨所用采样率</td>
+<td>DVD-Audio、一些LPCMDVD音轨、BD-ROM（蓝光盘）音轨、<br>和HD-DVD（高清晰度DVD）音轨所用采样率</td>
 <td>0 -48000 Hz</td>
 </tr>
 <tr>
@@ -613,7 +613,7 @@
 </tr>
 <tr>
 <td>24位</td>
-<td>音频DVD，一般用于电影配乐，<br />交响乐团等等大动态的音频信号</td>
+<td>音频DVD，一般用于电影配乐，<br>交响乐团等等大动态的音频信号</td>
 <td>16777216</td>
 <td>144.49 dB</td>
 </tr>
@@ -692,7 +692,7 @@
 <tr>
 <td></td>
 <td>1411.2 kbit/s</td>
-<td>以线性PCM编码存储数字音频CD<br />（即采样率44100Hz，位数16bit，立体声的PCM音频）</td>
+<td>以线性PCM编码存储数字音频CD<br>（即采样率44100Hz，位数16bit，立体声的PCM音频）</td>
 </tr>
 <tr>
 <td>视频</td>
@@ -720,7 +720,25 @@
 <td>1080p蓝光光盘（Blu-ray Disc）质量（使用MPEG2、H.264或VC-1压缩）</td>
 </tr>
 </tbody></table>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1559,7 +1577,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.2k
                 </div>
                 
 
@@ -686,8 +686,8 @@ L <span class="token operator">=</span> L<span class="token punctuation">.</span
 <span class="token keyword">typeof</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// "function"</span>
 <span class="token keyword">typeof</span> undefined <span class="token comment" spellcheck="true">// "undefined"</span>
 <span class="token keyword">typeof</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">// "object"，出名的坑</span></code></pre>
-<p>对于<code>typeof null==&quot;object&quot;</code>的问题，仅仅typeof无解，记住有这么个坑即可。</p>
-<p>而关于 <code>typeof array==&quot;object&quot;</code>的问题，建议使用：<code>Array.isArray([]) // true</code>来判断即可。</p>
+<p>对于<code>typeof null=="object"</code>的问题，仅仅typeof无解，记住有这么个坑即可。</p>
+<p>而关于 <code>typeof array=="object"</code>的问题，建议使用：<code>Array.isArray([]) // true</code>来判断即可。</p>
 <ol start="2">
 <li><strong>instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。</strong></li>
 </ol>
@@ -762,7 +762,25 @@ A<span class="token punctuation">.</span>__proto__<span class="token punctuation
 <p>总结：</p>
 <p><code>typeof</code> 在对值类型<code>number、string、boolean 、undefined、以及引用类型的function</code>的反应是精准的；<strong>但是，对于对象{ }  、数组[ ]  、null 都会返回 object</strong>，但对 <code>NaN</code> 返回的是<strong>number</strong>类型</p>
 <p>为了弥补这一点，instanceof 从原型的角度，来判断某引用属于哪个构造函数，从而判定它的数据类型。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1609,7 +1627,7 @@ A<span class="token punctuation">.</span>__proto__<span class="token punctuation
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    437
+                    483
                 </div>
                 
 
@@ -506,17 +506,17 @@
 <h3 id="router是什么"><a href="#router是什么" class="headerlink" title="router是什么"></a>router是什么</h3><p>router是VueRouter的一个对象，通过Vue.use(VueRouter)和VueRouter构造函数得到一个router的实例对象，这个对象中是一个全局的对象，他包含了所有的路由包含了许多关键的对象和属性。</p>
 <p>类似于history对象</p>
 <ul>
-<li><code>$router.push({path:&#39;home&#39;});</code>本质是向history栈中添加一个路由，在我们看来是 切换路由，但本质是在添加一个history记录</li>
+<li><code>$router.push({path:'home'});</code>本质是向history栈中添加一个路由，在我们看来是 切换路由，但本质是在添加一个history记录</li>
 </ul>
 <p>方法：</p>
 <pre class=" language-js"><code class="language-js">$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span>path<span class="token punctuation">:</span><span class="token string">'home'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//替换路由，没有历史记录</span></code></pre>
 <h3 id="route是什么"><a href="#route是什么" class="headerlink" title="route是什么"></a>route是什么</h3><p>route是一个跳转的路由对象，每一个路由都会有一个route对象，是一个局部的对象，可以获取对应的name,path,params,query等</p>
 <p><code>$route.path</code></p>
-<p>字符串，等于当前路由对象的路径，会被解析为绝对路径，如 <code>&quot;/home/news&quot;</code> 。</p>
+<p>字符串，等于当前路由对象的路径，会被解析为绝对路径，如 <code>"/home/news"</code> 。</p>
 <p><code>$route.params</code></p>
 <p>对象，包含路由中的动态片段和全匹配片段的键值对</p>
 <p><code>$route.query</code></p>
-<p>对象，包含路由中查询参数的键值对。例如，对于 <code>/home/news/detail/01?favorite=yes</code> ，会得到<code>$route.query.favorite == &#39;yes&#39;</code> 。</p>
+<p>对象，包含路由中查询参数的键值对。例如，对于 <code>/home/news/detail/01?favorite=yes</code> ，会得到<code>$route.query.favorite == 'yes'</code> 。</p>
 <p><code>$route.router</code></p>
 <p>路由规则所属的路由器（以及其所属的组件）。</p>
 <p><code>$route.matched</code></p>
@@ -524,7 +524,25 @@
 <p><code>$route.name</code></p>
 <p>当前路径的名字，如果没有使用具名路径，则名字为空。</p>
 <p><code>$route.path</code> , <code>$route.params</code> , <code>$route.name</code> , <code>$route.query</code>这几个属性很容易理解，主要用于接收路由传递的参数</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1363,7 +1381,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

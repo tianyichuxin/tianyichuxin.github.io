@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -592,7 +592,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
 <p>这里首先将el直接push到nodeList中，这样每次有clickoutside指令绑定到页面上，都会将绑定元素存储到nodeList当中去，即前面说过的 <strong>元素搜集器</strong> 。接下来将全局变量seed++，并且赋值给一个临时变量id，最后就是给el的ctx特性赋值了，它的值是一个对象，内部包括了:</p>
 <p>id ：前面生成的全局唯一id，用来标识该clickoutside指令</p>
 <p>documentHandler ：利用 createDocumentHandler 生成的一个回调函数。前面的分析中说到，给页面绑定的mouseup事件回调中，会遍历nodeList，分别执行每一个绑定元素el的ctx特性上的documentHandler函数， <strong>这个函数就是在这里生成的</strong> ，至于这个回调函数究竟是做了什么，后面再详细分析。</p>
-<p>methodName ：binding.expression，查看自定义指令的<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank" rel="noopener">文档</a>可以知道， <code>binding.expression</code> 的值是字符串形式的指令表达式。例如有  <code>&lt;div v-my-directive=&quot;1 + 1&quot;&gt;&lt;/div&gt;</code> ，则 <code>binding.expression</code> 的值为 <code>1 + 1</code></p>
+<p>methodName ：binding.expression，查看自定义指令的<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank" rel="noopener">文档</a>可以知道， <code>binding.expression</code> 的值是字符串形式的指令表达式。例如有  <code>&lt;div v-my-directive="1 + 1"&gt;&lt;/div&gt;</code> ，则 <code>binding.expression</code> 的值为 <code>1 + 1</code></p>
 <p>bindingFn ： binding.value，指令的绑定值，还是上面的例子，则 <code>binding.value</code> 的值是 2 （1 + 1等于2），即 <strong>指令的值为js表达式的情况下，</strong> <strong><code>binding.expresssion</code></strong> <strong>为表达式本身，是一个字符串，而</strong> <strong><code>binding.value</code></strong> <strong>是该表达式的值。</strong></p>
 <p>接着我们看下 update 钩子：</p>
 <pre class=" language-js"><code class="language-js"><span class="token function">update</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -683,7 +683,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
 <p>结合下图，A与B两个元素作为一个inside，当鼠标点击在click1位置时，触发clickoutside，当鼠标点击click2或者click3位置时都不触发clickoutside。</p>
 <p><img src="//static.tianyichuxin.com/images/38262/2.jpeg" alt=""></p>
 <h3 id="4-扩展实现"><a href="#4-扩展实现" class="headerlink" title="4.扩展实现"></a>4.扩展实现</h3><p>要实现上述功能，就必须获取到A和B的dom对象，然后在原先鼠标事件的监听的基础上，判断鼠标位置是否都不包含在A和B中，如果是的话再触发clickoutside。</p>
-<p>实现方式为，在A和B的父级parent元素上绑定<code>v-clickoutside:yourClassName=&quot;handleClickOutside&quot;</code>，在A和B元素上添加同一个class样式，样式名称与指令冒号后面内容一致<code>class=&quot;yourClassName&quot;</code>。主要在处理指令绑定时，通过binding.arg即可获取到A和B共有的class，存放在dom变量中。在鼠标放开触发事件处理时，通过class获取到他们的dom对象。</p>
+<p>实现方式为，在A和B的父级parent元素上绑定<code>v-clickoutside:yourClassName="handleClickOutside"</code>，在A和B元素上添加同一个class样式，样式名称与指令冒号后面内容一致<code>class="yourClassName"</code>。主要在处理指令绑定时，通过binding.arg即可获取到A和B共有的class，存放在dom变量中。在鼠标放开触发事件处理时，通过class获取到他们的dom对象。</p>
 <h4 id="4-1使用示例"><a href="#4-1使用示例" class="headerlink" title="4.1使用示例"></a>4.1使用示例</h4><p>clickoutside原来的使用方式不受影响，只是添加了多个元素并集作为inside的功能。</p>
 <p>引入改为自己修改后的clickoutside.js，声明不变，扩展功能在模板中的使用方式</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">v-clickoutside:</span>exactAreaClassName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>handleClickOutside<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -789,7 +789,25 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
 <li>2.使用cropperjs制作头像裁剪。浏览器读取本地图片并展示，仿微博头像排版，裁剪后上传服务器。</li>
 <li>3.vue指令中的参数vnode学习</li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1640,7 +1658,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             

@@ -32,8 +32,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -503,7 +503,7 @@
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vue通信手段有很多种，<code>props/emit</code>、<code>vuex</code>、<code>event bus</code>、<code>provide/inject</code>等。还有一种通信方式，那就是 <code>$attrs</code> 和 <code>$listeners</code>，之前早就听说这两个api，趁着有空来补补。这种方式挺优雅，使用起来也不赖。下面例子都会通过父、子、孙子，三者的关系来说明使用方式。</p>
 <p><img src="//static.tianyichuxin.com/images/4284/1.png" alt="img"></p>
 <h2 id="attrs"><a href="#attrs" class="headerlink" title="$attrs"></a>$attrs</h2><p><strong>官方解释</strong>：</p>
-<p>包含了父作用域中不作为 <code>prop</code> 被识别 (且获取) 的特性绑定 (<code>class</code> 和 <code>style</code> 除外)。当一个组件没有声明任何 <code>prop</code> 时，这里会包含所有父作用域的绑定 (<code>class</code> 和 <code>style</code> 除外)，并且可以通过 <code>v-bind=&quot;$attrs&quot;</code> 传入内部组件——在创建高级别的组件时非常有用。</p>
+<p>包含了父作用域中不作为 <code>prop</code> 被识别 (且获取) 的特性绑定 (<code>class</code> 和 <code>style</code> 除外)。当一个组件没有声明任何 <code>prop</code> 时，这里会包含所有父作用域的绑定 (<code>class</code> 和 <code>style</code> 除外)，并且可以通过 <code>v-bind="$attrs"</code> 传入内部组件——在创建高级别的组件时非常有用。</p>
 <blockquote>
 <p><strong>我的理解</strong>：</p>
 <p>接收除了<code>props</code>声明外的所有绑定属性（class、style除外）</p>
@@ -515,15 +515,15 @@
 <p><img src="//static.tianyichuxin.com/images/4284/3.png" alt="img"><br>上面打印结果为：</p>
 <pre class=" language-js"><code class="language-js"><span class="token punctuation">{</span>height<span class="token punctuation">:</span> <span class="token string">'80'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'joe'</span><span class="token punctuation">,</span> gender<span class="token punctuation">:</span> <span class="token string">'man'</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">//会把child页面的值，一起传过来</span></code></pre>
 <blockquote>
-<p><strong>注：</strong>但若是child.vue页面有个prop:[“name”]，则name不会传到grandson.vue页面中去，即：<code>{height: &#39;80&#39;, gender: &#39;man&#39;}</code>，如下：</p>
+<p><strong>注：</strong>但若是child.vue页面有个prop:[“name”]，则name不会传到grandson.vue页面中去，即：<code>{height: '80', gender: 'man'}</code>，如下：</p>
 </blockquote>
 <p><img src="//static.tianyichuxin.com/images/4284/8.png" alt="8"></p>
-<p>另外可以在 grandson.vue 上通过 <code>v-bind=&quot;$attrs&quot;</code>，可以将属性继续向下传递，让 grandson.vue 也能访问到父组件的属性，这在传递多个属性时会显得很便捷，而不用一条条的进行绑定。</p>
+<p>另外可以在 grandson.vue 上通过 <code>v-bind="$attrs"</code>，可以将属性继续向下传递，让 grandson.vue 也能访问到父组件的属性，这在传递多个属性时会显得很便捷，而不用一条条的进行绑定。</p>
 <p>如果想要添加其他属性，可继续绑定属性。但要注意的是，继续绑定的属性和 <code>$attrs</code> 中的属性有重复时，继续绑定的属性优先级会更高。</p>
 <p><img src="//static.tianyichuxin.com/images/4284/9.png" alt="9"><br>打印结果为：</p>
 <pre class=" language-js"><code class="language-js"><span class="token punctuation">{</span>height<span class="token punctuation">:</span> <span class="token string">'80'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'xth'</span><span class="token punctuation">,</span> gender<span class="token punctuation">:</span> <span class="token string">'man'</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">//会把child页面的值，一起传过来，同时会以继续绑定的属性为最高优先级</span></code></pre>
 <h2 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h2><p><strong>官方解释：</strong></p>
-<p>包含了父作用域中的 (不含 <code>.native</code> 修饰器的) <code>v-on</code> 事件监听器。它可以通过 <code>v-on=&quot;$listeners&quot;</code> 传入内部组件——在创建更高层次的组件时非常有用。</p>
+<p>包含了父作用域中的 (不含 <code>.native</code> 修饰器的) <code>v-on</code> 事件监听器。它可以通过 <code>v-on="$listeners"</code> 传入内部组件——在创建更高层次的组件时非常有用。</p>
 <blockquote>
 <p><strong>我的理解：</strong></p>
 <p>接收除了带有<code>.native</code>事件修饰符的所有事件监听器</p>
@@ -533,7 +533,7 @@
 <p>parent.vue 中对 child.vue 绑定了两个事件，带有<code>.native</code>的 <code>click</code> 事件和一个自定义事件，所以在 child.vue 中，输出 <code>$listeners</code> 的结果为：</p>
 <pre class=" language-js"><code class="language-js"><span class="token punctuation">{</span> customEvent<span class="token punctuation">:</span> fn <span class="token punctuation">}</span></code></pre>
 <p><img src="//static.tianyichuxin.com/images/4284/5.png" alt="img"></p>
-<p>同 <code>attrs</code> 属性一样，可以通过 <code>v-on=&quot;$listeners&quot;</code>，将事件监听器继续向下传递，让 grandson.vue 访问到事件，且可以使用 <code>$emit</code> 触发 parent.vue 的函数。</p>
+<p>同 <code>attrs</code> 属性一样，可以通过 <code>v-on="$listeners"</code>，将事件监听器继续向下传递，让 grandson.vue 访问到事件，且可以使用 <code>$emit</code> 触发 parent.vue 的函数。</p>
 <p>如果想要添加其他事件监听器，可继续绑定事件。但要注意的是，继续绑定的事件和 <code>$listeners</code> 中的事件有重复时，不会被覆盖。当 grandson.vue 触发 <code>customEvent</code> 时，child.vue 和 parent.vue 的事件都会被触发，触发顺序类似于冒泡，先到 child.vue 再到 parent.vue。</p>
 <p>以上转自：<a href="https://www.cnblogs.com/chanwahfung/p/11520909.html" target="_blank" rel="noopener">Vue - 组件通信之$attrs、$listeners</a></p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><h3 id="1-attrs-示例"><a href="#1-attrs-示例" class="headerlink" title="1.$attrs 示例"></a>1.$attrs 示例</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -737,7 +737,25 @@
 
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1580,7 +1598,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">334.9k</span>&nbsp;字
+                class="white-color">346.1k</span>&nbsp;字
             
             
             
