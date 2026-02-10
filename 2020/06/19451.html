@@ -1,0 +1,2251 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!-- 自动将http的不安全请求升级为https -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="前端,layui">
+    <meta name="description" content="专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>关于layui的一些故事（一）：数据表格和其他记录 | 天弈初心</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/advertisement-space.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">天弈初心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+    <div id="mobile-nav" class="side-nav sidenav">
+
+        <div class="mobile-head bg-color">
+            
+                <img src="/medias/logo.png" class="logo-img circle responsive-img">
+                
+                    <div class="logo-name">
+                        天弈初心
+                    </div>
+                    <div class="logo-desc">
+                        
+                            专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写
+                                
+                    </div>
+        </div>
+
+        
+
+            <ul class="menu-list mobile-menu-list">
+                
+                    <li class="m-nav-item">
+                        
+                            <a href="/" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-home"></i>
+                                    
+                                            首页
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/tags" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-tags"></i>
+                                    
+                                            标签
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/categories" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-bookmark"></i>
+                                    
+                                            分类
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/archives" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-archive"></i>
+                                    
+                                            归档
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/about" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-user-circle"></i>
+                                    
+                                            关于
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/contact" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-comments"></i>
+                                    
+                                            留言板
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/friends" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-address-book"></i>
+                                    
+                                            友链
+                            </a>
+                            
+                    </li>
+                    
+                        
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                            <li>
+                                <a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="waves-effect waves-light" target="_blank">
+                                    <i class="fab fa-github-square fa-fw"></i>
+                                    Fork Me
+                                </a>
+                            </li>
+                            
+            </ul>
+    </div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">关于layui的一些故事（一）：数据表格和其他记录</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <!-- 内页 -->
+<link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                            <a href="/tags/layui/">
+                                <span class="chip bg-color">layui</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/layui/" class="post-category">
+                                layui
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-11-22
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、数据表格渲染方法"><a href="#一、数据表格渲染方法" class="headerlink" title="一、数据表格渲染方法"></a>一、数据表格渲染方法</h2><blockquote>
+<p>三种初始化渲染方式</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">方式</th>
+<th align="left">机制</th>
+<th align="left">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">01.</td>
+<td align="left">方法渲染</td>
+<td align="left">用JS方法的配置完成渲染</td>
+<td align="left">（推荐）无需写过多的 HTML，在 JS 中指定原始元素，再设定各项参数即可。</td>
+</tr>
+<tr>
+<td align="left">02.</td>
+<td align="left">自动渲染</td>
+<td align="left">HTML配置，自动渲染</td>
+<td align="left">无需写过多 JS，可专注于 HTML 表头部分</td>
+</tr>
+<tr>
+<td align="left">03.</td>
+<td align="left">转换静态表格</td>
+<td align="left">转化一段已有的表格元素</td>
+<td align="left">无需配置数据接口，在JS中指定表格元素，并简单地给表头加上自定义属性即可</td>
+</tr>
+</tbody></table>
+<h3 id="1-方法渲染"><a href="#1-方法渲染" class="headerlink" title="1.方法渲染"></a>1.方法渲染</h3><blockquote>
+<p>其实这是“自动化渲染”的手动模式，本质类似，只是“方法级渲染”将基础参数的设定放在了JS代码中，且原始的 table 标签只需要一个 <em>选择器</em>：</p>
+</blockquote>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span> <span class="token attr-name">lay-filter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> table <span class="token operator">=</span> layui<span class="token punctuation">.</span>table<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//执行渲染</span>
+table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    elem<span class="token punctuation">:</span> <span class="token string">'#demo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//指定原始表格元素选择器（推荐id选择器）</span>
+    height<span class="token punctuation">:</span> <span class="token number">315</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//容器高度</span>
+    cols<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//设置表头</span>
+    <span class="token comment" spellcheck="true">//,…… //更多参数参考右侧目录：基本参数选项</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre>
+<p>更推荐采用“方法级渲染”的做法，其最大的优势在于你可以脱离HTML文件，而专注于JS本身。尤其对于项目的频繁改动及发布，其便捷性会体现得更为明显。</p>
+<h3 id="2-自动渲染"><a href="#2-自动渲染" class="headerlink" title="2.自动渲染"></a>2.自动渲染</h3><blockquote>
+<p>所谓的自动渲染，即：在一段 table 容器中配置好相应的参数，由 table 模块内部自动对其完成渲染，而无需你写初始的渲染方法。你需要关注的是以下三点：</p>
+<ol>
+<li>带有 <em>class=”layui-table”</em> 的 <em><code>&lt;table&gt;</code></em> 标签。</li>
+<li>对标签设置属性 <em>lay-data=””</em> 用于配置一些基础参数</li>
+<li>在 <em><code>&lt;th&gt;</code></em> 标签中设置属性<em>lay-data=””</em>用于配置表头信息</li>
+</ol>
+</blockquote>
+<p>按照上述的规范写好table原始容器后，只要你加载了layui 的 table 模块，就会自动对其建立动态的数据表格。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layui-table<span class="token punctuation">"</span></span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{height:315, url:<span class="token punctuation">'</span>/demo/table/user/<span class="token punctuation">'</span>, page:true, id:<span class="token punctuation">'</span>test<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span> <span class="token attr-name">lay-filter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>id<span class="token punctuation">'</span>, width:80, sort: true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ID<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>username<span class="token punctuation">'</span>, width:80}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>用户名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>sex<span class="token punctuation">'</span>, width:80, sort: true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>性别<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>city<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>城市<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>sign<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>签名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>experience<span class="token punctuation">'</span>, sort: true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>积分<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>score<span class="token punctuation">'</span>, sort: true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>评分<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>classify<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>职业<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>wealth<span class="token punctuation">'</span>, sort: true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>财富<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="3-转换静态表格"><a href="#3-转换静态表格" class="headerlink" title="3.转换静态表格"></a>3.转换静态表格</h3><blockquote>
+<p>假设你的页面已经存在了一段有内容的表格，它由原始的table标签组成，这时你需要赋予它一些动态元素，那么你可以在你的静态表格的 <em><code>th</code></em> 标签中加上 <em><code>lay-data=""</code></em> 属性，</p>
+</blockquote>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">lay-filter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>username<span class="token punctuation">'</span>, width:100}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>昵称<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>experience<span class="token punctuation">'</span>, width:80, sort:true}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>积分<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>sign<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>签名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>贤心1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>66<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>人生就像是一场修行a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>贤心2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>88<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>人生就像是一场修行b<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>贤心3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>33<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>人生就像是一场修行c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> table <span class="token operator">=</span> layui<span class="token punctuation">.</span>table<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//转换静态表格</span>
+table<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token string">'demo'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    height<span class="token punctuation">:</span> <span class="token number">315</span> <span class="token comment" spellcheck="true">//设置高度</span>
+    <span class="token punctuation">,</span>limit<span class="token punctuation">:</span> <span class="token number">10</span> <span class="token comment" spellcheck="true">//注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致</span>
+    <span class="token comment" spellcheck="true">//支持所有基础参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>在前面的“方法渲染”和“自动渲染”两种方式中，你的数据都来源于异步的接口，这可能并不利于所谓的seo（当然是针对于前台页面）。而在这里，你的数据已和页面同步输出，却仍然可以转换成动态表格。</p>
+<h2 id="二、异步数据接口"><a href="#二、异步数据接口" class="headerlink" title="二、异步数据接口"></a>二、异步数据接口</h2><p>数据的异步请求由以下几个参数组成：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>url</strong></td>
+<td align="left">接口地址。默认会自动传递两个参数：<em>?page=1&amp;limit=30*（该参数可通过 request 自定义） *page</em> 代表当前页码、<em>limit</em> 代表每页数据量</td>
+</tr>
+<tr>
+<td align="left"><strong>method</strong></td>
+<td align="left">接口http请求类型，默认：get</td>
+</tr>
+<tr>
+<td align="left"><strong>where</strong></td>
+<td align="left">接口的其它参数。如：<em>where: {token: ‘sasasas’, id: 123}</em></td>
+</tr>
+<tr>
+<td align="left"><strong>contentType</strong></td>
+<td align="left">发送到服务端的内容编码类型。如果你要发送 json 内容，可以设置：<em>contentType: ‘application/json’</em></td>
+</tr>
+<tr>
+<td align="left"><strong>headers</strong></td>
+<td align="left">接口的请求头。如：<em>headers: {token: ‘sasasas’}</em></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>parseData</strong></p>
+</blockquote>
+<p>数据格式解析的回调函数，用于将返回的任意数据格式解析成 table 组件规定的数据格式。</p>
+<p>table 组件默认规定的数据格式为（参考：<a href="https://www.layui.com/demo/table/user/?page=1&amp;limit=30" target="_blank" rel="noopener">/demo/table/user/</a>）：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//默认规定的数据格式</span>
+<span class="token punctuation">{</span>
+  <span class="token string">"code"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token string">"count"</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+  <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span> </code></pre>
+<p>很多时候，您接口返回的数据格式并不一定都符合 table 默认规定的格式，比如：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//假设您返回的数据格式</span>
+<span class="token punctuation">{</span>
+  <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span> 
+  <span class="token string">"total"</span><span class="token punctuation">:</span> <span class="token number">180</span><span class="token punctuation">,</span> 
+  <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"item"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>那么你需要借助 <strong>parseData</strong> 回调函数将其解析成 table 组件所规定的数据格式</p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  elem<span class="token punctuation">:</span> <span class="token string">'#demp'</span>
+  <span class="token punctuation">,</span>url<span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token punctuation">,</span>parseData<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//res 即为原始返回的数据</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token string">"code"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>status<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//解析接口状态</span>
+      <span class="token string">"msg"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>message<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//解析提示文本</span>
+      <span class="token string">"count"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>total<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//解析数据长度</span>
+      <span class="token string">"data"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>item <span class="token comment" spellcheck="true">//解析数据列表</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">//,…… //其他参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    </code></pre>
+<blockquote>
+<p><strong>request</strong></p>
+</blockquote>
+<p>用于对分页请求的参数：page、limit重新设定名称，如：</p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  elem<span class="token punctuation">:</span> <span class="token string">'#demp'</span>
+  <span class="token punctuation">,</span>url<span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token punctuation">,</span>request<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    pageName<span class="token punctuation">:</span> <span class="token string">'curr'</span> <span class="token comment" spellcheck="true">//页码的参数名称，默认：page</span>
+    <span class="token punctuation">,</span>limitName<span class="token punctuation">:</span> <span class="token string">'nums'</span> <span class="token comment" spellcheck="true">//每页数据量的参数名，默认：limit</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">//,…… //其他参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">//那么请求数据时的参数将会变为：?curr=1&amp;nums=30</span></code></pre>
+<blockquote>
+<p><strong>response</strong></p>
+</blockquote>
+<p>您还可以借助 response 参数来重新设定返回的数据格式，如：</p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  elem<span class="token punctuation">:</span> <span class="token string">'#demp'</span>
+  <span class="token punctuation">,</span>url<span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token punctuation">,</span>response<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    statusName<span class="token punctuation">:</span> <span class="token string">'status'</span> <span class="token comment" spellcheck="true">//规定数据状态的字段名称，默认：code</span>
+    <span class="token punctuation">,</span>statusCode<span class="token punctuation">:</span> <span class="token number">200</span> <span class="token comment" spellcheck="true">//规定成功的状态码，默认：0</span>
+    <span class="token punctuation">,</span>msgName<span class="token punctuation">:</span> <span class="token string">'hint'</span> <span class="token comment" spellcheck="true">//规定状态信息的字段名称，默认：msg</span>
+    <span class="token punctuation">,</span>countName<span class="token punctuation">:</span> <span class="token string">'total'</span> <span class="token comment" spellcheck="true">//规定数据总数的字段名称，默认：count</span>
+    <span class="token punctuation">,</span>dataName<span class="token punctuation">:</span> <span class="token string">'rows'</span> <span class="token comment" spellcheck="true">//规定数据列表的字段名称，默认：data</span>
+  <span class="token punctuation">}</span> 
+  <span class="token comment" spellcheck="true">//,…… //其他参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     
+<span class="token comment" spellcheck="true">//重新规定的数据格式:</span>
+<span class="token punctuation">{</span>
+  <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+  <span class="token string">"hint"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token string">"total"</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+  <span class="token string">"rows"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="三、数据表格基础方法调用"><a href="#三、数据表格基础方法调用" class="headerlink" title="三、数据表格基础方法调用"></a>三、数据表格基础方法调用</h2><blockquote>
+<ol>
+<li>&gt; <strong>table.set(options)</strong>; //设定全局默认参数。options即各项基础参数</li>
+<li>&gt; <strong>table.on(‘event(filter)’, callback)</strong>; //事件监听。event为内置事件名，filter为容器lay-filter设定的值</li>
+<li>&gt; <strong>table.init(filter, options)</strong>; //filter为容器lay-filter设定的值，options即各项基础参数，详见：<a href="https://www.layui.com/doc/modules/table.html#parseTable" target="_blank" rel="noopener">转换静态表格</a></li>
+<li>&gt; <strong>table.checkStatus(id)</strong>; //获取表格选中行。id 即为 id 参数对应的值</li>
+<li>&gt; <strong>table.render(options)</strong>; //用于表格方法级渲染，核心方法。详见：<a href="https://www.layui.com/doc/modules/table.html#methodRender" target="_blank" rel="noopener">方法级渲染</a></li>
+<li>&gt; <strong>table.reload(id, options)</strong>; //表格重载</li>
+<li>&gt; <strong>table.resize(id);</strong> //重置表格尺寸</li>
+<li>&gt; <strong>table.exportFile(id, data, type)</strong>; //导出数据</li>
+</ol>
+</blockquote>
+<h3 id="1-获取选中行"><a href="#1-获取选中行" class="headerlink" title="1.获取选中行"></a>1.获取选中行</h3><blockquote>
+<p>该方法可获取到表格所有的选中行相关数据</p>
+<p>语法：<em><code>table.checkStatus('ID')</code></em></p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> checkStatus <span class="token operator">=</span> table<span class="token punctuation">.</span><span class="token function">checkStatus</span><span class="token punctuation">(</span><span class="token string">'idTest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//idTest 即为基础参数 id 对应的值</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>checkStatus<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//获取选中行的数据</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>checkStatus<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//获取选中行数量，可作为是否有选中行的条件</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>checkStatus<span class="token punctuation">.</span>isAll <span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//表格是否全选</span></code></pre>
+<h3 id="2-表格重载"><a href="#2-表格重载" class="headerlink" title="2.表格重载"></a>2.表格重载</h3><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>table.reload(ID, options)</td>
+<td>参数 <em>ID</em> 即为基础参数id对应的值，<em>options</em> 即为各项基础参数</td>
+<td>所有渲染方式</td>
+</tr>
+<tr>
+<td>tableIns.reload(options)</td>
+<td>参数同上<br> tableIns 可通过 var tableIns = table.render() 得到</td>
+<td>仅限方法级渲染</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>自动化渲染的重载</p>
+</blockquote>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layui-table<span class="token punctuation">"</span></span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{id: <span class="token punctuation">'</span>idTest<span class="token punctuation">'</span>}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token string">'idTest'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span> <span class="token string">'/api/table/search'</span>
+  <span class="token punctuation">,</span>where<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//设定异步数据接口的额外参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>方法级渲染的重载</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//所获得的 tableIns 即为当前容器的实例</span>
+<span class="token keyword">var</span> tableIns <span class="token operator">=</span> table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    elem<span class="token punctuation">:</span> <span class="token string">'#id'</span>
+    <span class="token punctuation">,</span>cols<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//设置表头</span>
+    <span class="token punctuation">,</span>url<span class="token punctuation">:</span> <span class="token string">'/api/data'</span> <span class="token comment" spellcheck="true">//设置异步接口</span>
+    <span class="token punctuation">,</span>id<span class="token punctuation">:</span> <span class="token string">'idTest'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token comment" spellcheck="true">//这里以搜索为例</span>
+tableIns<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    where<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//设定异步数据接口的额外参数，任意设</span>
+        aaaaaa<span class="token punctuation">:</span> <span class="token string">'xxx'</span>
+        <span class="token punctuation">,</span>bbb<span class="token punctuation">:</span> <span class="token string">'yyy'</span>
+        <span class="token comment" spellcheck="true">//…</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>page<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        curr<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">//重新从第 1 页开始</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//上述方法等价于</span>
+table<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token string">'idTest'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    where<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//设定异步数据接口的额外参数，任意设</span>
+        aaaaaa<span class="token punctuation">:</span> <span class="token string">'xxx'</span>
+        <span class="token punctuation">,</span>bbb<span class="token punctuation">:</span> <span class="token string">'yyy'</span>
+        <span class="token comment" spellcheck="true">//…</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span>page<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        curr<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">//重新从第 1 页开始</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//只重载数据</span>
+</code></pre>
+<p>注意：<em>这里的表格重载是指对表格重新进行渲染，包括数据请求和基础参数的读取</em></p>
+<h3 id="3-导出任意数据"><a href="#3-导出任意数据" class="headerlink" title="3.导出任意数据"></a>3.导出任意数据</h3><blockquote>
+<p>尽管 table 的工具栏内置了数据导出按钮，但有时你可能需要通过方法去导出任意数据，那么可以借助以下方法：</p>
+<p>语法：<em><code>table.exportFile(id, data, type)</code></em></p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> ins1 <span class="token operator">=</span> table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  elem<span class="token punctuation">:</span> <span class="token string">'#demo'</span>
+  <span class="token punctuation">,</span>id<span class="token punctuation">:</span> <span class="token string">'test'</span>
+  <span class="token comment" spellcheck="true">//,…… //其它参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>      
+
+<span class="token comment" spellcheck="true">//将上述表格示例导出为 csv 文件</span>
+table<span class="token punctuation">.</span><span class="token function">exportFile</span><span class="token punctuation">(</span>ins1<span class="token punctuation">.</span>config<span class="token punctuation">.</span>id<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//data 为该实例中的任意数量的数据</span>
+
+<span class="token comment" spellcheck="true">//事实上，该方法也可以不用依赖 table 的实例，可直接导出任意数据：</span>
+table<span class="token punctuation">.</span><span class="token function">exportFile</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'名字'</span><span class="token punctuation">,</span><span class="token string">'性别'</span><span class="token punctuation">,</span><span class="token string">'年龄'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span><span class="token string">'男'</span><span class="token punctuation">,</span><span class="token string">'20'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'李四'</span><span class="token punctuation">,</span><span class="token string">'女'</span><span class="token punctuation">,</span><span class="token string">'18'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'王五'</span><span class="token punctuation">,</span><span class="token string">'女'</span><span class="token punctuation">,</span><span class="token string">'19'</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'csv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//默认导出 csv，也可以为：xls</span></code></pre>
+<h3 id="4-templet-自定义列模板"><a href="#4-templet-自定义列模板" class="headerlink" title="4.templet - 自定义列模板"></a>4.<code>templet</code> - 自定义列模板</h3><p>在默认情况下，单元格的内容是完全按照数据接口返回的content原样输出的，如果你想对某列的单元格添加链接等其它元素，你可以借助该参数来轻松实现。这是一个非常实用且强大的功能，你的表格内容会因此而丰富多样。</p>
+<blockquote>
+<p>templet 提供了三种使用方式，请结合实际场景选择最合适的一种：</p>
+<ul>
+<li>如果自定义模版的字符量太大，我们推荐你采用【方式一】；</li>
+<li>如果自定义模板的字符量适中，或者想更方便地调用外部方法，我们推荐你采用【方式二】；</li>
+<li>如果自定义模板的字符量很小，我们推荐你采用【方式三】</li>
+</ul>
+</blockquote>
+<p><strong>方式一：绑定模版选择器</strong></p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  cols<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>field<span class="token punctuation">:</span><span class="token string">'title'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span> <span class="token string">'文章标题'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span> templet<span class="token punctuation">:</span> <span class="token string">'#titleTpl'</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//这里的templet值是模板元素的选择器</span>
+    <span class="token punctuation">,</span><span class="token punctuation">{</span>field<span class="token punctuation">:</span><span class="token string">'id'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span><span class="token string">'ID'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//等价于：</span>
+<span class="token operator">&lt;</span>th lay<span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"{field:'title', width: 200, templet: '#titleTpl'}"</span><span class="token operator">></span>文章标题<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+<span class="token operator">&lt;</span>th lay<span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"{field:'id', width:100}"</span><span class="token operator">></span>ID<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span></code></pre>
+<p>下述是templet对应的模板，它可以存放在页面的任意位置。模板遵循于 <code>laytpl</code> 语法，可读取到返回的所有数据</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>titleTpl<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"/detail/{{d.id}}"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-table-link"</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>d<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!--注意：上述的 {{d.id}}、{{d.title}} 是动态内容，它对应数据接口返回的字段名。除此之外，你还可以读取到以下额外字段：序号：{{ d.LAY_INDEX }} （该额外字段为 layui 2.2.0 新增）--></span>
+
+<span class="token comment" spellcheck="true">&lt;!--由于模板遵循 laytpl 语法（建议细读 laytpl文档 ），因此在模板中你可以写任意脚本语句（如 if else/for等）： --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>titleTpl<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token punctuation">{</span><span class="token punctuation">{</span>#  <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>id <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"/detail/{{d.id}}"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-table-link"</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>d<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span>#  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span>d<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">(</span>普通用户<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span>#  <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>方式二：函数转义</strong></p>
+<p>templet 开始支持函数形式，函数返回一个参数 d，包含接口返回的所有字段和数据。如下所示：</p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  cols<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>field<span class="token punctuation">:</span><span class="token string">'title'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span> <span class="token string">'文章标题'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span> <span class="token number">200</span>
+      <span class="token punctuation">,</span>templet<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'ID：'</span><span class="token operator">+</span> d<span class="token punctuation">.</span>id <span class="token operator">+</span><span class="token string">'，标题：&lt;span style="color: #c00;">'</span><span class="token operator">+</span> d<span class="token punctuation">.</span>title <span class="token operator">+</span><span class="token string">'&lt;/span>'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span><span class="token punctuation">{</span>field<span class="token punctuation">:</span><span class="token string">'id'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span><span class="token string">'ID'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<p><strong>方式三：直接赋值模版字符</strong></p>
+<p>事实上，templet 也可以直接是一段 html 内容，如：</p>
+<pre class=" language-jsx"><code class="language-jsx">templet<span class="token punctuation">:</span> <span class="token string">'&lt;div>&lt;a href="/detail/{{d.id}}" class="layui-table-link">{{d.title}}&lt;/a>&lt;/div>'</span>
+
+<span class="token comment" spellcheck="true">//注意：这里一定要被一层 &lt;div>&lt;/div> 包裹，否则无法读取到模板</span></code></pre>
+<h3 id="5-done-数据渲染完的回调"><a href="#5-done-数据渲染完的回调" class="headerlink" title="5.done- 数据渲染完的回调"></a>5.<code>done</code>- 数据渲染完的回调</h3><blockquote>
+<p>无论是异步请求数据，还是直接赋值数据，都会触发该回调。你可以利用该回调做一些表格以外元素的渲染。</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//其它参数在此省略</span>
+  done<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> curr<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//如果是异步请求数据方式，res即为你接口返回的信息。</span>
+    <span class="token comment" spellcheck="true">//如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//得到当前页码</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>curr<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment" spellcheck="true">//得到数据总量</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="四、数据表格事件监听"><a href="#四、数据表格事件监听" class="headerlink" title="四、数据表格事件监听"></a>四、数据表格事件监听</h2><blockquote>
+<p>语法：<em><code>table.on('event(filter)', callback);</code></em> 注：event为内置事件名，filter为容器<code>lay-filter</code>设定的值</p>
+</blockquote>
+<blockquote>
+<p>table模块在Layui事件机制中注册了专属事件，如果你使用<code>layui.onevent()</code>自定义模块事件，请勿占用table名。目前所支持的所有事件。</p>
+<p>默认情况下，事件所监听的是全部的table模块容器，但如果你只想监听某一个容器，使用事件过滤器即可。</p>
+<p>假设原始容器为：<em><code>&lt;table class="layui-table" lay-filter="test"&gt;&lt;/table&gt;</code></em> 那么你的事件监听写法如下：</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//以复选框事件为例</span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'checkbox(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="1-监听头部工具栏事件"><a href="#1-监听头部工具栏事件" class="headerlink" title="1.监听头部工具栏事件"></a>1.监听头部工具栏事件</h3><h4 id="1-1-toolbar"><a href="#1-1-toolbar" class="headerlink" title="1-1.toolbar"></a>1-1.toolbar</h4><blockquote>
+<p>开启表格头部工具栏区域，该参数支持四种类型值：</p>
+<ul>
+<li><code>toolbar: '#toolbarDemo'</code> <em>//指向自定义工具栏模板选择器</em></li>
+<li><code>toolbar: '&lt;div&gt;xxx&lt;/div&gt;'</code><em>//直接传入工具栏模板字符</em></li>
+<li><code>toolbar: true</code><em>//仅开启工具栏，不显示左侧模板</em></li>
+<li><code>toolbar: 'default'</code><em>//让工具栏左侧显示默认的内置模板</em></li>
+</ul>
+<p>若需要“列显示隐藏”、“导出”、“打印”等功能，则必须开启该参数</p>
+</blockquote>
+<p>点击头部工具栏区域设定了属性为 <em><code>lay-event=""</code></em> 的元素时触发</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 原始容器 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span> <span class="token attr-name">lay-filter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-jsx"><code class="language-jsx">工具栏模板：
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>toolbarDemo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn-container"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-sm"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"add"</span><span class="token operator">></span>添加<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-sm"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"delete"</span><span class="token operator">></span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-sm"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"update"</span><span class="token operator">></span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//JS 调用：</span>
+table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  elem<span class="token punctuation">:</span> <span class="token string">'#demo'</span>
+  <span class="token punctuation">,</span>toolbar<span class="token punctuation">:</span> <span class="token string">'#toolbarDemo'</span>
+  <span class="token comment" spellcheck="true">//,…… //其他参数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//监听事件</span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'toolbar(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> checkStatus <span class="token operator">=</span> table<span class="token punctuation">.</span><span class="token function">checkStatus</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>config<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">switch</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>event<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'add'</span><span class="token punctuation">:</span>
+      layer<span class="token punctuation">.</span><span class="token function">msg</span><span class="token punctuation">(</span><span class="token string">'添加'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'delete'</span><span class="token punctuation">:</span>
+      layer<span class="token punctuation">.</span><span class="token function">msg</span><span class="token punctuation">(</span><span class="token string">'删除'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'update'</span><span class="token punctuation">:</span>
+      layer<span class="token punctuation">.</span><span class="token function">msg</span><span class="token punctuation">(</span><span class="token string">'编辑'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="1-2-defaultToolbar"><a href="#1-2-defaultToolbar" class="headerlink" title="1-2.defaultToolbar"></a>1-2.defaultToolbar</h4><blockquote>
+<p>类型：<em>Array<em>，默认值：</em><code>["filter","exports","print"]</code></em></p>
+</blockquote>
+<blockquote>
+<p>该参数可自由配置头部工具栏右侧的图标按钮，值为一个数组，支持以下可选值：</p>
+<ul>
+<li>filter: <em>显示筛选图标</em></li>
+<li>exports: <em>显示导出图标</em></li>
+<li>print: <em>显示打印图标</em></li>
+</ul>
+</blockquote>
+<p>可根据值的顺序显示排版图标，如：</p>
+<p><em><code>defaultToolbar: ['filter', 'print', 'exports']</code></em></p>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//其它参数在此省略      </span>
+    defaultToolbar<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'filter'</span><span class="token punctuation">,</span> <span class="token string">'print'</span><span class="token punctuation">,</span> <span class="token string">'exports'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'提示'</span> <span class="token comment" spellcheck="true">//标题</span>
+        <span class="token punctuation">,</span>layEvent<span class="token punctuation">:</span> <span class="token string">'LAYTABLE_TIPS'</span> <span class="token comment" spellcheck="true">//事件名，用于 toolbar 事件中使用</span>
+        <span class="token punctuation">,</span>icon<span class="token punctuation">:</span> <span class="token string">'layui-icon-tips'</span> <span class="token comment" spellcheck="true">//图标类名</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="2-监听复选框选择"><a href="#2-监听复选框选择" class="headerlink" title="2.监听复选框选择"></a>2.监听复选框选择</h3><blockquote>
+<p>点击复选框时触发，回调函数返回一个 <code>object</code> 参数，携带的成员如下：</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'checkbox(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>checked<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前是否选中状态</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//选中行的相关数据</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果触发的是全选，则为：all，如果触发的是单选，则为：one</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="3-监听单元格编辑"><a href="#3-监听单元格编辑" class="headerlink" title="3.监听单元格编辑"></a>3.监听单元格编辑</h3><blockquote>
+<p>单元格被编辑，且值发生改变时触发，回调函数返回一个 <code>object</code> 参数，携带的成员如下：</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js">table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'edit(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//得到修改后的值</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>field<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前编辑的字段名</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//所在行的所有相关数据  </span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="4-监听行单双击事件"><a href="#4-监听行单双击事件" class="headerlink" title="4.监听行单双击事件"></a>4.监听行单双击事件</h3><blockquote>
+<p>点击或双击行时触发。</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//监听行单击事件</span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'row(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>tr<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//得到当前行元素对象</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//得到当前行数据</span>
+    <span class="token comment" spellcheck="true">//obj.del(); //删除当前行</span>
+    <span class="token comment" spellcheck="true">//obj.update(fields) //修改当前行数据</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//监听行双击事件</span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'rowDouble(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//obj 同上</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="5-监听行中工具条点击事件"><a href="#5-监听行中工具条点击事件" class="headerlink" title="5.监听行中工具条点击事件"></a>5.监听行中工具条点击事件</h3><blockquote>
+<p>通常你需要在表格的每一行加上 <em>查看<em>、</em>编辑<em>、</em>删除</em> 这样类似的操作按钮，而 <strong><code>tool</code> 参数就是为此而生，你因此可以非常便捷地实现各种操作功能。</strong><code>tool</code> 参数和 <code>templet</code> 参数的使用方式完全类似**，通常接受的是一个选择器，也可以是一段HTML字符。</p>
+</blockquote>
+<pre class=" language-jsx"><code class="language-jsx">table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cols<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>field<span class="token punctuation">:</span><span class="token string">'id'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span><span class="token string">'ID'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">}</span>
+        <span class="token punctuation">,</span><span class="token punctuation">{</span>fixed<span class="token punctuation">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span><span class="token number">150</span><span class="token punctuation">,</span> align<span class="token punctuation">:</span><span class="token string">'center'</span><span class="token punctuation">,</span> toolbar<span class="token punctuation">:</span> <span class="token string">'#barDemo'</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//这里的toolbar值是模板元素的选择器</span>
+    <span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//等价于：</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{field:<span class="token punctuation">'</span>id<span class="token punctuation">'</span>,</span> <span class="token attr-name"><span class="token namespace">width:</span>100}"</span><span class="token punctuation">></span></span>ID<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">lay-data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{fixed:</span> <span class="token attr-name">'right',</span> <span class="token attr-name"><span class="token namespace">width:</span>150,</span> <span class="token attr-name"><span class="token namespace">align:</span>'center',</span> <span class="token attr-name"><span class="token namespace">toolbar:</span></span> <span class="token attr-name">'#barDemo'}"</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span></code></pre>
+<p>下述是 toolbar 对应的模板，它可以存放在页面的任意位置：</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barDemo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-xs"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"detail"</span><span class="token operator">></span>查看<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-xs"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"edit"</span><span class="token operator">></span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-danger layui-btn-xs"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"del"</span><span class="token operator">></span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 这里同样支持 laytpl 语法，如： <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span>#  <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>auth <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"layui-btn layui-btn-xs"</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">"check"</span><span class="token operator">></span>审核<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span>#  <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">//注意：属性 lay-event="" 是模板的关键所在，值可随意定义。</span></code></pre>
+<p>接下来我们可以借助 table模块的工具条事件，完成不同的操作功能：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//监听工具条 </span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'tool(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> obj<span class="token punctuation">.</span>data<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获得当前行数据</span>
+    <span class="token keyword">var</span> layEvent <span class="token operator">=</span> obj<span class="token punctuation">.</span>event<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）</span>
+    <span class="token keyword">var</span> tr <span class="token operator">=</span> obj<span class="token punctuation">.</span>tr<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获得当前行 tr 的 DOM 对象（如果有的话）</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'detail'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//查看</span>
+        <span class="token comment" spellcheck="true">//do somehing</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'del'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//删除</span>
+        layer<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'真的删除行么'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        obj<span class="token punctuation">.</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//删除对应行（tr）的DOM结构，并更新缓存</span>
+        layer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//向服务端发送删除指令</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'edit'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//编辑</span>
+        <span class="token comment" spellcheck="true">//do something</span>
+
+        <span class="token comment" spellcheck="true">//同步更新缓存对应的值</span>
+        obj<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        username<span class="token punctuation">:</span> <span class="token string">'123'</span>
+        <span class="token punctuation">,</span>title<span class="token punctuation">:</span> <span class="token string">'xxx'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'LAYTABLE_TIPS'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Hi，头部工具栏扩展的右侧图标。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="6-监听排序切换"><a href="#6-监听排序切换" class="headerlink" title="6.监听排序切换"></a>6.监听排序切换</h3><blockquote>
+<p>点击表头排序时触发，它通用在基础参数中设置 <strong><code>autoSort: false</code></strong> 时使用，以完成服务端的排序，而不是默认的前端排序。该事件的回调函数返回一个 <code>object</code> 参数，携带的成员如下：</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//禁用前端自动排序，以便由服务端直接返回排序好的数据</span>
+table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    elem<span class="token punctuation">:</span> <span class="token string">'#id'</span>
+    <span class="token punctuation">,</span>autoSort<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//禁用前端自动排序。注意：该参数为 layui 2.4.4 新增</span>
+    <span class="token comment" spellcheck="true">//,… //其它参数省略</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//监听排序事件 </span>
+table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'sort(test)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//注：sort 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>field<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前排序的字段名</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前排序类型：desc（降序）、asc（升序）、null（空对象，默认排序）</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前排序的 th 对象</span>
+
+    <span class="token comment" spellcheck="true">//尽管我们的 table 自带排序功能，但并没有请求服务端。</span>
+    <span class="token comment" spellcheck="true">//有些时候，你可能需要根据当前排序的字段，重新向服务端发送请求，从而实现服务端排序，如：</span>
+    table<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token string">'idTest'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        initSort<span class="token punctuation">:</span> obj <span class="token comment" spellcheck="true">//记录初始排序，如果不设的话，将无法标记表头的排序状态。</span>
+        <span class="token punctuation">,</span>where<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//请求参数（注意：这里面的参数可任意定义，并非下面固定的格式）</span>
+        field<span class="token punctuation">:</span> obj<span class="token punctuation">.</span>field <span class="token comment" spellcheck="true">//排序字段</span>
+        <span class="token punctuation">,</span>order<span class="token punctuation">:</span> obj<span class="token punctuation">.</span>type <span class="token comment" spellcheck="true">//排序方式</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    layer<span class="token punctuation">.</span><span class="token function">msg</span><span class="token punctuation">(</span><span class="token string">'服务端排序。order by '</span><span class="token operator">+</span> obj<span class="token punctuation">.</span>field <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> obj<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="五、页面打印"><a href="#五、页面打印" class="headerlink" title="五、页面打印"></a>五、页面打印</h2><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layui-btn<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>printpage<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>打印<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#printpage"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// window.print()</span>
+    document<span class="token punctuation">.</span><span class="token function">execCommand</span><span class="token punctuation">(</span><span class="token string">'print'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token comment" spellcheck="true">//定义打印前事件 </span>
+<span class="token keyword">var</span> beforePrint <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>             
+    <span class="token comment" spellcheck="true">// console.log("beforePrint");           </span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>       
+<span class="token comment" spellcheck="true">//定义打印后事件 </span>
+<span class="token keyword">var</span> afterPrint <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            
+    <span class="token comment" spellcheck="true">// console.log("afterPrint");             </span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#printpage"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//监听window状态            </span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>matchMedia<span class="token punctuation">)</span> <span class="token punctuation">{</span>                
+    <span class="token keyword">var</span> mediaQueryList <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">matchMedia</span><span class="token punctuation">(</span><span class="token string">'print'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+    <span class="token comment" spellcheck="true">//为印添加事件</span>
+    mediaQueryList<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>mql<span class="token punctuation">)</span> <span class="token punctuation">{</span>                  
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mql<span class="token punctuation">.</span>matches<span class="token punctuation">)</span> <span class="token punctuation">{</span>                     
+            <span class="token function">beforePrint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>                     
+            <span class="token function">afterPrint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  
+        <span class="token punctuation">}</span>                
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               
+<span class="token punctuation">}</span>       
+<span class="token comment" spellcheck="true">//打印前事件</span>
+window<span class="token punctuation">.</span>onbeforeprint <span class="token operator">=</span> beforePrint<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//打印后事件</span>
+window<span class="token punctuation">.</span>onafterprint <span class="token operator">=</span> afterPrint<span class="token punctuation">;</span>   </code></pre>
+<h2 id="六、生成随机数"><a href="#六、生成随机数" class="headerlink" title="六、生成随机数"></a>六、生成随机数</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//生成年月日时分秒</span>
+<span class="token keyword">function</span> <span class="token function">getNowFormatDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> day <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Year <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Month <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Day <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Hour <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Minute <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> Second <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> CurrentDate <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    Year <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//支持IE和火狐浏览器.</span>
+    Month <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    Day <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Hour <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Minute <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getMinutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Second <span class="token operator">=</span> day<span class="token punctuation">.</span><span class="token function">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CurrentDate <span class="token operator">+</span><span class="token operator">=</span> Year<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//CurrentDate =CurrentDate+ Year</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Month <span class="token operator">>=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CurrentDate <span class="token operator">+</span><span class="token operator">=</span> Month<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        CurrentDate <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"0"</span> <span class="token operator">+</span> Month<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Day <span class="token operator">>=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CurrentDate <span class="token operator">+</span><span class="token operator">=</span> Day
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        CurrentDate <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"0"</span> <span class="token operator">+</span> Day<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    CurrentDate <span class="token operator">=</span> CurrentDate <span class="token operator">+</span> Hour <span class="token operator">+</span> Minute <span class="token operator">+</span> Second<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> CurrentDate<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//后三位随机数</span>
+<span class="token keyword">function</span> <span class="token function">lastThree</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> lastThree <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        lastThree <span class="token operator">+</span><span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> lastThree
+<span class="token punctuation">}</span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">弈心</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.tianyichuxin.com/2020/06/19451.html">https://blog.tianyichuxin.com/2020/06/19451.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">弈心</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                                <a href="/tags/layui/">
+                                    <span class="chip bg-color">layui</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'Pz2erXCl206N7RaqUeABaxY5-gzGzoHsz',
+        appKey: 'jK6ogq40WtwTaW0p3l097QhN',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '说点什么再走吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/32011.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="全面理解面向对象的JavaScript">
+                        
+                        <span class="card-title">全面理解面向对象的JavaScript</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            全面理解面向对象的JavaScript
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/31124.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="关于layui的一些故事（三）：导出Excel文件">
+                        
+                        <span class="card-title">关于layui的一些故事（三）：导出Excel文件</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            layui
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/layui/" class="post-category">
+                                    layui
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                    <a href="/tags/layui/">
+                        <span class="chip bg-color">layui</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 天弈初心<br />'
+            + '文章作者: 弈心<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+<div class="_fogwnirvpfw" id="_fogwnirvpfw"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938726",
+        container: "_fogwnirvpfw",
+        async: true
+    });
+</script>
+<div class="_s210mav3xgf" id="_s210mav3xgf"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938735",
+        container: "_s210mav3xgf",
+        async: true
+    });
+</script>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<!-- <script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> -->
+<script src="https://static.tianyichuxin.com/assets/npm/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">弈心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">364.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006491" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-right: 10px;">鄂公网安备 42018502006491号</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">鄂ICP备19020385号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/tianyichuxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:535399046@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=535399046" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 535399046" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: tianyichuxin2025" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/waifu.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/flat-ui.min.css" />
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	<div class="waifu">
+		<!-- 提示框 -->
+		<!-- <div class="waifu-tips"></div> -->
+
+		<!-- 看板娘画布 -->
+		<!-- <canvas id="live2d" class="live2d" width="280" height="250"></canvas> -->
+
+		<!-- 工具栏 -->
+		<!-- <div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div> -->
+	</div>
+</body>
+</html>
+<!-- 右下角人物和鼠标点击 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/waifu--tips.js"></script> -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/live2d.js"></script> -->
+<!-- 小姐姐 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/L2Dwidget.min.js"></script> -->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+<!-- 鼠标点击 -->
+<script src="http://static.tianyichuxin.com/assets/live2D/js/mouse.js"></script>
+<script type="text/javascript">
+    // /* 可直接修改部分参数 */
+    // live2d_settings['modelId'] = 5; // 默认模型 ID
+    // live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    // /* 在 initModel 前添加 */
+    // initModel("http://static.tianyichuxin.com/assets/live2D/js/waifu-tips.json")
+</script>

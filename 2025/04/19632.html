@@ -1,0 +1,2264 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!-- 自动将http的不安全请求升级为https -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker,vue,nest,mysql,redis,nginx.jenkins">
+    <meta name="description" content="专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>基于docker-compose.yml配置vue+nest+mysql+redis网站 | 天弈初心</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/advertisement-space.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">天弈初心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+    <div id="mobile-nav" class="side-nav sidenav">
+
+        <div class="mobile-head bg-color">
+            
+                <img src="/medias/logo.png" class="logo-img circle responsive-img">
+                
+                    <div class="logo-name">
+                        天弈初心
+                    </div>
+                    <div class="logo-desc">
+                        
+                            专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写
+                                
+                    </div>
+        </div>
+
+        
+
+            <ul class="menu-list mobile-menu-list">
+                
+                    <li class="m-nav-item">
+                        
+                            <a href="/" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-home"></i>
+                                    
+                                            首页
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/tags" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-tags"></i>
+                                    
+                                            标签
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/categories" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-bookmark"></i>
+                                    
+                                            分类
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/archives" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-archive"></i>
+                                    
+                                            归档
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/about" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-user-circle"></i>
+                                    
+                                            关于
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/contact" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-comments"></i>
+                                    
+                                            留言板
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/friends" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-address-book"></i>
+                                    
+                                            友链
+                            </a>
+                            
+                    </li>
+                    
+                        
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                            <li>
+                                <a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="waves-effect waves-light" target="_blank">
+                                    <i class="fab fa-github-square fa-fw"></i>
+                                    Fork Me
+                                </a>
+                            </li>
+                            
+            </ul>
+    </div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">基于docker-compose.yml配置vue+nest+mysql+redis网站</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <!-- 内页 -->
+<link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/docker/" class="post-category">
+                                docker
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-04-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-04-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、整体架构设计"><a href="#一、整体架构设计" class="headerlink" title="一、整体架构设计"></a>一、整体架构设计</h2><h3 id="1-多容器协作模式"><a href="#1-多容器协作模式" class="headerlink" title="1.多容器协作模式"></a>1.多容器协作模式</h3><p><code>Docker</code> 部署 <code>Vue</code>（前端）和 <code>Node.js</code>（后端）的 Web 服务，通常采用 <strong>多容器协作模式</strong>：</p>
+<ol>
+<li><p><strong>前端容器</strong>：基于 <code>Nginx</code> 镜像托管 <code>Vue</code> 构建产物（如 <code>dist</code> 目录）。</p>
+</li>
+<li><p><strong>后端容器</strong>：基于 <code>Node.js</code> 镜像运行 <code>API</code> 服务，处理数据库 <code>MySQL</code> 交互和业务逻辑。</p>
+</li>
+<li><p><strong>数据库容器</strong>：如 <code>MySQL</code> 或 <code>Redis</code>，通过数据卷持久化存储数据。</p>
+</li>
+<li><p><strong>Jenkins 容器</strong>：自动化构建与部署流水线控制中心。</p>
+</li>
+<li><p><strong>Nginx 容器</strong>：反向代理前端请求，支持多域名配置。</p>
+</li>
+<li><p><strong>网络与通信</strong></p>
+</li>
+</ol>
+<ul>
+<li>使用 <code>Docker</code> 自定义网络（如 <code>my-network</code>）确保容器间通过服务名互通。</li>
+<li><code>Nginx</code> 通过 <code>proxy_pass</code> 将 <code>API</code> 请求转发至后端容器（如 <code>http://backend:3000</code>）。</li>
+</ul>
+<h3 id="2-整体架构"><a href="#2-整体架构" class="headerlink" title="2.整体架构"></a>2.整体架构</h3><pre class=" language-bash"><code class="language-bash">
++----------+----------+
+
++---------------------+
+
+<span class="token operator">|</span>    Nginx     <span class="token operator">|</span> <span class="token comment" spellcheck="true"># 反向代理/静态资源/多站点</span>
+
++----------+----------+
+
+     <span class="token operator">|</span>
+
++----------v----------+  +------------------+
+
+<span class="token operator">|</span>   Vue Frontend   <span class="token operator">|</span>  <span class="token operator">|</span>  Node.js Backend<span class="token operator">|</span>
+
++----------+----------+  +--------+---------+
+
+     <span class="token operator">|</span>            <span class="token operator">|</span>
+
++----------v------------------------v---------+
+
+<span class="token operator">|</span>        Docker Network        <span class="token operator">|</span>
+
++----------+------------------+--------------+
+
+     <span class="token operator">|</span>         <span class="token operator">|</span>
+
++----------v----------+ +-----v--------------+
+
+<span class="token operator">|</span>  MySQL Container  <span class="token operator">|</span> <span class="token operator">|</span>  Redis Container  <span class="token operator">|</span>
+
++---------------------+ +--------------------+
+</code></pre>
+<h3 id="3-分步部署指南"><a href="#3-分步部署指南" class="headerlink" title="3.分步部署指南"></a>3.分步部署指南</h3><pre class=" language-bash"><code class="language-bash">
+project/
+
+├── frontend/      <span class="token comment" spellcheck="true"># Vue项目</span>
+
+│  ├── Dockerfile
+
+│  ├── jenkinsfile
+
+│  └── Vue项目文件
+
+├── backend/       <span class="token comment" spellcheck="true"># Node.js项目</span>
+
+│  ├── Dockerfile
+
+│  ├── jenkinsfile
+
+│  └── Node.js项目文件
+
+├── nginx/
+
+│  ├── conf.d/
+
+│  │  ├── site1.conf  <span class="token comment" spellcheck="true"># 站点配置</span>
+
+│  │  └── site2.conf
+
+│  └── nginx.conf
+
+├── docker-compose.yml
+
+└── jenkins/
+
+  └── jenkinsfile   <span class="token comment" spellcheck="true"># 主部署脚本</span>
+</code></pre>
+<h2 id="二、分步部署指南"><a href="#二、分步部署指南" class="headerlink" title="二、分步部署指南"></a>二、分步部署指南</h2><h3 id="1-前端-Vue-项目容器化"><a href="#1-前端-Vue-项目容器化" class="headerlink" title="1. 前端 Vue 项目容器化"></a>1. 前端 Vue 项目容器化</h3><p><strong>步骤 1：编写 Dockerfile</strong></p>
+<p>在 Vue 项目根目录创建 <code>Dockerfile</code>，采用 <strong>多阶段构建</strong> 优化镜像体积：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 第一阶段：构建项目</span>
+FROM node:latest AS build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN <span class="token function">npm</span> <span class="token function">install</span> --registry<span class="token operator">=</span>https://registry.npmmirror.com
+COPY <span class="token keyword">.</span> <span class="token keyword">.</span>
+RUN <span class="token function">npm</span> run build
+
+
+<span class="token comment" spellcheck="true"># 第二阶段：生产环境 部署到 Nginx</span>
+<span class="token comment" spellcheck="true"># nginx:latest 是基于 Debian 或 Ubuntu 的完整 Nginx 镜像，包含了所有 Nginx 的功能和模块。</span>
+
+FROM nginx:latest
+COPY --from<span class="token operator">=</span>build-stage /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD <span class="token punctuation">[</span><span class="token string">"nginx"</span>, <span class="token string">"-g"</span>, <span class="token string">"daemon off;"</span><span class="token punctuation">]</span></code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>使用 <code>node:latest</code> 安装依赖并构建，减少镜像层大小。</li>
+<li>使用 <code>.dockerignore</code> 忽略 <code>node_modules</code> 和 <code>.env</code> 敏感文件。</li>
+<li>通过 <code>nginx.conf</code> 配置反向代理（如后端 API 地址）。</li>
+</ul>
+<p><strong>步骤 2：构建并运行前端容器</strong></p>
+<pre class=" language-bash"><code class="language-bash">docker build -t vue-app <span class="token keyword">.</span> <span class="token comment" spellcheck="true"># 使用 Dockerfile 从当前目录构建一个名为 vue-app 的 Docker 镜像</span>
+docker run -d -p 80:80 --name vue-container vue-app <span class="token comment" spellcheck="true">#运行一个基于 vue-app 镜像的容器，将其命名为 vue-container，并且将容器的 80 端口映射到主机的 80 端口。</span></code></pre>
+<h3 id="2-后端-Node-js-项目容器化"><a href="#2-后端-Node-js-项目容器化" class="headerlink" title="2. 后端 Node.js 项目容器化"></a>2. 后端 Node.js 项目容器化</h3><p><strong>步骤 1：编写 Dockerfile</strong></p>
+<p>在 Node.js 项目根目录创建 <code>Dockerfile</code>：</p>
+<pre class=" language-bash"><code class="language-bash">FROM node:latest
+WORKDIR /app
+COPY package*.json ./
+RUN <span class="token function">npm</span> <span class="token function">install</span> --production --registry<span class="token operator">=</span>https://registry.npmmirror.com
+COPY <span class="token keyword">.</span> <span class="token keyword">.</span>
+ENV MYSQL_HOST<span class="token operator">=</span>mysql REDIS_HOST<span class="token operator">=</span>redis
+EXPOSE 3000
+CMD <span class="token punctuation">[</span><span class="token string">"npm"</span>, <span class="token string">"start"</span><span class="token punctuation">]</span></code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>使用 <code>npm install --production</code> 仅安装生产依赖。</li>
+<li>通过环境变量（如 <code>.env</code>）配置数据库连接信息。</li>
+<li>通过环境变量注入 <code>MySQL</code> 和 <code>Redis</code> 连接信息。</li>
+<li>在 <code>backend</code> 容器内使用 <code>ping mysql</code> 和 <code>telnet redis 6379</code> 验证连通性。</li>
+</ul>
+<p><strong>步骤 2：构建并运行后端容器</strong></p>
+<pre class=" language-bash"><code class="language-bash">docker build -t node-api <span class="token keyword">.</span> <span class="token comment" spellcheck="true"># 使用 Dockerfile 从当前目录构建一个名为 node-api 的 Docker 镜像</span>
+docker run -d -p 3000:3000 --name api-container node-api <span class="token comment" spellcheck="true">#运行一个基于 node-api 镜像的容器，将其命名为 api-container，并且将容器的 3000 端口映射到主机的 3000 端口。</span>
+</code></pre>
+<h3 id="3-数据库容器与数据持久化"><a href="#3-数据库容器与数据持久化" class="headerlink" title="3. 数据库容器与数据持久化"></a>3. 数据库容器与数据持久化</h3><p><strong>使用 MySQL 容器</strong>：</p>
+<pre class=" language-bash"><code class="language-bash">docker run -d \
+--name mysql-container \
+--env-file .env \  <span class="token comment" spellcheck="true"># 加载 .env 文件中的所有变量</span>
+-v mysql-data:/var/lib/mysql \
+<span class="token comment" spellcheck="true"># -e MYSQL_ROOT_PASSWORD=your_password \</span>
+<span class="token comment" spellcheck="true"># -e MYSQL_DATABASE=your_db \</span>
+-p 3306:3306 \
+--network my-network \
+mysql:latest</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><code>-v mysql-data:/var/lib/mysql</code> 通过数据卷持久化数据库。</li>
+<li>在 <code>Node.js</code> 代码中通过 <code>process.env.MYSQL_HOST</code> 读取环境变量。</li>
+<li>通过数据卷 <code>mysql-data</code> 持久化数据，避免容器重启后数据丢失。</li>
+</ul>
+<h3 id="4-Nginx-多站点配置"><a href="#4-Nginx-多站点配置" class="headerlink" title="4. Nginx 多站点配置"></a>4. Nginx 多站点配置</h3><p>示例 <code>nginx/conf.d/site1.conf</code></p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">80</span><span class="token punctuation">;</span>
+    <span class="token keyword">server_name</span> example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true"># 前端</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>frontend<span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true"># 后端API</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span>api<span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>backend<span class="token punctuation">:</span><span class="token number">3000</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><p>每个域名对应独立的 <code>server</code> 块，支持 SSL 证书挂载（需 Certbot 自动化）。</p>
+</li>
+<li><p>前端静态文件路径与容器内目录映射一致。</p>
+</li>
+</ul>
+<p><strong>docker-compose.yml 片段</strong></p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nginx</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ./nginx/site1.conf<span class="token punctuation">:</span>/etc/nginx/conf.d/site1.conf
+            <span class="token punctuation">-</span> ./nginx/site2.conf<span class="token punctuation">:</span>/etc/nginx/conf.d/site2.conf
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"80:80"</span>
+            <span class="token punctuation">-</span> <span class="token string">"443:443"</span>
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> my<span class="token punctuation">-</span>network</code></pre>
+<h3 id="5-Redis-容器"><a href="#5-Redis-容器" class="headerlink" title="5.Redis 容器"></a>5.Redis 容器</h3><pre class=" language-bash"><code class="language-bash">docker run -d \
+--name redis \
+-v redis-data:/data \
+-v ./redis.conf:/usr/local/etc/redis/redis.conf \
+--network my-network \
+redis redis-server /usr/local/etc/redis/redis.conf</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>挂载自定义配置文件 <code>redis.conf</code>，设置密码和内存限制（如 <code>requirepass your_redis_pass</code> 和 <code>maxmemory 512mb</code>）。</li>
+</ul>
+<h3 id="6-Jenkins-自动化部署"><a href="#6-Jenkins-自动化部署" class="headerlink" title="6. Jenkins 自动化部署"></a>6. Jenkins 自动化部署</h3><p><strong>Jenkins 容器启动</strong></p>
+<pre class=" language-bash"><code class="language-bash">docker run -d \
+--name jenkins \
+-p 8080:8080 -p 50000:50000 \
+-v jenkins-data:/var/jenkins_home \
+--network my-network \
+jenkins/jenkins:lts</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>挂载 <code>jenkins-data</code> 卷保存配置，安装插件（Git、Publish Over SSH、Pipeline）。</li>
+</ul>
+<p><strong>Pipeline 脚本示例（<code>jenkins/jenkinsfile</code>）</strong></p>
+<pre class=" language-groovy"><code class="language-groovy">pipeline <span class="token punctuation">{</span>
+    agent any
+    stages <span class="token punctuation">{</span>
+        <span class="token function">stage</span><span class="token punctuation">(</span><span class="token string">'Checkout'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            steps <span class="token punctuation">{</span>
+                git branch<span class="token punctuation">:</span> <span class="token string">'main'</span><span class="token punctuation">,</span> url<span class="token punctuation">:</span> <span class="token string">'https://github.com/your-repo.git'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">stage</span><span class="token punctuation">(</span><span class="token string">'Build Frontend'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            steps <span class="token punctuation">{</span>
+                    <span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'frontend'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    sh <span class="token string">'docker build -t vue-app .'</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">stage</span><span class="token punctuation">(</span><span class="token string">'Build Backend'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            steps <span class="token punctuation">{</span>
+                    <span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'backend'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    sh <span class="token string">'docker build -t node-api .'</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">stage</span><span class="token punctuation">(</span><span class="token string">'Deploy'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            steps <span class="token punctuation">{</span>
+                sh <span class="token string">'docker-compose down &amp;&amp; docker-compose up -d'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+    post <span class="token punctuation">{</span>
+        success <span class="token punctuation">{</span>
+            <span class="token function">slackSend</span><span class="token punctuation">(</span>color<span class="token punctuation">:</span> <span class="token string">'#00FF00'</span><span class="token punctuation">,</span> message<span class="token punctuation">:</span> <span class="token string">'Deployment succeeded'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        failure <span class="token punctuation">{</span>
+            <span class="token function">slackSend</span><span class="token punctuation">(</span>color<span class="token punctuation">:</span> <span class="token string">'#FF0000'</span><span class="token punctuation">,</span> message<span class="token punctuation">:</span> <span class="token string">'Deployment failed'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>通过 <code>docker-compose.yml</code> 统一管理服务启动顺序和依赖。</li>
+</ul>
+<h2 id="三、整合服务Docker-Compose-编排"><a href="#三、整合服务Docker-Compose-编排" class="headerlink" title="三、整合服务Docker Compose 编排"></a>三、整合服务<code>Docker Compose</code> 编排</h2><p>在项目根目录创建 <code>docker-compose.yml</code>，统一管理多服务：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># version: "3.8" # Docker Compose V2+ 版本移除了对 version 字段的支持，继续保留该字段会导致警告（但不会影响运行）。</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> vue_project <span class="token comment" spellcheck="true"># 定义项目名称</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 前端服务</span>
+    <span class="token key atrule">frontend</span><span class="token punctuation">:</span>
+        <span class="token key atrule">build</span><span class="token punctuation">:</span>
+            <span class="token key atrule">context</span><span class="token punctuation">:</span> ./vue<span class="token punctuation">-</span>app
+            <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> vue<span class="token punctuation">-</span>container
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"8080:80"</span>
+        <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> backend
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+
+    <span class="token comment" spellcheck="true"># Node.js后端服务</span>
+    <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+        <span class="token key atrule">build</span><span class="token punctuation">:</span>
+            <span class="token key atrule">context</span><span class="token punctuation">:</span> ./node<span class="token punctuation">-</span>api
+            <span class="token comment" spellcheck="true"># args:</span>
+            <span class="token comment" spellcheck="true">#     # 构建时传参</span>
+            <span class="token comment" spellcheck="true">#     NPM_REGISTRY: "https://registry.npmmirror.com"</span>
+            <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> api<span class="token punctuation">-</span>container
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">env_file</span><span class="token punctuation">:</span> .env <span class="token comment" spellcheck="true"># 直接指向文件</span>
+        <span class="token comment" spellcheck="true"># command: npm run dev  # 开发模式启用热重载</span>
+        <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># npm 镜像源</span>
+            <span class="token punctuation">-</span> NPM_CONFIG_REGISTRY="https<span class="token punctuation">:</span>//registry.npmmirror.com"
+            <span class="token punctuation">-</span> NODE_ENV=production
+            <span class="token punctuation">-</span> DB_HOST=mysql
+            <span class="token punctuation">-</span> DB_USER=root
+            <span class="token punctuation">-</span> DB_PASSWORD=$<span class="token punctuation">{</span>MYSQL_ROOT_PASSWORD<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#your_mysql_root_password</span>
+            <span class="token punctuation">-</span> DB_NAME=$<span class="token punctuation">{</span>MYSQL_DATABASE<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#your_database_name</span>
+            <span class="token punctuation">-</span> REDIS_HOST=redis
+            <span class="token punctuation">-</span> REDIS_PORT=6379
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span>
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 持久化 npm 缓存（加速后续构建）</span>
+            <span class="token punctuation">-</span> ./npm_cache<span class="token punctuation">:</span>/root/.npm
+        <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+            <span class="token key atrule">mysql</span><span class="token punctuation">:</span>
+                <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+            <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+                <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+
+    <span class="token comment" spellcheck="true">#Nginx反向代理</span>
+    <span class="token key atrule">nginx</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>proxy
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ./nginx/conf.d<span class="token punctuation">:</span>/etc/nginx/conf.d
+            <span class="token punctuation">-</span> ./nginx/nginx.conf<span class="token punctuation">:</span>/etc/nginx/nginx.conf
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"80:80"</span>
+            <span class="token punctuation">-</span> <span class="token string">"443:443"</span>
+        <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> frontend
+            <span class="token punctuation">-</span> backend
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+
+    <span class="token comment" spellcheck="true">#MySQL数据库</span>
+    <span class="token key atrule">mysql</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql<span class="token punctuation">:</span>latest
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>container
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">env_file</span><span class="token punctuation">:</span> .env <span class="token comment" spellcheck="true"># 直接指向文件</span>
+        <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 🌟 基础配置（必须项） 🌟</span>
+            <span class="token key atrule">MYSQL_ROOT_PASSWORD</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>MYSQL_ROOT_PASSWORD<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#your_password 设置 root 用户的密码</span>
+            <span class="token key atrule">MYSQL_DATABASE</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>MYSQL_DATABASE<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#your_database 创建的数据库名称（可选）</span>
+
+            <span class="token comment" spellcheck="true"># 🔒 高级安全配置（新增部分） 🔒</span>
+            <span class="token key atrule">MYSQL_ROOT_HOST</span><span class="token punctuation">:</span> <span class="token string">"%"</span> <span class="token comment" spellcheck="true"># '%' 允许 root 用户从任意 IP 访问，​生产环境强烈建议关闭；'localhost' 仅允许本机访问</span>
+            <span class="token comment" spellcheck="true"># MYSQL_USER_HOST: "%" # 允许普通用户从任意 IP 访问，生产环境强烈建议关闭</span>
+            <span class="token comment" spellcheck="true"># MYSQL_SSL_MODE: "REQUIRED" # 强制SSL连接</span>
+            <span class="token comment" spellcheck="true"># MYSQL_SSL_CA: "/etc/ssl/certs/ca-certificates.crt" # SSL证书路径</span>
+            <span class="token comment" spellcheck="true"># 🔐 其他配置（可选） 🔐</span>
+            <span class="token key atrule">TZ</span><span class="token punctuation">:</span> <span class="token string">"Asia/Shanghai"</span> <span class="token comment" spellcheck="true"># 设置容器时区为上海时间</span>
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> mysql_data<span class="token punctuation">:</span>/var/lib/mysql
+            <span class="token comment" spellcheck="true"># - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql # 自定义初始化脚本目录</span>
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"3306:3306"</span>
+        <span class="token comment" spellcheck="true"># 明确启动命令</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mysqld"</span><span class="token punctuation">,</span> <span class="token string">"--character-set-server=utf8mb4"</span><span class="token punctuation">]</span>
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+        <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+            <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD"</span><span class="token punctuation">,</span> <span class="token string">"mysqladmin"</span><span class="token punctuation">,</span> <span class="token string">"ping"</span><span class="token punctuation">,</span> <span class="token string">"-h"</span><span class="token punctuation">,</span> <span class="token string">"localhost"</span><span class="token punctuation">]</span>
+            <span class="token key atrule">interval</span><span class="token punctuation">:</span> 5s
+            <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10s
+            <span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token number">10</span>
+        <span class="token key atrule">logging</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># Docker 的日志配置</span>
+            <span class="token key atrule">driver</span><span class="token punctuation">:</span> <span class="token string">"json-file"</span> <span class="token comment" spellcheck="true"># 使用文件日志</span>
+            <span class="token key atrule">options</span><span class="token punctuation">:</span>
+                <span class="token key atrule">max-size</span><span class="token punctuation">:</span> <span class="token string">"200m"</span>
+                <span class="token key atrule">max-file</span><span class="token punctuation">:</span> <span class="token string">"10"</span>
+
+    <span class="token comment" spellcheck="true">#Redis缓存</span>
+    <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>latest
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> redis<span class="token punctuation">-</span>cache
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"6379:6379"</span>
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> redis_data<span class="token punctuation">:</span>/data
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+        <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+            <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD"</span><span class="token punctuation">,</span> <span class="token string">"redis-cli"</span><span class="token punctuation">,</span> <span class="token string">"ping"</span><span class="token punctuation">]</span>
+            <span class="token key atrule">interval</span><span class="token punctuation">:</span> 5s
+            <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10s
+            <span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token number">10</span>
+
+    <span class="token comment" spellcheck="true">#Jenkins自动化部署</span>
+    <span class="token key atrule">jenkins</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> jenkins/jenkins<span class="token punctuation">:</span>lts
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> jenkins<span class="token punctuation">-</span>cli
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> unless<span class="token punctuation">-</span>stopped
+        <span class="token key atrule">user</span><span class="token punctuation">:</span> root
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">"8081:8080"</span>
+            <span class="token punctuation">-</span> <span class="token string">"50000:50000"</span>
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> jenkins_data<span class="token punctuation">:</span>/var/jenkins_home
+            <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
+            <span class="token punctuation">-</span> ./<span class="token punctuation">:</span>/var/jenkins_workspace
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+
+    <span class="token comment" spellcheck="true"># kuma 网络监听</span>
+    <span class="token key atrule">uptime-kuma</span><span class="token punctuation">:</span>
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> louislam/uptime<span class="token punctuation">-</span>kuma<span class="token punctuation">:</span><span class="token number">1</span>
+        <span class="token key atrule">container_name</span><span class="token punctuation">:</span> uptime<span class="token punctuation">-</span>kuma
+        <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+        <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ./uptime<span class="token punctuation">-</span>kuma<span class="token punctuation">:</span>/var/lib/kuma/data
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> 30001<span class="token punctuation">:</span><span class="token number">30001</span>
+        <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> app<span class="token punctuation">-</span>network
+
+<span class="token comment" spellcheck="true">#数据卷定义</span>
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token key atrule">mysql_data</span><span class="token punctuation">:</span>
+    <span class="token key atrule">redis_data</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jenkins_data</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kuma_data</span><span class="token punctuation">:</span>
+
+<span class="token comment" spellcheck="true">#网络定义</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app-network</span><span class="token punctuation">:</span>
+        <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge</code></pre>
+<pre class=" language-.env"><code class="language-.env"># .env 文件
+MYSQL_ROOT_PASSWORD=my-secret-pw
+MYSQL_DATABASE=appdb
+MYSQL_USER=appuser
+MYSQL_PASSWORD=apppw
+# 环境变量
+ENVIRONMENT=dev</code></pre>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>通过 <code>depends_on</code> 控制服务启动顺序。</li>
+<li>使用共享网络确保容器间通过服务名通信（如 <code>backend</code> 访问 <code>mysql</code>）。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过 <code>Docker Compose</code> 编排，我们可以将多个容器组合成一个应用，实现服务的统一管理和部署。同时，通过 <code>docker-compose.yml</code> 配置文件，我们可以定义服务的依赖关系、网络配置和数据卷挂载，简化了容器的启动和管理过程。</p>
+<h4 id="1-部署流程说明："><a href="#1-部署流程说明：" class="headerlink" title="1.部署流程说明："></a>1.部署流程说明：</h4><ul>
+<li>Jenkins 配置流水线任务，监听代码仓库变更</li>
+<li>触发构建时自动执行：<ul>
+<li>前端：npm install &amp;&amp; npm run build</li>
+<li>后端：npm install &amp;&amp; 运行测试</li>
+</ul>
+</li>
+<li>通过 Docker 命令重新构建镜像并重启容器</li>
+<li>使用 Webhook 通知部署状态</li>
+</ul>
+<h4 id="2-使用前需要："><a href="#2-使用前需要：" class="headerlink" title="2.使用前需要："></a>2.使用前需要：</h4><ul>
+<li>替换所有密码（your_mysql_root_password）</li>
+<li>配置 Nginx 的域名和 SSL 证书</li>
+<li>根据项目需求调整端口和路径</li>
+<li>配置 Jenkins 流水线脚本</li>
+<li>添加.env 文件管理敏感信息（推荐）</li>
+</ul>
+<h4 id="3-建议的安全增强措施："><a href="#3-建议的安全增强措施：" class="headerlink" title="3.建议的安全增强措施："></a>3.建议的安全增强措施：</h4><ol>
+<li>为 MySQL 创建专用用户代替 root</li>
+<li>使用 Docker secrets 管理敏感信息</li>
+<li>添加适当的容器资源限制</li>
+<li>配置 Redis 密码保护</li>
+<li>启用 Nginx 的 HTTPS 配置</li>
+<li>设置防火墙规则限制外部访问</li>
+</ol>
+<h2 id="四、-初始化及启动"><a href="#四、-初始化及启动" class="headerlink" title="四、 初始化及启动"></a>四、 初始化及启动</h2><pre class=" language-bash"><code class="language-bash">
+<span class="token comment" spellcheck="true"># 创建网络</span>
+docker network create app-network
+
+<span class="token comment" spellcheck="true"># 启动所有服务</span>
+docker-compose up -d --build
+
+<span class="token comment" spellcheck="true"># 查看日志</span>
+docker-compose logs -f
+</code></pre>
+<h3 id="针对项目中的容器名（根据-docker-compose-yml-定义）"><a href="#针对项目中的容器名（根据-docker-compose-yml-定义）" class="headerlink" title="针对项目中的容器名（根据 docker-compose.yml 定义）"></a>针对项目中的容器名（根据 <code>docker-compose.yml</code> 定义）</h3><table>
+<thead>
+<tr>
+<th align="center">容器名</th>
+<th align="center">服务用途</th>
+<th align="center">推荐进入命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>mysql-container</code></td>
+<td align="center">MySQL 数据库</td>
+<td align="center"><code>docker exec -it mysql-container mysql -u root -p</code></td>
+</tr>
+<tr>
+<td align="center"><code>api-container</code></td>
+<td align="center">Node.js 后端</td>
+<td align="center"><code>docker exec -it api-container sh</code></td>
+</tr>
+<tr>
+<td align="center"><code>vue-container</code></td>
+<td align="center">Vue 前端</td>
+<td align="center"><code>docker exec -it vue-container sh</code></td>
+</tr>
+<tr>
+<td align="center"><code>redis-cache</code></td>
+<td align="center">Redis 缓存</td>
+<td align="center"><code>docker exec -it redis-cache redis-cli</code></td>
+</tr>
+<tr>
+<td align="center"><code>nginx-proxy</code></td>
+<td align="center">Nginx 反向代理</td>
+<td align="center"><code>docker exec -it nginx-proxy nginx -t</code></td>
+</tr>
+</tbody></table>
+<h2 id="五、关键注意事项及优化建议"><a href="#五、关键注意事项及优化建议" class="headerlink" title="五、关键注意事项及优化建议"></a>五、关键注意事项及优化建议</h2><h3 id="1-注意事项"><a href="#1-注意事项" class="headerlink" title="1.注意事项"></a>1.注意事项</h3><ol>
+<li><strong>环境变量管理</strong>：</li>
+</ol>
+<ul>
+<li>使用 <code>.env</code> 文件管理敏感信息</li>
+<li>在 Docker Compose 中使用 <code>env_file</code> 配置</li>
+</ul>
+<ol start="2">
+<li><strong>数据持久化</strong>：</li>
+</ol>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ./mysql/data<span class="token punctuation">:</span>/var/lib/mysql
+
+    <span class="token punctuation">-</span> ./redis/data<span class="token punctuation">:</span>/data</code></pre>
+<ol start="3">
+<li><strong>集群扩展</strong>：</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">docker-compose scale backend<span class="token operator">=</span>3</code></pre>
+<ol start="4">
+<li><strong>健康检查</strong>：</li>
+</ol>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD"</span><span class="token punctuation">,</span> <span class="token string">"curl"</span><span class="token punctuation">,</span> <span class="token string">"-f"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost:3000/health"</span><span class="token punctuation">]</span>
+
+<span class="token key atrule">interval</span><span class="token punctuation">:</span> 30s
+
+<span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10s
+
+<span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token number">3</span></code></pre>
+<h3 id="2-优化与扩展"><a href="#2-优化与扩展" class="headerlink" title="2.优化与扩展"></a>2.优化与扩展</h3><ol>
+<li><p><strong>镜像加速</strong>：在 <code>Dockerfile</code> 中配置国内镜像源（如 <code>npmmirror.com</code>）提升构建速度。</p>
+</li>
+<li><p><strong>负载均衡</strong>：通过 <code>pm2</code> 启动 <code>Node.js</code> 服务，支持多进程和自动重启。</p>
+</li>
+<li><p><strong>安全与性能</strong>：</p>
+</li>
+</ol>
+<ul>
+<li>使用 <code>.dockerignore</code> 忽略 <code>node_modules</code> 和敏感文件。</li>
+<li>通过 <code>nginx.conf</code> 配置 <code>HTTPS</code> 和 <code>Gzip</code> 压缩。</li>
+<li><strong>HTTPS 配置</strong>：在 <code>Nginx</code> 配置中添加 <code>SSL</code> 证书，使用 <code>Let's Encrypt</code> 自动更新 <code>SSL</code> 证书。</li>
+<li><strong>Redis 优化</strong>：启用 <code>AOF</code> 持久化，设置内存淘汰策略（如 <code>maxmemory-policy allkeys-lru</code>）。</li>
+<li><strong>MySQL 备份</strong>：通过 <code>Cron</code> 定时任务导出数据库至宿主机。</li>
+</ul>
+<ol start="4">
+<li><strong>自动化流程整合</strong></li>
+</ol>
+<ul>
+<li>配置 GitLab Webhook：代码提交后触发 <code>Jenkins Pipeline</code>。</li>
+<li>钉钉通知插件：部署结果实时推送至团队群。</li>
+</ul>
+<ol start="5">
+<li><strong>横向扩展</strong></li>
+</ol>
+<ul>
+<li><strong>负载均衡</strong>：<code>Nginx</code> 配置 <code>upstream</code> 实现后端多容器负载。</li>
+<li><strong>Redis 集群</strong>：使用 <code>Docker Swarm</code> 或 <code>Kubernetes</code> 扩展 <code>Redis</code> 节点。</li>
+</ul>
+<h2 id="六、常见问题排查"><a href="#六、常见问题排查" class="headerlink" title="六、常见问题排查"></a>六、常见问题排查</h2><ul>
+<li><p><strong>环境变量未生效</strong>：确认 Dockerfile 或 <code>docker-compose.yml</code> 中变量传递正确。</p>
+</li>
+<li><p><strong>容器网络不通</strong>：</p>
+<ul>
+<li>检查 <code>docker-compose.yml</code> 中的服务名和端口映射。</li>
+<li>检查 <code>Docker</code> 网络配置，确保 <code>depends_on</code> 和自定义网络正确</li>
+</ul>
+</li>
+<li><p><strong>依赖安装失败</strong>：确认 <code>package.json</code> 中依赖版本与 <code>Node.js</code> 镜像版本兼容。</p>
+</li>
+<li><p><strong>数据库连接超时</strong>：确保 <code>MySQL</code> 容器已启动且环境变量正确。</p>
+</li>
+<li><p><strong>Nginx 403 错误</strong>：检查静态文件目录权限（如 <code>chown -R www-data:www-data /var/www</code>）。</p>
+</li>
+<li><p><strong>无权限进入容器</strong>：添加 <code>--user root</code> 参数</p>
+</li>
+<li><p><strong>容器未运行</strong>：先执行 <code>docker start [容器名]</code></p>
+</li>
+<li><p><strong>命令不存在</strong>：改用镜像内置的命令（如 Redis 用 <code>redis-cli</code>）</p>
+</li>
+</ul>
+<h3 id="超时报错"><a href="#超时报错" class="headerlink" title="超时报错"></a>超时报错</h3><p>安装 docker 镜像时，抛出<code>Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</code></p>
+<p>解决方法：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/resolv.conf
+
+<span class="token comment" spellcheck="true">#删掉默认的nameserver地址在后面增加</span>
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 114.114.114.114
+
+<span class="token comment" spellcheck="true">#从新加载</span>
+systemctl restart systemd-resolved.service</code></pre>
+<h2 id="七、常用运维命令"><a href="#七、常用运维命令" class="headerlink" title="七、常用运维命令"></a>七、常用运维命令</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 进入正在运行的容器</span>
+docker <span class="token function">exec</span> -it <span class="token punctuation">[</span>容器名或ID<span class="token punctuation">]</span> <span class="token punctuation">[</span>执行的命令<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 进入容器默认 shell（适用于大多数镜像）</span>
+docker <span class="token function">exec</span> -it mysql-container sh       <span class="token comment" spellcheck="true"># Alpine 系镜像用 sh</span>
+docker <span class="token function">exec</span> -it api-container <span class="token function">bash</span>     <span class="token comment" spellcheck="true"># Debian/Ubuntu 系镜像用 bash</span>
+
+<span class="token comment" spellcheck="true"># 直接运行特定命令（不进入交互模式）</span>
+<span class="token comment" spellcheck="true"># 在 MySQL 容器中执行查询</span>
+docker <span class="token function">exec</span> -it mysql-container mysql -u root -p -e <span class="token string">"SHOW DATABASES;"</span>
+<span class="token comment" spellcheck="true"># 查看 Nginx 容器配置</span>
+docker <span class="token function">exec</span> -it nginx-proxy <span class="token function">cat</span> /etc/nginx/nginx.conf
+
+<span class="token comment" spellcheck="true"># 检查容器是否能访问其他服务</span>
+docker <span class="token function">exec</span> -it api-container <span class="token function">ping</span> redis
+
+<span class="token comment" spellcheck="true"># 进入正在运行的 MySQL 容器 第一个mysql是容器的名字</span>
+docker <span class="token function">exec</span> -it mysql mysql -u root -p
+
+<span class="token comment" spellcheck="true"># 执行数据库备份</span>
+docker <span class="token function">exec</span> -i mysql sh -c <span class="token string">'mysqldump -u root -prootpass appdb'</span> <span class="token operator">></span> backup.sql
+
+<span class="token comment" spellcheck="true"># 进入Redis CLI</span>
+docker <span class="token function">exec</span> -it redis redis-cli
+
+<span class="token comment" spellcheck="true"># 运行 Docker Compose</span>
+docker-compose up -d
+<span class="token comment" spellcheck="true"># 查看容器状态</span>
+docker-compose <span class="token function">ps</span>
+<span class="token comment" spellcheck="true"># 停止所有容器</span>
+docker-compose stop
+
+<span class="token comment" spellcheck="true"># 启动所有容器</span>
+docker-compose start
+
+<span class="token comment" spellcheck="true"># 查看容器日志</span>
+docker-compose logs -f --tail<span class="token operator">=</span>100
+
+<span class="token comment" spellcheck="true"># 停止旧服务（如果已运行）</span>
+docker-compose down
+
+<span class="token comment" spellcheck="true"># 查看compose是否成功执行</span>
+docker compose <span class="token function">ls</span>
+
+<span class="token comment" spellcheck="true"># 查看卷是否创建</span>
+docker volume <span class="token function">ls</span>
+
+<span class="token comment" spellcheck="true"># 查看网络是否创建</span>
+docker network <span class="token function">ls</span>
+
+<span class="token comment" spellcheck="true"># 重新启动（建议指定项目名，避免目录名不合法）</span>
+docker-compose -p my_project up -d
+
+<span class="token comment" spellcheck="true"># 查看运行状态</span>
+docker-compose -p my_project <span class="token function">ps</span>
+
+<span class="token comment" spellcheck="true"># 查看 MySQL 日志</span>
+docker-compose -p my_project logs mysql
+
+<span class="token comment" spellcheck="true"># 查看 Redis 日志</span>
+docker-compose -p my_project logs redis</code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">弈心</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.tianyichuxin.com/2025/04/19632.html">https://blog.tianyichuxin.com/2025/04/19632.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">弈心</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'Pz2erXCl206N7RaqUeABaxY5-gzGzoHsz',
+        appKey: 'jK6ogq40WtwTaW0p3l097QhN',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '说点什么再走吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025/04/43530.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="@nestjs/common知识汇总">
+                        
+                        <span class="card-title">@nestjs/common知识汇总</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            @nestjs/common知识汇总
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-04-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/node/" class="post-category">
+                                    node
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/node/">
+                        <span class="chip bg-color">node</span>
+                    </a>
+                    
+                    <a href="/tags/nest-js/">
+                        <span class="chip bg-color">nest.js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/03/50323.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="网格布局（display：grid）属性详解">
+                        
+                        <span class="card-title">网格布局（display：grid）属性详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            网格布局（display：grid）属性详解
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/css/" class="post-category">
+                                    css
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/css/">
+                        <span class="chip bg-color">css</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 天弈初心<br />'
+            + '文章作者: 弈心<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+<div class="_fogwnirvpfw" id="_fogwnirvpfw"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938726",
+        container: "_fogwnirvpfw",
+        async: true
+    });
+</script>
+<div class="_s210mav3xgf" id="_s210mav3xgf"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938735",
+        container: "_s210mav3xgf",
+        async: true
+    });
+</script>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<!-- <script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> -->
+<script src="https://static.tianyichuxin.com/assets/npm/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">弈心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">364.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006491" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-right: 10px;">鄂公网安备 42018502006491号</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">鄂ICP备19020385号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/tianyichuxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:535399046@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=535399046" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 535399046" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: tianyichuxin2025" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/waifu.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/flat-ui.min.css" />
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	<div class="waifu">
+		<!-- 提示框 -->
+		<!-- <div class="waifu-tips"></div> -->
+
+		<!-- 看板娘画布 -->
+		<!-- <canvas id="live2d" class="live2d" width="280" height="250"></canvas> -->
+
+		<!-- 工具栏 -->
+		<!-- <div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div> -->
+	</div>
+</body>
+</html>
+<!-- 右下角人物和鼠标点击 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/waifu--tips.js"></script> -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/live2d.js"></script> -->
+<!-- 小姐姐 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/L2Dwidget.min.js"></script> -->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+<!-- 鼠标点击 -->
+<script src="http://static.tianyichuxin.com/assets/live2D/js/mouse.js"></script>
+<script type="text/javascript">
+    // /* 可直接修改部分参数 */
+    // live2d_settings['modelId'] = 5; // 默认模型 ID
+    // live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    // /* 在 initModel 前添加 */
+    // initModel("http://static.tianyichuxin.com/assets/live2D/js/waifu-tips.json")
+</script>

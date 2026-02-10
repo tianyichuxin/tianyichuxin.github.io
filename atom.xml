@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>天弈初心</title>
+  
+  <subtitle>与天对弈，不忘初心</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.tianyichuxin.com/"/>
+  <updated>2026-02-10T07:38:48.151Z</updated>
+  <id>https://blog.tianyichuxin.com/</id>
+  
+  <author>
+    <name>弈心</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 初级入门技术文档</title>
+    <link href="https://blog.tianyichuxin.com/2026/02/8520.html"/>
+    <id>https://blog.tianyichuxin.com/2026/02/8520.html</id>
+    <published>2026-02-06T02:28:00.000Z</published>
+    <updated>2026-02-10T07:38:48.151Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#python-简介&quot;&gt;Python 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://blog.tianyichuxin.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://blog.tianyichuxin.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>判断对象数组中是否存在指定属性值</title>
+    <link href="https://blog.tianyichuxin.com/2026/01/2635.html"/>
+    <id>https://blog.tianyichuxin.com/2026/01/2635.html</id>
+    <published>2026-01-05T03:43:03.000Z</published>
+    <updated>2026-01-27T10:04:54.624Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JS-判断对象数组中是否存在指定属性值（以-type-2-为例）&quot;&gt;&lt;a href=&quot;#JS-判断对象数组中是否存在指定属性值（以-type-2-为例）&quot; class=&quot;headerlink&quot; title=&quot;JS 判断对象数组中是否存在指定属性值（以
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Node.js + FFmpeg 读取音视频文件信息</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/28237.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/28237.html</id>
+    <published>2025-12-21T03:12:30.000Z</published>
+    <updated>2025-12-22T10:02:06.767Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言：什么是-FFmpeg-和-FFprobe&quot;&gt;&lt;a href=&quot;#前言：什么是-FFmpeg-和-FFprobe&quot; class=&quot;headerlink&quot; title=&quot;前言：什么是 FFmpeg 和 FFprobe&quot;&gt;&lt;/a&gt;前言：什么是 FFmpeg 和
+        
+      
+    
+    </summary>
+    
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/categories/FFmpeg/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>child_process.spawn 的详细使用</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/12101.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/12101.html</id>
+    <published>2025-12-21T02:00:00.000Z</published>
+    <updated>2026-01-19T01:11:29.729Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、文档概述&quot;&gt;&lt;a href=&quot;#一、文档概述&quot; class=&quot;headerlink&quot; title=&quot;一、文档概述&quot;&gt;&lt;/a&gt;一、文档概述&lt;/h2&gt;&lt;p&gt;本文档基于 Node.js &lt;code&gt;child_process.spawn()&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+      <category term="spawn" scheme="https://blog.tianyichuxin.com/tags/spawn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron导入导出多种文件</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/16425.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/16425.html</id>
+    <published>2025-12-20T13:18:30.000Z</published>
+    <updated>2025-12-22T10:01:21.878Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-导入导出-Word&quot;&gt;&lt;a href=&quot;#1-导入导出-Word&quot; class=&quot;headerlink&quot; title=&quot;1. 导入导出 Word&quot;&gt;&lt;/a&gt;1. 导入导出 Word&lt;/h2&gt;&lt;h3 id=&quot;1-1-导入-Word&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust 错误处理：unwrap() 与 ok_or_else() 的对比</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/14096.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/14096.html</id>
+    <published>2025-12-05T07:13:00.000Z</published>
+    <updated>2026-02-10T07:38:48.153Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文对比 Rust 中两个常用的错误处理方法——&lt;code&gt;unwrap()&lt;/code&gt; 和 &lt;code&gt;ok_or_else()&lt;/code&gt;，帮助你选择合适的错误处理方式。&lt;/p&gt;
+&lt;h2 id=&quot;引：基础概念&quot;&gt;&lt;a href=&quot;#引：基础概念&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="rust" scheme="https://blog.tianyichuxin.com/categories/rust/"/>
+    
+    
+      <category term="rust" scheme="https://blog.tianyichuxin.com/tags/rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git命令大全（基础+最新进阶版）</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/1119.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/1119.html</id>
+    <published>2025-11-30T04:11:32.000Z</published>
+    <updated>2025-12-03T06:49:00.195Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/42341/20200608000757762.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Git-命令大全（基础-最新进阶版）&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npm Workspaces 依赖声明对比</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/2564.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/2564.html</id>
+    <published>2025-11-25T09:53:00.000Z</published>
+    <updated>2026-02-10T07:38:48.154Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;workspace:*&lt;/code&gt; 与 &lt;code&gt;^0.1.0&lt;/code&gt; 依赖声明的区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js数组过滤的常用方法</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/60998.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/60998.html</id>
+    <published>2025-11-22T03:12:30.000Z</published>
+    <updated>2025-11-24T02:24:26.700Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、按方法分类的数组过滤技术&quot;&gt;&lt;a href=&quot;#一、按方法分类的数组过滤技术&quot; class=&quot;headerlink&quot; title=&quot;一、按方法分类的数组过滤技术&quot;&gt;&lt;/a&gt;一、按方法分类的数组过滤技术&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue3 版本特性演进 (持续更新中）</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/13004.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/13004.html</id>
+    <published>2025-11-21T02:42:30.000Z</published>
+    <updated>2025-11-24T02:24:26.700Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vue-3-0-2020-年-9-月-里程碑版本&quot;&gt;&lt;a href=&quot;#Vue-3-0-2020-年-9-月-里程碑版本&quot; class=&quot;headerlink&quot; title=&quot;Vue 3.0 (2020 年 9 月) - 里程碑版本&quot;&gt;&lt;/a&gt;Vue 3.0
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Event.path 与 Event.composedPath</title>
+    <link href="https://blog.tianyichuxin.com/2025/09/28526.html"/>
+    <id>https://blog.tianyichuxin.com/2025/09/28526.html</id>
+    <published>2025-09-20T16:00:00.000Z</published>
+    <updated>2025-11-10T01:12:58.584Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在前端开发中，追踪事件传播路径是处理事件委托、Shadow DOM 交互等场景的基础能力。长期以来，部分开发者依赖非标准的 &lt;code&gt;Event.path&lt;/code&gt; 属性获取事件路径，但随着浏览器标准的推进，这一属性已逐渐被废弃。本文将详解
+        
+      
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://blog.tianyichuxin.com/categories/html/"/>
+    
+    
+      <category term="html" scheme="https://blog.tianyichuxin.com/tags/html/"/>
+    
+      <category term="dom" scheme="https://blog.tianyichuxin.com/tags/dom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 模块导入方式对比</title>
+    <link href="https://blog.tianyichuxin.com/2025/07/19773.html"/>
+    <id>https://blog.tianyichuxin.com/2025/07/19773.html</id>
+    <published>2025-07-17T16:00:00.000Z</published>
+    <updated>2025-11-10T01:12:58.585Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;JavaScript 模块导入方式：默认导入 vs 命名空间导入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Electron 中从 file.path 到 webUtils.getPathForFile 的迁移</title>
+    <link href="https://blog.tianyichuxin.com/2025/06/51502.html"/>
+    <id>https://blog.tianyichuxin.com/2025/06/51502.html</id>
+    <published>2025-06-14T16:00:00.000Z</published>
+    <updated>2025-11-10T01:12:58.584Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 Electron 开发中，获取本地文件路径是一个高频需求 —— 无论是处理用户上传的文件、读取本地资源，还是与主进程交互操作文件系统，都离不开对文件真实路径的获取。一直以来，开发者习惯通过 &lt;code&gt;file.path&lt;/code&gt; 直接获取
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异步中止神器之AbortController</title>
+    <link href="https://blog.tianyichuxin.com/2025/05/63218.html"/>
+    <id>https://blog.tianyichuxin.com/2025/05/63218.html</id>
+    <published>2025-05-03T02:00:00.000Z</published>
+    <updated>2025-05-07T03:25:01.415Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;‌AbortController‌&lt;/code&gt; 是 JavaScript 中的一个全局类，主要用于中止正在进行或待完成的异步操作，如 &lt;code&gt;fetch&lt;/code&gt; 请求、事件监听、可写流、数据库事务等。通过
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue3+vite 实现移动端自适应</title>
+    <link href="https://blog.tianyichuxin.com/2025/04/59810.html"/>
+    <id>https://blog.tianyichuxin.com/2025/04/59810.html</id>
+    <published>2025-04-30T08:30:00.000Z</published>
+    <updated>2025-05-07T02:51:34.149Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 Vue3 + Vite 项目中实现移动端自适应，可以通过以下方案实现（附完整配置）：&lt;/p&gt;
+&lt;h3 id=&quot;方案一：Viewport-视口方案（推荐）&quot;&gt;&lt;a href=&quot;#方案一：Viewport-视口方案（推荐）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="前端" scheme="https://blog.tianyichuxin.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="vite" scheme="https://blog.tianyichuxin.com/tags/vite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于nuxt3创建vue3 ssr项目知识和问题汇总</title>
+    <link href="https://blog.tianyichuxin.com/2025/04/26237.html"/>
+    <id>https://blog.tianyichuxin.com/2025/04/26237.html</id>
+    <published>2025-04-08T11:22:00.000Z</published>
+    <updated>2025-12-25T06:34:20.902Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、问题汇总&quot;&gt;&lt;a href=&quot;#一、问题汇总&quot; class=&quot;headerlink&quot; title=&quot;一、问题汇总&quot;&gt;&lt;/a&gt;一、问题汇总&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nuxt" scheme="https://blog.tianyichuxin.com/categories/nuxt/"/>
+    
+    
+      <category term="nuxt3" scheme="https://blog.tianyichuxin.com/tags/nuxt3/"/>
+    
+      <category term="vue3" scheme="https://blog.tianyichuxin.com/tags/vue3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>@nestjs/common知识汇总</title>
+    <link href="https://blog.tianyichuxin.com/2025/04/43530.html"/>
+    <id>https://blog.tianyichuxin.com/2025/04/43530.html</id>
+    <published>2025-04-07T10:17:00.000Z</published>
+    <updated>2025-04-08T06:22:35.196Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;nestjs-common-的过滤器-Exception-有哪些&quot;&gt;&lt;a href=&quot;#nestjs-common-的过滤器-Exception-有哪些&quot; class=&quot;headerlink&quot; title=&quot;@nestjs/common 的过滤器
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="nest.js" scheme="https://blog.tianyichuxin.com/tags/nest-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于docker-compose.yml配置vue+nest+mysql+redis网站</title>
+    <link href="https://blog.tianyichuxin.com/2025/04/19632.html"/>
+    <id>https://blog.tianyichuxin.com/2025/04/19632.html</id>
+    <published>2025-04-06T13:12:30.000Z</published>
+    <updated>2025-04-17T01:51:30.278Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、整体架构设计&quot;&gt;&lt;a href=&quot;#一、整体架构设计&quot; class=&quot;headerlink&quot; title=&quot;一、整体架构设计&quot;&gt;&lt;/a&gt;一、整体架构设计&lt;/h2&gt;&lt;h3 id=&quot;1-多容器协作模式&quot;&gt;&lt;a href=&quot;#1-多容器协作模式&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="https://blog.tianyichuxin.com/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="https://blog.tianyichuxin.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网格布局（display：grid）属性详解</title>
+    <link href="https://blog.tianyichuxin.com/2025/03/50323.html"/>
+    <id>https://blog.tianyichuxin.com/2025/03/50323.html</id>
+    <published>2025-03-27T09:00:00.000Z</published>
+    <updated>2025-04-07T01:22:37.697Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;CSS Grid 布局（&lt;code&gt;display:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="css" scheme="https://blog.tianyichuxin.com/categories/css/"/>
+    
+    
+      <category term="css" scheme="https://blog.tianyichuxin.com/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue有关el-dialog弹框的几种使用对比和分析</title>
+    <link href="https://blog.tianyichuxin.com/2025/03/55027.html"/>
+    <id>https://blog.tianyichuxin.com/2025/03/55027.html</id>
+    <published>2025-03-16T03:20:00.000Z</published>
+    <updated>2025-04-07T01:22:37.687Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 Vue3 + Vite 项目中，针对 Element Plus 的 &lt;code&gt;&amp;lt;el-dialog&amp;gt;&lt;/code&gt; 弹框的三种实现方式（父组件里直接写子组件内容 vs 内容作为子组件 vs
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+      <category term="el-dialog" scheme="https://blog.tianyichuxin.com/tags/el-dialog/"/>
+    
+  </entry>
+  
+</feed>

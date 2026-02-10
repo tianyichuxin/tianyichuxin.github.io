@@ -1,0 +1,2482 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!-- 自动将http的不安全请求升级为https -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="javascript">
+    <meta name="description" content="专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>前端中部分数据流之间的相互转化 | 天弈初心</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/advertisement-space.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="天弈初心" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">天弈初心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+    <div id="mobile-nav" class="side-nav sidenav">
+
+        <div class="mobile-head bg-color">
+            
+                <img src="/medias/logo.png" class="logo-img circle responsive-img">
+                
+                    <div class="logo-name">
+                        天弈初心
+                    </div>
+                    <div class="logo-desc">
+                        
+                            专注于前端领域开发技术分享，深信任何可以用 JavaScript 来写的应用，最终都将用 JavaScript 来写
+                                
+                    </div>
+        </div>
+
+        
+
+            <ul class="menu-list mobile-menu-list">
+                
+                    <li class="m-nav-item">
+                        
+                            <a href="/" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-home"></i>
+                                    
+                                            首页
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/tags" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-tags"></i>
+                                    
+                                            标签
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/categories" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-bookmark"></i>
+                                    
+                                            分类
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/archives" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-archive"></i>
+                                    
+                                            归档
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/about" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-user-circle"></i>
+                                    
+                                            关于
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/contact" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-comments"></i>
+                                    
+                                            留言板
+                            </a>
+                            
+                    </li>
+                    
+                    <li class="m-nav-item">
+                        
+                            <a href="/friends" class="waves-effect waves-light">
+                                
+                                    <i class="fa-fw fas fa-address-book"></i>
+                                    
+                                            友链
+                            </a>
+                            
+                    </li>
+                    
+                        
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                            <li>
+                                <a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="waves-effect waves-light" target="_blank">
+                                    <i class="fab fa-github-square fa-fw"></i>
+                                    Fork Me
+                                </a>
+                            </li>
+                            
+            </ul>
+    </div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/tianyichuxin/tianyichuxin.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">前端中部分数据流之间的相互转化</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <!-- 内页 -->
+<link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/javascript/">
+                                <span class="chip bg-color">javascript</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/javascript/" class="post-category">
+                                javascript
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-12-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-03-12
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    30 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h1><h2 id="1-ArrayBuffer"><a href="#1-ArrayBuffer" class="headerlink" title="1.ArrayBuffer"></a>1.ArrayBuffer</h2><blockquote>
+<p><code>ArrayBuffer</code> 对象用来表示通用的、<strong>固定长度</strong>的原始二进制数据缓冲区。</p>
+</blockquote>
+<p>它是一个字节数组，通常在其他语言中称为“byte array”。</p>
+<p>你不能直接操作 <code>ArrayBuffer</code> 的内容，而是要通过 <code>TypedArray</code> （<strong>类型数组</strong>）对象或 <code>DataView</code> 对象来操作，它们会将缓冲区中的数据表示为特定的格式，并通过这些格式来读写缓冲区的内容。</p>
+<blockquote>
+<p>它的含义类似 NodeJs 中的 <code>Buffer</code> 。简单来说，我们可以通过 <code>ArrayBuffer</code> 来开辟一段二进制数据空间，但是它只能通过 <code>TypedArray</code> 或者 <code>DataView</code> 来进行操作。</p>
+</blockquote>
+<p>简单用法：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//创建一个长度为 8 的 ArrayBuffer ，此时开辟一个固定 8 个字节的缓冲区也就是 64 位</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buffer<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 8</span></code></pre>
+<p>length 大于 <code>Number.MAX_SAFE_INTEGER（&gt;= 2 \*\* 53）</code> 或为负数，则抛出一个 <code>RangeError</code> 异常。</p>
+<p>作用：</p>
+<p>从 XHR、File API、Canvas, WebGL 等等各种地方，读取了一大串字节流，如果用 JS 里的 Array 去存，又浪费，又低效，</p>
+<p>于是为了配合这些新的 API 增强 JS 的二进制处理能力，就有了 <code>ArrayBuffer</code>。</p>
+<p>创建 <code>ArrayBuffer</code> 的时候，就相当于申请了一块内存, 不能（也不方便）直接用它，</p>
+<p>所以也就有了 <code>TypedArray</code> ，比如 <code>Uint32Array, Int16Array, Int8Array, Float32Array</code> 等等。</p>
+<h3 id="1-1-TypedArray"><a href="#1-1-TypedArray" class="headerlink" title="1.1.TypedArray"></a>1.1.TypedArray</h3><p><strong>一个类型化数组（TypedArray）对象</strong>描述了一个底层的<strong>二进制数据缓冲区</strong>（binary data buffer）的一个类数组视图（view）。</p>
+<blockquote>
+<p>稍微翻译下上边的话，也就是说可以通过 <code>TypedArray</code> 来操作 <code>ArrayBuffer</code> 的实例。</p>
+</blockquote>
+<p>事实上，没有名为 <code>TypedArray</code> 的全局属性，也没有一个名为 <code>TypedArray</code> 的构造函数。相反，有许多不同的全局属性，它们的值是特定元素类型的类型化数组构造函数</p>
+<blockquote>
+<p>这句话简单来讲，你可以将 <code>TypedArray</code> 理解为一种接口的形式。所谓 <code>TypedArray</code> 它并不包含具体的实现而是代表一系列具有相同特性（类数组视图）的集合概念。</p>
+<p>也就是说 <code>TypedArray</code> 不可被直接实例化，本身也无法访问。但是它有很多种不同的实现方式。</p>
+</blockquote>
+<p>特点：</p>
+<ul>
+<li><code>TypedArray</code> 内的成员只能是同一类型，都是数字，Array 可以存储任意元素</li>
+<li><code>TypedArray</code> 成员是连续的，不会有空位，Array 可以有空位</li>
+<li><code>TypedArray</code> 成员的默认值为 0，Array 的默认值为空</li>
+<li><code>TypedArray</code> 定义时长度固定不可动态增加或减小，Array 长度可变</li>
+<li><code>TypedArray</code> 只是视图，本身不存储数据，数据都存储在底层的 <code>ArrayBuffer</code> 中，要获取底层对象必须使用 buffer 属性</li>
+<li><code>TypedArray</code> <code>Array.isArray()</code> 返回 false</li>
+<li><code>TypedArray</code> 可以直接操作内存，不需要进行类型转换，所以比数组快</li>
+</ul>
+<p>创建构造函数：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 下面代码是语法格式，不能直接运行，</span>
+<span class="token comment" spellcheck="true">// TypedArray 关键字需要替换为底部列出的构造函数。</span>
+<span class="token keyword">new</span> <span class="token class-name">TypedArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// ES2017中新增</span>
+<span class="token keyword">new</span> <span class="token class-name">TypedArray</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">TypedArray</span><span class="token punctuation">(</span>typedArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">TypedArray</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">TypedArray</span><span class="token punctuation">(</span>buffer <span class="token punctuation">[</span><span class="token punctuation">,</span> byteOffset <span class="token punctuation">[</span><span class="token punctuation">,</span> length<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>TypedArray</code> 指的是以下的其中之一：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>值范围</th>
+<th align="center">大小(bytes)</th>
+<th>描述</th>
+<th>Web IDL 类型</th>
+<th>等价的 C 类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Int8Array</td>
+<td>-128 到 127</td>
+<td align="center">1</td>
+<td>8 位有符号整型（补码）</td>
+<td>byte</td>
+<td>int8_t</td>
+</tr>
+<tr>
+<td>Uint8Array</td>
+<td>0 到 255</td>
+<td align="center">1</td>
+<td>8 位无符号整型</td>
+<td>octet</td>
+<td>uint8_t</td>
+</tr>
+<tr>
+<td>Uint8ClampedArray</td>
+<td>0 到 255</td>
+<td align="center">1</td>
+<td>8 位无符号整型（一定在 0 到 255 之间）</td>
+<td>octet</td>
+<td>uint8_t</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>-32768 到 32767</td>
+<td align="center">2</td>
+<td>16 位有符号整型（补码）</td>
+<td>short</td>
+<td>int16_t</td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td>0 到 65535</td>
+<td align="center">2</td>
+<td>16 位无符号整型</td>
+<td>unsigned short</td>
+<td>uint16_t</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>-2147483648 到 2147483647</td>
+<td align="center">4</td>
+<td>32 位有符号整型（补码）</td>
+<td>long</td>
+<td>int32_t</td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td>0 到 4294967295</td>
+<td align="center">4</td>
+<td>32 位无符号整型</td>
+<td>unsigned long</td>
+<td>uint32_t</td>
+</tr>
+<tr>
+<td>Float32Array</td>
+<td><code>-3.4E38</code> 到 <code>3.4E38</code> 并且 <code>1.2E-38</code> 是最小的正数</td>
+<td align="center">4</td>
+<td>32 位 IEEE 浮点数（7 位有效数字，例如 <code>1.234567</code>）</td>
+<td>unrestricted float</td>
+<td>float</td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td><code>-1.8E308</code> 到 <code>1.8E308</code> 并且 <code>5E-324</code> 是最小的正数</td>
+<td align="center">8</td>
+<td>64 位 IEEE 浮点数（16 位有效数字，例如 <code>1.23456789012345</code>）</td>
+<td>unrestricted double</td>
+<td>double</td>
+</tr>
+<tr>
+<td>BigInt64Array</td>
+<td>-263 到 263 - 1</td>
+<td align="center">8</td>
+<td>64 位有符号整数（补码）</td>
+<td>bigint</td>
+<td>int64_t (signed long long)</td>
+</tr>
+<tr>
+<td>BigUint64Array</td>
+<td>0 到 264 - 1</td>
+<td align="center">8</td>
+<td>64 位无符号整型</td>
+<td>bigint</td>
+<td>uint64_t (unsigned long long)</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>Unit8Array</code> 指的是，把 <code>ArrayBuffer</code> 的每个 byte(8-bit) 当作一个单独的无符号整型数字 (0 - 255)</li>
+<li><code>Unit16Array</code> 表示为使用 16 bits (2 bytes) 表示一个无符号整型 (0 ~ 2^16-1) 的数的数组</li>
+<li><code>Int8Array</code> 表示使用 8 bits 表示一个有符号整型 (-128 ~ 127)</li>
+<li><code>Float32Array</code> 表示使用 32 bits 表示一个浮点数</li>
+<li><code>Unit7ClampedArray</code> 在 0 ～ 255 范围内和 <code>Unit8Array</code> 是一样的，对超出范围的处理有所不同，和图像处理相关（一般像素范围也是 0 ～ 255）</li>
+</ul>
+<p>示例：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建8个字节长度的缓存冲</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 将buffer转化为Uint8Array</span>
+<span class="token comment" spellcheck="true">// Uint8Array中每一个元素表示一个字节（8位）</span>
+<span class="token keyword">const</span> uint8Array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="1-2-DataView"><a href="#1-2-DataView" class="headerlink" title="1.2.DataView"></a>1.2.DataView</h3><p><code>DataView</code> 视图是一个可以从二进制 <code>ArrayBuffer</code> 对象中读写多种数值类型的底层接口，使用它时，不用考虑不同平台的<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Endianness" target="_blank" rel="noopener">字节序（endianness）</a>问题。</p>
+<p>相较于 <code>TypedArray</code>，<code>DataView</code> 对于 <code>ArrayBuffer</code> 的操作更加灵活。</p>
+<p>在 <code>TypedArray</code> 中操作二进制 <code>ArrayBuffer</code> 时每个元素占用的字节大小是固定的，要么每个元素占用 8 位、16 位或者 32 位。</p>
+<p>而 <code>DataView</code> 对于 <code>ArrayBuffer</code> 的操作就显得更加灵活了，我们可以通过 <code>DataView</code> 从 <code>ArrayBuffer</code> 中自由的读写多种数据类型，从而控制字节顺序。</p>
+<p>简单来讲，想较与 <code>TypedArray</code> 每个元素中固定的字节大小，我们可以通过 <code>DataView</code> 来自由的操作 <code>ArrayBuffer</code> 。</p>
+<p>创建 DataView：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">DataView</span><span class="token punctuation">(</span>buffer <span class="token punctuation">[</span><span class="token punctuation">,</span> byteOffset <span class="token punctuation">[</span><span class="token punctuation">,</span> byteLength<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 创建8个字节长度的缓存冲</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 根据传入的buffer 从第一个字节开始，并且字节长度为匹配buffer的长度</span>
+<span class="token keyword">const</span> dataView <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataView</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 将DataView中偏移量为0个字节的字节，也就是第一个字节设置为十进制的1</span>
+dataView<span class="token punctuation">.</span><span class="token function">setUint8</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 将DataView中偏移量为1个字节的字节，也就是第二个字节设置为十进制的2</span>
+dataView<span class="token punctuation">.</span><span class="token function">setUint8</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建 <code>DataView</code> 支持传入三个参数：</p>
+<ul>
+<li><code>buffer</code> ：为必填，它支持传入一个 <code>ArrayBuffer</code> 表示 <code>DataView</code> 中的源数据。</li>
+<li><code>byteOffset</code> ：选填，它表示创建 <code>DataView</code> 时开头从 <code>buffer</code> 的哪个字节开始，可以作为启始偏移量。未指定时，默认从第一个字节开始。</li>
+<li><code>btyeLength</code> ：选填，它表示创建该 <code>DataView</code> 时的长度，当不传递默认时表示匹配 <code>buffer</code> 的长度。</li>
+</ul>
+<h3 id="1-3-TypedArray-和-DataView-的设计目的"><a href="#1-3-TypedArray-和-DataView-的设计目的" class="headerlink" title="1.3.TypedArray 和 DataView 的设计目的"></a>1.3.TypedArray 和 DataView 的设计目的</h3><p><code>ArrayBuffer</code> 对象的各种 <code>TypedArray</code> 视图，是用来向网卡、声卡之类的本机设备传送数据，所以使用本机的字节序就可以了；</p>
+<p>而 <code>DataView</code> 视图的设计目的，是用来处理网络设备传来的数据，所以大端字节序或小端字节序是可以自行设定的。</p>
+<h3 id="1-4-ArrayBuffer、TypedArray、DataView-关系图"><a href="#1-4-ArrayBuffer、TypedArray、DataView-关系图" class="headerlink" title="1.4.ArrayBuffer、TypedArray、DataView 关系图"></a>1.4.ArrayBuffer、TypedArray、DataView 关系图</h3><p><img src="//static.tianyichuxin.com/images/28577/1.png" alt=""></p>
+<h2 id="2-Blob"><a href="#2-Blob" class="headerlink" title="2.Blob"></a>2.Blob</h2><p><code>Blob</code> 对象表示一个不可变、原始数据的类文件对象。它的数据可以按文本或二进制的格式进行读取，也可以转换成 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream" target="_blank" rel="noopener"><code>ReadableStream</code></a> 来用于数据操作。</p>
+<blockquote>
+<p>注意 <code>File</code> 对象是继承与 <code>blob</code> 的</p>
+</blockquote>
+<p>创建如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> aBlob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>Blob()</code> 构造函数返回一个新的 <code>Blob</code> 对象。 blob 的内容由参数数组中给出的值的串联组成。<br>通过 new Blob 可以创建一个新的 blob 对象实例，构造函数支持接受两个参数：</p>
+<ul>
+<li><code>array</code>： 是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> 等对象构成的 Array ，或者其他类似对象的混合体，它将会被放进 <code>Blob</code>。<strong>DOMStrings 会被编码为 UTF-8</strong>。</li>
+<li><code>options</code>： 是一个对象，它拥有如下属性：<ul>
+<li><code>type</code>：默认值为 <code>""</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。</li>
+<li><code>endings</code>：默认值为<code>"transparent"</code>，用于指定包含行结束符<code>\n</code> 的字符串如何被写入。 它是以下两个值中的一个： <code>"native"</code>，代表行结束符会被更改为适合宿主操作系统文件系统的换行符，或者 <code>"transparent"</code>，代表会保持 blob 中保存的结束符不变</li>
+</ul>
+</li>
+</ul>
+<p>常见的 MIME 类型：</p>
+<table>
+<thead>
+<tr>
+<th>MIME 类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text/plain</td>
+<td>纯文本文档</td>
+</tr>
+<tr>
+<td>text/html</td>
+<td>HTML 文档</td>
+</tr>
+<tr>
+<td>text/javascript</td>
+<td>JavaScript 文件</td>
+</tr>
+<tr>
+<td>text/css</td>
+<td>CSS 文件</td>
+</tr>
+<tr>
+<td>application/json</td>
+<td>JSON 文件</td>
+</tr>
+<tr>
+<td>application/pdf</td>
+<td>PDF 文件</td>
+</tr>
+<tr>
+<td>application/xml</td>
+<td>XML 文件</td>
+</tr>
+<tr>
+<td>image/jpeg</td>
+<td>JPEG 图像</td>
+</tr>
+<tr>
+<td>image/png</td>
+<td>PNG 图像</td>
+</tr>
+<tr>
+<td>image/gif</td>
+<td>GIF 图像</td>
+</tr>
+<tr>
+<td>image/svg+xml</td>
+<td>SVG 图像</td>
+</tr>
+<tr>
+<td>audio</td>
+<td>MP3 文件</td>
+</tr>
+<tr>
+<td>video</td>
+<td>MP4 文件</td>
+</tr>
+</tbody></table>
+<p>创建一个 blob 对象：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> name <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"tianyichuxin"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 传入DOMString创建blob</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// log: 23 utf8中一个英文代表一个字节</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blob<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 传入ArrayBuffer创建blob</span>
+<span class="token keyword">const</span> bufferToBlob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>buffer<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// log: 8</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bufferToBlob<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>部分方法：</p>
+<ul>
+<li><code>slice()</code>  从 Blob  中截取一部分并返回一个新的 Blob(用法同数组的 slice)</li>
+<li><code>arrayBuffer()</code>  返回一个以二进制形式展现的 promise</li>
+<li><code>stream()</code>  返回一个 ReadableStream 对象</li>
+<li><code>text()</code>  返回一个文本形式的 promise</li>
+</ul>
+<h3 id="2-1-读取-blob-内容"><a href="#2-1-读取-blob-内容" class="headerlink" title="2.1.读取 blob 内容"></a>2.1.读取 blob 内容</h3><p><code>FileReader</code> 对象允许 Web 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 <code>File</code> 或 <code>Blob</code> 对象指定要读取的文件或数据。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> name <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"tianyichuxin"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 传入DOMString创建blob</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ *
+ * @param {*} blob blob 对象
+ * @param {*} type 输出的结果
+ */</span>
+<span class="token keyword">function</span> <span class="token function">getBlobByType</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> fileReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 读取文件的 ArrayBuffer 数据对象.</span>
+        <span class="token keyword">case</span> <span class="token string">"arrayBuffer"</span><span class="token punctuation">:</span>
+            fileReader<span class="token punctuation">.</span><span class="token function">readAsArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 读取文件为的字符串</span>
+        <span class="token keyword">case</span> <span class="token string">"DOMstring"</span><span class="token punctuation">:</span>
+            fileReader<span class="token punctuation">.</span><span class="token function">readAsText</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 读取文件为data: URL格式的Base64字符串</span>
+        <span class="token keyword">case</span> <span class="token string">"dataUrl"</span><span class="token punctuation">:</span>
+            fileReader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 读取文件为文件的原始二进制数据（已废弃不推荐使用）</span>
+        <span class="token keyword">case</span> <span class="token string">"binaryString"</span><span class="token punctuation">:</span>
+            fileReader<span class="token punctuation">.</span><span class="token function">readAsBinaryString</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 当文件读取完成时候触发</span>
+        fileReader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 获取最终读取结果</span>
+            <span class="token keyword">const</span> result <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// ArrayBuffer 对象</span>
+<span class="token function">getBlobByType</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> <span class="token string">"arrayBuffer"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// {"name":"tianyichuxin"}</span>
+<span class="token function">getBlobByType</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> <span class="token string">"DOMstring"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// data:application/json;base64,eyJuYW1lIjoiMTlRSW5nZmVuZyJ9</span>
+<span class="token function">getBlobByType</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> <span class="token string">"dataUrl"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// {"name":"tianyichuxin"}</span>
+
+<span class="token function">getBlobByType</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> <span class="token string">"binaryString"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>通常情况下， <code>File</code> 对象是来自用户在一个 <code>input</code> 元素上选择文件后返回的 <code>FileList</code> 对象,也可以是来自由拖放操作生成的 <code>DataTransfer</code> 对象，或者来自 <code>HTMLCanvasElement</code> 上的 <code>mozGetAsFile</code>() API。</p>
+<blockquote>
+<p>简单来说，File 就是基于 Blob 而来。它拥有 Blob 的所有功能的同时扩展了一系列关于文件的属性。</p>
+</blockquote>
+<h2 id="3-File"><a href="#3-File" class="headerlink" title="3.File"></a>3.File</h2><p><code>File</code> 就是文件，继承自 <code>Blob</code>，也是二进制对象，也有自己特有的属性和方法，通常用在<br><code>&lt;input type="file"&gt;</code>选择的 <code>FileList</code> 对象，或者是使用拖拽操作产生的的 <code>DataTransfer</code> 对象。</p>
+<p><code>File</code> 对象是特殊类型的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="noopener"><code>Blob</code></a>，且可以用在任意的 Blob 类型的 context 中。比如说， <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="noopener"><code>FileReader</code></a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL_static" target="_blank" rel="noopener"><code>URL.createObjectURL()</code></a>, <code>createImageBitmap()</code>, 及 <code>XMLHttpRequest.send()</code> 都能处理 <code>Blob</code> 和 <code>File</code>。</p>
+<p>创建如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> name<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li><code>array</code>：是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> <code>等对象构成，DOMStrings</code> 会被编码为 UTF-8。</li>
+<li><code>name</code>：表示文件名称，或者文件路径。</li>
+<li><code>options</code>：是一个可选，它可能会指定如下两个属性：<ul>
+<li><code>type</code>：默认值为 <code>""</code>，内容的 MIME 类型。</li>
+<li><code>lastModified</code>：数值，表示文件最后修改时间的 Unix 时间戳（毫秒）。默认值为<code>Date.now()</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-1-ArrayBuffer-和-Blob-File-的关系"><a href="#3-1-ArrayBuffer-和-Blob-File-的关系" class="headerlink" title="3.1.ArrayBuffer 和 Blob/File 的关系"></a>3.1.ArrayBuffer 和 Blob/File 的关系</h3><p><img src="//static.tianyichuxin.com/images/28577/2.png" alt=""></p>
+<h2 id="4-ObjectURL"><a href="#4-ObjectURL" class="headerlink" title="4.ObjectURL"></a>4.ObjectURL</h2><p><code>ObjectURL</code> 是用于引用任何数据的简单 URL 字符串，即用一个 URL 来访问某个数据资源。比如可以创建某个图片的 <code>ObjectURL</code> 值，然后设置该值为图片标签的 src，即可展示该图片。</p>
+<blockquote>
+<p><code>ObjectURL</code> 本质上是一个临时的，用于访问某个资源的路径。它常常用来展示文件，比如图片、Excel、PDF 文件、视频文件等。</p>
+</blockquote>
+<p>大多数情况下，我们可以看到一些网页内部可以看到一些诸如此类的 Blob Url：</p>
+<pre class=" language-html"><code class="language-html">&lt;video src="blod:https://www.baidu.com/dsadafa78HJKHGSasd2452kS98sds"</code></pre>
+<p>关于 <code>Blob URL/Object URL</code> 其实它们是一种伪协议，允许将 <code>Blob</code> 和 <code>File</code> 对象用作图像、二进制数据下载链接等的 <code>URL</code> 源。它的好处其实有很多。</p>
+<p>平常我们并不可以直接处理 Image 标签之类的原始二进制数据，所以对于图片等需要 url 作为源的标签通常做法是将图片上传到服务器上得到一个 url 从而通过 <code>URL</code> 加载二进制数据。</p>
+<p>与其上传二进制数据，然后通过 <code>URL</code> 将其返回，不如使用 <code>Blob/Object Url</code> 无需额外的步骤，使用浏览器本地 Api 即可直接访问数据而不需要通过服务器来上传数据。</p>
+<p>相比<code>Base64</code> 字符串编码也可以解决上述问题， <code>Blob</code> 是纯二进制字节数组，不会像 <code>Data-URI</code> 那样有任何显着的开销，这使得它们处理起来更快更小。</p>
+<p>同时这些 <code>URL</code> 只能在浏览器的单个实例和同一会话（即页面/文档的生命周期）中本地使用，这意味者离开当前浏览器实例这个 <code>URL</code> 就会失效。</p>
+<p>我们可以通过 <code>URL.createObjectURL(object)</code> 来创建对应的 <code>Object URL</code>，这个方法会返回一个 <code>DOMString</code> 字符串，其中包含一个表示参数中给出的对象的<code>URL</code>。</p>
+<p>同时，这个 <code>URL</code> 的生命周期和创建它的窗口中的  <code>document</code>  绑定。这个新的 <code>URL</code> 对象表示指定的  <code>File</code>  对象或  <code>Blob</code>  对象。</p>
+<p>在创建时候它会接受一个参数：</p>
+<ul>
+<li><strong>object</strong> 表示用于创建 URL 的  <code>File</code>对象、<code>Blob</code>对象或者  <code>MediaSource</code>对象。</li>
+</ul>
+<p>同样它会返回一个<code>DOMString</code>包含了一个对象<code>URL</code>，该 URL 可用于指定源  object 的内容。</p>
+<p>返回的 <code>DOMString</code> 格式为 <code>blob:&lt;origin&gt;/&lt;uuid&gt;</code>。</p>
+<blockquote>
+<p>当在你的网页上不再使用通过 <code>URL.createObjectURL(object)</code> 创建的 URL 时，记得使用 <code>URL.revokeObjectURL(url)</code> 来主动释放它们。</p>
+</blockquote>
+<p>通过 Object URL 下载图片：</p>
+<p>HTML 部分代码</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>input<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<p>js 部分代码</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> input <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+input<span class="token punctuation">.</span>onchange <span class="token operator">=</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> url <span class="token operator">=</span> URL<span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 实现下载</span>
+    <span class="token keyword">const</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span>href <span class="token operator">=</span> url<span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span>download <span class="token operator">=</span> <span class="token string">"img"</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> name <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"tianyichuxin"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>通过 <code>Blob</code> 下载：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 传入DOMString创建blob</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 创建 Object Url</span>
+<span class="token keyword">const</span> url <span class="token operator">=</span> URL<span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> aLink <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// href属性</span>
+aLink<span class="token punctuation">.</span>href <span class="token operator">=</span> url<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 定义下载的文件名</span>
+aLink<span class="token punctuation">.</span>download <span class="token operator">=</span> <span class="token string">"name.json"</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 派发a链接的点击事件</span>
+aLink<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MouseEvent</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 下载完成后，释放 URL.createObjectURL() 创建的 URL 对象。</span>
+URL<span class="token punctuation">.</span><span class="token function">revokeObjectURL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="4-1-ArrayBuffer-和-Blob-、Object-URL-的关系"><a href="#4-1-ArrayBuffer-和-Blob-、Object-URL-的关系" class="headerlink" title="4.1.ArrayBuffer 和 Blob 、Object URL 的关系"></a>4.1.ArrayBuffer 和 Blob 、Object URL 的关系</h3><p><img src="//static.tianyichuxin.com/images/28577/3.png" alt=""></p>
+<h2 id="5-Buffer"><a href="#5-Buffer" class="headerlink" title="5.Buffer"></a>5.Buffer</h2><p>在 Node.JS 中，<code>Buffer</code>是一种全局对象，用于表示二进制数据。<code>Buffer</code>对象可以直接访问和修改其内容，因此它比<code>Blob</code>和<code>ArrayBuffer</code>更适合网络编程或文件系统操作。</p>
+<blockquote>
+<p>在 Node.js v6.0 之前创建<code>Buffer</code>对象直接使用<code>new Buffer()</code>构造函数来创建对象实例，但是<code>Buffer</code>对内存的权限操作相比很大，可以直接捕获一些敏感信息。例如，<code>new Buffer(arg)</code> 的构造函数可以接受多种类型的参数，这可能导致意外的行为，尤其是在处理用户提供的输入时。</p>
+<p>所以在 v6.0 以后，官方文档里面 <code>new Buffer()</code> 构造函数被弃用，并在后续版本中被完全移除。建议使用 <code>Buffer.from()</code> 接口去创建<code>Buffer</code>对象。</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token string">"Hello, world!"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>ArrayBuffer</code> 对象用来表示通用的、固定长度的原始二进制数据缓冲区，是一个字节数组，可读但不可直接写。</p>
+<p><code>Buffer</code> 是 Node.JS 中用于操作 <code>ArrayBuffer</code> 的视图，是 <code>TypedArray</code> 的一种。是 <code>Uint8Array</code> 实例，但是与 <code>TypedArray</code> 有微小的不同。（buffer 可以类比为视图）<code>Buffer.from()</code> 与 <code>TypedArray.from()</code>  有着不同的实现。</p>
+<p>具体来说，<code>typedArray.form()</code>可接受第二个参数为映射函数，<code>Buffer.form()</code>不行。</p>
+<p>创建的常用方法：</p>
+<ul>
+<li><code>Buffer.from(array)</code>：返回包含给定八位字节数组的副本的新 buffer</li>
+<li><code>Buffer.from(buffer)</code>：返回包含给定 buffer 副本的新 buffer</li>
+<li><code>Buffer.from(arrayBuffer[, betyOffset[, len]])</code>：返回与给定 arrayBuffer 共享同一段内存的新 Buffer</li>
+<li><code>Buffer.from(string)</code>：返回包含给定字符串副本的新 Buffer</li>
+<li><code>Buffer.alloc(size)</code>：返回一个指定大小的新建的已经初始化的 Buffer</li>
+</ul>
+<h3 id="5-1-Buffer-转-ArrayBuffer"><a href="#5-1-Buffer-转-ArrayBuffer" class="headerlink" title="5.1.Buffer 转 ArrayBuffer"></a>5.1.Buffer 转 ArrayBuffer</h3><p>使用<code>Buffer</code>的<code>.buffer</code>属性即可</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> buffer <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> arrayBuffer <span class="token operator">=</span> buffer<span class="token punctuation">.</span>buffer<span class="token punctuation">;</span></code></pre>
+<h3 id="5-2-ArrayBuffer-转-Buffer"><a href="#5-2-ArrayBuffer-转-Buffer" class="headerlink" title="5.2.ArrayBuffer 转 Buffer"></a>5.2.ArrayBuffer 转 Buffer</h3><p>使用<code>Buffer.from()</code>静态方法</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> arrayBuffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="6-AudioBuffer"><a href="#6-AudioBuffer" class="headerlink" title="6.AudioBuffer"></a>6.AudioBuffer</h2><p><code>ArrayBuffer</code> 里面的数据并没有分类，<code>AudioBuffer</code> 接口表示存在内存里的一段短小的音频资源，利用 <code>AudioContext</code>。<code>decodeAudioData()</code>方法从一个音频文件构建，或者利用 <code>AudioContext.createBuffer()</code>从原始数据构建。把音频放入 <code>AudioBuffer</code> 后，可以传入到一个 <code>AudioBufferSourceNode</code> 进行播放。</p>
+<blockquote>
+<p><code>从一个音频文件构建AudioCOntext.decodeAudioData()</code> -放入-&gt; <code>AudioBuffer</code> -播放-&gt; <code>AudioBufferSourceNode</code></p>
+<p><code>从原始数据构建AudioCOntext.createBuffer()</code> -放入-&gt; <code>AudioBuffer</code> -播放-&gt; <code>AudioBufferSourceNode</code></p>
+</blockquote>
+<p>创建如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+audioCtx<span class="token punctuation">.</span><span class="token function">decodeAudioData</span><span class="token punctuation">(</span>arrBuffer<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>audioBuffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// audioBuffer就是AudioBuffer</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>属性：</p>
+<ul>
+<li><code>AudioBuffer.sampleRate</code>：存储在缓存区的 PCM 数据的采样率：浮点数，单位为 sample/s。</li>
+<li><code>AudioBuffer.length</code>：返回存储在缓存区的 PCM 数据的采样帧率：整形。</li>
+<li><code>AudioBuffer.duration</code>：返回存储在缓存区的 PCM 数据的时长：双精度型（单位为秒）。</li>
+<li><code>AudioBuffer.numberOfChannels</code>：返回存储在缓存区的 PCM 数据的通道数：整形。</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li><code>AudioBuffer.getChannelData()</code>：返回一个 Float32Array，包含了带有频道的 PCM 数据，由频道参数定义（有 0 代表第一个频道）</li>
+<li><code>AudioBuffer.copyFromChannel()</code>：从 AudioBuffer 的指定频道复制到数组终端。</li>
+<li><code>AudioBuffer.copyToChannel()</code>：复制样品到原数组的 AudioBuffer 的指定频道</li>
+</ul>
+<h2 id="7-Base64"><a href="#7-Base64" class="headerlink" title="7.Base64"></a>7.Base64</h2><p><code>Base64</code> 是一组相似的二进制到文本（binary-to-text）的编码规则。一个常见应用是对二进制数据进行编码，以便将其纳入 <code>dataURL</code> 中</p>
+<p>在前端经常会碰到，格式是 <code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code></p>
+<p>在 JavaScript 中，有两个函数被分别用来处理解码和编码 <code>Base64</code> 字符串：</p>
+<ul>
+<li><code>atob()</code>：解码通过 <code>Base-64</code> 编码的字符串数据（“atob”应读作“ASCII to binary”）</li>
+<li><code>btoa()</code>：从二进制数据“字符串”创建一个 <code>Base-64</code> 编码的 ASCII 字符串（“btoa”应读作“binary to ASCII”）</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>可以将二进制数据（比如图片）转化为可打印字符，方便传输数据。</li>
+<li>对数据进行简单的加密，肉眼是安全的。</li>
+<li>如果是在 html 或者 css 处理图片，可以减少 http 请求。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>内容编码后体积变大， 至少大 1/3。因为是三字节变成四个字节，当只有一个字节的时候，也至少会变成三个字节。</li>
+<li>编码和解码需要额外工作量。</li>
+</ul>
+<p>用 Bse64 展示图片：</p>
+<p>HTML 部分代码</p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 读取文件，用 Bse64 展示图片 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>input<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<p>js 部分代码</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> input <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> img <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+input<span class="token punctuation">.</span>onchange <span class="token operator">=</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        img<span class="token punctuation">.</span>src <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="8-FileReader"><a href="#8-FileReader" class="headerlink" title="8.FileReader"></a>8.FileReader</h2><p><code>FileReader</code> 对象允许 Web 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容</p>
+<p>以下为 <code>FileReader</code> 的对象方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileReader.abort()</td>
+<td>中止读取操作。在返回时，readyState 属性为 DONE</td>
+</tr>
+<tr>
+<td>FileReader.readAsArrayBuffer()</td>
+<td>开始读取指定的 Blob 中的内容。完成后，result 属性中保存的将是被读取文件的 <code>ArrayBuffer</code> 数据对象。</td>
+</tr>
+<tr>
+<td>FileReader.readAsBinaryString()</td>
+<td>开始读取指定的 Blob 中的内容。完成后，result 属性中将包含所读取文件的<code>原始二进制</code>数据</td>
+</tr>
+<tr>
+<td>FileReader.readAsDataURL()</td>
+<td>开始读取指定的 Blob 中的内容。完成后，result 属性中将包含一个 data: URL 格式的 <code>Base64</code> 字符串以表示所读取文件的内容</td>
+</tr>
+<tr>
+<td>FileReader.readAsText()</td>
+<td>开始读取指定的 Blob 中的内容。一旦完成，result 属性中将包含一个<code>字符串</code>以表示所读取的文件内容</td>
+</tr>
+</tbody></table>
+<h1 id="二、相关转换"><a href="#二、相关转换" class="headerlink" title="二、相关转换"></a>二、相关转换</h1><h2 id="1-Blob-与-File-互转"><a href="#1-Blob-与-File-互转" class="headerlink" title="1.Blob 与 File 互转"></a>1.Blob 与 File 互转</h2><h3 id="1-1-Blob-转-File"><a href="#1-1-Blob-转-File" class="headerlink" title="1.1.Blob 转 File"></a>1.1.Blob 转 File</h3><p><code>File</code> 对象其实是特殊类型的 <code>Blob</code>，且可以用在任意的 Blob 类型的上下文中。比如说，<code>FileReader</code>, <code>URL.createObjectURL()</code>, <code>createImageBitmap()</code>, 及 <code>XMLHttpRequest.send()</code> 都能处理 <code>Blob</code> 和 <code>File</code>。</p>
+<p><code>File</code> 接口也继承了 <code>Blob</code> 接口的属性。这两个东西互转感觉没必要，如果要转的话，可以利用 <code>FileReader</code> 作为桥梁，先转成 <code>ArrayBuffer</code>，然后在转成相应的 <code>Blob</code> 或者 <code>File</code>。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"blob文件"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"text/plain"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// blob 转 file</span>
+<span class="token keyword">const</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token punctuation">[</span>blob<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> blob<span class="token punctuation">.</span>type <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"file:"</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="1-2-File-转-Blob"><a href="#1-2-File-转-Blob" class="headerlink" title="1.2.File 转 Blob"></a>1.2.File 转 Blob</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"文件对象"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"text/plain"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// file 转 blob</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>file<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> file<span class="token punctuation">.</span>type <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"blob:"</span><span class="token punctuation">,</span> blob<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="2-File、Blob、img-与-Base64-互转"><a href="#2-File、Blob、img-与-Base64-互转" class="headerlink" title="2.File、Blob、img 与 Base64 互转"></a>2.File、Blob、img 与 Base64 互转</h2><h3 id="2-1-File、Blob-转-Base64"><a href="#2-1-File、Blob-转-Base64" class="headerlink" title="2.1.File、Blob 转 Base64"></a>2.1.File、Blob 转 Base64</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//file为 File对象 或 Blob对象</span>
+<span class="token keyword">function</span> <span class="token function">fileToDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> reader<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-2-img-转-Base64"><a href="#2-2-img-转-Base64" class="headerlink" title="2.2.img 转 Base64"></a>2.2.img 转 Base64</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 本地图片转base64 ，注意链接是本地链接不是网络地址</span>
+<span class="token keyword">const</span> img2base64 <span class="token operator">=</span> <span class="token punctuation">(</span>imgUrl<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> image <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    image<span class="token punctuation">.</span>src <span class="token operator">=</span> imgUrl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        image<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"canvas"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> image<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+            canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> image<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> context <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            context<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> image<span class="token punctuation">.</span>width<span class="token punctuation">,</span> image<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">let</span> dataUrl <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">toDataUrl</span><span class="token punctuation">(</span><span class="token string">"image/png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>dataUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 获取base64</span>
+<span class="token function">img2base64</span><span class="token punctuation">(</span><span class="token string">"./logo.png"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="2-3-Base64-转-Blob、File"><a href="#2-3-Base64-转-Blob、File" class="headerlink" title="2.3.Base64 转 Blob、File"></a>2.3.Base64 转 Blob、File</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Base64 转为 Blob</span>
+<span class="token keyword">function</span> <span class="token function">dataURLToBlob</span><span class="token punctuation">(</span>fileDataUrl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> arr <span class="token operator">=</span> fileDataUrl<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        mime <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/:(.*?);/</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        bstr <span class="token operator">=</span> <span class="token function">atob</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        n <span class="token operator">=</span> bstr<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+        u8arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        u8arr<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> bstr<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>u8arr<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> mime <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Base64 转为 File</span>
+<span class="token keyword">function</span> <span class="token function">dataURLToFile</span><span class="token punctuation">(</span>fileDataUrl<span class="token punctuation">,</span> filename<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> arr <span class="token operator">=</span> fileDataUrl<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        mime <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/:(.*?);/</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        bstr <span class="token operator">=</span> <span class="token function">atob</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        n <span class="token operator">=</span> bstr<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+        u8arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        u8arr<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> bstr<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token punctuation">[</span>u8arr<span class="token punctuation">]</span><span class="token punctuation">,</span> filename<span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> mime <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-File、Blob-转-Object-URL"><a href="#3-File、Blob-转-Object-URL" class="headerlink" title="3.File、Blob 转 Object URL"></a>3.File、Blob 转 Object URL</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// object：用于创建 URL 的 File 对象、Blob 对象</span>
+<span class="token keyword">const</span> objectUrl <span class="token operator">=</span> URL<span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="4-File、Blob-与-ArrayBuffer-互转"><a href="#4-File、Blob-与-ArrayBuffer-互转" class="headerlink" title="4.File、Blob 与 ArrayBuffer 互转"></a>4.File、Blob 与 ArrayBuffer 互转</h2><p><code>File/Blob</code> 转成 <code>ArrayBuffer</code> 需要借助 <code>FileReader</code> 类。</p>
+<h3 id="4-1-File-Blob-转-ArrayBuffer"><a href="#4-1-File-Blob-转-ArrayBuffer" class="headerlink" title="4.1.File/Blob 转 ArrayBuffer"></a>4.1.File/Blob 转 ArrayBuffer</h3><ol>
+<li>使用 <code>FileReader</code> 类</li>
+</ol>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// file为 File对象 或 Blob对象</span>
+<span class="token keyword">function</span> <span class="token function">fileToArrayBuffer</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span><span class="token function">readAsArrayBuffer</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> reader<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 实际使用</span>
+<span class="token keyword">function</span> <span class="token function">blobToArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 读取 Blob 为 ArrayBuffer</span>
+        reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>reader<span class="token punctuation">.</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 读取结果是 ArrayBuffer</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        reader<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Failed to read Blob as ArrayBuffer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        reader<span class="token punctuation">.</span><span class="token function">readAsArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开始读取 Blob</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 使用示例</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"Hello, world!"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"text/plain"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">blobToArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 打印 ArrayBuffer</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ol start="2">
+<li>使用 <code>arrayBuffer()</code></li>
+</ol>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建一个 Blob 对象</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"Hello, world!"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"text/plain"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 使用 arrayBuffer() 方法将 Blob 转换为 ArrayBuffer</span>
+blob<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 打印 ArrayBuffer</span>
+        <span class="token comment" spellcheck="true">// 你可以在这里进一步处理 arrayBuffer</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Error:"</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 实际使用</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">convertBlobToArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> arrayBuffer <span class="token operator">=</span> <span class="token keyword">await</span> blob<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrayBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 打印 ArrayBuffer</span>
+        <span class="token comment" spellcheck="true">// 你可以在这里进一步处理 arrayBuffer</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Error:"</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 创建一个 Blob 对象并转换</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"Hello, world!"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"text/plain"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">convertBlobToArrayBuffer</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>Blob.arrayBuffer()</code>方法和使用 <code>FileReader</code> 的 <code>readAsArrayBuffer()</code> 方法都可以将 <code>Blob</code> 转换为 <code>ArrayBuffer</code>，但它们之间有一些区别：</p>
+<ol>
+<li>兼容性：<code>Blob.arrayBuffer()</code> 是在现代浏览器中引入的，而 <code>FileReader</code> 是在旧版本浏览器中引入的。因此，如果你需要支持旧版本浏览器，你可能需要使用 <code>FileReader</code>。</li>
+<li>返回值：<code>Blob.arrayBuffer()</code> 返回一个 <code>Promise</code>，它解析为 <code>ArrayBuffer</code>。而 <code>FileReader</code> 的 <code>readAsArrayBuffer()</code> 方法是异步的，它不会返回任何值，而是在读取完成后触发 <code>load</code> 事件。</li>
+<li>错误处理：<code>Blob.arrayBuffer()</code> 方法在读取失败时会抛出一个错误，你可以使用 <code>try-catch</code> 块来捕获和处理错误。而 <code>FileReader</code> 的 <code>readAsArrayBuffer()</code> 方法在读取失败时不会抛出错误，而是在 <code>error</code> 事件中触发。</li>
+<li>性能：<code>Blob.arrayBuffer()</code> 方法在现代浏览器中可能比 <code>FileReader</code> 的 <code>readAsArrayBuffer()</code> 方法更高效，因为它使用了更底层的 API。</li>
+</ol>
+<p><code>ArrayBuffer</code> 转成 <code>File/Blob</code> 直接调用 <code>new File/Blob</code> 构造函数</p>
+<h3 id="4-2-ArrayBuffer-转-File"><a href="#4-2-ArrayBuffer-转-File" class="headerlink" title="4.2.ArrayBuffer 转 File"></a>4.2.ArrayBuffer 转 File</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">bufToFile</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> filename<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token punctuation">[</span>buf<span class="token punctuation">]</span><span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="4-3-ArrayBuffer-转-blob"><a href="#4-3-ArrayBuffer-转-blob" class="headerlink" title="4.3.ArrayBuffer 转 blob"></a>4.3.ArrayBuffer 转 blob</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">bufToBlob</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> mimeType <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span>buf<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> mimeType <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>Blob</code> 函数的第二个参数与 <code>File</code> 函数的第二个参数略有不同，<code>Blob</code> 是一个对象，对象中有一个 type 属性，默认值为 <code>""</code>，它代表了将会被放入到 blob 中的数组内容的 MIME 类型。<code>Blob</code> 的第一个参数也是一个由 <code>ArrayBuffer</code>, <code>ArrayBufferView</code>, <code>Blob</code>, <code>DOMString</code> 等对象构成的数组。</p>
+<blockquote>
+<p><code>DOMString</code> 是 DOM 字符串，比如：<code>hey!</code>。它的 type 则是：<code>text/html</code>。</p>
+</blockquote>
+<h2 id="5-Blob-转-audio"><a href="#5-Blob-转-audio" class="headerlink" title="5.Blob 转 audio"></a>5.Blob 转 audio</h2><p>使用<code>URL.createObjectURL</code>和 <code>new Audio</code>进行转换</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> url <span class="token operator">=</span> URL<span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> audioUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Audio</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="6-File-转-audioBuffer"><a href="#6-File-转-audioBuffer" class="headerlink" title="6.File 转 audioBuffer"></a>6.File 转 audioBuffer</h2><p>在 Web 网页中，用户选择的文件是个 file 对象，我们可以将这个文件对象转换成 Blob、ArrayBuffer 或者 Base64。<br>在音频处理这里，都是使用<code>ArrayBuffer</code>这个数据类型。</p>
+<pre class=" language-js"><code class="language-js">file<span class="token punctuation">.</span>onchange <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> file <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 开始识别</span>
+    <span class="token keyword">var</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> arrBuffer <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// arrBuffer就是包含音频数据的ArrayBuffer对象</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    reader<span class="token punctuation">.</span><span class="token function">readAsArrayBuffer</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>使用的是<code>readAsArrayBuffer()</code>方法，无论是 MP3 格式、OGG 格式还是 WAV 格式，都可以转换成 ArrayBuffer 类型。</p>
+<h2 id="7-audioBuffer-转-Blob"><a href="#7-audioBuffer-转-Blob" class="headerlink" title="7.audioBuffer 转 Blob"></a>7.audioBuffer 转 Blob</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">audioBufferToWav</span><span class="token punctuation">(</span>buffer<span class="token punctuation">:</span> AudioBuffer<span class="token punctuation">,</span> opt<span class="token operator">?</span><span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    opt <span class="token operator">=</span> opt <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> numChannels <span class="token operator">=</span> buffer<span class="token punctuation">.</span>numberOfChannels<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sampleRate <span class="token operator">=</span> opt<span class="token punctuation">.</span>sampleRate <span class="token operator">||</span> buffer<span class="token punctuation">.</span>sampleRate<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> format <span class="token operator">=</span> opt<span class="token punctuation">.</span>float32 <span class="token operator">?</span> <span class="token number">3</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> bitDepth <span class="token operator">=</span> format <span class="token operator">===</span> <span class="token number">3</span> <span class="token operator">?</span> <span class="token number">32</span> <span class="token punctuation">:</span> <span class="token number">16</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> result<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>numChannels <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result <span class="token operator">=</span> <span class="token function">interleave</span><span class="token punctuation">(</span>buffer<span class="token punctuation">.</span><span class="token function">getChannelData</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> buffer<span class="token punctuation">.</span><span class="token function">getChannelData</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        result <span class="token operator">=</span> buffer<span class="token punctuation">.</span><span class="token function">getChannelData</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token function">encodeWAV</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> format<span class="token punctuation">,</span> sampleRate<span class="token punctuation">,</span> numChannels<span class="token punctuation">,</span> bitDepth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">encodeWAV</span><span class="token punctuation">(</span>samples<span class="token punctuation">:</span> Float32Array<span class="token punctuation">,</span> format<span class="token punctuation">:</span> number<span class="token punctuation">,</span> sampleRate<span class="token punctuation">:</span> number<span class="token punctuation">,</span> numChannels<span class="token punctuation">:</span> number<span class="token punctuation">,</span> bitDepth<span class="token punctuation">:</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> bytesPerSample <span class="token operator">=</span> bitDepth <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> blockAlign <span class="token operator">=</span> numChannels <span class="token operator">*</span> bytesPerSample<span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">44</span> <span class="token operator">+</span> samples<span class="token punctuation">.</span>length <span class="token operator">*</span> bytesPerSample<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> view <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataView</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">writeString</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"RIFF"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">36</span> <span class="token operator">+</span> samples<span class="token punctuation">.</span>length <span class="token operator">*</span> bytesPerSample<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">writeString</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">"WAVE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">writeString</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token string">"fmt "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> format<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span> numChannels<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span> sampleRate<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span> sampleRate <span class="token operator">*</span> blockAlign<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> blockAlign<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">,</span> bitDepth<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">writeString</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span> samples<span class="token punctuation">.</span>length <span class="token operator">*</span> bytesPerSample<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>format <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">floatTo16BitPCM</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">,</span> samples<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">writeFloat32</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">,</span> samples<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> buffer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">interleave</span><span class="token punctuation">(</span>inputL<span class="token punctuation">:</span> Float32Array<span class="token punctuation">,</span> inputR<span class="token punctuation">:</span> Float32Array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> length <span class="token operator">=</span> inputL<span class="token punctuation">.</span>length <span class="token operator">+</span> inputR<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> inputIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> inputL<span class="token punctuation">[</span>inputIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> inputR<span class="token punctuation">[</span>inputIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        inputIndex<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">writeFloat32</span><span class="token punctuation">(</span>output<span class="token punctuation">:</span> DataView<span class="token punctuation">,</span> offset<span class="token punctuation">:</span> number<span class="token punctuation">,</span> input<span class="token punctuation">:</span> Float32Array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> offset <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        output<span class="token punctuation">.</span><span class="token function">setFloat32</span><span class="token punctuation">(</span>offset<span class="token punctuation">,</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">floatTo16BitPCM</span><span class="token punctuation">(</span>output<span class="token punctuation">:</span> DataView<span class="token punctuation">,</span> offset<span class="token punctuation">:</span> number<span class="token punctuation">,</span> input<span class="token punctuation">:</span> Float32Array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> offset <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> s <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        output<span class="token punctuation">.</span><span class="token function">setInt16</span><span class="token punctuation">(</span>offset<span class="token punctuation">,</span> s <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> s <span class="token operator">*</span> <span class="token number">0x8000</span> <span class="token punctuation">:</span> s <span class="token operator">*</span> <span class="token number">0x7fff</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">writeString</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span> DataView<span class="token punctuation">,</span> offset<span class="token punctuation">:</span> number<span class="token punctuation">,</span> string<span class="token punctuation">:</span> string<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> string<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        view<span class="token punctuation">.</span><span class="token function">setUint8</span><span class="token punctuation">(</span>offset <span class="token operator">+</span> i<span class="token punctuation">,</span> string<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Arraybuffer 加头</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> _writeString <span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">:</span> DataView<span class="token punctuation">,</span> offset<span class="token punctuation">:</span> number <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> string <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    _<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>char<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> view<span class="token punctuation">.</span><span class="token function">setUint8</span><span class="token punctuation">(</span>offset<span class="token operator">++</span><span class="token punctuation">,</span> char<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> AddRiffHeader <span class="token operator">=</span> <span class="token punctuation">(</span>data<span class="token punctuation">:</span> ArrayBuffer<span class="token punctuation">,</span> sampleRate<span class="token punctuation">:</span> number <span class="token operator">=</span> <span class="token number">16000</span><span class="token punctuation">,</span> numberOfChannels<span class="token punctuation">:</span> number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> bitsPerSample <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> headerSize <span class="token operator">=</span> <span class="token number">44</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> dataID <span class="token operator">=</span> <span class="token string">"data"</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> dataSize <span class="token operator">=</span> data<span class="token punctuation">.</span>byteLength<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> fmtChunkID <span class="token operator">=</span> <span class="token string">"fmt "</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> fmtPcmChunkSize <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> audioPcmFormat <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> blockAlign <span class="token operator">=</span> bitsPerSample <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> riffChunkID <span class="token operator">=</span> <span class="token string">"RIFF"</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> riffChunkSize <span class="token operator">=</span> <span class="token number">4</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">8</span> <span class="token operator">+</span> fmtPcmChunkSize<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">8</span> <span class="token operator">+</span> dataSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> riffChunkFormat <span class="token operator">=</span> <span class="token string">"WAVE"</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> header <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span>headerSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> headerView <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataView</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">_writeString</span><span class="token punctuation">(</span>headerView<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> riffChunkID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> riffChunkSize<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">_writeString</span><span class="token punctuation">(</span>headerView<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> riffChunkFormat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">_writeString</span><span class="token punctuation">(</span>headerView<span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> fmtChunkID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> fmtPcmChunkSize<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    headerView<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> audioPcmFormat<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span> numberOfChannels<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span> sampleRate<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span> sampleRate <span class="token operator">*</span> blockAlign<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> blockAlign<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint16</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">,</span> bitsPerSample<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">_writeString</span><span class="token punctuation">(</span>headerView<span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> dataID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    headerView<span class="token punctuation">.</span><span class="token function">setUint32</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span> dataSize<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>header<span class="token punctuation">.</span>byteLength <span class="token operator">+</span> data<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    result<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    result<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> header<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">.</span>buffer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="8-AudioBuffer-转换成-WAV-格式"><a href="#8-AudioBuffer-转换成-WAV-格式" class="headerlink" title="8.AudioBuffer 转换成 WAV 格式"></a>8.AudioBuffer 转换成 WAV 格式</h2><p>使用 npm 已有包<br>安装包：<code>npm install audiobuffer-to-wav --save</code></p>
+<p>用例：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> toWav <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"audiobuffer-to-wav"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"xhr"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// request the MP3 as binary arraybuffer</span>
+<span class="token function">xhr</span><span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+        uri<span class="token punctuation">:</span> <span class="token string">"audio/track.mp3"</span><span class="token punctuation">,</span>
+        responseType<span class="token punctuation">:</span> <span class="token string">"arraybuffer"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span>err<span class="token punctuation">,</span> body<span class="token punctuation">,</span> resp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// decode the MP3 arraybuffer into an AudioBuffer</span>
+        audioContext<span class="token punctuation">.</span><span class="token function">decodeAudioData</span><span class="token punctuation">(</span>resp<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// encode AudioBuffer to WAV ArrayBuffer</span>
+            <span class="token keyword">var</span> wav <span class="token operator">=</span> <span class="token function">toWav</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//实际上是在audio前加wav的头</span>
+
+            <span class="token comment" spellcheck="true">// do something with the WAV ArrayBuffer ...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>引用：<br><a href="https://github.com/Experience-Monks/audiobuffer-to-wav" target="_blank" rel="noopener">audiobuffer-to-wav</a></p>
+<h2 id="9-ArrayBuffer-转-AudioBuffer"><a href="#9-ArrayBuffer-转-AudioBuffer" class="headerlink" title="9.ArrayBuffer 转 AudioBuffer"></a>9.ArrayBuffer 转 AudioBuffer</h2><p>这里的<code>ArrayBuffer</code>相对于把音频文件数组化了，ArrayBuffer 里面的数据并没有分类，统一分解了，想要准确提取某一截音频数据，提取不出来，才需要转换成 AudioBuffer，<code>AudioBuffer</code>是一个仅仅包含音频数据的数据对象，是 Web Audio API 中的一个概念。</p>
+<p>使用 AudioContext 对象的<code>decodeAudioData()</code>方法，代码如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+audioCtx<span class="token punctuation">.</span><span class="token function">decodeAudioData</span><span class="token punctuation">(</span>arrBuffer<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>audioBuffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// audioBuffer就是AudioBuffer</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建一个空的 AudioBuffer，复制现有的通道数据前 3 秒的数据，然后复制的内容写入到这个空的 AudioBuffer</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 声道数量和采样率</span>
+<span class="token keyword">var</span> channels <span class="token operator">=</span> audioBuffer<span class="token punctuation">.</span>numberOfChannels<span class="token punctuation">;</span>
+<span class="token keyword">var</span> rate <span class="token operator">=</span> audioBuffer<span class="token punctuation">.</span>sampleRate<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 截取前3秒</span>
+<span class="token keyword">var</span> startOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> endOffset <span class="token operator">=</span> rate <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 3秒对应的帧数</span>
+<span class="token keyword">var</span> frameCount <span class="token operator">=</span> endOffset <span class="token operator">-</span> startOffset<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 创建同样采用率、同样声道数量，长度是前3秒的空的AudioBuffer</span>
+<span class="token keyword">var</span> newAudioBuffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createBuffer</span><span class="token punctuation">(</span>channels<span class="token punctuation">,</span> endOffset <span class="token operator">-</span> startOffset<span class="token punctuation">,</span> rate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 创建临时的Array存放复制的buffer数据</span>
+<span class="token keyword">var</span> anotherArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span>frameCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 声道的数据的复制和写入</span>
+<span class="token keyword">var</span> offset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> channel <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> channel <span class="token operator">&lt;</span> channels<span class="token punctuation">;</span> channel<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    audioBuffer<span class="token punctuation">.</span><span class="token function">copyFromChannel</span><span class="token punctuation">(</span>anotherArray<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> startOffset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newAudioBuffer<span class="token punctuation">.</span><span class="token function">copyToChannel</span><span class="token punctuation">(</span>anotherArray<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// newAudioBuffer就是全新的复制的3秒长度的AudioBuffer对象</span></code></pre>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p><img src="//static.tianyichuxin.com/images/28577/4.png" alt=""></p>
+<p>以上相关流之间的各种转化，可根据需要在下面图片中找对应的例子<br><img src="//static.tianyichuxin.com/images/28577/5.png" alt=""></p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><ul>
+<li><a href="https://www.zhangxinxu.com/wordpress/2020/07/js-audio-clip-copy-upload/" target="_blank" rel="noopener">JS 纯前端实现 audio 音频剪裁剪切复制播放与上传</a></li>
+<li><a href="https://juejin.cn/post/7259543257708625979" target="_blank" rel="noopener">浅析 JavaScript 类型化数组</a></li>
+<li><a href="https://juejin.cn/post/7093908575935807502?searchId=202403061350374F488B88B67BABFE3784" target="_blank" rel="noopener">Blob、File、ArrayBuffer、TypedArray、DataView 究竟应该如何应用</a></li>
+<li><a href="https://www.cnblogs.com/yinpengfei/p/17280585.html" target="_blank" rel="noopener">JS 二进制文件转换：File、Blob、Base64、ArrayBuffer</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">弈心</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.tianyichuxin.com/2023/12/28577.html">https://blog.tianyichuxin.com/2023/12/28577.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">弈心</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/javascript/">
+                                    <span class="chip bg-color">javascript</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'Pz2erXCl206N7RaqUeABaxY5-gzGzoHsz',
+        appKey: 'jK6ogq40WtwTaW0p3l097QhN',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '说点什么再走吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/02/35226.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="使用node fs读写文件">
+                        
+                        <span class="card-title">使用node fs读写文件</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            使用node fs读写文件
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/node/" class="post-category">
+                                    node
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/node/">
+                        <span class="chip bg-color">node</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/08/535.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="Vuex 与 Pinia 的设计实现对比">
+                        
+                        <span class="card-title">Vuex 与 Pinia 的设计实现对比</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Vuex 与 Pinia 的设计实现对比
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
+                    </a>
+                    
+                    <a href="/tags/vuex/">
+                        <span class="chip bg-color">vuex</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 天弈初心<br />'
+            + '文章作者: 弈心<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+<div class="_fogwnirvpfw" id="_fogwnirvpfw"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938726",
+        container: "_fogwnirvpfw",
+        async: true
+    });
+</script>
+<div class="_s210mav3xgf" id="_s210mav3xgf"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6938735",
+        container: "_s210mav3xgf",
+        async: true
+    });
+</script>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+</script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<!-- <script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> -->
+<script src="https://static.tianyichuxin.com/assets/npm/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">弈心</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">364.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006491" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-right: 10px;">鄂公网安备 42018502006491号</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">鄂ICP备19020385号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/tianyichuxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:535399046@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=535399046" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 535399046" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: tianyichuxin2025" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/waifu.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.tianyichuxin.com/assets/live2D/css/flat-ui.min.css" />
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	<div class="waifu">
+		<!-- 提示框 -->
+		<!-- <div class="waifu-tips"></div> -->
+
+		<!-- 看板娘画布 -->
+		<!-- <canvas id="live2d" class="live2d" width="280" height="250"></canvas> -->
+
+		<!-- 工具栏 -->
+		<!-- <div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div> -->
+	</div>
+</body>
+</html>
+<!-- 右下角人物和鼠标点击 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/waifu--tips.js"></script> -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/live2d.js"></script> -->
+<!-- 小姐姐 -->
+<!-- <script src="http://static.tianyichuxin.com/assets/live2D/js/L2Dwidget.min.js"></script> -->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+<!-- 鼠标点击 -->
+<script src="http://static.tianyichuxin.com/assets/live2D/js/mouse.js"></script>
+<script type="text/javascript">
+    // /* 可直接修改部分参数 */
+    // live2d_settings['modelId'] = 5; // 默认模型 ID
+    // live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    // /* 在 initModel 前添加 */
+    // initModel("http://static.tianyichuxin.com/assets/live2D/js/waifu-tips.json")
+</script>
