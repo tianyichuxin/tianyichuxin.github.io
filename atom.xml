@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>天弈初心</title>
+  
+  <subtitle>与天对弈，不忘初心</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.tianyichuxin.com/"/>
+  <updated>2026-03-22T03:07:28.618Z</updated>
+  <id>https://blog.tianyichuxin.com/</id>
+  
+  <author>
+    <name>弈心</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenClaw进阶：解锁你的专属AI超能力，从Skill开始！</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/39882.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/39882.html</id>
+    <published>2026-03-22T02:40:00.000Z</published>
+    <updated>2026-03-22T03:07:28.618Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/39882/openclaw_skill_cover.png&quot; alt=&quot;OpenClaw Skill Cover
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenClaw：你的专属AI智能体，不止于聊天！</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/4322.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/4322.html</id>
+    <published>2026-03-21T14:40:00.000Z</published>
+    <updated>2026-03-22T03:02:46.006Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/4322/openclaw_cover.png&quot; alt=&quot;OpenClaw Cover
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复刻OpenClaw：从0到1搭建可商用的AI智能体系统（前端+后端全流程）</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/6823.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/6823.html</id>
+    <published>2026-03-17T13:00:00.000Z</published>
+    <updated>2026-03-22T02:56:26.954Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、项目概述&quot;&gt;&lt;a href=&quot;#一、项目概述&quot; class=&quot;headerlink&quot; title=&quot;一、项目概述&quot;&gt;&lt;/a&gt;一、项目概述&lt;/h2&gt;&lt;p&gt;OpenClaw 作为一款具备工具调用能力的 AI Agent 智能体框架，其核心设计理念是
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端必看：什么是Manus？AI时代的“执行引擎”到底有多重要？</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/63557.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/63557.html</id>
+    <published>2026-03-17T10:00:00.000Z</published>
+    <updated>2026-03-22T02:56:26.951Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 AI 智能体、OpenClaw、本地自动化工具越来越火的今天，你一定经常听到一个词：&lt;strong&gt;Manus&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;很多前端同学一听就懵了：&lt;br&gt;这是新框架？新协议？还是某个库？&lt;/p&gt;
+&lt;p&gt;其实 &lt;strong&gt;Manus
+        
+      
+    
+    </summary>
+    
+    
+      <category term="manus" scheme="https://blog.tianyichuxin.com/categories/manus/"/>
+    
+    
+      <category term="manus" scheme="https://blog.tianyichuxin.com/tags/manus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenClaw新手必看！30分钟搞定专属Skill，告别“水土不服”</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/39753.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/39753.html</id>
+    <published>2026-03-16T14:40:00.000Z</published>
+    <updated>2026-03-22T02:56:26.945Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近很多朋友跟我吐槽：装了OpenClaw，却发现默认技能根本用不上，要么功能不对口，要么执行总报错，妥妥的“水土不服”。&lt;/p&gt;
+&lt;p&gt;其实答案很简单：&lt;strong&gt;OpenClaw的核心能力，藏在自定义Skill里&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;它就像一个空壳机器
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenClaw 调用大模型原理（前端开发可直接借鉴）</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/50432.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/50432.html</id>
+    <published>2026-03-14T14:40:00.000Z</published>
+    <updated>2026-03-22T02:56:26.945Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;OpenClaw 调用大模型的核心是 &lt;strong&gt;「统一抽象层 + 上下文组装 + 工具调用循环 + 结果标准化」&lt;/strong&gt;，本质是把大模型从“纯文本生成”升级为“可执行任务的决策大脑”，前端做 AI 应用时可直接复用这套架构与流程。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenClaw Skill 标准模板+10个新手实用源码+调试避坑指南</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/10552.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/10552.html</id>
+    <published>2026-03-12T14:30:00.000Z</published>
+    <updated>2026-03-22T02:56:26.943Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、OpenClaw-Skill-标准结构模板&quot;&gt;&lt;a href=&quot;#一、OpenClaw-Skill-标准结构模板&quot; class=&quot;headerlink&quot; title=&quot;一、OpenClaw Skill 标准结构模板&quot;&gt;&lt;/a&gt;一、OpenClaw Skill
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenClaw 技能库完全指南：从入门到精通的必备技能清单</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/34358.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/34358.html</id>
+    <published>2026-03-08T13:12:00.000Z</published>
+    <updated>2026-03-22T02:56:26.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;本文基于ClawHub 10000+技能生态，结合2026年最新安全实践，为你筛选出真正值得安装的OpenClaw技能，避免踩坑，提升 AI Agent生产力。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新手最易上手的 Skill 示例</title>
+    <link href="https://blog.tianyichuxin.com/2026/03/52270.html"/>
+    <id>https://blog.tianyichuxin.com/2026/03/52270.html</id>
+    <published>2026-03-07T03:22:00.000Z</published>
+    <updated>2026-03-22T02:56:26.954Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、新手最易上手的-Skill-3个实用款示例（可直接运行）&quot;&gt;&lt;a href=&quot;#一、新手最易上手的-Skill-3个实用款示例（可直接运行）&quot; class=&quot;headerlink&quot; title=&quot;一、新手最易上手的 Skill
+        
+      
+    
+    </summary>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/categories/openclaw/"/>
+    
+    
+      <category term="openclaw" scheme="https://blog.tianyichuxin.com/tags/openclaw/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 初级入门技术文档</title>
+    <link href="https://blog.tianyichuxin.com/2026/02/8520.html"/>
+    <id>https://blog.tianyichuxin.com/2026/02/8520.html</id>
+    <published>2026-02-06T02:28:00.000Z</published>
+    <updated>2026-03-22T02:56:26.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#python-简介&quot;&gt;Python 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://blog.tianyichuxin.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://blog.tianyichuxin.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>判断对象数组中是否存在指定属性值</title>
+    <link href="https://blog.tianyichuxin.com/2026/01/2635.html"/>
+    <id>https://blog.tianyichuxin.com/2026/01/2635.html</id>
+    <published>2026-01-05T03:43:03.000Z</published>
+    <updated>2026-03-22T02:56:26.942Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JS-判断对象数组中是否存在指定属性值（以-type-2-为例）&quot;&gt;&lt;a href=&quot;#JS-判断对象数组中是否存在指定属性值（以-type-2-为例）&quot; class=&quot;headerlink&quot; title=&quot;JS 判断对象数组中是否存在指定属性值（以
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Node.js + FFmpeg 读取音视频文件信息</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/28237.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/28237.html</id>
+    <published>2025-12-21T03:12:30.000Z</published>
+    <updated>2026-01-25T08:11:57.611Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言：什么是-FFmpeg-和-FFprobe&quot;&gt;&lt;a href=&quot;#前言：什么是-FFmpeg-和-FFprobe&quot; class=&quot;headerlink&quot; title=&quot;前言：什么是 FFmpeg 和 FFprobe&quot;&gt;&lt;/a&gt;前言：什么是 FFmpeg 和
+        
+      
+    
+    </summary>
+    
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/categories/FFmpeg/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.tianyichuxin.com/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>child_process.spawn 的详细使用</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/12101.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/12101.html</id>
+    <published>2025-12-21T02:00:00.000Z</published>
+    <updated>2026-03-22T02:56:26.949Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、文档概述&quot;&gt;&lt;a href=&quot;#一、文档概述&quot; class=&quot;headerlink&quot; title=&quot;一、文档概述&quot;&gt;&lt;/a&gt;一、文档概述&lt;/h2&gt;&lt;p&gt;本文档基于 Node.js &lt;code&gt;child_process.spawn()&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+      <category term="spawn" scheme="https://blog.tianyichuxin.com/tags/spawn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron导入导出多种文件</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/16425.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/16425.html</id>
+    <published>2025-12-20T13:18:30.000Z</published>
+    <updated>2026-01-25T08:11:57.594Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-导入导出-Word&quot;&gt;&lt;a href=&quot;#1-导入导出-Word&quot; class=&quot;headerlink&quot; title=&quot;1. 导入导出 Word&quot;&gt;&lt;/a&gt;1. 导入导出 Word&lt;/h2&gt;&lt;h3 id=&quot;1-1-导入-Word&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/categories/electron/"/>
+    
+    
+      <category term="electron" scheme="https://blog.tianyichuxin.com/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust 错误处理：unwrap() 与 ok_or_else() 的对比</title>
+    <link href="https://blog.tianyichuxin.com/2025/12/14096.html"/>
+    <id>https://blog.tianyichuxin.com/2025/12/14096.html</id>
+    <published>2025-12-05T07:13:00.000Z</published>
+    <updated>2026-03-22T02:56:26.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文对比 Rust 中两个常用的错误处理方法——&lt;code&gt;unwrap()&lt;/code&gt; 和 &lt;code&gt;ok_or_else()&lt;/code&gt;，帮助你选择合适的错误处理方式。&lt;/p&gt;
+&lt;h2 id=&quot;引：基础概念&quot;&gt;&lt;a href=&quot;#引：基础概念&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="rust" scheme="https://blog.tianyichuxin.com/categories/rust/"/>
+    
+    
+      <category term="rust" scheme="https://blog.tianyichuxin.com/tags/rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git命令大全（基础+最新进阶版）</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/1119.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/1119.html</id>
+    <published>2025-11-30T04:11:32.000Z</published>
+    <updated>2026-01-25T08:11:57.588Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;//static.tianyichuxin.com/images/42341/20200608000757762.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Git-命令大全（基础-最新进阶版）&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://blog.tianyichuxin.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npm Workspaces 依赖声明对比</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/2564.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/2564.html</id>
+    <published>2025-11-25T09:53:00.000Z</published>
+    <updated>2026-03-22T02:56:26.950Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;workspace:*&lt;/code&gt; 与 &lt;code&gt;^0.1.0&lt;/code&gt; 依赖声明的区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://blog.tianyichuxin.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js数组过滤的常用方法</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/60998.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/60998.html</id>
+    <published>2025-11-22T03:12:30.000Z</published>
+    <updated>2026-01-25T08:11:57.596Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、按方法分类的数组过滤技术&quot;&gt;&lt;a href=&quot;#一、按方法分类的数组过滤技术&quot; class=&quot;headerlink&quot; title=&quot;一、按方法分类的数组过滤技术&quot;&gt;&lt;/a&gt;一、按方法分类的数组过滤技术&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue3 版本特性演进 (持续更新中）</title>
+    <link href="https://blog.tianyichuxin.com/2025/11/13004.html"/>
+    <id>https://blog.tianyichuxin.com/2025/11/13004.html</id>
+    <published>2025-11-21T02:42:30.000Z</published>
+    <updated>2026-01-25T08:11:57.588Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vue-3-0-2020-年-9-月-里程碑版本&quot;&gt;&lt;a href=&quot;#Vue-3-0-2020-年-9-月-里程碑版本&quot; class=&quot;headerlink&quot; title=&quot;Vue 3.0 (2020 年 9 月) - 里程碑版本&quot;&gt;&lt;/a&gt;Vue 3.0
+        
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/categories/vue/"/>
+    
+    
+      <category term="js" scheme="https://blog.tianyichuxin.com/tags/js/"/>
+    
+      <category term="vue" scheme="https://blog.tianyichuxin.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Event.path 与 Event.composedPath</title>
+    <link href="https://blog.tianyichuxin.com/2025/09/28526.html"/>
+    <id>https://blog.tianyichuxin.com/2025/09/28526.html</id>
+    <published>2025-09-20T16:00:00.000Z</published>
+    <updated>2025-10-29T13:12:30.818Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在前端开发中，追踪事件传播路径是处理事件委托、Shadow DOM 交互等场景的基础能力。长期以来，部分开发者依赖非标准的 &lt;code&gt;Event.path&lt;/code&gt; 属性获取事件路径，但随着浏览器标准的推进，这一属性已逐渐被废弃。本文将详解
+        
+      
+    
+    </summary>
+    
+    
+      <category term="html" scheme="https://blog.tianyichuxin.com/categories/html/"/>
+    
+    
+      <category term="html" scheme="https://blog.tianyichuxin.com/tags/html/"/>
+    
+      <category term="dom" scheme="https://blog.tianyichuxin.com/tags/dom/"/>
+    
+  </entry>
+  
+</feed>
